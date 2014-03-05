@@ -21,60 +21,31 @@
 	<![endif]-->
 </head>
 <body>
-	<label>
-		<span class="lbl">Client</span><br>
-		<input type="text" name="price" placeholder="La Presse" />
-	</label>
-	<fieldset>
-		<legend>Écran</legend>
+	<form method="post" action="ad.php" enctype="multipart/form-data" autocomplete="off">
 		<label>
-			<span class="lbl">Prix</span><br>
-			<input type="text" name="price" placeholder="1 358" />$
-		</label><br>
-		<label>
-			<span class="lbl">Description</span><br>
-			<input type="text" name="desc" placeholder="Barcelo Costa Cancun" />
-		</label><br>
-		<label>
-			<span class="lbl">Titre</span><br>
-			<input type="text" name="title" placeholder="Cancun, Mexique" />
-		</label><br>
-		<span class="lbl">Note</span><br>
-		<label>
-			<input type="radio" name="rating" value="0" checked /> Aucune
+			<span class="lbl">Client</span><br>
+			<input type="text" name="price" placeholder="La Presse" />
 		</label>
-		<label>
-			<input type="radio" name="rating" value="1" /> 1
-		</label>
-		<label>
-			<input type="radio" name="rating" value="2" /> 2
-		</label>
-		<label>
-			<input type="radio" name="rating" value="3" /> 3
-		</label>
-		<label>
-			<input type="radio" name="rating" value="4" /> 4
-		</label>
-		<label>
-			<input type="radio" name="rating" value="5" /> 5 / 5
-		</label><br>
-		<label>
-			<span class="lbl">Texte</span><br>
-			<textarea name="text" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
-		</label><br>
-		<label>
-			<span class="lbl">Image</span><br>
-			<input type="file" accept="image/*" capture="camera" name="picture">
-		</label><br>
-		<label>
-			<span class="lbl">Vidéo</span><br>
-			<input type="file" accept="video/*" capture="camera" name="video">
-		</label>
-	</fieldset>
 
-	<label>
-		<span class="lbl">Légal</span><br>
-		<textarea name="legal" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
-	</label>
+		<a href="#" class="addScreen">Ajouter un écran</a>
+		<section class="screensList">
+			<!-- public/templates/screen-tpl.mustache.html -->
+		</section>
+
+		<label>
+			<span class="lbl">Légal</span><br>
+			<textarea name="legal" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
+		</label>
+	</form>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>window.jQuery || document.write('<script src="<?= URL ?>public/scripts/min/jquery-1.11.0.min.js"> \x3C/script>')</script>
+    <script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
+	<script src="<?= URL ?>public/scripts/form.js"></script>
+	<script>
+		$(document).ready(function() {
+          _g = new app();
+        });
+	</script>
 </body>
 </html>
