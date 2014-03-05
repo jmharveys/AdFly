@@ -3,9 +3,6 @@
 * {
 	-webkit-tap-highlight-color:rgba(0,0,0,0)
 }
-.preload * {
-  transition: none !important;
-}
 
 html, body {
 	width: 100%;
@@ -18,8 +15,3 @@ html, body {
 iframe {
 	border: none;
 }
-
-iframe::-webkit-scrollbar {
-	display:none
-}
-
