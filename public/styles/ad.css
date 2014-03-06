@@ -1,13 +1,99 @@
 /* _reset.scss */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html, body {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -40,3 +126,159 @@ iframe {
 }
 
 /* _style-guide.scss */
+body {
+  opacity: 0;
+  -webkit-transition: opacity .3s ease;
+  background: #b1b3ba;
+}
+
+body.lp-loaded {
+  opacity: 1;
+}
+
+.lp-ad {
+  position: relative;
+  width: 480px;
+  height: 324px;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.lp-view {
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/*=== RETOURNER css | debut ====================*/
+.wrapperFlip {
+  position: absolute;
+  -webkit-perspective: 800;
+}
+
+.flip {
+  position: absolute;
+  -webkit-transition: -webkit-transform 1s;
+  -webkit-transform-style: preserve-3d;
+}
+.flip .lp-view {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip.active,
+.flip .lp-view:nth-child(2) {
+  -webkit-transform: rotateY(180deg);
+}
+
+/*=== RETOURNER css | fin ====================*/
+/*=== GALERIE css | debut ====================*/
+#logo {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 165px;
+  height: 75px;
+  pointer-events: none;
+}
+
+#gallery {
+  width: 480px;
+  height: 324px;
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  z-index: 0;
+}
+#gallery .scroller {
+  position: relative;
+  float: left;
+  width: 2400px;
+  height: 100%;
+  z-index: 0;
+}
+#gallery .scroller > .lp-view {
+  position: relative !important;
+  float: left;
+  margin: 0;
+}
+
+.pager-wrapper {
+  position: absolute;
+  top: 239px;
+  left: 0px;
+  width: 480px;
+  text-align: center;
+  z-index: 1;
+}
+.pager-wrapper .pager {
+  position: relative;
+  display: inline-block;
+  background: black;
+  list-style: none;
+  padding: 4px;
+  border-radius: 7.5px;
+}
+.pager-wrapper .pager li {
+  position: relative;
+  float: left;
+  width: 5px;
+  height: 5px;
+  font-size: 0;
+  background: #6e6e6e;
+  border-radius: 50%;
+  margin: 0 5px;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: background .3s ease;
+}
+.pager-wrapper .pager li.selected {
+  background: white;
+}
+
+.description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: white;
+  width: 100%;
+  height: 78px;
+  margin: 246px 0 0 0;
+  padding: 0 10px 10px 16px;
+}
+.description div:nth-child(1) {
+  float: left;
+}
+.description div:nth-child(2) {
+  float: right;
+  text-align: right;
+}
+.description .title:first-letter {
+  text-transform: uppercase;
+}
+.description .title {
+  padding: 30px 0 0 0;
+  color: #4d4d4d;
+  font: normal normal 18px/20px helvetica, sans-serif;
+}
+.description .subtitle {
+  color: #4d4d4d;
+  font: normal bold 23px/20px helvetica, sans-serif;
+}
+.description .caption {
+  color: #4d4d4d;
+  padding: 27px 0 0 0;
+  font: normal normal 12px/12px helvetica, sans-serif;
+  text-transform: uppercase;
+}
+.description .price {
+  color: #333333;
+  font: normal bold 33px/20px helvetica, sans-serif;
+}
+.description .price:after {
+  font-size: 50%;
+  vertical-align: super;
+  content: "$";
+}
+
+/*=== GALERIE css | fin ====================*/
