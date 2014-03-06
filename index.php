@@ -22,9 +22,11 @@
 </head>
 <body>
 	<form method="post" action="ad.php" enctype="multipart/form-data" autocomplete="off">
+		<input name="screensNbr" type="hidden" />
+
 		<label>
 			<span class="lbl">Client</span><br>
-			<input type="text" name="price" placeholder="La Presse" />
+			<input type="text" name="client" placeholder="La Presse" />
 		</label>
 
 		<a href="#" class="addScreen">Ajouter un écran</a>
@@ -35,7 +37,9 @@
 		<label>
 			<span class="lbl">Légal</span><br>
 			<textarea name="legal" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
-		</label>
+		</label><br>
+
+		<input type="submit" value="Soumettre">
 	</form>
 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>

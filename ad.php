@@ -1,5 +1,12 @@
 <?php 
 	include 'configs/global.php'; 
+	include 'app/controllers/Ad.php';
+	include 'app/models/Ad.php'; 
+	include 'app/views/Ad.php'; 
+
+	$model = new AdModel();
+	$controller = new AdController($model);
+	$view = new AdView($view, $model);
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8]> <html class="lt-ie10 lt-ie9 lt-ie8" lang="fr"> <![endif]-->
@@ -21,5 +28,9 @@
 	<![endif]-->
 </head>
 <body>
+	<?php 
+		//print_r($model->ad);
+		echo $view->outputBody();
+	?>
 </body>
 </html>

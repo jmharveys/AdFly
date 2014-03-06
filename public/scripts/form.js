@@ -15,6 +15,7 @@ app.prototype.map_ = function() {
   var self = this;
   self.dom = {
     b: $('body'),
+    screenNbr: $('[name="screensNbr"]'),
     addScreen: $('.addScreen'),
     screensList: $('.screensList')
   };
@@ -27,7 +28,8 @@ app.prototype.map_ = function() {
 //=== INIT START =====================================================
 app.prototype.init_ = function(pObj) {
   var self = this;
-  self.i = 0
+  self.i = 1;
+  self.dom.screenNbr.val(self.i);
   self.createScreen_({id: self.i});
 };
 //=== INIT END =======================================================
@@ -39,6 +41,7 @@ app.prototype.bindEvents_ = function() {
   self.dom.addScreen.on('click', function(e) {
     e.preventDefault();
     self.i++;
+    self.dom.screenNbr.val(self.i);
     self.createScreen_({id: self.i});
   });
 };
