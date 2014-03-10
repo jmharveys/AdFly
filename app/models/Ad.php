@@ -1,5 +1,6 @@
 <?php
 class AdModel {
+	//Cette page ne devrait contenir aucun html.
 	public $ad;
 
     public function __construct() {
