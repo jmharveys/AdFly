@@ -1,0 +1,5 @@
+#Fichier .htaccess : /new/
+
+Options -MultiViews
+RewriteEngine On
+RewriteRule ^([a-z]{2})$ index.php?lang=$1&%{QUERY_STRING} [L]
