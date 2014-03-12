@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Formulaire | AdFly </title>
+	<title>Démo Galerie | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -23,85 +23,117 @@
 <body>
 
 	<div class='lp-ad'>
-		<div id="logo" style='background-image: url("public/images/demo/tmr.jpg");'></div>
+		
 		
 		<!--=== RETOURNER html | debut ==============-->
 		<!-- <div class='wrapperFlip' style='top: 0px; left: 0px; width: 480px; height: 246px;'>
 			<div class='flip' style='0px; width: 480px; height: 246px;'> 
 				
-				<div style='top: 0; left: 0; width: 480px; height: 246px; background-image: url("assets/maroc.jpg");' class='lp-view'></div>
+				<div style='top: 0; left: 0; width: 480px; height: 246px; background-ima<br/>ge: url("assets/maroc.jpg");' class='lp-view'></div>
 				
 				<div style='top: 0; left: 0; width: 480px; height: 246px; background-image: url("assets/chine.jpg");' class='lp-view'></div>
 			</div>
 		</div> -->
 		<!--=== RETOURNER html | fin ==============-->
 
-
 		<div id='gallery'>
 			<div class='scroller'>
-				<div style='top: 0; left: 0; width: 480px; height: 324px; background-image: url("public/images/demo/chine.jpg");' class='lp-view'>
-					<div class="description">
-						<div>
-							<p class="title">Grand China Princess</p>
-							<p class="subtitle">Bangkok, Chine</p>
-						</div>
-						<div>
-							<p class="caption">à partir de</p>
-							<p class="price">1 358</p>
+				<div class="wrapperFlip current">
+					<div class='flip lp-view' style='top: 0; left: 0; width: 480px; height: 324px;'>
+					<div class='wrapperFront lp-view'>
+						<div style='width: 480px; height: 246px; background-image: url("public/images/demo/chine.jpg");'></div>
+						<div class="description">
+							<div>
+								<p class="title">Grand China Princess</p>
+								<p class="subtitle">Bangkok, Chine</p>
+							</div>
+							<div>
+								<p class="caption">à partir de<br/>par pers</p>
+								<p class="price">1 358</p>
+							</div>
 						</div>
 					</div>
-				</div>
+					<div class="wrapperBack lp-view" style="background:red; top: 0; left: 0; width: 480px; height: 324px;">INFORMATIONS ICI</div>
+					</div>
+				</div>	
 
-				<div style='top: 0; left: 0; width: 480px; height: 324px; background-image: url("public/images/demo/maroc.jpg");' class='lp-view'>
-					<div class="description">
-						<div>
-							<p class="title">Mazagan Beach Resort</p>
-							<p class="subtitle">El Jadida, Maroc</p>
-						</div>
-						<div>
-							<p class="caption">à partir de</p>
-							<p class="price">2 199</p>
-						</div>
-					</div>					
-				</div>
-	
-				<div style='top: 0; left: 0; width: 480px; height: 324px; background-image: url("public/images/demo/perou.jpg");' class='lp-view'>
-					<div class="description">
-						<div>
-							<p class="title">Machu Picchu Sanctuary Lodge</p>
-							<p class="subtitle">Machu Picchu, Pérou</p>
-						</div>
-						<div>
-							<p class="caption">à partir de</p>
-							<p class="price">1 699</p>
-						</div>
-					</div>						
-				</div>
-							
-				<div style='top: 0; left: 0; width: 480px; height: 324px; background-image: url("public/images/demo/portugal.jpg");' class='lp-view'>
-					<div class="description">
-						<div>
-							<p class="title">Rocha Hotel Apartamento</p>
-							<p class="subtitle">Praia da Rocha, Portugal</p>
-						</div>
-						<div>
-							<p class="caption">à partir de</p>
-							<p class="price">2 400</p>
-						</div>
-					</div>						
-				</div>
-							
-				<div style='top: 0; left: 0; width: 480px; height: 324px; background-image: url("public/images/demo/paris.jpg");' class='lp-view'>
-					<div class="description">
-						<div>
-							<p class="title">Eiffel Capitol Hotel</p>
-							<p class="subtitle">Paris, France</p>
-						</div>
-						<div>
-							<p class="caption">à partir de</p>
-							<p class="price">999</p>
-						</div>
-					</div>						
+				<div class="wrapperFlip">
+					<div class='flip lp-view' style='top: 0; left: 0; width: 480px; height: 324px;'>
+					<div class='wrapperFront lp-view'>
+						<div style='width: 480px; height: 246px; background-image: url("public/images/demo/maroc.jpg");'></div>
+						<div class="description">
+							<div>
+								<p class="title">Mazagan Beach Resort</p>
+								<p class="subtitle">El Jadida, Maroc</p>
+							</div>
+							<div>
+								<p class="caption">à partir de<br/>par pers</p>
+								<p class="price">2 199</p>
+							</div>
+						</div>	
+					</div>	
+					<div class="wrapperBack lp-view" style="background:red; top: 0; left: 0; width: 480px; height: 324px;">INFORMATIONS ICI</div>				
+					</div>
+				</div>	
+
+				<div class="wrapperFlip">
+					<div class='flip lp-view' style='top: 0; left: 0; width: 480px; height: 324px;'>
+						<div class='wrapperFront lp-view'>
+							<div style='width: 480px; height: 246px; background-image: url("public/images/demo/perou.jpg");'></div>
+							<div class="description">
+								<div>
+									<p class="title">Machu Picchu Sanctuary Lodge</p>
+									<p class="subtitle">Machu Picchu, Pérou</p>
+								</div>
+								<div>
+									<p class="caption">à partir de<br/>par pers</p>
+									<p class="price">1 699</p>
+								</div>
+							</div>	
+						</div>	
+						<div class="wrapperBack lp-view" style="background:red; top: 0; left: 0; width: 480px; height: 324px;">INFORMATIONS ICI</div>
+					</div>
+				</div>	
+
+
+
+				<div class="wrapperFlip">
+					<div class='flip lp-view' style='top: 0; left: 0; width: 480px; height: 324px;'>
+						<div class='wrapperFront lp-view'>
+							<div style='width: 480px; height: 246px; background-image: url("public/images/demo/portugal.jpg");'></div>
+							<div class="description">
+								<div>
+									<p class="title">Rocha Hotel Apartamento</p>
+									<p class="subtitle">Praia da Rocha, Portugal</p>
+								</div>
+								<div>
+									<p class="caption">à partir de<br/>par pers</p>
+									<p class="price">2 400</p>
+								</div>
+							</div>	
+						</div>	
+						<div class="wrapperBack lp-view" style="background:red; top: 0; left: 0; width: 480px; height: 324px;">INFORMATIONS ICI</div>
+					</div>
+				</div>	
+
+
+				<div class="wrapperFlip">
+					<div class='flip lp-view' style='top: 0; left: 0; width: 480px; height: 324px;'>
+						<div class='wrapperFront lp-view'>
+							<div style='width: 480px; height: 246px; background: url("public/images/demo/tmr.jpg") 0 0 no-repeat, url("public/images/demo/paris.jpg") 0 0 no-repeat;'></div>
+							<div class="description">
+								<div>
+									<p class="title">Eiffel Capitol Hotel</p>
+									<p class="subtitle">Paris, France</p>
+								</div>
+								<div>
+									<p class="caption">à partir de<br/>par pers</p>
+									<p class="price">999</p>
+								</div>
+							</div>	
+						</div>	
+						<div class="wrapperBack lp-view" style="background:red; top: 0; left: 0; width: 480px; height: 324px;">INFORMATIONS ICI</div>				
+					</div>								
 				</div>
 			</div>
 		</div>
@@ -172,7 +204,6 @@
 			} 
 		}
 		/*=== RETOURNER script | fin =============*/
-
 
 	</script>
 

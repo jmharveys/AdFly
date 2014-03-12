@@ -20,33 +20,42 @@ body.lp-loaded {
 	overflow: hidden;
 }
 
-// .lp-view {
-// 	position: absolute;
-// 	background-repeat: no-repeat;
-// 	z-index: 0;
-// }
+.lp-view {
+	position: absolute;
+	background-repeat: no-repeat;
+	z-index: 0;
+}
 
 
-/*=== RETOURNER css | debut ====================*/
-	.wrapperFlip {
-		 width: 480px; height: 324px;
-	}
-	.flip { 
-		-webkit-transition: -webkit-transform 1s; 
-		-webkit-transform-style: preserve-3d; 
-
-		.wrapperFront,
-		.wrapperBack { 
+		/*=== RETOURNER css | debut ====================*/
+		.wrapperFlip { 
+			width: 480px;
+			height: 324px;
+			-webkit-perspective: 0; 
+		} 
+		.flip { 
+			-webkit-transition: -webkit-transform 1s; 
+			-webkit-transform-style: preserve-3d; 
+		} 
+		.flip .test { 
 			position: absolute; 
 			-webkit-backface-visibility: hidden; 
 		} 
-	} 
-	
-	.flip.active, 
-	.flip .wrapperBack { 
-		-webkit-transform: rotateY(180deg); 
-	}
-/*=== RETOURNER css | fin ====================*/
+
+		.flip * { 
+			-webkit-backface-visibility: hidden; 
+		} 
+
+		.flip.active, 
+		.test:nth-child(2) { 
+			-webkit-transform: rotateY(180deg); 
+		}
+
+		// .flip.test:nth-child(2) { 
+		// 	pointer-events: none; 
+		// }
+
+		/*=== RETOURNER css | fin ====================*/
 
 
 /*=== GALERIE css | debut ====================*/
@@ -60,13 +69,12 @@ body.lp-loaded {
 	pointer-events: none;
 }
 
-#gallery { 
+#galleryFront,
+#galleryBack { 
 	width: 480px; 
 	height: 324px; 
 	background: rgba(0,0,0,0); 
 	z-index: 0;
-	overflow: visible !important; 
-
 		.scroller { 
 			position: relative; 
 			float: left; 
@@ -74,13 +82,15 @@ body.lp-loaded {
 			height: 100%; 
 			z-index: 0; 
 		} 
-
-		.scroller > .wrapperFlip { 
+		.scroller > .wrapperFront
+		 { 
+		 	width: 480px;
+		 	height: 324px;
 			position: relative !important; 
 			float: left; 
 			margin: 0; 
+			background: rgba(255,255,255,1); 
 		}
-
 } 
 
 .pager-wrapper { 
@@ -166,5 +176,4 @@ body.lp-loaded {
 		content: "$";
 	}
 }
-
 /*=== GALERIE css | fin ====================*/

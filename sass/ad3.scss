@@ -20,33 +20,55 @@ body.lp-loaded {
 	overflow: hidden;
 }
 
-// .lp-view {
-// 	position: absolute;
-// 	background-repeat: no-repeat;
-// 	z-index: 0;
-// }
-
-
-/*=== RETOURNER css | debut ====================*/
-	.wrapperFlip {
-		 width: 480px; height: 324px;
-	}
-	.flip { 
-		-webkit-transition: -webkit-transform 1s; 
-		-webkit-transform-style: preserve-3d; 
-
-		.wrapperFront,
-		.wrapperBack { 
-			position: absolute; 
-			-webkit-backface-visibility: hidden; 
+.lp-view {
+	position: absolute;
+	background-repeat: no-repeat;
+	z-index: 0;
+}
+//Juste pour tester le layer avec les maquettes #overlay
+#overlay {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 480px;
+	height: 324px;
+	z-index: 100000;
+	// opacity: 0.3;
+	opacity: 0;
+	pointer-events: none;
+}
+		/*=== RETOURNER css | debut ====================*/
+		.wrapperFlip { 
+			width: 480px;
+			height: 324px;
+			-webkit-perspective: 0; 
 		} 
-	} 
-	
-	.flip.active, 
-	.flip .wrapperBack { 
-		-webkit-transform: rotateY(180deg); 
-	}
-/*=== RETOURNER css | fin ====================*/
+		.flip { 
+			-webkit-transition: -webkit-transform 1s; 
+			-webkit-transform-style: preserve-3d; 
+
+			.front, .back { 
+				position: absolute; 
+				top: 0; left: 0; 
+				-webkit-backface-visibility: hidden; 
+			} 
+
+			* { 
+				-webkit-backface-visibility: hidden; 
+			} 
+		} 
+
+		.flip.active, 
+		.back { 
+			-webkit-transform: rotateY(180deg); 
+		}
+
+		.flipped .back {
+			-webkit-transition: -webkit-transform 0s;
+			-webkit-transform: rotateY(-180deg); 
+		}
+
+		/*=== RETOURNER css | fin ====================*/
 
 
 /*=== GALERIE css | debut ====================*/
@@ -60,29 +82,41 @@ body.lp-loaded {
 	pointer-events: none;
 }
 
-#gallery { 
+.gallery { 
 	width: 480px; 
 	height: 324px; 
 	background: rgba(0,0,0,0); 
 	z-index: 0;
-	overflow: visible !important; 
-
 		.scroller { 
 			position: relative; 
 			float: left; 
 			width: 2400px; 
 			height: 100%; 
 			z-index: 0; 
+			-webkit-transform: translateZ(0);
+			transform: translateZ(0);
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-text-size-adjust: none;
+			-moz-text-size-adjust: none;
+			-ms-text-size-adjust: none;
+			-o-text-size-adjust: none;
+			text-size-adjust: none;			
 		} 
-
-		.scroller > .wrapperFlip { 
+		.scroller > div
+		 { 
+		 	width: 480px;
+		 	height: 324px;
 			position: relative !important; 
 			float: left; 
 			margin: 0; 
+			background: rgba(255,255,255,1); 
 		}
-
 } 
-
+ 
 .pager-wrapper { 
 	position: absolute; 
 	top: 239px; 
@@ -122,7 +156,7 @@ body.lp-loaded {
 	background: rgba(255,255,255,1);
 	width: 100%;
 	height: 78px;
-	padding: 0 10px 10px 16px;
+	padding: 0px 10px 10px 15px;
 
 	div:nth-child(1) {
 		float: left;
@@ -138,26 +172,32 @@ body.lp-loaded {
 	}
 
 	.title {
-		padding: 25px 0 0 0;
+		display:table-cell;
+		vertical-align: bottom;
+		height: 44px;
 		color: $gal-title;
-		font: normal normal 18px/25px helvetica, sans-serif;
+		font: normal normal 18px/19px helvetica, sans-serif;
+		
 	}
 
 	.subtitle {
 		color: $gal-title;
-		font: normal bold 23px/20px helvetica, sans-serif;
+		font: normal bold 23px/26px helvetica, sans-serif;
 	}	
 
 	.caption {
+		display:table-cell;
+		vertical-align: bottom;	
+		width: 103px;
+		height: 35px;	
 		color: $gal-title;
-		padding: 15px 0 0 0;
 		font: normal normal 12px/12px helvetica, sans-serif;
 		text-transform: uppercase;
 	}
 
 	.price {
 		color: $gal-price;
-		font: normal bold 28px/26px helvetica, sans-serif;
+		font: normal bold 33px/29px helvetica, sans-serif;
 	}	
 
 	.price:after {
@@ -166,5 +206,4 @@ body.lp-loaded {
 		content: "$";
 	}
 }
-
 /*=== GALERIE css | fin ====================*/
