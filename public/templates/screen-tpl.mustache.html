@@ -5,31 +5,30 @@
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.destination}}</span><br>
-				<input type="text" name="{{id}}_destination" placeholder="Cancun, Mexique" class="input js-validate" />
+				<input type="text" name="{{id}}_destination" placeholder="Cancun, Mexique" class="input js-validate"  required />
 			</label>
 		</div>
 
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.moreAboutTheDestination}}</span><br>
-				<input type="text" name="{{id}}_moreDestination" placeholder="Barcelo Costa Cancun" class="input js-validate" />
+				<input type="text" name="{{id}}_moreDestination" placeholder="Barcelo Costa Cancun" class="input js-validate" required />
 			</label>
 		</div>
 
 		<div class="row">
-			
-			<div class="half">
+			<div class="half field">
 				<label>
 					<span class="lbl">{{t.price}}</span><br>
-					<input type="text" name="{{id}}_price" placeholder="1358" class="input short{{#opt.price}} js-validate{{/opt.price}}{{^opt.price}} opt{{/opt.price}}" />$
+					<input type="text" name="{{id}}_price" placeholder="1358" class="input short dollar{{#opt.price}} js-validate{{/opt.price}}{{^opt.price}} opt{{/opt.price}}" required />
 				</label>
 			</div>
 
 			{{#opt.date}}
-			<div class="half">
+			<div class="half field">
 				<label>
 					<span class="lbl">{{t.date}}</span><br>
-					<input type="date" name="{{id}}_date" placeholder="2014-12-31" class="input short" />
+					<input type="text" name="{{id}}_date" placeholder="2014-12-31" class="input short" />
 				</label>
 			</div>
 			{{/opt.date}}
@@ -37,59 +36,54 @@
 
 		<div class="row opt">
 			<span class="lbl">{{t.numberOfStars}}</span><br>
-			<label>
-				<input type="radio" name="{{id}}_rating" value="0" checked /> Aucune | 
-			</label>
-			<label>
-				<input type="radio" name="{{id}}_rating" value="1" /> 1
-			</label>
-			<label>
-				<input type="radio" name="{{id}}_rating" value="2" /> 2
-			</label>
-			<label>
-				<input type="radio" name="{{id}}_rating" value="3" /> 3
-			</label>
-			<label>
-				<input type="radio" name="{{id}}_rating" value="4" /> 4
-			</label>
-			<label>
-				<input type="radio" name="{{id}}_rating" value="5" /> 5
-			</label>
+			<input type="checkbox" name="{{id}}_rating_visible" checked /> Visible | 
+			<span class="rating">
+				<input type="radio" name="{{id}}_rating" class="rating-input" id="rating-input-1-5" />
+				<label for="rating-input-1-5" class="rating-star"></label>
+				<input type="radio" name="{{id}}_rating" class="rating-input" id="rating-input-1-4" />
+				<label for="rating-input-1-4" class="rating-star"></label>
+				<input type="radio" name="{{id}}_rating" class="rating-input" id="rating-input-1-3" />
+				<label for="rating-input-1-3" class="rating-star"></label>
+				<input type="radio" name="{{id}}_rating" class="rating-input" id="rating-input-1-2" />
+				<label for="rating-input-1-2" class="rating-star"></label>
+				<input type="radio" name="{{id}}_rating" class="rating-input" id="rating-input-1-1" />
+				<label for="rating-input-1-1" class="rating-star"></label>
+			</span>
 		</div>
 
-		<div class="row">
+		<div class="row field">
 			<label>
 				<span class="lbl">{{t.webLink}}</span><br>
-				<input type="url" name="{{id}}_link" placeholder="http://..." class="input">
+				<input type="text" name="{{id}}_link" placeholder="http://..." class="input js-validate" required>
 			</label>
 		</div>
 
 		<div class="row">
-			<div class="half">
+			<div class="half field">
 				<label>
 					<span class="lbl">{{t.picture}}</span><br>
 					<div class="btn blue file">
-						<span class="text">{{t.uploadFile}}</span>
-						<input type="file" accept="image/*" capture="camera" name="logo" class="file-input" required>
+						<span class="text">{{t.uploadImage}}</span>
+						<input type="file" accept="image/*" capture="camera" name="{{id}}_picture" class="file-input js-validate" required />
 					</div>
 					<span class="preview"></span>
 				</label>
 			</div>
-			<div class="half">
+			<div class="half field">
 				<label>
 					<span class="lbl">{{t.video}}</span><br>
 					<div class="btn file">
 						<span class="text">{{t.uploadVideo}}</span>
-						<input type="file" accept="video/*" capture="camera" name="{{id}}_video">
+						<input type="file" accept="video/*" capture="camera" name="{{id}}_video" />
 					</div>
 				</label>
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row field">
 			<label>
 				<span class="lbl">{{t.description}}</span><br>
-				<textarea name="{{id}}_text" class="textarea" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
+				<textarea name="{{id}}_description" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra." required></textarea>
 			</label>
 		</div>
 	</fieldset>

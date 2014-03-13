@@ -234,13 +234,49 @@ app.prototype.addOffer_ = function(pObj) {
   var self = this;
   $.get(self.path.templates + 'screen-tpl.mustache.html', function(template, textStatus, jqXhr) {
     self.dom.screensList.append(Mustache.render($(template).filter('#screenTpl').html(), pObj));
+
+    // Destination
     $("input[name='"+ pObj.id +"_destination']").rules('add', {
       required: true,
       messages: {
         required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
       }
     });
+    // Précision
     $("input[name='"+ pObj.id +"_moreDestination']").rules('add', {
+      required: true,
+      messages: {
+        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
+      }
+    });
+    // Prix
+    if(pObj.opt.price == true) {
+      self.dom.f.find("input[name='"+ pObj.id +"_price']").rules('add', {
+        required: true,
+        messages: {
+          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
+        }
+      });
+    }
+    $("input[name='"+ pObj.id +"_price']").mask('99999');
+    // Lien web
+    $("input[name='"+ pObj.id +"_link']").rules('add', {
+      required: true,
+      url: true,
+      messages: {
+        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
+        url: ' <span class="msg">(' + self.t[self.culture]['enterValidURL'] + ')'
+      }
+    });
+    // Photo
+    $("input[name='"+ pObj.id +"_picture']").rules('add', {
+      required: true,
+      messages: {
+        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
+      }
+    });
+    // Description
+    $("input[name='"+ pObj.id +"_description']").rules('add', {
       required: true,
       messages: {
         required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'

@@ -483,3 +483,35 @@ body.no2 .steps {
   border-color: #0f7801;
   background-color: #0f7801;
 }
+.form .rating {
+  overflow: hidden;
+  display: inline-block;
+}
+.form .rating-input {
+  float: right;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 0 0 0 -16px;
+  opacity: 0;
+}
+.form .rating:hover .rating-star:hover,
+.form .rating:hover .rating-star:hover ~ .rating-star,
+.form .rating-input:checked ~ .rating-star {
+  background-position: 0 0;
+}
+.form .rating-star,
+.form .rating:hover .rating-star {
+  position: relative;
+  float: right;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url("../images/star.png") 0 -16px;
+  cursor: pointer;
+}
+.form input.dollar {
+  background-image: url("../images/dollar-sign.png");
+  background-repeat: no-repeat;
+  background-position: 98% 50%;
+}
