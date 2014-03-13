@@ -3,9 +3,10 @@
 $lp-red: #e80901;
 $lp-grey: #898788;
 
+<<<<<<< HEAD
 $gal-title: #4D4D4D;
 $gal-price: #333333;
-
+=======
 $bg-grey: #eaeaea;
 
 $medium-grey: #ccc;
@@ -19,15 +20,4 @@ $focus: rgb(77, 144, 254);
 $optional: #ffefc6;
 
 $radius: 6px;
-
-$medium-grey: #ccc;
-$dark-grey: #888;
-
-$medium-black: #232323;
-
-$valid-green: #0f7801;
-$focus: rgb(77, 144, 254);
-
-$optional: #ffefc6;
-
-$radius: 6px;
+>>>>>>> 5cde49ad44b9685ec626838f52de17c01189134f

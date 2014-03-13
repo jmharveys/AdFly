@@ -1,0 +1,30 @@
+/* _form-footer.scss */
+
+.main-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 45px;
+
+	.legend {
+		position: relative;
+		float: left;
+		height: 100%;
+		line-height: 45px;
+		margin: 0 0 0 1rem;
+
+		.color {
+			display: inline-block;
+			position: relative;
+			width: 1rem;
+			height: 1rem;
+			border: solid 1px $dark-grey;
+			border-radius: 50%;
+		}
+
+		.color.opt {
+			background: $optional;
+		}
+	}
+}

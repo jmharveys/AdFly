@@ -1,48 +1,96 @@
 <section id="screenTpl">
 	<fieldset>
-		<legend>Écran {{id}}</legend>
-		<label>
-			<span class="lbl">Prix</span><br>
-			<input type="number" name="{{id}}_price" placeholder="1358" />$
-		</label><br>
-		<label>
-			<span class="lbl">Description</span><br>
-			<input type="text" name="{{id}}_desc" placeholder="Barcelo Costa Cancun" />
-		</label><br>
-		<label>
-			<span class="lbl">Titre</span><br>
-			<input type="text" name="{{id}}_title" placeholder="Cancun, Mexique" />
-		</label><br>
-		<span class="lbl">Note</span><br>
-		<label>
-			<input type="radio" name="{{id}}_rating" value="0" checked /> Aucune | 
-		</label>
-		<label>
-			<input type="radio" name="{{id}}_rating" value="1" /> 1
-		</label>
-		<label>
-			<input type="radio" name="{{id}}_rating" value="2" /> 2
-		</label>
-		<label>
-			<input type="radio" name="{{id}}_rating" value="3" /> 3
-		</label>
-		<label>
-			<input type="radio" name="{{id}}_rating" value="4" /> 4
-		</label>
-		<label>
-			<input type="radio" name="{{id}}_rating" value="5" /> 5
-		</label><br>
-		<label>
-			<span class="lbl">Texte</span><br>
-			<textarea name="{{id}}_text" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
-		</label><br>
-		<label>
-			<span class="lbl">Image</span><br>
-			<input type="file" accept="image/*" capture="camera" name="{{id}}_picture">
-		</label><br>
-		<label>
-			<span class="lbl">Vidéo</span><br>
-			<input type="file" accept="video/*" capture="camera" name="{{id}}_video">
-		</label>
+		<legend>{{t.offer}} {{id}}</legend>
+
+		<div class="row field">
+			<label>
+				<span class="lbl">{{t.destination}}</span><br>
+				<input type="text" name="{{id}}_destination" placeholder="Cancun, Mexique" class="input js-validate" />
+			</label>
+		</div>
+
+		<div class="row field">
+			<label>
+				<span class="lbl">{{t.moreAboutTheDestination}}</span><br>
+				<input type="text" name="{{id}}_moreDestination" placeholder="Barcelo Costa Cancun" class="input js-validate" />
+			</label>
+		</div>
+
+		<div class="row">
+			
+			<div class="half">
+				<label>
+					<span class="lbl">{{t.price}}</span><br>
+					<input type="text" name="{{id}}_price" placeholder="1358" class="input short{{#opt.price}} js-validate{{/opt.price}}{{^opt.price}} opt{{/opt.price}}" />$
+				</label>
+			</div>
+
+			{{#opt.date}}
+			<div class="half">
+				<label>
+					<span class="lbl">{{t.date}}</span><br>
+					<input type="date" name="{{id}}_date" placeholder="2014-12-31" class="input short" />
+				</label>
+			</div>
+			{{/opt.date}}
+		</div>
+
+		<div class="row opt">
+			<span class="lbl">{{t.numberOfStars}}</span><br>
+			<label>
+				<input type="radio" name="{{id}}_rating" value="0" checked /> Aucune | 
+			</label>
+			<label>
+				<input type="radio" name="{{id}}_rating" value="1" /> 1
+			</label>
+			<label>
+				<input type="radio" name="{{id}}_rating" value="2" /> 2
+			</label>
+			<label>
+				<input type="radio" name="{{id}}_rating" value="3" /> 3
+			</label>
+			<label>
+				<input type="radio" name="{{id}}_rating" value="4" /> 4
+			</label>
+			<label>
+				<input type="radio" name="{{id}}_rating" value="5" /> 5
+			</label>
+		</div>
+
+		<div class="row">
+			<label>
+				<span class="lbl">{{t.webLink}}</span><br>
+				<input type="url" name="{{id}}_link" placeholder="http://..." class="input">
+			</label>
+		</div>
+
+		<div class="row">
+			<div class="half">
+				<label>
+					<span class="lbl">{{t.picture}}</span><br>
+					<div class="btn blue file">
+						<span class="text">{{t.uploadFile}}</span>
+						<input type="file" accept="image/*" capture="camera" name="logo" class="file-input" required>
+					</div>
+					<span class="preview"></span>
+				</label>
+			</div>
+			<div class="half">
+				<label>
+					<span class="lbl">{{t.video}}</span><br>
+					<div class="btn file">
+						<span class="text">{{t.uploadVideo}}</span>
+						<input type="file" accept="video/*" capture="camera" name="{{id}}_video">
+					</div>
+				</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<label>
+				<span class="lbl">{{t.description}}</span><br>
+				<textarea name="{{id}}_text" class="textarea" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
+			</label>
+		</div>
 	</fieldset>
 </section>
