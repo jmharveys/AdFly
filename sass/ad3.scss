@@ -65,7 +65,7 @@ body.lp-loaded {
 
 		.flipped .back {
 			-webkit-transition: -webkit-transform 0s;
-			-webkit-transform: rotateY(-180deg); 
+			-webkit-transform: translateZ(-2px) rotateY(-180deg); 
 		}
 
 		/*=== RETOURNER css | fin ====================*/
