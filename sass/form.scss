@@ -180,6 +180,19 @@ body.no2 {
 		box-sizing: border-box;
 		border: solid 1px $dark-grey;
 		padding: 0;
+
+		legend {
+			position: relative;
+			top: -16px;
+			left: -1px;
+			background: $bg-grey;
+			font-size: 1.5rem;
+			text-transform: uppercase;
+			border: solid 1px $dark-grey;
+			border-bottom: none;
+			margin: 0;
+			padding: .5rem 1rem 0 1rem;
+		}
 	}
 
 	.row {
@@ -357,6 +370,7 @@ body.no2 {
 	.rating {
 		overflow: hidden;
 		display: inline-block;
+		vertical-align: top;
 	}
 	.rating-input {
 		float: right;
@@ -386,5 +400,10 @@ body.no2 {
 		background-image: url('../images/dollar-sign.png');
 		background-repeat: no-repeat;
 		background-position: 98% 50%;
+	}
+
+	.radio-lbl {
+		font-size: .8rem;
+		color: rgba(0,0,0,.7);
 	}
 }

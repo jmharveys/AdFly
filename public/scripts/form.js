@@ -166,7 +166,7 @@ app.prototype.changeStep_ = function(pValue) {
       if(self.offersNbr == 0) {
         var settings = self.setTemplateSettings_(self.dom.field.category.val(), $('.row.format input:checked').val());
         self.addOffer_({
-          id: self.offersNbr,
+          id: self.offersNbr + 1,
           t: self.t[self.culture],
           opt: settings
         });
@@ -259,6 +259,18 @@ app.prototype.addOffer_ = function(pObj) {
       });
     }
     $("input[name='"+ pObj.id +"_price']").mask('99999');
+    // Date
+    if(pObj.opt.date == true) {
+      self.dom.f.find("input[name='"+ pObj.id +"_date']").rules('add', {
+        required: true,
+        date: true,
+        messages: {
+          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
+          date: ' <span class="msg">(' + self.t[self.culture]['enterValidDate'] + ')'
+        }
+      });
+    }
+    $("input[name='"+ pObj.id +"_date']").mask('0000-09-09');
     // Lien web
     $("input[name='"+ pObj.id +"_link']").rules('add', {
       required: true,
@@ -282,6 +294,10 @@ app.prototype.addOffer_ = function(pObj) {
         required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
       }
     });
+
+
+    $("input[name='"+ pObj.id +"_picture']").MultiFile({ max:3 });
+
   });
 };
 

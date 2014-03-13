@@ -141,6 +141,7 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?= URL ?>public/scripts/min/jquery-1.11.0.min.js"> \x3C/script>')</script>
     <script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
+    <script src="<?= URL ?>public/scripts/min/jquery.MultiFile.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/jquery.validate.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/jquery.mask.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/utilities.min.js"></script>

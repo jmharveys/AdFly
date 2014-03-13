@@ -28,15 +28,72 @@
 			<div class="half field">
 				<label>
 					<span class="lbl">{{t.date}}</span><br>
-					<input type="text" name="{{id}}_date" placeholder="2014-12-31" class="input short" />
+					<input type="date" name="{{id}}_date" placeholder="2014-12-31" class="input short js-validate" />
 				</label>
 			</div>
 			{{/opt.date}}
 		</div>
 
 		<div class="row opt">
+			<div class="half field">
+				<span class="lbl">{{t.mention}} 1</span><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" checked /> <span class="radio-lbl">{{t.none}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" /> 
+					<span class="radio-lbl">{{t.from}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" /> 
+					<span class="radio-lbl">{{t.perCapita}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" /> 
+					<span class="radio-lbl">{{t.flightIncluded}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" /> 
+					<span class="radio-lbl">{{t.taxesIncluded}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" /> 
+				</label>
+				<input type="text" name="{{id}}_mention_1_free_text" placeholder="{{t.perWeek}}" maxlength="11" class="input short" />
+			</div>
+
+			<div class="half field">
+				<span class="lbl">{{t.mention}} 2</span><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" checked /> 
+					<span class="radio-lbl">{{t.none}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" /> 
+					<span class="radio-lbl">{{t.from}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" /> 
+					<span class="radio-lbl">{{t.perCapita}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" /> 
+					<span class="radio-lbl">{{t.flightIncluded}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" /> 
+					<span class="radio-lbl">{{t.taxesIncluded}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" /> 
+				</label>
+				<input type="text" name="{{id}}_mention_2_free_text" placeholder="{{t.perWeek}}" maxlength="11" class="input short" />
+			</div>
+		</div>
+
+		<div class="row opt">
 			<span class="lbl">{{t.numberOfStars}}</span><br>
-			<input type="checkbox" name="{{id}}_rating_visible" checked /> Visible | 
+			<input type="checkbox" name="{{id}}_rating_visible" checked /> <span class="radio-lbl">Visible</span> | 
 			<span class="rating">
 				<input type="radio" name="{{id}}_rating" class="rating-input" id="rating-input-1-5" />
 				<label for="rating-input-1-5" class="rating-star"></label>
@@ -61,12 +118,8 @@
 		<div class="row">
 			<div class="half field">
 				<label>
-					<span class="lbl">{{t.picture}}</span><br>
-					<div class="btn blue file">
-						<span class="text">{{t.uploadImage}}</span>
-						<input type="file" accept="image/*" capture="camera" name="{{id}}_picture" class="file-input js-validate" required />
-					</div>
-					<span class="preview"></span>
+					<span class="lbl">{{t.picture}}(s)</span><br>
+					<input type="file" name="{{id}}_picture" class="multi"/>
 				</label>
 			</div>
 			<div class="half field">
@@ -84,6 +137,13 @@
 			<label>
 				<span class="lbl">{{t.description}}</span><br>
 				<textarea name="{{id}}_description" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra." required></textarea>
+			</label>
+		</div>
+
+		<div class="row field opt">
+			<label>
+				<span class="lbl">{{t.legal}}</span><br>
+				<textarea name="{{id}}_legal" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
 			</label>
 		</div>
 	</fieldset>
