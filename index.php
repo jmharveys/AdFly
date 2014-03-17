@@ -25,6 +25,7 @@
 		<div class="title">
 			<h2><?= $t[$culture]['generalData']; ?></h2>
 			<h2><?= $t[$culture]['offers']; ?></h2>
+			<h2><?= $t[$culture]['preview']; ?></h2>
 		</div>
 		<?php if($culture == 'fr') { ?>
 			<a href="<?= URL ?>en" class="action lang"></a>
@@ -39,7 +40,7 @@
 			<!-- === Step 1 ================================================= -->
 			<section class="step no1">
 				<div class="content">
-					<fieldset>
+					<fieldset class="created">
 						<div class="row">
 							<div class="half field">
 								<label>
@@ -73,7 +74,7 @@
 								</label>
 							</div>
 
-							<div class="half field">
+							<div class="half field logo">
 								<label>
 									<span class="lbl">Logo</span><br>
 									<div class="btn blue file">
@@ -105,10 +106,10 @@
 				
 				<div class="content">
 					<header class="header">
-						<input name="screensNbr" type="hidden" value="0" />
-						<a href="#" class="btn rgt addScreen"><?= $t[$culture]['addScreen']; ?></a>
+						<input name="offersNbr" type="hidden" value="0" />
+						<a href="#" class="btn rgt addOffer"><?= $t[$culture]['addOffer']; ?></a>
 					</header>
-					<div class="screensList">
+					<div class="offersList">
 						<!-- public/templates/screen-tpl.mustache.html -->
 					</div>
 
@@ -121,13 +122,7 @@
 
 			<!-- === Step 3 ================================================= -->
 			<section class="step no3">
-				<label>
-					<span class="lbl"><?= $t[$culture]['legal']; ?></span><br>
-					<textarea name="legal" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
-				</label><br>
 
-				<input type="reset" value="<?= $t[$culture]['cancel']; ?>" class="btn js-reset">
-				<input type="submit" value="<?= $t[$culture]['submit']; ?>" class="btn blue js-submit" >
 			</section>
 		</div>
 	</form>

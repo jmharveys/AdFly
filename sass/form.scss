@@ -9,6 +9,7 @@ body {
 	background: #fff;
 	font-size: 16px;
 	font-family: "Verlag_Book", Helvetica, Sans-Serif;
+	overflow: hidden;
 }
 
 .btn {
@@ -33,6 +34,20 @@ body {
 	padding: 17px 10px;
 	outline: none;
 	cursor: pointer;
+
+	&.disabled {
+		background: #f5f5f5; /* Old browsers */
+		background: -moz-linear-gradient(top,  #f5f5f5 0%, #f1f1f1 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#f1f1f1)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #f5f5f5 0%,#f1f1f1 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #f5f5f5 0%,#f1f1f1 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #f5f5f5 0%,#f1f1f1 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #f5f5f5 0%,#f1f1f1 100%); /* W3C */
+		color: rgb(64, 64, 64);
+		border: solid 1px $medium-grey;
+		opacity: .5;
+		pointer-events: none;
+	}
 
 	&:hover {
 		background: -moz-linear-gradient(top,  #f8f8f8 0%, #f1f1f1 100%); /* FF3.6+ */
@@ -93,6 +108,19 @@ body {
 		color: #fff;
 		border-color: #0d6a01;
 	}
+	&.disabled {
+		background: #f5f5f5; /* Old browsers */
+		background: -moz-linear-gradient(top,  #f5f5f5 0%, #f1f1f1 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#f1f1f1)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #f5f5f5 0%,#f1f1f1 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #f5f5f5 0%,#f1f1f1 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #f5f5f5 0%,#f1f1f1 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #f5f5f5 0%,#f1f1f1 100%); /* W3C */
+		color: rgb(64, 64, 64);
+		border: solid 1px $medium-grey;
+		opacity: .5;
+		pointer-events: none;
+	}
 }
 
 .field.error .btn {
@@ -125,6 +153,13 @@ body.no2 {
 	}
 }
 
+body.no3 {
+	.main-header .title,
+	.steps {
+		left: -200%;
+	}
+}
+
 
 .form {
 	display: block;
@@ -135,30 +170,40 @@ body.no2 {
 	height: 100%;
 	box-sizing: border-box;
 	padding: 45px 0;
-	-webkit-mask-box-image: -webkit-linear-gradient(left,transparent, transparent 0%, white 10%, white 90%, transparent 100%);
 	z-index: 0;
 
 	.steps {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 400%;
+		position: relative;
+		float: left;
+		width: 300%;
 		height: 100%;
 		white-space: nowrap;
+		overflow: hidden;
 		transition: left 1s ease;
 	}
 
 	.step {
 		float: left;
 		position: relative;
-		width: 25%;
+		width: 33.33%;
 		height: 100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
 
 		.content {
 			position: relative;
-			top: 100px;
 			width: 500px;
 			margin: 0 auto;
+			transition: width $speed ease;
+
+			&.extend {
+				width: 1020px;
+
+				.delete-offer {
+					pointer-events: auto;
+					opacity: 1;
+				}
+			}
 
 			.footer,
 			.header {
@@ -171,15 +216,31 @@ body.no2 {
 		}
 	}
 
-	
-
 	fieldset {
 		position: relative;
-		width: 100%;
+		float: left;
+		width: 500px;
 		background: $bg-grey;
 		box-sizing: border-box;
 		border: solid 1px $dark-grey;
+		margin: 0 0 2rem 0;
 		padding: 0;
+		opacity: 0;
+		transform: translateY(-20px);
+		transition: opacity $speed ease, transform $speed ease;
+
+		&.created {
+			opacity: 1;
+			transform: translateY(0px);
+		}
+
+		&:only-child {
+			transition: none;
+		}
+
+		&:nth-child(even) {
+			margin-left: 20px;
+		}
 
 		legend {
 			position: relative;
@@ -192,6 +253,21 @@ body.no2 {
 			border-bottom: none;
 			margin: 0;
 			padding: .5rem 1rem 0 1rem;
+
+			.delete-offer {
+				position: absolute;
+				left: 100%;
+				font-size: 1rem;
+				text-transform: none;
+				margin: 0 1rem;
+				pointer-events: none;
+				opacity: 0;
+				transition: opacity $speed ease;
+
+				a {
+					color: #4d90fe;
+				}
+			}
 		}
 	}
 
@@ -315,6 +391,12 @@ body.no2 {
 			opacity: 0;
 			z-index: 1;
 			cursor: pointer;
+
+			&.hide {
+				display: none;
+				transform: translate3d(-60000px,0,0);
+				pointer-events: none;
+			}
 		}
 		.text {
 			position: absolute;
@@ -330,10 +412,7 @@ body.no2 {
 	}
 
 	.preview {
-		display: block;
-		position: absolute;
-		top: 30px;
-		right: 9px;
+		display: inline-block;
 		width: 24px;
 		height: 24px;
 		background-repeat: no-repeat;
@@ -341,6 +420,14 @@ body.no2 {
 		background-size: cover;
 		&.active {
 			border: solid 1px $valid-green;
+		}
+	}
+
+	.logo {
+		.preview {
+			position: absolute;
+			top: 30px;
+			right: 9px;
 		}
 	}
 
@@ -405,5 +492,32 @@ body.no2 {
 	.radio-lbl {
 		font-size: .8rem;
 		color: rgba(0,0,0,.7);
+	}
+
+	.multi-files {
+		position: relative;
+		float: left;
+		width: 100%;
+
+		.files-list {
+			position: relative;
+			float: left;
+			list-style: none;
+			margin: 1.5rem 0 0 0;
+			padding: 0;
+
+			li {
+				position: relative;
+				float: left;
+				height: 24px;
+				a {
+					display: inline-block;
+					color: #000;
+					text-decoration: none;
+					font-size: .8rem;
+					padding: .4rem;
+				}
+			}
+		}
 	}
 }

@@ -274,11 +274,13 @@ iframe {
 /* _form-footer.scss */
 
 .main-footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 45px;
+  background: #232323;
+  color: #fff;
 }
 
 .main-footer .legend {
@@ -294,7 +296,6 @@ iframe {
   position: relative;
   width: 1rem;
   height: 1rem;
-  border: solid 1px #888888;
   border-radius: 50%;
 }
 
@@ -307,6 +308,7 @@ body {
   background: #fff;
   font-size: 16px;
   font-family: "Verlag_Book", Helvetica, Sans-Serif;
+  overflow: hidden;
 }
 
 .btn {
@@ -338,6 +340,25 @@ body {
   padding: 17px 10px;
   outline: none;
   cursor: pointer;
+}
+
+.btn.disabled {
+  background: #f5f5f5;
+  /* Old browsers */
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, whitesmoke), color-stop(100%, #f1f1f1));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, whitesmoke 0%, #f1f1f1 100%);
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: -webkit-gradient(linear, top left, bottom left, from(whitesmoke), to(#f1f1f1));
+  background: linear-gradient(to bottom, whitesmoke 0%, #f1f1f1 100%);
+  /* W3C */
+  color: #404040;
+  border: solid 1px #cccccc;
+  opacity: .5;
+  pointer-events: none;
 }
 
 .btn:hover {
@@ -429,6 +450,25 @@ body {
   border-color: #0d6a01;
 }
 
+.field.valid .btn.disabled {
+  background: #f5f5f5;
+  /* Old browsers */
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, whitesmoke), color-stop(100%, #f1f1f1));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, whitesmoke 0%, #f1f1f1 100%);
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: -webkit-gradient(linear, top left, bottom left, from(whitesmoke), to(#f1f1f1));
+  background: linear-gradient(to bottom, whitesmoke 0%, #f1f1f1 100%);
+  /* W3C */
+  color: #404040;
+  border: solid 1px #cccccc;
+  opacity: .5;
+  pointer-events: none;
+}
+
 .field.error .btn {
   background: #e87772;
   /* Old browsers */
@@ -468,6 +508,11 @@ body.no2 .steps {
   left: -100%;
 }
 
+body.no3 .main-header .title,
+body.no3 .steps {
+  left: -200%;
+}
+
 .form {
   display: block;
   position: absolute;
@@ -479,17 +524,16 @@ body.no2 .steps {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 45px 0;
-  -webkit-mask-box-image: -webkit-linear-gradient(left, transparent, transparent 0%, white 10%, white 90%, transparent 100%);
   z-index: 0;
 }
 
 .form .steps {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 400%;
+  position: relative;
+  float: left;
+  width: 300%;
   height: 100%;
   white-space: nowrap;
+  overflow: hidden;
   -webkit-transition: left 1s ease;
   transition: left 1s ease;
 }
@@ -497,15 +541,27 @@ body.no2 .steps {
 .form .step {
   float: left;
   position: relative;
-  width: 25%;
+  width: 33.33%;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .form .step .content {
   position: relative;
-  top: 100px;
   width: 500px;
   margin: 0 auto;
+  -webkit-transition: width 0.5s ease;
+  transition: width 0.5s ease;
+}
+
+.form .step .content.extend {
+  width: 1020px;
+}
+
+.form .step .content.extend .delete-offer {
+  pointer-events: auto;
+  opacity: 1;
 }
 
 .form .step .content .footer,
@@ -521,13 +577,37 @@ body.no2 .steps {
 
 .form fieldset {
   position: relative;
-  width: 100%;
+  float: left;
+  width: 500px;
   background: #eaeaea;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: solid 1px #888888;
+  margin: 0 0 2rem 0;
   padding: 0;
+  opacity: 0;
+  -webkit-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  transform: translateY(-20px);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.form fieldset.created {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+}
+
+.form fieldset:only-child {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.form fieldset:nth-child(even) {
+  margin-left: 20px;
 }
 
 .form fieldset legend {
@@ -541,6 +621,22 @@ body.no2 .steps {
   border-bottom: none;
   margin: 0;
   padding: .5rem 1rem 0 1rem;
+}
+
+.form fieldset legend .delete-offer {
+  position: absolute;
+  left: 100%;
+  font-size: 1rem;
+  text-transform: none;
+  margin: 0 1rem;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.form fieldset legend .delete-offer a {
+  color: #4d90fe;
 }
 
 .form .row {
@@ -690,6 +786,14 @@ body.no2 .steps {
   cursor: pointer;
 }
 
+.form .file input.hide {
+  display: none;
+  -webkit-transform: translate3d(-60000px, 0, 0);
+  -ms-transform: translate3d(-60000px, 0, 0);
+  transform: translate3d(-60000px, 0, 0);
+  pointer-events: none;
+}
+
 .form .file .text {
   position: absolute;
   top: 0;
@@ -703,10 +807,7 @@ body.no2 .steps {
 }
 
 .form .preview {
-  display: block;
-  position: absolute;
-  top: 30px;
-  right: 9px;
+  display: inline-block;
   width: 24px;
   height: 24px;
   background-repeat: no-repeat;
@@ -717,6 +818,12 @@ body.no2 .steps {
 
 .form .preview.active {
   border: solid 1px #0f7801;
+}
+
+.form .logo .preview {
+  position: absolute;
+  top: 30px;
+  right: 9px;
 }
 
 .form .radio {
@@ -785,4 +892,32 @@ body.no2 .steps {
 .form .radio-lbl {
   font-size: .8rem;
   color: rgba(0, 0, 0, 0.7);
+}
+
+.form .multi-files {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.form .multi-files .files-list {
+  position: relative;
+  float: left;
+  list-style: none;
+  margin: 1.5rem 0 0 0;
+  padding: 0;
+}
+
+.form .multi-files .files-list li {
+  position: relative;
+  float: left;
+  height: 24px;
+}
+
+.form .multi-files .files-list li a {
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  font-size: .8rem;
+  padding: .4rem;
 }

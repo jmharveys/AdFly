@@ -8,6 +8,7 @@ app = function(pCulture, pRoot) {
   self.root = pRoot;
   self.step = 1;
   self.offersNbr = 0;
+  self.opts;
   $.getJSON(self.root + "public/data/translations.json", function(data) {
     self.t = data;
     //--- functions -----------------
@@ -32,9 +33,9 @@ app.prototype.map_ = function() {
     previousStep: $('.js-previousStep'),
     nextStep: $('.js-nextStep'),
     submit: $('.js-submit'),
-    screenNbr: $('[name="screensNbr"]'),
-    addScreen: $('.addScreen'),
-    screensList: $('.screensList'),
+    offersNbr: $('[name="offersNbr"]'),
+    addOffer: $('.addOffer'),
+    offersList: $('.offersList'),
     field: {
       noClient: $('[name="noClient"]'),
       noAd: $('[name="noAd"]'),
@@ -122,14 +123,9 @@ app.prototype.init_ = function(pObj) {
 app.prototype.bindEvents_ = function() {
   var self = this;
 
-  self.dom.addScreen.on('click', function(e) {
+  self.dom.addOffer.on('click', function(e) {
     e.preventDefault();
-    self.offersNbr++;
-    self.dom.screenNbr.val(self.i);
-    self.addOffer_({
-      id: self.offersNbr,
-      t: self.t[self.culture]
-    });
+    self.setNewOffer_();
   });
 
   self.dom.nextStep.on('click', function() {
@@ -147,9 +143,23 @@ app.prototype.bindEvents_ = function() {
     self.updateRadioFormat_($(this));
   });
 
-  self.dom.steps.on('change', '.file-input' ,function() {
+  self.dom.steps.on('change', '.file-input', function() {
     self.updateInputFilePreview_($(this));
-  })
+  });
+
+  self.dom.steps.on('change', '.multi-files input', function() {
+    self.updateMultiFilesPreview_($(this));
+  });
+
+  self.dom.steps.on('click', '.js-erease', function() {
+    self.ereaseInput_($(this).closest('li').data('key'));
+  });
+
+  self.dom.steps.on('click', '.delete-offer a', function(e) {
+    e.preventDefault();
+    var offer = $(this).closest('fieldset');
+    self.deleteOffer_(offer);
+  });
 };
 //=== BIND END =======================================================
 
@@ -157,46 +167,121 @@ app.prototype.changeStep_ = function(pValue) {
   var self = this;
   var currentStep = $('.step.no' + self.step);
   var valid = true;
-  $('.js-validate', currentStep).each(function(i, v){
-    valid = self.validator.element(v) && valid;
-  });
+
+  if(pValue === 1) {
+    $('.js-validate', currentStep).each(function(i, v){
+      valid = self.validator.element(v) && valid;
+    });
+  }
 
   if(self.step == 1) {
     if(valid) {
       if(self.offersNbr == 0) {
-        var settings = self.setTemplateSettings_(self.dom.field.category.val(), $('.row.format input:checked').val());
+        self.opts = self.setTemplateOptions_(self.dom.field.category.val(), $('.row.format input:checked').val());
         self.addOffer_({
           id: self.offersNbr + 1,
           t: self.t[self.culture],
-          opt: settings
+          opt: self.opts
         });
+        self.offersNbr++;
+        self.dom.offersNbr.val(self.offersNbr);
       }
     }
   }
 
+  if(self.step == 2) {
+    if(valid) {
+      var json = $('form').serializeObject();
+      console.dir(json);
+      self.dom.step3.text(JSON.stringify(json));
+    }
+  }
+  
   if(valid) {
     self.step += parseInt(pValue);
     self.dom.b.removeClass('no1 no2 no3').addClass('no' + self.step);
   }
 };
 
-app.prototype.setTemplateSettings_ = function(pCategory, pFormat) {
+app.prototype.setNewOffer_ = function() {
   var self = this;
-  var settings = {
+
+  if(self.offersNbr < self.opts.maxOffers) {
+    self.offersNbr++;
+    self.dom.offersNbr.val(self.offersNbr);
+    self.addOffer_({
+      id: self.offersNbr + 1,
+      t: self.t[self.culture],
+      opt: self.opts
+    }, 500);
+
+    if(self.dom.b.width() > 1020) {
+      self.dom.step2.find('.content').addClass('extend');
+    }
+
+    if(self.offersNbr === self.opts.maxOffers) {
+      self.dom.addOffer.addClass('disabled');
+    }
+  }
+};
+
+app.prototype.deleteOffer_ = function(pOffer) {
+  var self = this;
+  self.offersNbr--;
+  self.dom.offersNbr.val(self.offersNbr);
+
+  pOffer.remove();
+
+  self.dom.addOffer.removeClass('disabled');
+
+  if(self.dom.offersList.children('fieldset').length == 1) {
+    self.dom.step2.find('.content').removeClass('extend');
+  }
+};
+
+app.prototype.ereaseInput_ = function(pKey) {
+  var self = this;
+  var input = $('input[data-key="'+ pKey +'"]');
+  var field = input.closest('.field');
+  var lbl = field.find('.lbl');
+  var msg = lbl.find('.msg');
+  var btn = input.closest('.btn');
+
+  btn.removeClass('disabled');
+  msg.html('');
+  $('[data-key="'+ pKey +'"]').remove();
+};
+
+app.prototype.setTemplateOptions_ = function(pCategory, pFormat) {
+  var self = this;
+  var opt = {
     price: true,
     date: false,
-    maxOffers: 2
+    maxOffers: 2,
+    picture: true,
+    maxPictures: 2,
+    video: false
   };
   if(pCategory == 'conferences') {
-    settings.price = false;
-    settings.date = true;
+    opt.price = false;
+    opt.date = true;
   }
-  if(pFormat == '324x480') {
-    settings.maxOffers = 4
-  } else if(pFormat == '230x324') {
-    settings.maxOffers = 1
+  if(pFormat == '480x324') { // 1/4 H
+    opt.maxOffers = 4;
+    opt.maxPictures = 4;
+    opt.video = true;
+  } else if(pFormat == '480x152') { // 1/8 H
+    opt.maxOffers = 2;
+    opt.maxPictures = 2;
+  } else if(pFormat == '230x324') { // 1/8 V
+    opt.maxOffers = 2;
+    opt.maxPictures = 2;
+  } else if(pFormat == '230x152') { // 1/16 H
+    opt.picture = false;
+    opt.maxOffers = 1;
+    opt.maxPictures = 0;
   }
-  return settings;
+  return opt;
 };
 
 app.prototype.updateInputFilePreview_ = function(pInput) {
@@ -208,6 +293,41 @@ app.prototype.updateInputFilePreview_ = function(pInput) {
     var preview = btn.next('.preview');
     preview.css({'background-image': 'url(' + pImg + ')'}).addClass('active');
     pInput.blur();
+  });
+};
+
+app.prototype.updateMultiFilesPreview_ = function(pInput) {
+  var self = this;
+  self.getUploadedImageObj_(pInput, function(pImg) {
+    var field = pInput.closest('.field');
+    var lbl = field.find('.lbl');
+    var name = pInput.attr('name');
+    var btn = pInput.closest('.btn');
+    var list = pInput.closest('.multi-files').find('.files-list');
+    var key = pInput.data('key');
+    var max = parseInt(btn.data('max'));
+    var obj = {
+      key: key,
+      img: pImg
+    }
+
+    if(list.children().length < max) {
+      $.get(self.path.templates + 'file-preview-tpl.mustache.html', function(template, textStatus, jqXhr) {
+        list.append(Mustache.render($(template).filter('#filePreviewTpl').html(), obj));
+        var newKey = new Date().getTime();
+        btn.append('<input type="file" name="'+ name +'" data-key="'+ newKey +'" />');
+        if(list.children().length == max) {
+          if(lbl.find('.msg').length) {
+            lbl.find('.msg').html('<span class="msg">(' + self.t[self.culture]['maximumPicturesNumberReached'] + ')</span>');
+          } else {
+            lbl.append(' <span class="msg">(' + self.t[self.culture]['maximumPicturesNumberReached'] + ')</span>');
+          }
+          btn.addClass('disabled');
+        }
+      });
+    }
+
+    pInput.addClass('hide').blur();
   });
 };
 
@@ -228,83 +348,100 @@ app.prototype.updateRadioFormat_ = function(pRadio) {
   var self = this;
   pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
   pRadio.addClass('valid').prev().attr('checked', 'true');
+
+  self.dom.offersList.find('fieldset').remove();
+  self.dom.step2.find('.content').removeClass('extend');
+  self.offersNbr = 0;
+  self.dom.offersNbr.val(self.offersNbr);
 };
 
-app.prototype.addOffer_ = function(pObj) {
+app.prototype.addOffer_ = function(pObj, pSpeed) {
   var self = this;
-  $.get(self.path.templates + 'screen-tpl.mustache.html', function(template, textStatus, jqXhr) {
-    self.dom.screensList.append(Mustache.render($(template).filter('#screenTpl').html(), pObj));
 
-    // Destination
-    $("input[name='"+ pObj.id +"_destination']").rules('add', {
-      required: true,
-      messages: {
-        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
-      }
-    });
-    // Précision
-    $("input[name='"+ pObj.id +"_moreDestination']").rules('add', {
-      required: true,
-      messages: {
-        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
-      }
-    });
-    // Prix
-    if(pObj.opt.price == true) {
-      self.dom.f.find("input[name='"+ pObj.id +"_price']").rules('add', {
+  if(pSpeed) {
+    pSpeed = parseInt(pSpeed);
+  } else {
+    pSpeed = 0;
+  }
+
+  $.get(self.path.templates + 'screen-tpl.mustache.html', function(template, textStatus, jqXhr) {
+    setTimeout(function() {
+      self.dom.offersList.append(Mustache.render($(template).filter('#screenTpl').html(), pObj));
+
+      // Destination
+      $("input[name='"+ pObj.id +"_destination']").rules('add', {
         required: true,
         messages: {
           required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
         }
       });
-    }
-    $("input[name='"+ pObj.id +"_price']").mask('99999');
-    // Date
-    if(pObj.opt.date == true) {
-      self.dom.f.find("input[name='"+ pObj.id +"_date']").rules('add', {
+      // Précision
+      $("input[name='"+ pObj.id +"_moreDestination']").rules('add', {
         required: true,
-        date: true,
         messages: {
-          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
-          date: ' <span class="msg">(' + self.t[self.culture]['enterValidDate'] + ')'
+          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
         }
       });
-    }
-    $("input[name='"+ pObj.id +"_date']").mask('0000-09-09');
-    // Lien web
-    $("input[name='"+ pObj.id +"_link']").rules('add', {
-      required: true,
-      url: true,
-      messages: {
-        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
-        url: ' <span class="msg">(' + self.t[self.culture]['enterValidURL'] + ')'
+      // Prix
+      if(pObj.opt.price == true) {
+        self.dom.f.find("input[name='"+ pObj.id +"_price']").rules('add', {
+          required: true,
+          messages: {
+            required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
+          }
+        });
       }
-    });
-    // Photo
-    $("input[name='"+ pObj.id +"_picture']").rules('add', {
-      required: true,
-      messages: {
-        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
+      $("input[name='"+ pObj.id +"_price']").mask('99999');
+      // Date
+      if(pObj.opt.date == true) {
+        self.dom.f.find("input[name='"+ pObj.id +"_date']").rules('add', {
+          required: true,
+          date: true,
+          messages: {
+            required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
+            date: ' <span class="msg">(' + self.t[self.culture]['enterValidDate'] + ')'
+          }
+        });
       }
-    });
-    // Description
-    $("input[name='"+ pObj.id +"_description']").rules('add', {
-      required: true,
-      messages: {
-        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
-      }
-    });
+      $("input[name='"+ pObj.id +"_date']").mask('0000-09-09');
+      // Lien web
+      $("input[name='"+ pObj.id +"_link']").rules('add', {
+        required: true,
+        url: true,
+        messages: {
+          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
+          url: ' <span class="msg">(' + self.t[self.culture]['enterValidURL'] + ')'
+        }
+      });
 
+      // Description
+      $("textarea[name='"+ pObj.id +"_description']").rules('add', {
+        required: true,
+        messages: {
+          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
+        }
+      });
 
-    $("input[name='"+ pObj.id +"_picture']").MultiFile({ max:3 });
+      self.createMultiFiles_($('input[name="'+ pObj.id +'_picture[]"]'));
 
+      setTimeout(function() {
+        self.dom.offersList.find('fieldset:last').addClass('created');
+      }, 50)
+    }, pSpeed);
+    
   });
+};
+
+app.prototype.createMultiFiles_ = function(pInput) {
+  var self = this;
+  pInput.closest('.field').wrap('<div class="multi-files"></div>');
+  pInput.closest('.multi-files').append('<ol class="files-list"></ol>');
 };
 
 app.prototype.verticalAlign_ = function(pElem) {
   var self = this;
   var h = pElem.height();
-  var browserH = $(window).height();
-  var posY = (browserH - h - 90) / 2;
+  var browserH = self.dom.steps.height();
+  var posY = (browserH - h - 100) / 2;
   pElem.css('top', posY + 'px');
 };
