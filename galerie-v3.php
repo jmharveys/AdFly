@@ -15,7 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/ad3.css">
+	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/ad.css">
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -24,11 +24,11 @@
 	<div class='lp-ad'>
 		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/front2.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
-		<div class='wrapperFlip' style='top: 0px; left: 0px; width: 480px; height: 324px;'>
-			<div class='flip' style='0px; width: 480px; height: 324px;'> 
-				<div class='front' style='width: 480px; height: 324px;'>
+		<div class='wrapperFlip' style='top: 0px; left: 0px; width: 480px; height: 325px;'>
+			<div class='flip' style='0px; width: 480px; height: 325px;'> 
+				<div class='front' style='width: 480px; height: 325px;'>
 					<div class="logo" style="background-image: url('public/images/demo/tmr.jpg');"></div>
-					<div style="z-index:0;overflow:hidden;width: 480px; height: 324px;position:absolute;">
+					<div style="z-index:0;overflow:hidden;width: 480px; height: 325px;position:absolute;">
 						<div class='gallery'>
 							<div class='scroller'>
 								<div>
@@ -109,8 +109,8 @@
 						</div>
 					</div>
 				</div>
-				<div class='back' style='width: 480px; height: 324px;'>
-					<div style="z-index:0;overflow:hidden;width: 480px; height:324px;position:absolute;">
+				<div class='back' style='width: 480px; height: 325px;'>
+					<div style="z-index:0;overflow:hidden;width: 480px; height:325px;position:absolute;">
 						<div class='gallery'>
 							<div class='scroller'>
 								<div>
@@ -274,35 +274,33 @@
 	<script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
 	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
 	<script>
+		var ad = document.getElementsByClassName('lp-ad')[0];
+
 		/*=== RETOURNER script | debut =============*/
-		var flips = document.getElementsByClassName('flip'); 
-		var container = document.getElementsByClassName('lp-ad')[0];
-		var elem = flips[0]; 
-		elem.addEventListener('tap', flipMe, false); 
+		var flipper = document.getElementsByClassName('flip')[0]; 
+		flipper.addEventListener('tap', flipMe, false); 
 
 		function flipMe() { 
 			// Si je n'ai pas flipper et que je ne scroll pas.
-			if(!(elem.classList.contains('active')) && !(container.classList.contains('moving')) ) { 
-				if ( !(elem.classList.contains('flipped')) ) {
-					elem.classList.add('active');
-					elem.addEventListener("transitionend", flipDone, false);
+			if(!(flipper.classList.contains('active')) && !(ad.classList.contains('moving')) ) { 
+				if ( !(flipper.classList.contains('flipped')) ) {
+					flipper.classList.add('active');
+					flipper.addEventListener("transitionend", flipDone, false);
 				} 
 
 			}
-			if ( elem.classList.contains('active') && container.classList.contains('flipped') && !(container.classList.contains('moving')) ) { 
+			if ( flipper.classList.contains('active') && ad.classList.contains('flipped') && !(ad.classList.contains('moving')) ) { 
 					if (  !(event.target.classList.contains('noFlip'))  ) {
-						elem.classList.remove('active'); 
-						container.classList.remove('flipped'); 
-					} else {
-						container.classList.add('legalOpen');
-					}
+						flipper.classList.remove('active'); 
+						ad.classList.remove('flipped'); 
+					} 
 			} 
 		}
 
 		function flipDone() {
-			if (!container.classList.contains('flipped')) {
-				container.classList.add('flipped');
-				elem.removeEventListener("transitionend", flipDone, false);
+			if (!ad.classList.contains('flipped')) {
+				ad.classList.add('flipped');
+				flipper.removeEventListener("transitionend", flipDone, false);
 			} 
 		}			
 
@@ -334,13 +332,12 @@
 
 		//Lorsqu'on scroll on 
 		function startScroll() {
-			container.classList.add('moving');
+			ad.classList.add('moving');
 		}
 
-
 		function endScroll() {
+			ad.classList.remove('legalOpen','moving');
 			var currentPage = this.currentPage.pageX;
-			container.classList.remove('moving');
 			forEachQuery( 'selected', function( el2, index1, array1 ) {
 				el2.classList.remove('selected');
 			});
@@ -350,7 +347,10 @@
 			});			
 			Array.prototype.forEach.call(myGallerys, function(el) {
 		    	el.goToPage(currentPage, 0, 0);
-			});		
+			});	
+			Array.prototype.forEach.call(currentLegal, function(el) {
+		    	el.classList.remove('lp-legal-active');
+			});					
 		}
 
 
@@ -397,10 +397,10 @@
 			document.body.classList.add('lp-loaded');
 		}
 
-		// / Gestion LÉGAL
+		//Gestion LÉGAL
 		var legalBg = document.getElementsByClassName('lp-legal-bg');
 		var legalList = document.getElementsByClassName('lp-legal');
-
+		var currentLegal= new Array();
 		function legal(container,btn,bg)
 		{
 			this.container = container;
@@ -410,9 +410,12 @@
 				if(bg.classList.contains('lp-legal-active')) {
 					container.classList.remove('lp-legal-active');
 					bg.classList.remove('lp-legal-active');
+					ad.classList.remove('legalOpen');
 				} else {
 					bg.classList.add('lp-legal-active');
+					ad.classList.add('legalOpen');
 					container.classList.add('lp-legal-active');
+					currentLegal.push(bg,container);
 				}
 			}
 			btn.onclick = function() { 
@@ -426,7 +429,6 @@
 		for (var i = 0; i < legalList.length; ++i) {
 			new legal(legalList[i],cleanWhiteSpace(legalList[i]).childNodes[0],legalBg[i]);
 		}
-	
 	</script>
 </body>
 </html>
