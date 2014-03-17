@@ -11,6 +11,7 @@ body {
 body.lp-loaded {
 	opacity: 1;
 } 
+
 .lp-ad {
 	position: relative;
 	width: 480px;
@@ -25,6 +26,7 @@ body.lp-loaded {
 	background-repeat: no-repeat;
 	z-index: 0;
 }
+
 //Juste pour tester le layer avec les maquettes #overlay
 #overlay {
 	position: absolute;
@@ -72,7 +74,7 @@ body.lp-loaded {
 
 
 /*=== GALERIE css | debut ====================*/
-#logo {
+.logo {
 	position: absolute;
 	z-index: 3;
 	top:0;
@@ -124,6 +126,9 @@ body.lp-loaded {
 	width: 480px; 
 	text-align: center; 
 	z-index: 1; 
+	opacity: 1;
+	-webkit-transition: opacity 2s ease; 
+	pointer-events: none;
 
 		.pager { 
 			position: relative; 
@@ -174,21 +179,20 @@ body.lp-loaded {
 	.title {
 		display:table-cell;
 		vertical-align: bottom;
-		height: 44px;
+		height: 48px;
 		color: $gal-title;
-		font: normal normal 18px/19px helvetica, sans-serif;
-		
+		font: normal normal 18px/21px helvetica, sans-serif;
 	}
 
 	.subtitle {
 		color: $gal-title;
-		font: normal bold 23px/26px helvetica, sans-serif;
+		font: normal bold 23px/23px helvetica, sans-serif;
 	}	
 
 	.caption {
 		display:table-cell;
 		vertical-align: bottom;	
-		width: 103px;
+		width: 111px;
 		height: 35px;	
 		color: $gal-title;
 		font: normal normal 12px/12px helvetica, sans-serif;
@@ -206,4 +210,180 @@ body.lp-loaded {
 		content: "$";
 	}
 }
+
+.back {
+
+	background-color: rgba(255,255,255,1);
+
+	.description {
+		padding: 0px 19px 10px 29px;
+
+		.title {
+			height: 50px;
+			font: normal normal 22px/21px helvetica, sans-serif;
+		}
+		.subtitle {
+			font: normal bold 28px/38px helvetica, sans-serif;
+		}
+		.title, .subtitle {
+			padding: 0 0 0 24px;
+		}
+
+		.caption {
+			height: 46px;
+			font: normal normal 12px/14px helvetica, sans-serif;
+		}
+		.infos {
+			float: left;
+			display: -webkit-box;
+			-webkit-line-clamp: 6;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			font: normal normal 15px/20px helvetica, sans-serif;
+			height: 120px;
+			width: 100%;
+		}
+		.rating {
+			float: left;
+			clear: both;
+			height: 37px;
+			padding: 2px 0 0 25px;
+		}
+	}
+
+	.pager-wrapper {
+		top: 297px;
+	}	
+	
+
+	.logo {
+		position: absolute;
+		z-index: 3;
+		top: 265px;
+		left: 305px;
+		width: 115px;
+		height: 55px;
+		background-size: contain;
+		pointer-events: none;
+	}
+
+	//ICONES rétina POUR L'ARRIÈRE DU FLIP
+
+
+	ul.rating > li {
+		float: left;
+		list-style: none;
+		background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
+		background-size: contain;
+		width: 18px;
+		height: 18px;
+		margin: 0 3px 0 0;
+		z-index: 10;
+	}
+
+	.close {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 40px;
+		height: 40px;
+		z-index: 1;
+		background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
+		background-size: contain;
+	}
+
+	a.btn-plusWeb {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		width: 40px;
+		height: 40px;
+		z-index: 1;
+		background: url(http://localhost:8888/Adfly/public/images/btn-plusWeb.png) no-repeat 0 0 transparent;
+		background-size: contain;		
+	}
+
+	a.btn-plusWeb:after {
+		position: absolute;
+		content: "";
+		width: 80px;
+		height: 80px;
+		top: -10px;
+		left: -10px;	
+	}
+
+
+}
 /*=== GALERIE css | fin ====================*/
+
+
+/*=== LEGAL css | debut ==========================*/
+		.lp-legal-bg {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 480px;
+			height: 324px;
+			background: rgba(0,0,0,.5);
+			padding: 1px;
+			opacity: 0;
+			cursor: pointer;
+			z-index: 9998;
+			-webkit-transform: translate3d(-1px,670px,0);
+			-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s linear;
+		}
+		.lp-legal-bg.lp-legal-active {
+			opacity: 1;
+			-webkit-transform: translate3d(-1px,0,0);
+			-webkit-transition: opacity .5s ease, -webkit-transform 0 0 linear;
+		}
+		.lp-legal {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 66px;
+			font-family: helvetica, arial, sans-serif;
+			color: #868889;
+			z-index: 9999;
+			-webkit-transform: translate3d(0,66px,0);
+			-webkit-transition: -webkit-transform .5s ease;
+		}
+		.lp-legal.lp-legal-active {
+			-webkit-transform: translate3d(0,0,0);
+		}
+		.lp-legal-btn {
+			position: absolute;
+			top: -20px;
+			left: 0;
+			width: 50px;
+			height: 21px;
+			background: #f1f1f1;
+			font-size: 12px;
+			text-align: center;
+			text-transform: uppercase;
+			line-height: 175%;
+			cursor: pointer;
+		}
+		.lp-legal-text {
+			position: relative;
+			float: left;
+			width: 480px;
+			height: 66px;
+			background: #f1f1f1;
+			font-size: 11px;
+			text-align: justify;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			padding: 5px;
+			-webkit-overflow-scrolling: touch;
+			overflow: auto;
+		}
+
+		.legalOpen .pager-wrapper {
+			opacity: 0;
+			-webkit-transition: opacity 0.1s ease; 
+		}
+		/*=== LEGAL css | fin ==========================*/

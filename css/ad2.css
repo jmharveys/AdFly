@@ -143,24 +143,35 @@ body.lp-loaded {
   overflow: hidden;
 }
 
+.lp-view {
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
 /*=== RETOURNER css | debut ====================*/
 .wrapperFlip {
   width: 480px;
   height: 324px;
+  -webkit-perspective: 0;
 }
 
 .flip {
   -webkit-transition: -webkit-transform 1s;
   -webkit-transform-style: preserve-3d;
 }
-.flip .wrapperFront,
-.flip .wrapperBack {
+
+.flip .test {
   position: absolute;
   -webkit-backface-visibility: hidden;
 }
 
+.flip * {
+  -webkit-backface-visibility: hidden;
+}
+
 .flip.active,
-.flip .wrapperBack {
+.test:nth-child(2) {
   -webkit-transform: rotateY(180deg);
 }
 
@@ -176,24 +187,29 @@ body.lp-loaded {
   pointer-events: none;
 }
 
-#gallery {
+#galleryFront,
+#galleryBack {
   width: 480px;
   height: 324px;
   background: rgba(0, 0, 0, 0);
   z-index: 0;
-  overflow: visible !important;
 }
-#gallery .scroller {
+#galleryFront .scroller,
+#galleryBack .scroller {
   position: relative;
   float: left;
   width: 2400px;
   height: 100%;
   z-index: 0;
 }
-#gallery .scroller > .wrapperFlip {
+#galleryFront .scroller > .wrapperFront,
+#galleryBack .scroller > .wrapperFront {
+  width: 480px;
+  height: 324px;
   position: relative !important;
   float: left;
   margin: 0;
+  background: white;
 }
 
 .pager-wrapper {
