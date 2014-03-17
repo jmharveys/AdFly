@@ -1,5 +1,74 @@
 /* _reset.scss */
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -13,7 +82,17 @@ body {
   line-height: 1;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
@@ -21,11 +100,15 @@ nav ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after, q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: '';
   content: none;
 }
@@ -55,7 +138,8 @@ del {
   text-decoration: line-through;
 }
 
-abbr[title], dfn[title] {
+abbr[title],
+dfn[title] {
   border-bottom: 1px dotted;
   cursor: help;
 }
@@ -74,7 +158,8 @@ hr {
   padding: 0;
 }
 
-input, select {
+input,
+select {
   vertical-align: middle;
 }
 
@@ -82,13 +167,16 @@ input, select {
   -webkit-tap-highlight-color: transparent;
 }
 
-*, *:before, *:after {
-  -moz-box-sizing: border-box;
+*,
+*:before,
+*:after {
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   -webkit-font-smoothing: antialiased;
@@ -123,6 +211,7 @@ iframe {
 }
 
 /* _style-guide.scss */
+
 body {
   opacity: 0;
   -webkit-transition: opacity .3s ease;
@@ -144,6 +233,7 @@ body.lp-loaded {
 }
 
 /*=== RETOURNER css | debut ====================*/
+
 .wrapperFlip {
   width: 480px;
   height: 324px;
@@ -153,6 +243,7 @@ body.lp-loaded {
   -webkit-transition: -webkit-transform 1s;
   -webkit-transform-style: preserve-3d;
 }
+
 .flip .wrapperFront,
 .flip .wrapperBack {
   position: absolute;
@@ -165,7 +256,9 @@ body.lp-loaded {
 }
 
 /*=== RETOURNER css | fin ====================*/
+
 /*=== GALERIE css | debut ====================*/
+
 #logo {
   position: absolute;
   z-index: 3;
@@ -183,6 +276,7 @@ body.lp-loaded {
   z-index: 0;
   overflow: visible !important;
 }
+
 #gallery .scroller {
   position: relative;
   float: left;
@@ -190,6 +284,7 @@ body.lp-loaded {
   height: 100%;
   z-index: 0;
 }
+
 #gallery .scroller > .wrapperFlip {
   position: relative !important;
   float: left;
@@ -204,6 +299,7 @@ body.lp-loaded {
   text-align: center;
   z-index: 1;
 }
+
 .pager-wrapper .pager {
   position: relative;
   display: inline-block;
@@ -212,6 +308,7 @@ body.lp-loaded {
   padding: 4px;
   border-radius: 7.5px;
 }
+
 .pager-wrapper .pager li {
   position: relative;
   float: left;
@@ -224,6 +321,7 @@ body.lp-loaded {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: background .3s ease;
 }
+
 .pager-wrapper .pager li.selected {
   background: white;
 }
@@ -235,35 +333,43 @@ body.lp-loaded {
   height: 78px;
   padding: 0 10px 10px 16px;
 }
+
 .description div:nth-child(1) {
   float: left;
 }
+
 .description div:nth-child(2) {
   float: right;
   text-align: right;
 }
+
 .description .title:first-letter {
   text-transform: uppercase;
 }
+
 .description .title {
   padding: 25px 0 0 0;
   color: #4d4d4d;
   font: normal normal 18px/25px helvetica, sans-serif;
 }
+
 .description .subtitle {
   color: #4d4d4d;
   font: normal bold 23px/20px helvetica, sans-serif;
 }
+
 .description .caption {
   color: #4d4d4d;
   padding: 15px 0 0 0;
   font: normal normal 12px/12px helvetica, sans-serif;
   text-transform: uppercase;
 }
+
 .description .price {
   color: #333333;
   font: normal bold 28px/26px helvetica, sans-serif;
 }
+
 .description .price:after {
   font-size: 60%;
   vertical-align: super;

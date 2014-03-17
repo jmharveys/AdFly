@@ -1,5 +1,4 @@
 @import '_reset';
-@import '_fonts';
 @import '_style-guide';
 
 body {
@@ -8,6 +7,7 @@ body {
 	background: #b1b3ba;
 	overflow-x: hidden;
 }
+
 body.lp-loaded {
 	opacity: 1;
 } 
@@ -293,6 +293,10 @@ body.lp-loaded {
 		background-size: contain;
 	}
 
+	.close:active {
+		background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
+	}	
+
 	a.btn-plusWeb {
 		position: absolute;
 		bottom: 10px;
@@ -300,9 +304,13 @@ body.lp-loaded {
 		width: 40px;
 		height: 40px;
 		z-index: 1;
-		background: url(http://localhost:8888/Adfly/public/images/btn-plusWeb.png) no-repeat 0 0 transparent;
+		background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
 		background-size: contain;		
 	}
+
+	a.btn-plusWeb:active {
+		background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
+	}	
 
 	a.btn-plusWeb:after {
 		position: absolute;
@@ -319,71 +327,75 @@ body.lp-loaded {
 
 
 /*=== LEGAL css | debut ==========================*/
-		.lp-legal-bg {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 480px;
-			height: 324px;
-			background: rgba(0,0,0,.5);
-			padding: 1px;
-			opacity: 0;
-			cursor: pointer;
-			z-index: 9998;
-			-webkit-transform: translate3d(-1px,670px,0);
-			-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s linear;
-		}
-		.lp-legal-bg.lp-legal-active {
-			opacity: 1;
-			-webkit-transform: translate3d(-1px,0,0);
-			-webkit-transition: opacity .5s ease, -webkit-transform 0 0 linear;
-		}
-		.lp-legal {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 66px;
-			font-family: helvetica, arial, sans-serif;
-			color: #868889;
-			z-index: 9999;
-			-webkit-transform: translate3d(0,66px,0);
-			-webkit-transition: -webkit-transform .5s ease;
-		}
-		.lp-legal.lp-legal-active {
-			-webkit-transform: translate3d(0,0,0);
-		}
-		.lp-legal-btn {
-			position: absolute;
-			top: -20px;
-			left: 0;
-			width: 50px;
-			height: 21px;
-			background: #f1f1f1;
-			font-size: 12px;
-			text-align: center;
-			text-transform: uppercase;
-			line-height: 175%;
-			cursor: pointer;
-		}
-		.lp-legal-text {
-			position: relative;
-			float: left;
-			width: 480px;
-			height: 66px;
-			background: #f1f1f1;
-			font-size: 11px;
-			text-align: justify;
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-			padding: 5px;
-			-webkit-overflow-scrolling: touch;
-			overflow: auto;
-		}
+	.lp-legal-bg {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 480px;
+		height: 324px;
+		background: rgba(0,0,0,.5);
+		opacity: 0;
+		cursor: pointer;
+		z-index: 9998;
+		-webkit-transform: translate3d(0,450px,0);
+		-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s linear;
+	}
 
-		.legalOpen .pager-wrapper {
-			opacity: 0;
-			-webkit-transition: opacity 0.1s ease; 
-		}
-		/*=== LEGAL css | fin ==========================*/
+	.lp-legal-bg.lp-legal-active {
+		opacity: 1;
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transition: opacity .5s ease, -webkit-transform 0 0 linear;
+	}
+
+	.lp-legal {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 65px;
+		font-family: helvetica, arial, sans-serif;
+		color: #868889;
+		z-index: 9999;
+		-webkit-transform: translate3d(0,65px,0);
+		-webkit-transition: -webkit-transform .5s ease;
+	}
+
+	.lp-legal.lp-legal-active {
+		-webkit-transform: translate3d(0,0,0);
+	}
+
+	.lp-legal-btn {
+		position: absolute;
+		top: -20px;
+		left: 0;
+		width: 50px;
+		height: 21px;
+		background: #f1f1f1;
+		font-size: 12px;
+		text-align: center;
+		text-transform: uppercase;
+		line-height: 175%;
+		cursor: pointer;
+	}
+
+	.lp-legal-text {
+		position: relative;
+		float: left;
+		width: 480px;
+		height: 65px;
+		background: #f1f1f1;
+		font-size: 11px;
+		text-align: justify;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 5px;
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+	}
+
+	.legalOpen .pager-wrapper {
+		opacity: 0;
+		-webkit-transition: opacity 0.1s ease; 
+	}
+	/*=== LEGAL css | fin ==========================*/

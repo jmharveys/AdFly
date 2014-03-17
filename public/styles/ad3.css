@@ -170,8 +170,8 @@ select {
 *,
 *:before,
 *:after {
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -184,30 +184,6 @@ body {
 
 iframe {
   border: none;
-}
-
-@font-face {
-  font-family: 'Rubrik_ExtraLight';
-  src: url("../fonts/rubrik/Rubrik_ExtraLight.eot");
-  src: url("../fonts/rubrik/Rubrik_ExtraLight.eot?#iefix") format("embedded-opentype"), url("../fonts/rubrik/Rubrik_ExtraLight.woff") format("woff"), url("../fonts/rubrik/Rubrik_ExtraLight.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Rubrik_Medium';
-  src: url("../fonts/rubrik/Rubrik_Light.eot");
-  src: url("../fonts/rubrik/Rubrik_Light.eot?#iefix") format("embedded-opentype"), url("../fonts/rubrik/Rubrik_Light.woff") format("woff"), url("../fonts/rubrik/Rubrik_Light.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Verlag_Book';
-  src: url("../fonts/verlag/Verlag_Book.eot");
-  src: url("../fonts/verlag/Verlag_Book.eot?#iefix") format("embedded-opentype"), url("../fonts/verlag/Verlag_Book.woff") format("woff"), url("../fonts/verlag/Verlag_Book.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
 }
 
 /* _style-guide.scss */
@@ -514,6 +490,10 @@ body.lp-loaded {
   background-size: contain;
 }
 
+.back .close:active {
+  background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
+}
+
 .back a.btn-plusWeb {
   position: absolute;
   bottom: 10px;
@@ -521,9 +501,13 @@ body.lp-loaded {
   width: 40px;
   height: 40px;
   z-index: 1;
-  background: url(http://localhost:8888/Adfly/public/images/btn-plusWeb.png) no-repeat 0 0 transparent;
+  background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
   -webkit-background-size: contain;
   background-size: contain;
+}
+
+.back a.btn-plusWeb:active {
+  background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);
 }
 
 .back a.btn-plusWeb:after {
@@ -546,17 +530,16 @@ body.lp-loaded {
   width: 480px;
   height: 324px;
   background: rgba(0, 0, 0, 0.5);
-  padding: 1px;
   opacity: 0;
   cursor: pointer;
   z-index: 9998;
-  -webkit-transform: translate3d(-1px, 670px, 0);
+  -webkit-transform: translate3d(0, 450px, 0);
   -webkit-transition: opacity .5s ease, -webkit-transform 0 .5s linear;
 }
 
 .lp-legal-bg.lp-legal-active {
   opacity: 1;
-  -webkit-transform: translate3d(-1px, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: opacity .5s ease, -webkit-transform 0 0 linear;
 }
 
@@ -565,11 +548,11 @@ body.lp-loaded {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 66px;
+  height: 65px;
   font-family: helvetica, arial, sans-serif;
   color: #868889;
   z-index: 9999;
-  -webkit-transform: translate3d(0, 66px, 0);
+  -webkit-transform: translate3d(0, 65px, 0);
   -webkit-transition: -webkit-transform .5s ease;
 }
 
@@ -595,7 +578,7 @@ body.lp-loaded {
   position: relative;
   float: left;
   width: 480px;
-  height: 66px;
+  height: 65px;
   background: #f1f1f1;
   font-size: 11px;
   text-align: justify;

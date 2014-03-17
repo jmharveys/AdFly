@@ -21,13 +21,11 @@
 	<![endif]-->
 </head>
 <body>
-
 	<div class='lp-ad'>
 		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/front2.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
 		<div class='wrapperFlip' style='top: 0px; left: 0px; width: 480px; height: 324px;'>
 			<div class='flip' style='0px; width: 480px; height: 324px;'> 
-				
 				<div class='front' style='width: 480px; height: 324px;'>
 					<div class="logo" style="background-image: url('public/images/demo/tmr.jpg');"></div>
 					<div style="z-index:0;overflow:hidden;width: 480px; height: 324px;position:absolute;">
@@ -278,32 +276,32 @@
 	<script>
 		/*=== RETOURNER script | debut =============*/
 		var flips = document.getElementsByClassName('flip'); 
+		var container = document.getElementsByClassName('lp-ad')[0];
 		var elem = flips[0]; 
-		var body = document.body;
 		elem.addEventListener('tap', flipMe, false); 
 
 		function flipMe() { 
 			// Si je n'ai pas flipper et que je ne scroll pas.
-			if(!(elem.classList.contains('active')) && !(body.classList.contains('moving')) ) { 
+			if(!(elem.classList.contains('active')) && !(container.classList.contains('moving')) ) { 
 				if ( !(elem.classList.contains('flipped')) ) {
 					elem.classList.add('active');
 					elem.addEventListener("transitionend", flipDone, false);
 				} 
 
 			}
-			if ( elem.classList.contains('active') && body.classList.contains('flipped') && !(body.classList.contains('moving')) ) { 
+			if ( elem.classList.contains('active') && container.classList.contains('flipped') && !(container.classList.contains('moving')) ) { 
 					if (  !(event.target.classList.contains('noFlip'))  ) {
 						elem.classList.remove('active'); 
-						body.classList.remove('flipped'); 
+						container.classList.remove('flipped'); 
 					} else {
-						body.classList.add('legalOpen');
+						container.classList.add('legalOpen');
 					}
 			} 
 		}
 
 		function flipDone() {
-			if (!body.classList.contains('flipped')) {
-				body.classList.add('flipped');
+			if (!container.classList.contains('flipped')) {
+				container.classList.add('flipped');
 				elem.removeEventListener("transitionend", flipDone, false);
 			} 
 		}			
@@ -315,7 +313,8 @@
 		  Array.prototype.forEach.call( document.querySelectorAll('.' + elem), callback );
 		}
 
-		function cleanWhitespace(node)
+		//Enlève les espaces dans les childnodes
+		function cleanWhiteSpace(node)
 		{
 		  for (var i=0; i<node.childNodes.length; i++)
 		  {
@@ -327,20 +326,26 @@
 		    }
 		    if(child.nodeType == 1)
 		    {
-		      cleanWhitespace(child);
+		      cleanWhiteSpace(child);
 		    }
 		  }
 		  return node;
 		}
 
+		//Lorsqu'on scroll on 
+		function startScroll() {
+			container.classList.add('moving');
+		}
+
+
 		function endScroll() {
 			var currentPage = this.currentPage.pageX;
-			body.classList.remove('moving');
+			container.classList.remove('moving');
 			forEachQuery( 'selected', function( el2, index1, array1 ) {
 				el2.classList.remove('selected');
 			});
 			forEachQuery( 'pager', function( el2, index1, array1 ) {
-				var bullet = cleanWhitespace(el2).childNodes[currentPage];
+				var bullet = cleanWhiteSpace(el2).childNodes[currentPage];
 				bullet.classList.add('selected');
 			});			
 			Array.prototype.forEach.call(myGallerys, function(el) {
@@ -348,9 +353,6 @@
 			});		
 		}
 
-		function scrollStart() {
-			body.classList.add('moving');
-		}
 
 		var gallery; 
 		var wrapper = document.getElementsByClassName('gallery');
@@ -369,7 +371,7 @@
 				// Activé seulement pour desktop afin de rendre les liens cliquable
 			});
 			gallery.on('scrollEnd', endScroll);
-			gallery.on('scrollStart', scrollStart);
+			gallery.on('scrollStart', startScroll);
 			myGallerys.push(gallery);
 		}
 
@@ -388,70 +390,43 @@
 		
 		window.onload = function() {
 			if(isMobile.Android()) {
-				body.classList.add('lp-is-android');
+				document.body.classList.add('lp-is-android');
 			} else {
-				body.classList.add('lp-is-ios');
+				document.body.classList.add('lp-is-ios');
 			}
-			body.classList.add('lp-loaded');
+			document.body.classList.add('lp-loaded');
 		}
 
-
+		// / Gestion LÉGAL
+		var legalBg = document.getElementsByClassName('lp-legal-bg');
 		var legalList = document.getElementsByClassName('lp-legal');
-		var legalArray = [];
-		// var doc = new Array();
-		
-		for (var i = 0; i < legalList.length; ++i) {
-			// console.log();
-			console.log(cleanWhitespace(legalList[i]).childNodes);
-			// doc.push(cleanWhitespace(legalList[i]).childNodes);
-			// var notes = null;
-			// console.log(doc.length);
-			// for (var z = 0; z < doc.length; z++) {
-			// 	// console.log(doc);
-			//     if (doc.childNodes[z].className == "lp-legal-btn") {
-			//       btn = doc.childNodes[z];
-			//       break;
-			//     }        
-			// }
-			// console.log(btn);
 
-
-
-
-
-
-			
-
-	  //   	legalArray[i] = {
-			// 	container: legalList[i],
-			// 	btn: document.getElementsByClassName('lp-legal-btn')[0],
-			// 	bg: document.getElementsByClassName('lp-legal-bg')[0],
-			// 	animate: function() {
-			// 		if(legalArray[i].bg.classList.contains('lp-legal-active')) {
-			// 			body.classList.remove('legalOpen');
-			// 			// legalArray[i].container.classList.remove('lp-legal-active');
-			// 			// legalArray[i].bg.classList.remove('lp-legal-active');
-			// 		} else {
-			// 			// body.bg.classList.classList.add('legalOpen');
-			// 			// legalArray[i].container.classList.add('lp-legal-active');
-			// 			// legalArray[i].bg.classList.add('lp-legal-active');
-			// 		}
-			// 	}
-			// }
-			// legalArray[i].btn.onclick = function() {legalArray[i].animate()};
-			// legalArray[i].bg.onclick = function() {legalArray[i].animate()};
+		function legal(container,btn,bg)
+		{
+			this.container = container;
+			this.btn = btn;
+			this.bg = bg;
+			function animate() {
+				if(bg.classList.contains('lp-legal-active')) {
+					container.classList.remove('lp-legal-active');
+					bg.classList.remove('lp-legal-active');
+				} else {
+					bg.classList.add('lp-legal-active');
+					container.classList.add('lp-legal-active');
+				}
+			}
+			btn.onclick = function() { 
+				animate();
+			};
+			bg.onclick = function() { 
+				animate();
+			};			
 		}
 
-
-
-
-
-		// Array.prototype.forEach.call(legalList, function(el) {
-		//     initLegals(el);
-		// });		
-
-
-		
+		for (var i = 0; i < legalList.length; ++i) {
+			new legal(legalList[i],cleanWhiteSpace(legalList[i]).childNodes[0],legalBg[i]);
+		}
+	
 	</script>
 </body>
 </html>
