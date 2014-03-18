@@ -8,6 +8,7 @@ app = function(pCulture, pRoot) {
   self.root = pRoot;
   self.step = 1;
   self.offersNbr = 0;
+  self.format = "325x480";
   self.opts;
   $.getJSON(self.root + "public/data/translations.json", function(data) {
     self.t = data;
@@ -125,7 +126,7 @@ app.prototype.bindEvents_ = function() {
 
   self.dom.addOffer.on('click', function(e) {
     e.preventDefault();
-    self.setNewOffer_();
+    self.setNewOffer_(500);
   });
 
   self.dom.nextStep.on('click', function() {
@@ -178,22 +179,31 @@ app.prototype.changeStep_ = function(pValue) {
     if(valid) {
       if(self.offersNbr == 0) {
         self.opts = self.setTemplateOptions_(self.dom.field.category.val(), $('.row.format input:checked').val());
-        self.addOffer_({
-          id: self.offersNbr + 1,
-          t: self.t[self.culture],
-          opt: self.opts
-        });
-        self.offersNbr++;
-        self.dom.offersNbr.val(self.offersNbr);
+        self.setNewOffer_(0);
       }
     }
   }
 
   if(self.step == 2) {
     if(valid) {
+      $.ajax({
+        type: "POST",
+        url: self.root + 'ad.php',
+        data: $('form').serialize(), // serializes the form's elements.
+        success: function(data) {
+          var iframe =  $('.render');
+          iframe.css({'width': self.format.split('x')[0] + 'px', 'height': self.format.split('x')[1] + 'px'})
+          var idoc = iframe[0].contentDocument;
+          idoc.open();
+          idoc.write(data);
+          idoc.close();
+        }
+      });
+
+
       var json = $('form').serializeObject();
       console.dir(json);
-      self.dom.step3.text(JSON.stringify(json));
+      //self.dom.step3.text(JSON.stringify(json));
     }
   }
   
@@ -203,19 +213,19 @@ app.prototype.changeStep_ = function(pValue) {
   }
 };
 
-app.prototype.setNewOffer_ = function() {
+app.prototype.setNewOffer_ = function(pDelay) {
   var self = this;
 
   if(self.offersNbr < self.opts.maxOffers) {
     self.offersNbr++;
     self.dom.offersNbr.val(self.offersNbr);
     self.addOffer_({
-      id: self.offersNbr + 1,
+      id: self.offersNbr,
       t: self.t[self.culture],
       opt: self.opts
-    }, 500);
+    }, pDelay);
 
-    if(self.dom.b.width() > 1020) {
+    if(self.dom.b.width() > 1020 && self.dom.offersList.children().length > 0) {
       self.dom.step2.find('.content').addClass('extend');
     }
 
@@ -349,6 +359,8 @@ app.prototype.updateRadioFormat_ = function(pRadio) {
   pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
   pRadio.addClass('valid').prev().attr('checked', 'true');
 
+  self.format = pRadio.prev().val();
+
   self.dom.offersList.find('fieldset').remove();
   self.dom.step2.find('.content').removeClass('extend');
   self.offersNbr = 0;
@@ -364,9 +376,9 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
     pSpeed = 0;
   }
 
-  $.get(self.path.templates + 'screen-tpl.mustache.html', function(template, textStatus, jqXhr) {
+  $.get(self.path.templates + 'offer-tpl.mustache.html', function(template, textStatus, jqXhr) {
     setTimeout(function() {
-      self.dom.offersList.append(Mustache.render($(template).filter('#screenTpl').html(), pObj));
+      self.dom.offersList.append(Mustache.render($(template).filter('#offerTpl').html(), pObj));
 
       // Destination
       $("input[name='"+ pObj.id +"_destination']").rules('add', {

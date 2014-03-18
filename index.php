@@ -110,7 +110,7 @@
 						<a href="#" class="btn rgt addOffer"><?= $t[$culture]['addOffer']; ?></a>
 					</header>
 					<div class="offersList">
-						<!-- public/templates/screen-tpl.mustache.html -->
+						<!-- public/templates/offer-tpl.mustache.html -->
 					</div>
 
 					<footer class="footer">
@@ -122,7 +122,15 @@
 
 			<!-- === Step 3 ================================================= -->
 			<section class="step no3">
+				<div class="content">
+					<div class="iframe">
+						<iframe class="render"></iframe>
+					</div>
 
+					<footer class="footer">
+						<div class="btn lft js-previousStep"><?= $t[$culture]['previous']; ?></div>
+					</footer>
+				</div>
 			</section>
 		</div>
 	</form>
@@ -136,7 +144,6 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?= URL ?>public/scripts/min/jquery-1.11.0.min.js"> \x3C/script>')</script>
     <script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
-    <script src="<?= URL ?>public/scripts/min/jquery.MultiFile.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/jquery.validate.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/jquery.mask.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/utilities.min.js"></script>

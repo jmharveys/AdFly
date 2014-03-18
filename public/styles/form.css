@@ -547,6 +547,10 @@ body.no3 .steps {
   overflow-y: scroll;
 }
 
+.form .step.no3 .content {
+  top: 100px;
+}
+
 .form .step .content {
   position: relative;
   width: 500px;
@@ -573,6 +577,21 @@ body.no3 .steps {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 1rem;
+}
+
+.form .step .content .iframe {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.form .step .content iframe {
+  display: block;
+  position: relative;
+  background: #fff;
+  border: solid 1px #888888;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .form fieldset {

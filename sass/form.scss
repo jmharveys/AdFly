@@ -190,6 +190,12 @@ body.no3 {
 		overflow-x: hidden;
 		overflow-y: scroll;
 
+		&.no3 {
+			.content {
+				top: 100px;
+			}
+		}
+
 		.content {
 			position: relative;
 			width: 500px;
@@ -212,6 +218,21 @@ body.no3 {
 				width: 100%;
 				box-sizing: border-box;
 				padding: 1rem;
+			}
+
+			.iframe {
+				position: relative;
+				float: left;
+				width: 100%;
+			}
+
+			iframe {
+				display: block;
+				position: relative;
+				background: #fff;
+				border: solid 1px $dark-grey;
+				margin: 0 auto;
+				overflow: hidden;
 			}
 		}
 	}

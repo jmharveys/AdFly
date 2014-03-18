@@ -26,11 +26,11 @@
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+	<style>
+		<?= $view->outputStyles(); ?>
+	</style>
 </head>
 <body>
-	<?php 
-		//print_r($model->ad);
-		echo $view->outputBody();
-	?>
+	<?= $view->outputBody(); ?>
 </body>
 </html>
