@@ -129,6 +129,7 @@ body.lp-loaded {
 }
 
 
+
 .huitieme-h,
 .huitieme-h .wrapperFlip,
 .huitieme-h .flip,
@@ -140,7 +141,35 @@ body.lp-loaded {
 	height: 152px;
 }
 
-.huitieme-h .description {
+
+.une-offre .gallery, .une-offre .gallery .scroller > div {
+	width: 328px;
+	height: 152px;
+}
+
+
+
+.huitieme-h .wrapper {	
+	width: 480px;
+	height: 152px;
+	z-index: 0;
+	overflow: hidden;
+	position: absolute;	
+}
+
+.huitieme-h .logo {
+	width: 100px;
+	height: 50px;
+}
+
+.huitieme-h .back .logo {
+	top:117px;
+	left: 335px;
+	width: 85px;
+	height: 30px;
+}
+
+.huitieme-h .front .description {
 	width: 152px;
 	height: 152px;
 }
@@ -159,6 +188,176 @@ body.lp-loaded {
 
 .huitieme-h .description .opposite .caption {
 	height: 48px;
+}
+
+.huitieme-h .back .description .title {
+	font: normal normal 17px/16px helvetica, sans-serif;
+	height: 20px;
+}
+.huitieme-h .back .description .subtitle {
+	font: normal bold 18px/16px helvetica, sans-serif;
+	height: auto;
+}
+
+.huitieme-h .back .description .rating {
+	float: none;
+	clear: none;
+	padding: 0;
+	height: auto;
+	position: absolute;
+	top: 16px;
+	left: 242px;
+}
+
+.huitieme-h .back .special .rating {
+	top: 15px;
+	left: 185px;
+}
+
+.huitieme-h .back .description .title, .huitieme-h .back .description .subtitle {
+	padding: 0 0 0 51px
+}
+
+.huitieme-h .back .description {
+	padding: 14px 19px 10px 3px;
+}
+
+.huitieme-h .back .description .infos {
+	font: normal normal 13px/16px helvetica, sans-serif;
+	-webkit-line-clamp: 3;
+	position: absolute;
+	top: 57px;
+	left: 28px;
+	width: 390px;
+	height: 50px;
+}
+
+.huitieme-h .back .description div:nth-child(2) {
+	float: none;
+	position: absolute;
+	top: -22px;
+	left: 393px;
+}
+
+.huitieme-h .back .description .price {
+	font: normal bold 28px/16px helvetica, sans-serif;
+}
+
+.huitieme-h .pager-wrapper, .huitieme-h .back .pager-wrapper  {
+	top: 129px;
+}
+
+.huitieme-h .description .caption  {
+	height: 31px;
+}
+
+.seizieme-h,
+.seizieme-h .wrapperFlip,
+.seizieme-h .flip,
+.seizieme-h .front,
+.seizieme-h .back {
+	width: 230px;
+	height: 152px;
+}
+
+.seizieme-h .wrapper {	
+	width: 230px;
+	height: 152px;
+	z-index: 0;
+	overflow: hidden;
+	position: absolute;	
+}
+
+.seizieme-h .description .title, 
+.seizieme-h .description .subtitle,
+.seizieme-h .back .description .subtitle,
+.seizieme-h .back .description .title  {
+	font: normal normal 16px/16px helvetica, sans-serif;
+}
+
+.seizieme-h .description .price, .seizieme-h .back .description .price  {
+	font: normal normal 24px/24px helvetica, sans-serif;
+	position: absolute;
+	top:116px;
+	left:153px;
+}
+
+.seizieme-h .flip {
+	background-color: rgba(255,255,255,1);
+}
+
+.seizieme-h .back .description .price {
+	top: 66px;
+	left: 23px;
+}
+
+.seizieme-h .back a.btn-plusWeb {
+	bottom: -92px;
+	right: 42px;
+}
+
+.seizieme-h .description .caption {
+	position: absolute;
+	top: 133px;
+	left: 36px;
+	font-weight: bold;
+	height: 20px;
+	font: normal normal 11px/11px helvetica, sans-serif;
+}
+
+.seizieme-h .back .description .caption {
+	position: absolute;
+	top: 60px;
+	left: 24px;
+	font-weight: bold;
+	height: 20px;
+	font: normal normal 11px/11px helvetica, sans-serif;
+}
+
+.seizieme-h .description .subtitle, .seizieme-h .back .description .subtitle {
+	height: 20px;
+	font-weight: bold;
+}
+
+.seizieme-h .description {
+	padding: 49px 10px 0px 15px;
+}
+
+.seizieme-h .back .description {
+	position: absolute;
+	padding: 0;
+	float: none;
+	top: 11px;
+	left: 31px;
+}
+
+.seizieme-h .back .description .title {
+	height: 19px;
+}
+
+.seizieme-h .description .rating {
+	float: none;
+	clear: none;
+	position: absolute;
+	height: auto;
+	padding: 0;
+	top: 25px;
+}
+
+.seizieme-h .lp-legal-text {
+	width: 230px;
+}
+
+.seizieme-h .logo, .seizieme-h .back .logo {
+	width: 90px;
+	height: 35px;
+	top: 3px;
+	left: 5px;
+}
+
+.seizieme-h .back .logo {
+	top: 100px;
+	left: 48px;
 }
 
 .lp-ad {
@@ -180,7 +379,7 @@ body.lp-loaded {
 	top: 0px;
 	left: 0px;
 	// width: 480px;
-	width: 480px;
+	width: 230px;
 	height: 152px;
 	z-index: 100000;
 	// opacity: 0.3;
@@ -372,13 +571,14 @@ body.lp-loaded {
 // AUTRES FORMATS
 
 // 1/4 sans offre
-.quart-une-offre .front .description {
+.une-offre .front .description {
 	float: none;
 	position: absolute;
 	bottom: 0;
+	right: 0;
 }
 
-.quart-une-offre .back {
+.une-offre .back {
 	background-color: rgba(255,255,255,1);
 }
 
@@ -500,12 +700,11 @@ body.lp-loaded {
 		font-family: helvetica, arial, sans-serif;
 		color: #868889;
 		z-index: 9999;
-		-webkit-transform: translate3d(0,204px,0);
 		-webkit-transition: -webkit-transform .5s ease;
 	}
 
 	.lp-legal.lp-legal-active {
-		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0) !important;
 	}
 
 	.lp-legal-btn {

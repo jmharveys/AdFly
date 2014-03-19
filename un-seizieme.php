@@ -83,67 +83,55 @@
 	</style>
 </head>
 <body>
-	<div class='lp-ad huitieme-h une-offre'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/barcelo-back.jpg');"></div>
+	<div class='lp-ad seizieme-h'>
+		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/allegro-back.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
 		<div class='wrapperFlip'>
 			<div class='flip'> 
 				<div class='front'>
-					<div class="logo" style="background-image: url('public/images/demo/bergeron.jpg');"></div>
-					<div  class="wrapper">
-						<div class='gallery'>
-							<div class='scroller' style="width: 656px;">
-								<div>
-									<div style='width: 328px; height: 152px; background-image: url("public/images/demo/barcelo1.jpg");float: left;'></div>
-								</div>
-								<div>
-									<div style='width: 328px; height: 152px; background-image: url("public/images/demo/barcelo2.jpg");float:left;'></div>
-								</div>	
-							</div>
-							<div class='pager-wrapper'>
-								<ul class='pager'>
-									<li class='selected'>0</li>
-									<li>1</li>
-								</ul>
-							</div>							
-							<div class="description">
-								<div>
-									<p class="title">Barcelo Huatulco Beach</p>
-									<p class="subtitle">Huatulco,<br/>Mexique</p>
-								</div>
-								<div>
-									<p class="caption">à partir de.<br/>par pers.</p>
-									<p class="price">725</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class='back'>
-					<div style="z-index:0;overflow:hidden;width: 480px; height:152px;position:absolute;">
-					<div>
-						<div class="close"></div>
+					<div class="logo" style="background-image: url('public/images/demo/beltour.jpg');"></div>
+					<div class="wrapper">				
 						<div class="description">
-							<div class="opposite">
-								<p class="title">Barcelo Huatulco Beach</p>
-								<p class="subtitle">Huatulco, Mexique</p>
+							<div>
+								<p class="title">Allegro Varadero</p>
+								<p class="subtitle">Varadero, Cuba</p>
 							</div>
 							<div>
-								<p class="caption">à partir de</p>
-								<p class="price">725</p>
+								<p class="caption">par pers.</p>
+								<p class="price">1 009</p>
 							</div>
-							<ul class="rating">
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-							<div class="infos">30 avril 2014 - 8 jours, 7 nuits. L'hôtel Barcelo Huatulco Beach jouit d'un emplacement de choix au bord de la mer sur la baie de Tangolunda, et offre une vue imprenable sur les plages du Mexique.</div>
-						<div class="logo" style="background-image: url('public/images/demo/bergeron-small.jpg');"></div>
-						<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 						</div>
 					</div>
 				</div>	
+				<div class='back'>
+					<div class='wrapper'>
+						<div>
+							<div class="close"></div>
+							<div class="description">
+								<div class="opposite">
+									<p class="title">Allegro Varadero</p>
+									<p class="subtitle">Varadero, Cuba</p>
+								</div>
+								<div>
+									<p class="caption">à partir de</p>
+									<p class="price">1 009</p>
+								</div>
+								<ul class="rating">
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+								</ul>
+							<div class="logo" style="background-image: url('public/images/demo/beltour.jpg');"></div>
+							<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
+							</div>
+							<div class='lp-legal-bg noFlip'></div>
+							<div class='lp-legal noFlip' style="-webkit-transform: translate3d(0,92px,0); height:92px;">
+								<div class='lp-legal-btn noFlip'>Légal</div>
+								<div class='lp-legal-text noFlip' style="height:92px;">45841141 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. En magasin seule...</div>
+							</div>							
+						</div>
+					</div>	
 				</div>
 			</div>
 		<!--=== RETOURNER html | fin ==============-->
@@ -151,7 +139,7 @@
 	</div>
 	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
 	<script>
-var ad = document.getElementsByClassName('lp-ad')[0];
+		var ad = document.getElementsByClassName('lp-ad')[0];
 
 		/*=== RETOURNER script | debut =============*/
 		var flipper = document.getElementsByClassName('flip')[0]; 

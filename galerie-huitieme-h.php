@@ -24,14 +24,24 @@
 	.back ul.rating > li {
 			float: left;
 			list-style: none;
+			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-autre.png) no-repeat 0 0 transparent;
+			background-size: contain;
+			width: 12.5px;
+			height: 12.5px;
+			margin: 0 3px 0 0;
+			z-index: 10;			
+	}
+
+	.quart .back ul.rating > li {
+			float: left;
+			list-style: none;
 			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
 			background-size: contain;
 			width: 18px;
 			height: 18px;
 			margin: 0 3px 0 0;
 			z-index: 10;
-		}
-
+	}	
 	.back .close {
 			position: absolute;
 			top: 0px;
@@ -74,13 +84,13 @@
 </head>
 <body>
 	<div class='lp-ad huitieme-h'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/mexique-front.jpg');"></div>
+		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/mexique-back.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
 		<div class='wrapperFlip'>
 			<div class='flip'> 
 				<div class='front'>
-					<div class="logo" style="background-image: url('public/images/demo/tmr.jpg');"></div>
-					<div>
+					<div class="logo" style="background-image: url('public/images/demo/bergeron.jpg');"></div>
+					<div class="wrapper">
 						<div class='gallery'>
 							<div class='scroller' style="width: 960px;">
 								<div>
@@ -120,19 +130,19 @@
 					</div>
 				</div>
 				<div class='back'>
-					<div>
+					<div class="wrapper">
 						<div class='gallery'>
 							<div class='scroller' style="width: 960px;">
 								<div>
 									<div class="close"></div>
 									<div class="description">
 										<div>
-											<p class="title">Dreams La Romana Resort & Spa</p>
-											<p class="subtitle">La Romana,<br/>République Dominicaine</p>
+											<p class="title">Barcelo Arenas Blancas</p>
+											<p class="subtitle">Varadero, Cuba</p>
 										</div>
 										<div>
-											<p class="caption">à partir de<br/>par pers.</p>
-											<p class="price">809</p>
+											<p class="caption">à partir de</p>
+											<p class="price">718</p>
 										</div>
 										<ul class="rating">
 											<li></li>
@@ -140,38 +150,39 @@
 											<li></li>
 											<li></li>
 										</ul>
-										<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus.</div>
+										<div class="infos">11 avril 2014 - 8 nuits, 7 jours. Réservez votre forfait au magnifique hôtel Barcela Arenas Blancas, situés au bord de la plage de Cuba, Varadero. Restaurants et bar disponibles, et plus.</div>
 									
-									<div class="logo" style="background-image: url('public/images/demo/tmr-small.jpg');"></div>
+									<div class="logo" style="background-image: url('public/images/demo/bergeron-small.jpg');"></div>
 									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 								</div>
 								<div>
 									<div class="close"></div>
-									<div class="description">
-										<div class="opposite">
-											<p class="title">Blau Costa Verde</p>
-											<p class="subtitle">Holguin, Cuba</p>
-										</div>
+									<div class="description special">
 										<div>
-											<p class="caption">à partir de<br/>par pers.</p>
-											<p class="price">839</p>
+											<p class="title">Azul Fives Hotel</p>
+											<p class="subtitle">Riviera Maya, Mexique</p>
+										</div>
+										<div class="opposite">
+											<p class="caption">à partir de</p>
+											<p class="price">995</p>
 										</div>
 										<ul class="rating">
 											<li></li>
 											<li></li>
 											<li></li>
 											<li></li>
+											<li></li>
 										</ul>
-										<div class="infos">29 mars 2014 - 8 jours, 7 nuits. Une semaine en formule tout-inclus à l'hôtel Blau Costa Verde sur la plage de Playa Pesquero Beach. Incluant une nouvelle section Plus qui est réservée à une catégorie de voyageurs, avec piscine privée, bar, et plus. 3 repas style buffet tous les jours, soupers À la carte illimités avec vin servi, divertissements en soirée, etc.</div>
+										<div class="infos">18 avril 2014 - 7 nuits, 6 jours. Réservez votre forfait tout inclus 5 étoiles au Azul Fives Hotel, dans la superbe ville de Riviera Maya. Un hôtel de rêve pour des gens qui désirent des vacances de rêve.</div>
 									
-									<div class="logo" style="background-image: url('public/images/demo/tmr-small.jpg');"></div>
+									<div class="logo" style="background-image: url('public/images/demo/bergeron-small.jpg');"></div>
 									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>
-									<div class='lp-legal noFlip' style="height:204px;">
+									<div class='lp-legal noFlip' style="-webkit-transform: translate3d(0,92px,0); height:92px;">
 										<div class='lp-legal-btn noFlip'>Légal</div>
-										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
+										<div class='lp-legal-text noFlip' style="height:204px;">45841141 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. En magasin seule...</div>
 									</div>
 								</div>	
 							</div>				
