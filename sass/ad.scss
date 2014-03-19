@@ -12,10 +12,157 @@ body.lp-loaded {
 	opacity: 1;
 } 
 
-.lp-ad {
-	position: relative;
+
+.quart{
 	width: 480px;
 	height: 325px;
+}
+
+.quart .logo {
+	width: 165px;
+	height: 75px;
+}
+
+.quart .description {
+	height: 78px;
+}
+
+.huitieme-v,
+.huitieme-v .wrapperFlip,
+.huitieme-v .flip,
+.huitieme-v .front,
+.huitieme-v .back {
+	width: 230px;
+	height: 325px;
+}
+
+.huitieme-v .logo {
+	width: 100px;
+	height: 35px;
+}
+
+.huitieme-v .back .logo {
+	width: 100px;
+	height: 40px;
+	top: 277px;
+	left: 72px;
+}
+
+.huitieme-v .description {
+	height: 104px;
+}
+
+.huitieme-v .description .subtitle {
+	font: normal bold 18px/16px helvetica, sans-serif;
+	height: 35px;
+}
+
+.huitieme-v .description div:nth-child(2) {
+	float: none;
+}
+
+.huitieme-v .description .price {
+	float: none;
+	font: normal bold 28px/29px helvetica, sans-serif;
+}
+
+.huitieme-v .back .description .price {
+	position: absolute;
+	top: 104px;
+	left: 50px;
+	float: none;
+	font: normal bold 28px/29px helvetica, sans-serif;
+}
+
+.huitieme-v .description .caption,
+.huitieme-v .back .description .caption  {
+	position: absolute;
+	top: 84px;
+	left: 57px;
+	display: block;
+	vertical-align: initial;
+	width: auto;
+	float: none;
+	// font: normal bold 28px/29px helvetica, sans-serif;
+}
+
+.huitieme-v .back .description .caption  {
+	position: absolute;
+	top: 96px;
+	left: 51px;
+	display: block;
+	vertical-align: initial;
+	width: auto;
+	float: none;
+	// font: normal bold 28px/29px helvetica, sans-serif;
+}
+
+.huitieme-v .back .description .title,
+.huitieme-v .back .description .subtitle  {
+	font: normal normal 18px/16px helvetica, sans-serif;
+}
+
+.huitieme-v .back .description .subtitle  {
+	font: normal normal 18px/16px helvetica, sans-serif;
+}
+
+.huitieme-v .back .description .infos {
+	font: normal normal 14px/17px helvetica, sans-serif;
+	-webkit-line-clamp: 7;
+	position: absolute;
+	top: 147px;
+	left: 19px;
+	width: 200px;
+}
+
+.huitieme-v .back .description {
+	padding: 14px 19px 10px 27px;
+}
+
+.huitieme-v .back .description .title {
+	height: 21px;
+}
+
+.huitieme-v .back .description .rating {
+	height: 81px;
+	padding: 8px 0 0 25px;
+}
+
+
+.huitieme-h,
+.huitieme-h .wrapperFlip,
+.huitieme-h .flip,
+.huitieme-h .front,
+.huitieme-h .back,
+.huitieme-h .gallery,
+.huitieme-h .gallery .scroller > div {
+	width: 480px;
+	height: 152px;
+}
+
+.huitieme-h .description {
+	width: 152px;
+	height: 152px;
+}
+
+.huitieme-h .description .title {
+	font: normal normal 17px/18px helvetica, sans-serif;
+}
+
+.huitieme-h .description .subtitle {
+	font: normal bold 18px/20px helvetica, sans-serif;
+}
+
+.huitieme-h .description .price {
+	font: normal bold 28px/26px helvetica, sans-serif;
+}
+
+.huitieme-h .description .opposite .caption {
+	height: 48px;
+}
+
+.lp-ad {
+	position: relative;
 	background-color: rgba(0, 0, 0, 0);
 	margin: 0 auto;
 	overflow: hidden;
@@ -32,8 +179,9 @@ body.lp-loaded {
 	position: absolute;
 	top: 0px;
 	left: 0px;
+	// width: 480px;
 	width: 480px;
-	height: 325px;
+	height: 152px;
 	z-index: 100000;
 	// opacity: 0.3;
 	opacity: 0;
@@ -41,8 +189,6 @@ body.lp-loaded {
 }
 		/*=== RETOURNER css | debut ====================*/
 		.wrapperFlip { 
-			width: 480px;
-			height: 325px;
 			-webkit-perspective: 0; 
 		} 
 		.flip { 
@@ -79,8 +225,6 @@ body.lp-loaded {
 	z-index: 3;
 	top:0;
 	left:0;
-	width: 165px;
-	height: 75px;
 	pointer-events: none;
 }
 
@@ -92,7 +236,6 @@ body.lp-loaded {
 		.scroller { 
 			position: relative; 
 			float: left; 
-			width: 2400px; 
 			height: 100%; 
 			z-index: 0; 
 			-webkit-transform: translateZ(0);
@@ -159,8 +302,8 @@ body.lp-loaded {
 	float: left;
 	background: rgba(255,255,255,1);
 	width: 100%;
-	height: 79px;
-	padding: 0px 10px 10px 15px;
+	padding: 7px 10px 10px 15px;
+	// padding: 0px 10px 10px 15px;
 
 	div:nth-child(1) {
 		float: left;
@@ -176,23 +319,39 @@ body.lp-loaded {
 	}
 
 	.title {
-		display:table-cell;
-		vertical-align: bottom;
-		height: 48px;
+		// display:table-cell;
+		// vertical-align: bottom;
+		// height: 48px;
 		color: $gal-title;
 		font: normal normal 18px/21px helvetica, sans-serif;
 	}
 
 	.subtitle {
+		display:table-cell;
+		vertical-align: bottom;	
+		height: 40px; // ajout	
 		color: $gal-title;
 		font: normal bold 23px/23px helvetica, sans-serif;
+	}	
+
+	.opposite .subtitle {
+		display:block;
+		vertical-align: initial;	
+		height: auto; // ajout	
+	}
+
+	.opposite .title {
+		// display:table-cell;
+		// vertical-align: bottom;	
+		// height: 40px; // ajout	
 	}	
 
 	.caption {
 		display:table-cell;
 		vertical-align: bottom;	
 		width: 111px;
-		height: 35px;	
+		// height: 35px;	
+		height: 30px;	
 		color: $gal-title;
 		font: normal normal 12px/12px helvetica, sans-serif;
 		text-transform: uppercase;
@@ -210,19 +369,52 @@ body.lp-loaded {
 	}
 }
 
+// AUTRES FORMATS
+
+// 1/4 sans offre
+.quart-une-offre .front .description {
+	float: none;
+	position: absolute;
+	bottom: 0;
+}
+
+.quart-une-offre .back {
+	background-color: rgba(255,255,255,1);
+}
+
+//1/8 V
+
+.huitieme-v .front .description {
+	float: none;
+	position: absolute;
+	bottom: 0;
+}
+
+.huitieme-v .back {
+	background-color: rgba(255,255,255,1);
+}
+
+
+
 .back {
 
-	background-color: rgba(255,255,255,1);
-
 	.description {
-		padding: 0px 19px 10px 29px;
+		// padding: 0px 19px 10px 29px;
+		padding: 22px 19px 10px 29px;
+
+		div:nth-child(2) {
+			// position:absolute;
+		}		
 
 		.title {
-			height: 50px;
-			font: normal normal 22px/21px helvetica, sans-serif;
+			// height: 50px;
+			height: 25px;
+			// font: normal normal 22px/21px helvetica, sans-serif;
+			font: normal normal 22px/29px helvetica, sans-serif;
 		}
 		.subtitle {
-			font: normal bold 28px/38px helvetica, sans-serif;
+			// font: normal bold 28px/38px helvetica, sans-serif;
+			font: normal bold 28px/32px helvetica, sans-serif;
 		}
 		.title, .subtitle {
 			padding: 0 0 0 24px;
@@ -231,7 +423,13 @@ body.lp-loaded {
 		.caption {
 			height: 46px;
 			font: normal normal 12px/14px helvetica, sans-serif;
+			width:auto; //ajout;
 		}
+
+		.price {
+			font: normal bold 33px/20px helvetica, sans-serif;
+		}
+
 		.infos {
 			float: left;
 			display: -webkit-box;
@@ -242,19 +440,21 @@ body.lp-loaded {
 			font: normal normal 15px/20px helvetica, sans-serif;
 			height: 120px;
 			width: 100%;
+			color: $gal-price;
 		}
 		.rating {
 			float: left;
 			clear: both;
-			height: 37px;
-			padding: 2px 0 0 25px;
+			// height: 37px;
+			height: 50px;
+			// padding: 2px 0 0 25px;
+			padding: 14px 0 0 25px;
 		}
 	}
 
 	.pager-wrapper {
 		top: 297px;
 	}	
-	
 
 	.logo {
 		position: absolute;
@@ -266,61 +466,6 @@ body.lp-loaded {
 		background-size: contain;
 		pointer-events: none;
 	}
-
-	//ICONES rétina POUR L'ARRIÈRE DU FLIP
-
-
-	ul.rating > li {
-		float: left;
-		list-style: none;
-		background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-		background-size: contain;
-		width: 18px;
-		height: 18px;
-		margin: 0 3px 0 0;
-		z-index: 10;
-	}
-
-	.close {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		width: 40px;
-		height: 40px;
-		z-index: 1;
-		background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
-		background-size: contain;
-	}
-
-	.close:active {
-		background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
-	}	
-
-	a.btn-plusWeb {
-		position: absolute;
-		bottom: 10px;
-		right: 10px;
-		width: 40px;
-		height: 40px;
-		z-index: 1;
-		background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
-		background-size: contain;		
-	}
-
-	a.btn-plusWeb:active, .back a.btn-plusWeb:active:after {
-		background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
-	}	
-
-	a.btn-plusWeb:after {
-		position: absolute;
-		content: "";
-		width: 80px;
-		height: 80px;
-		top: -10px;
-		left: -10px;	
-	}
-
-
 }
 /*=== GALERIE css | fin ====================*/
 
@@ -355,7 +500,7 @@ body.lp-loaded {
 		font-family: helvetica, arial, sans-serif;
 		color: #868889;
 		z-index: 9999;
-		-webkit-transform: translate3d(0,65px,0);
+		-webkit-transform: translate3d(0,204px,0);
 		-webkit-transition: -webkit-transform .5s ease;
 	}
 
