@@ -12,9 +12,6 @@
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/ad.css">
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>

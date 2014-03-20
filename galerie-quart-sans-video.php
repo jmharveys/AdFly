@@ -12,9 +12,6 @@
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/ad.css">
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -22,84 +19,82 @@
 	<style>
 		/* ICONES rétina POUR L'ARRIÈRE DU FLIP */
 	.back ul.rating > li {
-			float: left;
-			list-style: none;
-			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-			background-size: contain;
-			width: 18px;
-			height: 18px;
-			margin: 0 3px 0 0;
-			z-index: 10;
-		}
+		display: inline-block;
+		background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
+		background-size: contain;
+		width: 18px;
+		height: 18px;
+		margin: 5px 3px 0 0;
+		z-index: 10;
+	}
 
 	.back .close {
-			position: absolute;
-			top: 0px;
-			left: 0px;
-			width: 40px;
-			height: 40px;
-			z-index: 1;
-			background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
-			background-size: contain;
-		}
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 40px;
+		height: 40px;
+		z-index: 1;
+		background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
+		background-size: contain;
+	}
 
 	.back .close:active {
-			background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
-		}	
+		background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
+	}	
 
 	.back a.btn-plusWeb {
-			position: absolute;
-			bottom: 10px;
-			right: 10px;
-			width: 40px;
-			height: 40px;
-			z-index: 1;
-			background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
-			background-size: contain;		
-		}
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		width: 40px;
+		height: 40px;
+		z-index: 1;
+		background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
+		background-size: contain;		
+	}
 
-		.back a.btn-plusWeb:active {
-			background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
-		}	
+	.back a.btn-plusWeb:active {
+		background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
+	}	
 
-		.back a.btn-plusWeb:after {
-			position: absolute;
-			content: "";
-			width: 80px;
-			height: 80px;
-			top: -10px;
-			left: -10px;	
-		}	
+	.back a.btn-plusWeb:after {
+		position: absolute;
+		content: "";
+		width: 80px;
+		height: 80px;
+		top: -10px;
+		left: -10px;	
+	}	
 	</style>
 </head>
 <body>
 	<div class='lp-ad quart'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/holguin-back.jpg');"></div>
+		<!-- <div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/holguin-back.jpg');"></div> -->
 		<!--=== RETOURNER html | debut ==============-->
-		<div class='wrapperFlip' style='top: 0px; left: 0px; width: 480px; height: 325px;'>
-			<div class='flip' style='0px; width: 480px; height: 325px;'> 
-				<div class='front' style='width: 480px; height: 325px;'>
+			<div class='flip'> 
+				<div class='front'>
 					<div class="logo" style="background-image: url('public/images/demo/tmr.jpg');"></div>
-					<div style="z-index:0;overflow:hidden;width: 480px; height: 325px;position:absolute;">
+					<div class="wrapper">
 						<div class='gallery'>
-							<div class='scroller' style="width: 960px;">
+							<div class='scroller' style="width: 1920px;">
 								<div>
-									<div style='width: 480px; height: 247px; background-image: url("public/images/demo/romana.jpg");'></div>
+									<img src="public/images/demo/romana.jpg" width="480" height="247" />
 									<div class="description">
 										<div>
 											<p class="title">Dreams La Romana Resort & Spa</p>
 											<p class="subtitle">La Romana,<br/>République Dominicaine</p>
 										</div>
 										<div>
-											<p class="caption">à partir de<br/>par pers.</p>
-											<p class="price">809</p>
+											<p class="caption">à par pers.  </p>
+											<p class="price">99 999</p>
 										</div>
 									</div>
 								</div>
 								<div>
-									<div style='width: 480px; height: 247px; background-image: url("public/images/demo/holguin.jpg");'></div>
+									<img src="public/images/demo/holguin.jpg" width="480" height="247" />
 									<div class="description">
-										<div class="opposite">
+										<div>
 											<p class="title">Blau Costa Verde</p>
 											<p class="subtitle">Holguin, Cuba</p>
 										</div>
@@ -109,47 +104,76 @@
 										</div>
 									</div>	
 								</div>	
+								<div>
+									<img src="public/images/demo/acapulco.jpg" width="480" height="247" />
+									<div class="description">
+										<div>
+											<p class="title">Las Brisas Acapulco</p>
+											<p class="subtitle">Acapulco, Mexique</p>
+										</div>
+										<div>
+											<p class="caption">à partir de</p>
+											<p class="price">1 568</p>
+										</div>
+									</div>	
+								</div>		
+								<div>
+									<img src="public/images/demo/playa.jpg" width="480" height="247" />
+									<div class="description">
+										<div>
+											<p class="title">Playa Blanca</p>
+											<p class="subtitle">Cayo Largo, Cuba</p>
+										</div>
+										<div>
+											<p class="caption">à partir de<br/>par pers.</p>
+											<p class="price">1 098</p>
+										</div>
+									</div>	
+								</div>	
 							</div>
 							<div class='pager-wrapper'>
 								<ul class='pager'>
 									<li class='selected'>0</li>
 									<li>1</li>
+									<li>2</li>
+									<li>3</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class='back' style='width: 480px; height: 325px;'>
-					<div style="z-index:0;overflow:hidden;width: 480px; height:325px;position:absolute;">
+					<div class="wrapper">
 						<div class='gallery'>
-							<div class='scroller' style="width: 960px;">
+							<div class='scroller' style="width: 1920px;">
 								<div>
 									<div class="close"></div>
 									<div class="description">
 										<div>
 											<p class="title">Dreams La Romana Resort & Spa</p>
 											<p class="subtitle">La Romana,<br/>République Dominicaine</p>
-										</div>
-										<div>
-											<p class="caption">à partir de<br/>par pers.</p>
-											<p class="price">809</p>
-										</div>
-										<ul class="rating">
+											<ul class="rating">
 											<li></li>
 											<li></li>
 											<li></li>
 											<li></li>
 										</ul>
-										<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus.</div>
-									
-									<div class="logo" style="background-image: url('public/images/demo/tmr-small.jpg');"></div>
+										</div>
+										<div>
+											<p class="caption">à partir de<br/>par pers.</p>
+											<p class="price">99 999</p>
+										</div>
+										<div class="logo" style="background-image: url('public/images/demo/tmr-small.jpg');"></div>
 									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
+									</div>
+									<div class="wrapper-infos">
+										<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe.</div>
 									</div>
 								</div>
 								<div>
 									<div class="close"></div>
 									<div class="description">
-										<div class="opposite">
+										<div>
 											<p class="title">Blau Costa Verde</p>
 											<p class="subtitle">Holguin, Cuba</p>
 										</div>
@@ -180,13 +204,14 @@
 							<ul class='pager'>
 								<li class='selected'>0</li>
 								<li>1</li>
+								<li>1</li>
+								<li>1</li>
 							</ul>
 						</div>	
 					</div>
 				</div>
 			</div>
 		<!--=== RETOURNER html | fin ==============-->
-		</div>
 	</div>
 	<script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
 	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
