@@ -1,0 +1,155 @@
+<section id="formOfferTpl">
+	<fieldset data-id="{{id}}">
+		<legend>
+			{{t.offer}}
+			<span class="delete-offer">
+				(<a href="#">Supprimer cette offre</a>)
+			</span>
+		</legend>
+
+		<div class="row field">
+			<label>
+				<span class="lbl">{{t.destination}}</span><br>
+				<input type="text" name="{{id}}_destination" placeholder="Cancun, Mexique" class="input js-validate" value="11111" required />
+			</label>
+		</div>
+
+		<div class="row field">
+			<label>
+				<span class="lbl">{{t.moreAboutTheDestination}}</span><br>
+				<input type="text" name="{{id}}_moreDestination" placeholder="Barcelo Costa Cancun" class="input js-validate" value="22222" required />
+			</label>
+		</div>
+
+		<div class="row">
+			<div class="half field">
+				<label>
+					<span class="lbl">{{t.price}}</span><br>
+					<input type="text" name="{{id}}_price" placeholder="1358" class="input short dollar{{#opt.price}} js-validate{{/opt.price}}{{^opt.price}} opt{{/opt.price}}" value="33333" required />
+				</label>
+			</div>
+
+			{{#opt.date}}
+			<div class="half field">
+				<label>
+					<span class="lbl">{{t.date}}</span><br>
+					<input type="date" name="{{id}}_date" placeholder="2014-12-31" class="input short js-validate" />
+				</label>
+			</div>
+			{{/opt.date}}
+		</div>
+
+		<div class="row opt">
+			<div class="half field">
+				<span class="lbl">{{t.mention}} 1</span><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" value="" checked /> 
+					<span class="radio-lbl">{{t.none}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" value="À partir de" /> 
+					<span class="radio-lbl">{{t.from}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" value="Par personne" /> 
+					<span class="radio-lbl">{{t.perCapita}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" value="Vol inclus" /> 
+					<span class="radio-lbl">{{t.flightIncluded}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" value="Taxes incluses" /> 
+					<span class="radio-lbl">{{t.taxesIncluded}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_1" value="freetext" /> 
+				</label>
+				<input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="11" class="input short" />
+			</div>
+
+			<div class="half field">
+				<span class="lbl">{{t.mention}} 2</span><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" value="" checked /> 
+					<span class="radio-lbl">{{t.none}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" value="À partir de" /> 
+					<span class="radio-lbl">{{t.from}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" value="Par personne" /> 
+					<span class="radio-lbl">{{t.perCapita}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" value="Vol inclus" /> 
+					<span class="radio-lbl">{{t.flightIncluded}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" value="Taxes incluses" /> 
+					<span class="radio-lbl">{{t.taxesIncluded}}</span>
+				</label><br>
+				<label>
+					<input type="radio" name="{{id}}_mention_2" value="freetext" /> 
+				</label>
+				<input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="11" class="input short" />
+			</div>
+		</div>
+
+		<div class="row opt">
+			<span class="lbl">{{t.numberOfStars}}</span><br>
+			<input type="hidden" id="{{id}}_rateit_val" name="{{id}}_rating">
+			<div class="{{id}}_rateit"></div>
+		</div>
+
+		<div class="row field">
+			<label>
+				<span class="lbl">{{t.webLink}}</span><br>
+				<input type="text" name="{{id}}_link" placeholder="http://..." class="input js-validate" value="http://google.ca" required>
+			</label>
+		</div>
+
+		{{#opt.picture}}
+		<div class="row">
+			<div class="half field">
+				<label>
+					<span class="lbl">{{t.picture}}(s) <span class="msg"></span></span><br>
+					<div class="btn blue file" data-max="{{opt.maxPictures}}" data-max-original="{{opt.maxOriginalPictures}}">
+						<span class="text">{{t.uploadImage}}</span>
+						<input type="file" name="{{id}}_picture[]" data-key="{{id}}" class="js-multi-files" />
+					</div>
+				</label>
+			</div>
+		</div>
+		{{/opt.picture}}
+
+		{{#opt.video}}
+		<div class="row">
+			<div class="half field">
+				<label>
+					<span class="lbl">{{t.video}}</span><br>
+					<div class="btn file">
+						<span class="text">{{t.uploadVideo}}</span>
+						<input type="file" accept="video/*" capture="camera" name="{{id}}_video" />
+					</div>
+				</label>
+			</div>
+		</div>
+		{{/opt.video}}
+
+		<div class="row field">
+			<label>
+				<span class="lbl">{{t.description}}</span><br>
+				<textarea name="{{id}}_description" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra." required>444444</textarea>
+			</label>
+		</div>
+
+		<div class="row field opt">
+			<label>
+				<span class="lbl">{{t.legal}}</span><br>
+				<textarea name="{{id}}_legal" class="textarea" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra."></textarea>
+			</label>
+		</div>
+	</fieldset>
+</section>

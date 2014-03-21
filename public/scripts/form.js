@@ -6,9 +6,10 @@ app = function(pCulture, pRoot) {
   var self = this;
   self.culture = pCulture;
   self.root = pRoot;
+  self.format = "325x480";
   self.step = 1;
   self.offersNbr = 0;
-  self.format = "325x480";
+  self.gallery = false;
   self.opts;
   $.getJSON(self.root + "public/data/translations.json", function(data) {
     self.t = data;
@@ -35,9 +36,12 @@ app.prototype.map_ = function() {
     nextStep: $('.js-nextStep'),
     submit: $('.js-submit'),
     offersNbr: $('[name="offersNbr"]'),
-    addOffer: $('.addOffer'),
+    addOfferBtn: $('.addOffer'),
+    addOfferMsg: $('.addOfferMsg'),
     offersList: $('.offersList'),
+    render: $('iframe.render'),
     field: {
+      offersId: $('[name="offersId"]'),
       noClient: $('[name="noClient"]'),
       noAd: $('[name="noAd"]'),
       category: $('[name="category"]'),
@@ -51,7 +55,6 @@ app.prototype.map_ = function() {
     templates: 'public/templates/'
   }
 };
-//=== MAP END ========================================================
 
 //=== INIT START =====================================================
 app.prototype.init_ = function(pObj) {
@@ -118,15 +121,14 @@ app.prototype.init_ = function(pObj) {
 
   self.verticalAlign_($('.step.no1 .content'));
 };
-//=== INIT END =======================================================
 
 //=== BIND START =====================================================
 app.prototype.bindEvents_ = function() {
   var self = this;
 
-  self.dom.addOffer.on('click', function(e) {
+  self.dom.addOfferBtn.on('click', function(e) {
     e.preventDefault();
-    self.setNewOffer_(500);
+    self.setOffer_(500);
   });
 
   self.dom.nextStep.on('click', function() {
@@ -149,11 +151,11 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.steps.on('change', '.multi-files input', function() {
-    self.updateMultiFilesPreview_($(this));
+    self.addMultiFiles_($(this));
   });
 
   self.dom.steps.on('click', '.js-erease', function() {
-    self.ereaseInput_($(this).closest('li').data('key'));
+    self.deleteMultiFiles_($(this).closest('li').data('key'));
   });
 
   self.dom.steps.on('click', '.delete-offer a', function(e) {
@@ -162,8 +164,8 @@ app.prototype.bindEvents_ = function() {
     self.deleteOffer_(offer);
   });
 };
-//=== BIND END =======================================================
 
+/*=== Change Step ===========================================*/
 app.prototype.changeStep_ = function(pValue) {
   var self = this;
   var currentStep = $('.step.no' + self.step);
@@ -175,94 +177,23 @@ app.prototype.changeStep_ = function(pValue) {
     });
   }
 
-  if(self.step == 1) {
-    if(valid) {
-      if(self.offersNbr == 0) {
-        self.opts = self.setTemplateOptions_(self.dom.field.category.val(), $('.row.format input:checked').val());
-        self.setNewOffer_(0);
-      }
-    }
-  }
-
-  if(self.step == 2) {
-    if(valid) {
-      $.ajax({
-        type: "POST",
-        url: self.root + 'ad.php',
-        data: $('form').serialize(), // serializes the form's elements.
-        success: function(data) {
-          var iframe =  $('.render');
-          iframe.css({'width': self.format.split('x')[0] + 'px', 'height': self.format.split('x')[1] + 'px'})
-          var idoc = iframe[0].contentDocument;
-          idoc.open();
-          idoc.write(data);
-          idoc.close();
-        }
-      });
-
-
-      var json = $('form').serializeObject();
-      console.dir(json);
-      //self.dom.step3.text(JSON.stringify(json));
-    }
-  }
-  
   if(valid) {
+    if(self.step == 1) {
+      if(self.offersNbr == 0) {
+        self.opts = self.setStep2_(self.dom.field.category.val(), $('.row.format input:checked').val());
+        self.setOffer_(0);
+      }
+    } else if(self.step == 2) {
+      var data = new FormData($('form')[0]); // serializes the form's elements.
+      self.setAdPreview_(data);
+    }
     self.step += parseInt(pValue);
     self.dom.b.removeClass('no1 no2 no3').addClass('no' + self.step);
   }
 };
 
-app.prototype.setNewOffer_ = function(pDelay) {
-  var self = this;
-
-  if(self.offersNbr < self.opts.maxOffers) {
-    self.offersNbr++;
-    self.dom.offersNbr.val(self.offersNbr);
-    self.addOffer_({
-      id: self.offersNbr,
-      t: self.t[self.culture],
-      opt: self.opts
-    }, pDelay);
-
-    if(self.dom.b.width() > 1020 && self.dom.offersList.children().length > 0) {
-      self.dom.step2.find('.content').addClass('extend');
-    }
-
-    if(self.offersNbr === self.opts.maxOffers) {
-      self.dom.addOffer.addClass('disabled');
-    }
-  }
-};
-
-app.prototype.deleteOffer_ = function(pOffer) {
-  var self = this;
-  self.offersNbr--;
-  self.dom.offersNbr.val(self.offersNbr);
-
-  pOffer.remove();
-
-  self.dom.addOffer.removeClass('disabled');
-
-  if(self.dom.offersList.children('fieldset').length == 1) {
-    self.dom.step2.find('.content').removeClass('extend');
-  }
-};
-
-app.prototype.ereaseInput_ = function(pKey) {
-  var self = this;
-  var input = $('input[data-key="'+ pKey +'"]');
-  var field = input.closest('.field');
-  var lbl = field.find('.lbl');
-  var msg = lbl.find('.msg');
-  var btn = input.closest('.btn');
-
-  btn.removeClass('disabled');
-  msg.html('');
-  $('[data-key="'+ pKey +'"]').remove();
-};
-
-app.prototype.setTemplateOptions_ = function(pCategory, pFormat) {
+/*=== Set Step 2 ===========================================*/
+app.prototype.setStep2_ = function(pCategory, pFormat) {
   var self = this;
   var opt = {
     price: true,
@@ -270,6 +201,7 @@ app.prototype.setTemplateOptions_ = function(pCategory, pFormat) {
     maxOffers: 2,
     picture: true,
     maxPictures: 2,
+    maxOriginalPictures: 2,
     video: false
   };
   if(pCategory == 'conferences') {
@@ -279,94 +211,74 @@ app.prototype.setTemplateOptions_ = function(pCategory, pFormat) {
   if(pFormat == '480x324') { // 1/4 H
     opt.maxOffers = 4;
     opt.maxPictures = 4;
+    maxOriginalPictures = 4;
     opt.video = true;
   } else if(pFormat == '480x152') { // 1/8 H
     opt.maxOffers = 2;
     opt.maxPictures = 2;
+    maxOriginalPictures = 2;
   } else if(pFormat == '230x324') { // 1/8 V
     opt.maxOffers = 2;
     opt.maxPictures = 2;
+    maxOriginalPicture = 2;
   } else if(pFormat == '230x152') { // 1/16 H
     opt.picture = false;
     opt.maxOffers = 1;
     opt.maxPictures = 0;
+    maxOriginalPictures = 0;
   }
   return opt;
 };
 
-app.prototype.updateInputFilePreview_ = function(pInput) {
+/*=== Set Ad Preview ===========================================*/
+app.prototype.setAdPreview_ = function(pData) {
   var self = this;
-  self.getUploadedImageObj_(pInput, function(pImg) {
-    var btn = pInput.closest('.btn');
-    var field = btn.closest('.field');
-    var lbl = field.find('.lbl');
-    var preview = btn.next('.preview');
-    preview.css({'background-image': 'url(' + pImg + ')'}).addClass('active');
-    pInput.blur();
+  $.ajax({
+    type: "POST",
+    url: self.root + 'ad.php',
+    data: pData,
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function(data) {
+      console.log("success");
+      console.log(data);
+      self.dom.render.css({
+        'width': self.format.split('x')[0] + 'px', 
+        'height': self.format.split('x')[1] + 'px'
+      })
+      var idoc = self.dom.render[0].contentDocument;
+      idoc.open();
+      idoc.write(data);
+      idoc.close();
+    }, error: function(data) {
+      console.log("error");
+      console.log(data);
+    }
   });
 };
 
-app.prototype.updateMultiFilesPreview_ = function(pInput) {
+/*=== Set Offer ===============================================*/
+app.prototype.setOffer_ = function(pDelay) {
   var self = this;
-  self.getUploadedImageObj_(pInput, function(pImg) {
-    var field = pInput.closest('.field');
-    var lbl = field.find('.lbl');
-    var name = pInput.attr('name');
-    var btn = pInput.closest('.btn');
-    var list = pInput.closest('.multi-files').find('.files-list');
-    var key = pInput.data('key');
-    var max = parseInt(btn.data('max'));
-    var obj = {
-      key: key,
-      img: pImg
+
+  if(self.offersNbr < self.opts.maxOffers && !self.gallery) {
+    var id = new Date().getTime();
+    var opts = self.opts;
+    self.updateOffer_(id);
+    self.dom.offersNbr.val(self.offersNbr);
+    if(self.offersNbr > 1) {
+      opts.maxPictures = 1;
     }
-
-    if(list.children().length < max) {
-      $.get(self.path.templates + 'file-preview-tpl.mustache.html', function(template, textStatus, jqXhr) {
-        list.append(Mustache.render($(template).filter('#filePreviewTpl').html(), obj));
-        var newKey = new Date().getTime();
-        btn.append('<input type="file" name="'+ name +'" data-key="'+ newKey +'" />');
-        if(list.children().length == max) {
-          if(lbl.find('.msg').length) {
-            lbl.find('.msg').html('<span class="msg">(' + self.t[self.culture]['maximumPicturesNumberReached'] + ')</span>');
-          } else {
-            lbl.append(' <span class="msg">(' + self.t[self.culture]['maximumPicturesNumberReached'] + ')</span>');
-          }
-          btn.addClass('disabled');
-        }
-      });
-    }
-
-    pInput.addClass('hide').blur();
-  });
-};
-
-app.prototype.getUploadedImageObj_ = function(pInput, callback) {
-  var self = this;
-  var file = pInput.prop("files")[0];
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    $("<img/>").attr("src", e.target.result).load(function() {
-      var img = e.target.result;
-      callback(img);
-    });
+    self.addOffer_({
+      id: id,
+      t: self.t[self.culture],
+      opt: opts
+    }, pDelay);
   }
-  reader.readAsDataURL(file); 
-}
-
-app.prototype.updateRadioFormat_ = function(pRadio) {
-  var self = this;
-  pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
-  pRadio.addClass('valid').prev().attr('checked', 'true');
-
-  self.format = pRadio.prev().val();
-
-  self.dom.offersList.find('fieldset').remove();
-  self.dom.step2.find('.content').removeClass('extend');
-  self.offersNbr = 0;
-  self.dom.offersNbr.val(self.offersNbr);
 };
 
+/*=== Add Offer ============================================*/
 app.prototype.addOffer_ = function(pObj, pSpeed) {
   var self = this;
 
@@ -376,9 +288,9 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
     pSpeed = 0;
   }
 
-  $.get(self.path.templates + 'offer-tpl.mustache.html', function(template, textStatus, jqXhr) {
+  $.get(self.path.templates + 'form-offer-tpl.mustache.html', function(template, textStatus, jqXhr) {
     setTimeout(function() {
-      self.dom.offersList.append(Mustache.render($(template).filter('#offerTpl').html(), pObj));
+      self.dom.offersList.append(Mustache.render($(template).filter('#formOfferTpl').html(), pObj));
 
       // Destination
       $("input[name='"+ pObj.id +"_destination']").rules('add', {
@@ -416,6 +328,9 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
         });
       }
       $("input[name='"+ pObj.id +"_date']").mask('0000-09-09');
+
+      $('.' + pObj.id + '_rateit').rateit({ max: 5, step: 1, backingfld: '#' + pObj.id + '_rateit_val' });
+
       // Lien web
       $("input[name='"+ pObj.id +"_link']").rules('add', {
         required: true,
@@ -434,25 +349,233 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
         }
       });
 
-      self.createMultiFiles_($('input[name="'+ pObj.id +'_picture[]"]'));
+      self.initMultiFiles_($('input[name="'+ pObj.id +'_picture[]"]'));
 
       setTimeout(function() {
         self.dom.offersList.find('fieldset:last').addClass('created');
       }, 50)
+
+      self.updateMultifiles_();
     }, pSpeed);
     
   });
 };
 
-app.prototype.createMultiFiles_ = function(pInput) {
+/*=== Delete Offer ===========================================*/
+app.prototype.deleteOffer_ = function(pOffer) {
+  var self = this;
+  var id = pOffer.data('id');
+
+  pOffer.remove();
+
+  self.updateOffer_(id);
+  self.updateAddOfferBtn_();
+};
+
+/*=== Update Offer ===========================================*/
+app.prototype.updateOffer_ = function(pId) {
+  var self = this;
+  var currVal = self.dom.field.offersId.val();
+  var arrIds = currVal === '' ? [] : currVal.split(',');
+  var strIds = "";
+  var index = arrIds.indexOf(pId.toString());
+  var multifiles = $('.multi-files .btn');
+  if(index === -1) {
+    arrIds.push(pId);
+    self.offersNbr++;
+  } else {
+    arrIds.splice(index, 1);
+    self.offersNbr--;
+  }
+  strIds = arrIds.toString();
+
+  self.updateMultifiles_();
+  self.updateAddOfferBtn_();
+  self.updateOffersList_();
+  self.dom.offersNbr.val(self.offersNbr);
+  self.dom.field.offersId.val(strIds);
+};
+
+/*=== Update Add Offer Btn ============================================*/
+app.prototype.updateAddOfferBtn_ = function(pActive, pMsg) {
+  var self = this;
+  if(self.offersNbr === self.opts.maxOffers) {
+    self.dom.addOfferBtn.addClass('disabled');
+    self.dom.addOfferMsg.html('(' + self.t[self.culture]['offersMaxReached'] + ')');
+  } else if(self.gallery) {
+    self.dom.addOfferBtn.addClass('disabled');
+    self.dom.addOfferMsg.html('(' + self.t[self.culture]['cantAddOfferIfMoreThan1picture'] + ')');
+  } else {
+    self.dom.addOfferBtn.removeClass('disabled');
+    self.dom.addOfferMsg.html('');
+  }
+};
+
+/*=== Update Offers List ===================================*/
+app.prototype.updateOffersList_ = function() {
+  var self = this;
+  var content = self.dom.step2.find('.content');
+
+  if(self.dom.b.width() > 1020) {
+    if(self.offersNbr > 1) {
+      content.addClass('extend');
+    } else {
+      content.removeClass('extend');
+    }
+  }
+};
+
+/*=== Init Multi Files ===============================================*/
+app.prototype.initMultiFiles_ = function(pInput) {
   var self = this;
   pInput.closest('.field').wrap('<div class="multi-files"></div>');
   pInput.closest('.multi-files').append('<ol class="files-list"></ol>');
 };
 
+/*=== Delete Multi Files ===========================================*/
+app.prototype.deleteMultiFiles_ = function(pKey) {
+  var self = this;
+  var input = $('input[data-key="'+ pKey +'"]');
+  var li = $('li[data-key="'+ pKey +'"]');
+  var ol = li.parent();
+  var field = input.closest('.field');
+  var lbl = field.find('.lbl');
+  var msg = lbl.find('.msg');
+  var btn = input.closest('.btn');
+  var txt = btn.children('.text');
+
+  btn.removeClass('disabled');
+  li.remove();
+  input.remove();
+
+  if(ol.children().length === 0) {
+    field.removeClass('valid').addClass('error');
+    msg.html('(' + self.t[self.culture]['requiredField'] + ')');
+    txt.html(self.t[self.culture]['uploadImage']);
+  } else {
+    self.gallery = ol.children().length === 1 ? false : true;
+    msg.html('');
+    txt.html(self.t[self.culture]['uploadOtherImages']);
+  }
+  self.updateAddOfferBtn_();
+};
+
+/*=== Add Multi Files ============================================*/
+app.prototype.addMultiFiles_ = function(pInput) {
+  var self = this;
+  self.getUploadedImageObj_(pInput, function(pImg) {
+    var field = pInput.closest('.field');
+    var lbl = field.find('.lbl');
+    var name = pInput.attr('name');
+    var btn = pInput.closest('.btn');
+    var txt = btn.children('.text');
+    var list = pInput.closest('.multi-files').find('.files-list');
+    var key = pInput.data('key');
+    var max = parseInt(btn.data('max'));
+    var obj = {
+      key: key,
+      img: pImg
+    }
+
+    if(list.children().length < max) {
+      $.get(self.path.templates + 'file-preview-tpl.mustache.html', function(template, textStatus, jqXhr) {
+        var newKey = new Date().getTime();
+
+        list.append(Mustache.render($(template).filter('#filePreviewTpl').html(), obj));
+        txt.html(self.t[self.culture]['uploadOtherImages']);
+        btn.append('<input type="file" name="'+ name +'" data-key="'+ newKey +'" />');
+
+        self.gallery = list.children().length > 1 ? true : false;
+        self.updateAddOfferBtn_();
+        self.updateMultifiles_();
+      });
+    }
+
+    pInput.addClass('hide').blur();
+  });
+};
+
+app.prototype.updateMultifiles_ = function() {
+  var self = this;
+  var multifiles = $('.multi-files');
+  var btns = multifiles.find('.btn');
+    
+  for(var x=0; x<multifiles.length; x++) {
+    var msg = multifiles.eq(x).find('.msg');
+    var btn = btns.eq(x);
+    var txt = btn.find('.text');
+    var list = multifiles.eq(x).find('.files-list');
+    var max = multifiles.length > 1 ? 1 : btns.eq(x).data('max-original');
+
+    btn.data('max', max);
+    console.log(list.children().length);
+    if(list.children().length == 0) {
+      btn.removeClass('disabled');
+      msg.html('');
+      txt.html(self.t[self.culture]['uploadImage']);
+    } else {
+      console.log('list avec stock');
+      if(list.children().length < btn.data('max')) {
+        console.log('list PAS full');
+        btn.removeClass('disabled');
+        msg.html('');
+        txt.html(self.t[self.culture]['uploadOtherImages']);
+      } else {
+        console.log('list full');
+        btn.addClass('disabled');
+        msg.html(' <span class="msg">(' + self.t[self.culture]['maximumPicturesNumberReached'] + ')</span>');
+        txt.html(self.t[self.culture]['uploadImage']);
+      }
+    }
+    
+  }
+};
+
+/*=== Update File Preview ============================================*/
+app.prototype.updateInputFilePreview_ = function(pInput) {
+  var self = this;
+  self.getUploadedImageObj_(pInput, function(pImg) {
+    var btn = pInput.closest('.btn');
+    var field = btn.closest('.field');
+    var lbl = field.find('.lbl');
+    var preview = btn.next('.preview');
+    preview.css({'background-image': 'url(' + pImg + ')'}).addClass('active');
+    pInput.blur();
+  });
+};
+
+/*=== Get Uploaded Image ============================================*/
+app.prototype.getUploadedImageObj_ = function(pInput, callback) {
+  var self = this;
+  var file = pInput.prop("files")[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    $("<img/>").attr("src", e.target.result).load(function() {
+      var img = e.target.result;
+      callback(img);
+    });
+  }
+  reader.readAsDataURL(file); 
+}
+
+/*=== Update Radio Format ============================================*/
+app.prototype.updateRadioFormat_ = function(pRadio) {
+  var self = this;
+  pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
+  pRadio.addClass('valid').prev().attr('checked', 'true');
+
+  self.format = pRadio.prev().val();
+
+  self.dom.offersList.find('fieldset').remove();
+  self.dom.step2.find('.content').removeClass('extend');
+  self.offersNbr = 0;
+  self.dom.offersNbr.val(self.offersNbr);
+};
+
+/*=== Vertical Align ============================================*/
 app.prototype.verticalAlign_ = function(pElem) {
   var self = this;
-  var h = pElem.height();
+  var h = pElem.children('fieldset').height();
   var browserH = self.dom.steps.height();
   var posY = (browserH - h - 100) / 2;
   pElem.css('top', posY + 'px');
