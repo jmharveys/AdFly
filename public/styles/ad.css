@@ -1,3 +1,14 @@
+#overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 480px;
+  height: 480px;
+  z-index: 100000;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 /* _reset.scss */
 
 html,
@@ -186,12 +197,16 @@ iframe {
   border: none;
 }
 
+img {
+  display: block;
+}
+
 /* _style-guide.scss */
 
 body {
   opacity: 0;
   -webkit-transition: opacity .3s ease;
-  background: #b1b3ba;
+  background: rgba(0, 0, 0, 0.2);
   overflow-x: hidden;
 }
 
@@ -201,37 +216,12 @@ body.lp-loaded {
 
 .lp-ad {
   position: relative;
-  width: 480px;
-  height: 325px;
   background-color: rgba(0, 0, 0, 0);
   margin: 0 auto;
   overflow: hidden;
 }
 
-.lp-view {
-  position: absolute;
-  background-repeat: no-repeat;
-  z-index: 0;
-}
-
-#overlay {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 480px;
-  height: 325px;
-  z-index: 100000;
-  opacity: 0;
-  pointer-events: none;
-}
-
 /*=== RETOURNER css | debut ====================*/
-
-.wrapperFlip {
-  width: 480px;
-  height: 325px;
-  -webkit-perspective: 0;
-}
 
 .flip {
   -webkit-transition: -webkit-transform 1s;
@@ -243,7 +233,6 @@ body.lp-loaded {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-backface-visibility: hidden;
 }
 
 .flip * {
@@ -266,17 +255,19 @@ body.lp-loaded {
 
 .logo {
   position: absolute;
-  z-index: 3;
+  z-index: 1;
   top: 0;
   left: 0;
-  width: 165px;
-  height: 75px;
   pointer-events: none;
 }
 
+.wrapper {
+  z-index: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
 .gallery {
-  width: 480px;
-  height: 325px;
   background: rgba(0, 0, 0, 0);
   z-index: 0;
 }
@@ -284,28 +275,20 @@ body.lp-loaded {
 .gallery .scroller {
   position: relative;
   float: left;
-  width: 2400px;
   height: 100%;
   z-index: 0;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
-  -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-text-size-adjust: none;
-  -moz-text-size-adjust: none;
-  -ms-text-size-adjust: none;
-  -o-text-size-adjust: none;
   text-size-adjust: none;
 }
 
 .gallery .scroller > div {
   float: left;
-  width: 480px;
-  height: 325px;
   position: relative !important;
   margin: 0;
   background: white;
@@ -348,109 +331,49 @@ body.lp-loaded {
   background: white;
 }
 
-.description {
-  float: left;
-  background: white;
-  width: 100%;
-  height: 79px;
-  padding: 0px 10px 10px 15px;
+.front .description {
+  padding: 5px 10px 6px 15px;
 }
 
-.description div:nth-child(1) {
-  float: left;
+.front .description div:nth-child(1) {
+  width: 310px;
 }
 
-.description div:nth-child(2) {
-  float: right;
-  text-align: right;
-}
-
-.description .title:first-letter {
-  text-transform: uppercase;
-}
-
-.description .title {
-  display: table-cell;
+.front .description div:nth-child(1),
+.front .description div:nth-child(2) {
   vertical-align: bottom;
-  height: 48px;
-  color: #4d4d4d;
-  font: normal normal 18px/21px helvetica, sans-serif;
-}
-
-.description .subtitle {
-  color: #4d4d4d;
-  font: normal bold 23px/23px helvetica, sans-serif;
-}
-
-.description .caption {
-  display: table-cell;
-  vertical-align: bottom;
-  width: 111px;
-  height: 35px;
-  color: #4d4d4d;
-  font: normal normal 12px/12px helvetica, sans-serif;
-  text-transform: uppercase;
-}
-
-.description .price {
-  color: #333333;
-  font: normal bold 33px/29px helvetica, sans-serif;
-}
-
-.description .price:after {
-  font-size: 60%;
-  vertical-align: super;
-  content: "$";
-}
-
-.back {
-  background-color: white;
+  width: 310px;
 }
 
 .back .description {
-  padding: 0px 19px 10px 29px;
+  padding: 26px 10px 6px 39px;
 }
 
-.back .description .title {
-  height: 50px;
-  font: normal normal 22px/21px helvetica, sans-serif;
+.back .description div:nth-child(1) {
+  width: 310px;
 }
 
-.back .description .subtitle {
-  font: normal bold 28px/38px helvetica, sans-serif;
+.back .description div:nth-child(1),
+.back .description div:nth-child(2) {
+  vertical-align: top;
 }
 
-.back .description .title,
-.back .description .subtitle {
-  padding: 0 0 0 24px;
+.back .wrapper-infos {
+  vertical-align: middle;
+  height: 145px;
 }
 
-.back .description .caption {
-  height: 46px;
-  font: normal normal 12px/14px helvetica, sans-serif;
-}
-
-.back .description .infos {
-  float: left;
+.back .wrapper-infos .infos {
   display: -webkit-box;
-  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  font: normal normal 15px/20px helvetica, sans-serif;
-  height: 120px;
   width: 100%;
-}
-
-.back .description .rating {
-  float: left;
-  clear: both;
-  height: 37px;
-  padding: 2px 0 0 25px;
+  padding: 0 0 0 20px;
 }
 
 .back .pager-wrapper {
-  top: 297px;
+  top: 300px;
 }
 
 .back .logo {
@@ -465,58 +388,156 @@ body.lp-loaded {
   pointer-events: none;
 }
 
-.back ul.rating > li {
-  float: left;
-  list-style: none;
-  background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-  -webkit-background-size: contain;
-  background-size: contain;
-  width: 18px;
-  height: 18px;
-  margin: 0 3px 0 0;
-  z-index: 10;
+.back .description,
+.front .description {
+  display: table;
 }
 
-.back .close {
+.back .description .title,
+.back .description .subtitle,
+.back .description .price,
+.back .description .infos,
+.front .description .title,
+.front .description .subtitle,
+.front .description .price,
+.front .description .infos {
+  color: #333333;
+}
+
+.back .description div:nth-child(1),
+.back .description div:nth-child(2),
+.back .description .caption,
+.front .description div:nth-child(1),
+.front .description div:nth-child(2),
+.front .description .caption {
+  display: table-cell;
+}
+
+.back .description div:nth-child(2),
+.front .description div:nth-child(2) {
+  width: 145px;
+  text-align: right;
+}
+
+.back .description .caption,
+.front .description .caption {
+  width: 170px;
+  color: #333333;
+  text-transform: uppercase;
+}
+
+.back .price,
+.front .price {
+  letter-spacing: -1px;
+}
+
+.back .price:after,
+.front .price:after {
+  font-size: 60%;
+  vertical-align: super;
+  content: "$";
+}
+
+.quart {
+  width: 480px;
+  height: 325px;
+}
+
+.quart .logo {
+  width: 165px;
+  height: 75px;
+}
+
+.quart .front .description {
+  height: 78px;
+}
+
+.quart .front .description .title {
+  font: normal normal 16px/18px AmericanTypewriter;
+}
+
+.quart .front .description .subtitle {
+  font: normal normal 23px/23px AmericanTypewriter-Bold;
+}
+
+.quart .front .description .caption {
+  font: normal normal 12px/12px AmericanTypewriter;
+}
+
+.quart .front .description .price {
+  font: normal normal 33px/29px AmericanTypewriter-Bold;
+}
+
+.quart .front .description div:nth-child(2) {
+  width: 145px;
+}
+
+.quart .back .description div:nth-child(2) {
+  width: 210px;
+}
+
+.quart .back .description .title {
+  font: normal normal 19px/18px AmericanTypewriter;
+  white-space: nowrap;
+}
+
+.quart .back .description .subtitle {
+  font: normal normal 23px/23px AmericanTypewriter-Bold;
+}
+
+.quart .back .description .caption {
+  font: normal normal 12px/14px AmericanTypewriter;
+}
+
+.quart .back .description .price {
+  font: normal normal 33px/29px AmericanTypewriter-Bold;
+}
+
+.quart .back .description .rating {
+  display: table-row;
+}
+
+.quart .back .description .logo {
+  width: 115px;
+  height: 55px;
+}
+
+.quart .back .infos {
+  font: normal normal 15px/20px AmericanTypewriter;
+  -webkit-line-clamp: 6;
+  width: 410px;
+  height: 120px;
+}
+
+.quart .gallery {
+  width: 480px;
+  height: 325px;
+}
+
+.quart .gallery .scroller > div {
+  width: 480px;
+  height: 325px;
+}
+
+.une-offre .front .description {
+  float: none;
   position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 40px;
-  height: 40px;
-  z-index: 1;
-  background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
-  -webkit-background-size: contain;
-  background-size: contain;
+  bottom: 0;
+  right: 0;
 }
 
-.back .close:active {
-  background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
+.une-offre .back {
+  background-color: white;
 }
 
-.back a.btn-plusWeb {
+.huitieme-v .front .description {
+  float: none;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  z-index: 1;
-  background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
-  -webkit-background-size: contain;
-  background-size: contain;
+  bottom: 0;
 }
 
-.back a.btn-plusWeb:active,
-.back .back a.btn-plusWeb:active:after {
-  background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);
-}
-
-.back a.btn-plusWeb:after {
-  position: absolute;
-  content: "";
-  width: 80px;
-  height: 80px;
-  top: -10px;
-  left: -10px;
+.huitieme-v .back {
+  background-color: white;
 }
 
 /*=== GALERIE css | fin ====================*/
@@ -550,14 +571,13 @@ body.lp-loaded {
   width: 100%;
   height: 65px;
   font-family: helvetica, arial, sans-serif;
-  color: #868889;
+  color: #4d4d4d;
   z-index: 9999;
-  -webkit-transform: translate3d(0, 65px, 0);
   -webkit-transition: -webkit-transform .5s ease;
 }
 
 .lp-legal.lp-legal-active {
-  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 .lp-legal-btn {
