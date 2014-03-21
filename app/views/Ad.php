@@ -9,32 +9,12 @@ class AdView {
     }
 
     public function outputStyles() {
-        ob_start(); // Cette section ne devrait presque pas contenir de PHP outre des if, else et boucles.
+        ob_start();
+            $ad = $this->model->ad;
+            $m = new Mustache_Engine;
+            $template   = file_get_contents("public/templates/offer-325x480-tpl.mustache.css");
+            echo $m->render($template, $ad);
         ?>
-            .lp-ad {
-                position: relative;
-            }
-            <?php if($this->model->ad->meta->format == "324x480") { ?>
-                .lp-format-324x480 {
-                    width: 324px;
-                    height: 480px;
-                }
-            <?php } elseif($this->model->ad->meta->format == "480x152") { ?>
-                .lp-format-480x152 {
-                    width: 480px;
-                    height: 152px;
-                }
-            <?php } elseif($this->model->ad->meta->format == "230x324") { ?>
-                .lp-format-230x324 {
-                    width: 230px;
-                    height: 324px;
-                }
-            <?php } else { ?>
-                .lp-format-230x152 {
-                    width: 230px;
-                    height: 152px;
-                }
-            <?php } ?>
         <?php
         $styles = ob_get_clean();
         ob_end_clean();
@@ -42,14 +22,34 @@ class AdView {
     }
      
     public function outputBody() {
-    	ob_start(); // Cette section ne devrait presque pas contenir de PHP outre des if, else et boucles.
+    	ob_start();
     	?>
-            <div class="lp-ad lp-format-<?= $this->model->ad->meta->format; ?>">
-                <?php for($x=0; $x<count($this->model->ad->screens); $x++) { ?>
-                    <div class="screen no <?= $x; ?>">
-                        <?= $x; ?>
+            <div class="lp-ad lp-<?= $this->model->ad->meta->format; ?>">
+                <div class='flip'> 
+                    <div class='lp-front'>
+                        <div class="lp-logo"></div>
+                        <div class='scroller'>
+                        <?php 
+                            for($x=0; $x<$this->model->ad->offers->nbr; $x++) { 
+                                $offer = $this->model->ad->offers->list[$x];
+                                $m = new Mustache_Engine;
+                                $template   = file_get_contents("public/templates/offer-front-tpl.mustache.html");
+                                echo $m->render($template, $offer);
+                            } 
+                         ?>
+                        </div>
                     </div>
-                <?php } ?>
+                    <div class='lp-back'>
+                    <?php
+                        for($x=0; $x<$this->model->ad->offers->nbr; $x++) { 
+                            $offer = $this->model->ad->offers->list[$x];
+                            $m = new Mustache_Engine;
+                            $template   = file_get_contents("public/templates/offer-back-tpl.mustache.html");
+                            echo $m->render($template, $offer);
+                        } 
+                    ?>
+                    </div>
+                </div>
             </div>
     	<?php
     	$output = ob_get_clean();
@@ -58,7 +58,7 @@ class AdView {
     }
 
     public function outputScripts() {
-        ob_start(); // Cette section ne devrait presque pas contenir de PHP outre des if, else et boucles.
+        ob_start();
         ?>
         <?php
         $output = ob_get_clean();

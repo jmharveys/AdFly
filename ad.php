@@ -1,8 +1,12 @@
 <?php 
-	include 'configs/global.php'; 
+	include 'configs/global.php';
+	include 'app/libraries/utilities.php';
 	include 'app/controllers/Ad.php';
 	include 'app/models/Ad.php'; 
 	include 'app/views/Ad.php'; 
+
+	require 'app/libraries/Mustache/Autoloader.php';
+	Mustache_Autoloader::register();
 
 	$model = new AdModel();
 	$controller = new AdController($model);

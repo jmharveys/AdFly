@@ -186,6 +186,10 @@ iframe {
   border: none;
 }
 
+img {
+  display: block;
+}
+
 @font-face {
   font-family: 'Rubrik_ExtraLight';
   src: url("../fonts/rubrik/Rubrik_ExtraLight.eot");
@@ -549,13 +553,16 @@ body.no3 .steps {
 }
 
 .form .step.no3 .content {
-  top: 100px;
+  padding-top: 100px;
 }
 
 .form .step .content {
   position: relative;
   width: 500px;
   height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0 auto;
   -webkit-transition: width 0.5s ease;
   transition: width 0.5s ease;
@@ -856,6 +863,8 @@ body.no3 .steps {
 }
 
 .form .radio {
+  position: relative;
+  float: left;
   border: solid 1px #cccccc;
   margin: 0 6px;
   cursor: pointer;
@@ -878,38 +887,6 @@ body.no3 .steps {
 .form .radio.valid {
   border-color: #0f7801;
   background-color: #0f7801;
-}
-
-.form .rating {
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.form .rating-input {
-  float: right;
-  width: 16px;
-  height: 16px;
-  padding: 0;
-  margin: 0 0 0 -16px;
-  opacity: 0;
-}
-
-.form .rating:hover .rating-star:hover,
-.form .rating:hover .rating-star:hover ~ .rating-star,
-.form .rating-input:checked ~ .rating-star {
-  background-position: 0 0;
-}
-
-.form .rating-star,
-.form .rating:hover .rating-star {
-  position: relative;
-  float: right;
-  display: block;
-  width: 16px;
-  height: 16px;
-  background: url("../images/star.png") 0 -16px;
-  cursor: pointer;
 }
 
 .form input.dollar {

@@ -4,15 +4,27 @@ class AdModel {
 	public $ad;
 
     public function __construct() {
+        $date = new DateTime();
         $this->ad->meta = new stdClass();
+        $this->ad->meta->id = $date->getTimestamp() . rand(0, 100);
         $this->ad->meta->noClient = $_POST["noClient"];
         $this->ad->meta->noAd = $_POST["noAd"];
         $this->ad->meta->date = date("c");
         $this->ad->meta->category = $_POST["category"];
         $this->ad->meta->format = $_POST["format"];
 
+        $this->ad->url = URL;
         $this->ad->w = intval(explode("x", $this->ad->meta->format)[0]);
         $this->ad->h = intval(explode("x", $this->ad->meta->format)[1]);
+        $this->ad->folder = 'temps/' . $this->ad->meta->id;
+        $this->ad->assets = $this->ad->folder . '/assets/';
+        $this->createFolder($this->ad->folder);
+        $this->ad->logo = new stdClass();
+        $this->ad->logo->tmp = $_FILES['logo']['tmp_name'];
+        $this->ad->logo->defaultName = $_FILES['logo']['name'];
+        $this->ad->logo->ext = end(explode(".", $this->ad->logo->defaultName));
+        $this->ad->logo->name = 'logo' . $this->ad->logo->ext;
+        move_uploaded_file($this->ad->logo->tmp, $this->ad->assets . $this->ad->logo->name);
 
         $id = explode(",", $_POST["offersId"]);
         $this->ad->offers = new stdClass();
@@ -53,6 +65,10 @@ class AdModel {
             $obj->rating = $_POST[$obj->id . "_rating"];
             /* Link */
             $obj->link = $_POST[$obj->id . "_link"];
+            /* Image(s) */
+            foreach($_FILES['picture']['tmp_name'] as $key => $tmp_name) {
+                move_uploaded_file($_FILES['picture']['tmp_name'][$key], $this->ad->assets. $_FILES['picture']['name'][$key]);
+            }
             /* Description */
             $obj->description = $_POST[$obj->id . "_description"];
             /* Légal */
@@ -60,7 +76,17 @@ class AdModel {
 
             array_push($this->ad->offers->list, $obj);
         }
-        print_r($this->ad);
+        //print_r($this->ad);
+    }
+
+    private function createFolder($folder) {
+        rrmdir($folder);
+        umask(0);
+        if(!mkdir($folder, 0777, true)) {
+            die('Echec lors de la création du répertoire');
+        }
+        mkdir($folder, 0777, true);
+        mkdir($folder ."/assets", 0777, true);
     }
 }
 ?>

@@ -184,7 +184,7 @@ app.prototype.changeStep_ = function(pValue) {
         self.setOffer_(0);
       }
     } else if(self.step == 2) {
-      var data = $('form').serialize(); // serializes the form's elements.
+      var data = new FormData($('form')[0]); // serializes the form's elements.
       self.setAdPreview_(data);
     }
     self.step += parseInt(pValue);
@@ -233,12 +233,16 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
 /*=== Set Ad Preview ===========================================*/
 app.prototype.setAdPreview_ = function(pData) {
   var self = this;
-  console.log("call page");
   $.ajax({
     type: "POST",
     url: self.root + 'ad.php',
-    data: pData, 
+    data: pData,
+    cache: false,
+    contentType: false,
+    processData: false,
     success: function(data) {
+      console.log("success");
+      console.log(data);
       self.dom.render.css({
         'width': self.format.split('x')[0] + 'px', 
         'height': self.format.split('x')[1] + 'px'
@@ -247,6 +251,9 @@ app.prototype.setAdPreview_ = function(pData) {
       idoc.open();
       idoc.write(data);
       idoc.close();
+    }, error: function(data) {
+      console.log("error");
+      console.log(data);
     }
   });
 };
@@ -281,9 +288,9 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
     pSpeed = 0;
   }
 
-  $.get(self.path.templates + 'offer-tpl.mustache.html', function(template, textStatus, jqXhr) {
+  $.get(self.path.templates + 'form-offer-tpl.mustache.html', function(template, textStatus, jqXhr) {
     setTimeout(function() {
-      self.dom.offersList.append(Mustache.render($(template).filter('#offerTpl').html(), pObj));
+      self.dom.offersList.append(Mustache.render($(template).filter('#formOfferTpl').html(), pObj));
 
       // Destination
       $("input[name='"+ pObj.id +"_destination']").rules('add', {

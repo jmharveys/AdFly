@@ -46,7 +46,7 @@
 							<div class="half field">
 								<label>
 									<span class="lbl"><?= $t[$culture]['clientNo']; ?></span><br>
-									<input type="text" name="noClient" class="input short js-validate" placeholder="123456" required />
+									<input type="text" name="noClient" class="input short js-validate" placeholder="123456" value="123456" required />
 								</label>
 							</div>
 
@@ -89,9 +89,9 @@
 
 						<div class="row field format">
 							<label class="lbl"><?= $t[$culture]['format']; ?></label><br>
-							<input type="radio" name="format" value="480x324" checked />
+							<input type="radio" name="format" value="480x325" checked />
 							<input type="radio" name="format" value="480x152" />
-							<input type="radio" name="format" value="230x324" />
+							<input type="radio" name="format" value="230x325" />
 							<input type="radio" name="format" value="230x152" />
 						</div>
 					</fieldset>

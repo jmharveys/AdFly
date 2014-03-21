@@ -193,7 +193,7 @@ body.no3 {
 
 		&.no3 {
 			.content {
-				top: 100px;
+				padding-top: 100px;
 			}
 		}
 
@@ -201,6 +201,7 @@ body.no3 {
 			position: relative;
 			width: 500px;
 			height: 100%;
+			box-sizing: border-box;
 			margin: 0 auto;
 			transition: width $speed ease;
 
@@ -465,6 +466,8 @@ body.no3 {
 	}
 
 	.radio {
+		position: relative;
+		float: left;
 		border: solid 1px $medium-grey;
 		margin: 0 6px;
 		cursor: pointer;
@@ -485,35 +488,6 @@ body.no3 {
 			border-color: $valid-green;
 			background-color: $valid-green;
 		}
-	}
-
-	.rating {
-		overflow: hidden;
-		display: inline-block;
-		vertical-align: top;
-	}
-	.rating-input {
-		float: right;
-		width: 16px;
-		height: 16px;
-		padding: 0;
-		margin: 0 0 0 -16px;
-		opacity: 0;
-	}
-	.rating:hover .rating-star:hover,
-	.rating:hover .rating-star:hover ~ .rating-star,
-	.rating-input:checked ~ .rating-star {
-		background-position: 0 0;
-	}
-	.rating-star,
-	.rating:hover .rating-star {
-		position: relative;
-		float: right;
-		display: block;
-		width: 16px;
-		height: 16px;
-		background: url('../images/star.png') 0 -16px;
-		cursor: pointer;
 	}
 
 	input.dollar {
