@@ -529,6 +529,7 @@ body.no3 .steps {
 
 .form .steps {
   position: relative;
+  left: 0%;
   float: left;
   width: 300%;
   height: 100%;
@@ -554,6 +555,7 @@ body.no3 .steps {
 .form .step .content {
   position: relative;
   width: 500px;
+  height: 100%;
   margin: 0 auto;
   -webkit-transition: width 0.5s ease;
   transition: width 0.5s ease;
@@ -568,6 +570,10 @@ body.no3 .steps {
   opacity: 1;
 }
 
+.form .step .content.extend fieldset:nth-child(even) {
+  margin-left: 20px;
+}
+
 .form .step .content .footer,
 .form .step .content .header {
   float: left;
@@ -577,6 +583,14 @@ body.no3 .steps {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 1rem;
+}
+
+.form .step .content .addOfferMsg {
+  position: relative;
+  float: right;
+  font-size: .8rem;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 1rem 1rem 1rem 0;
 }
 
 .form .step .content .iframe {
@@ -623,10 +637,6 @@ body.no3 .steps {
 .form fieldset:only-child {
   -webkit-transition: none;
   transition: none;
-}
-
-.form fieldset:nth-child(even) {
-  margin-left: 20px;
 }
 
 .form fieldset legend {

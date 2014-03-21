@@ -56,5 +56,14 @@ class AdView {
         ob_end_clean();
         return $output;
     }
+
+    public function outputScripts() {
+        ob_start(); // Cette section ne devrait presque pas contenir de PHP outre des if, else et boucles.
+        ?>
+        <?php
+        $output = ob_get_clean();
+        ob_end_clean();
+        return $output;
+    }
 }
 ?>

@@ -16,6 +16,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/form.css">
+	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/rateit.css">
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -35,7 +36,7 @@
 	</header>
 
 	<form method="post" action="ad.php" enctype="multipart/form-data" autocomplete="off" class="js-form form">
-
+		<input type="hidden" name="offersId" />
 		<div class="steps">
 			<!-- === Step 1 ================================================= -->
 			<section class="step no1">
@@ -108,6 +109,7 @@
 					<header class="header">
 						<input name="offersNbr" type="hidden" value="0" />
 						<a href="#" class="btn rgt addOffer"><?= $t[$culture]['addOffer']; ?></a>
+						<span class="addOfferMsg"></span>
 					</header>
 					<div class="offersList">
 						<!-- public/templates/offer-tpl.mustache.html -->
@@ -146,6 +148,7 @@
     <script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/jquery.validate.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/jquery.mask.min.js"></script>
+    <script src="<?= URL ?>public/scripts/min/jquery.rateit.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/utilities.min.js"></script>
 	<script src="<?= URL ?>public/scripts/min/form.min.js"></script>
 	<script>
