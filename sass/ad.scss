@@ -144,7 +144,7 @@ body.lp-loaded {
 
 	.description {
 		padding: 5px 10px 6px 15px;
-		
+		 display:table;
 	
 		div:nth-child(1){
 			width: 310px;	
@@ -165,7 +165,7 @@ body.lp-loaded {
 
 	.description {
 		padding: 26px 10px 6px 39px;
-
+	 	display:table-cell;
 			
 		div:nth-child(1){
 			width: 310px;
@@ -186,7 +186,7 @@ body.lp-loaded {
 			// padding: 0 0 0 24px;
 		}
 
-		.caption {
+		.mention {
 			// height: 46px;
 			// width:auto; //ajout;
 		}
@@ -197,24 +197,39 @@ body.lp-loaded {
 
 	}
 
-	.wrapper-infos {
-		vertical-align: middle;
-		height: 145px;
+.wrappper{
 
-		.infos {
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			width: 100%;
-			padding: 0 0 0 20px;
+
+height:265px;
+display:table;
+
+}
+	.wrapper-height {
+		
+height: 100%;
+display: table-row;
+		.wrapper-infos {
+			display: table-cell;
+vertical-align: middle;
+			.infos {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				padding: 0 0 0 20px;
+			}
+			
 		}
-
+		
 	}
+
+	// .wrapper-height:before {
+	// 	content: '';
+	// 	display: inline-block;
+	// 	  height: 100%;
+	// 	  vertical-align: middle;
+	// }
 	
-
-
-
 	.pager-wrapper {
 		top: 300px;
 	}	
@@ -235,15 +250,14 @@ body.lp-loaded {
 //COMMUN AUX DEUX CÔTÉS
 .back, .front {
 
-	.description {
-	 display:table;
+	.description{
 	
 		.title, .subtitle, .price, .infos {
 			color: $gal-grey;
 		}
 
 
-		div:nth-child(1), div:nth-child(2), .caption {
+		div:nth-child(1), div:nth-child(2), .mention {
 			display:table-cell;
 		}
 
@@ -253,7 +267,7 @@ body.lp-loaded {
 		}
 
 
-		.caption {
+		.mention {
 			width: 170px;
 			color: $gal-grey;
 			text-transform: uppercase;
@@ -276,7 +290,7 @@ body.lp-loaded {
 
 
 //Unique au format QUART
-.quart {
+.lp-480x325 {
 
 	width: 480px;
 	height: 325px;
@@ -300,7 +314,7 @@ body.lp-loaded {
 				font: $front-subtitle-quart;
 			}	
 
-			.caption {
+			.mention {
 				font: $front-caption-quart;
 			}
 
@@ -334,7 +348,7 @@ body.lp-loaded {
 				font: $back-subtitle-quart;
 			}	
 
-			.caption {
+			.mention {
 				font: $back-caption-quart;
 			}
 
@@ -537,8 +551,8 @@ body.lp-loaded {
 // 	font: normal bold 28px/29px helvetica, sans-serif;
 // }
 
-// .huitieme-v .description .caption,
-// .huitieme-v .back .description .caption  {
+// .huitieme-v .description .mention,
+// .huitieme-v .back .description .mention  {
 // 	position: absolute;
 // 	top: 84px;
 // 	left: 57px;
@@ -549,7 +563,7 @@ body.lp-loaded {
 // 	// font: normal bold 28px/29px helvetica, sans-serif;
 // }
 
-// .huitieme-v .back .description .caption  {
+// .huitieme-v .back .description .mention  {
 // 	position: absolute;
 // 	top: 96px;
 // 	left: 51px;
@@ -649,7 +663,7 @@ body.lp-loaded {
 // 	font: normal bold 28px/26px helvetica, sans-serif;
 // }
 
-// .huitieme-h .description .opposite .caption {
+// .huitieme-h .description .opposite .mention {
 // 	height: 48px;
 // }
 
@@ -710,7 +724,7 @@ body.lp-loaded {
 // 	top: 129px;
 // }
 
-// .huitieme-h .description .caption  {
+// .huitieme-h .description .mention  {
 // 	height: 31px;
 // }
 
@@ -759,7 +773,7 @@ body.lp-loaded {
 // 	right: 42px;
 // }
 
-// .seizieme-h .description .caption {
+// .seizieme-h .description .mention {
 // 	position: absolute;
 // 	top: 133px;
 // 	left: 36px;
@@ -768,7 +782,7 @@ body.lp-loaded {
 // 	font: normal normal 11px/11px helvetica, sans-serif;
 // }
 
-// .seizieme-h .back .description .caption {
+// .seizieme-h .back .description .mention {
 // 	position: absolute;
 // 	top: 60px;
 // 	left: 24px;

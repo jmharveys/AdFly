@@ -333,6 +333,7 @@ body.lp-loaded {
 
 .front .description {
   padding: 5px 10px 6px 15px;
+  display: table;
 }
 
 .front .description div:nth-child(1) {
@@ -347,6 +348,7 @@ body.lp-loaded {
 
 .back .description {
   padding: 26px 10px 6px 39px;
+  display: table-cell;
 }
 
 .back .description div:nth-child(1) {
@@ -358,17 +360,26 @@ body.lp-loaded {
   vertical-align: top;
 }
 
-.back .wrapper-infos {
-  vertical-align: middle;
-  height: 145px;
+.back .wrappper {
+  height: 265px;
+  display: table;
 }
 
-.back .wrapper-infos .infos {
+.back .wrapper-height {
+  height: 100%;
+  display: table-row;
+}
+
+.back .wrapper-height .wrapper-infos {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.back .wrapper-height .wrapper-infos .infos {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100%;
   padding: 0 0 0 20px;
 }
 
@@ -388,11 +399,6 @@ body.lp-loaded {
   pointer-events: none;
 }
 
-.back .description,
-.front .description {
-  display: table;
-}
-
 .back .description .title,
 .back .description .subtitle,
 .back .description .price,
@@ -406,10 +412,10 @@ body.lp-loaded {
 
 .back .description div:nth-child(1),
 .back .description div:nth-child(2),
-.back .description .caption,
+.back .description .mention,
 .front .description div:nth-child(1),
 .front .description div:nth-child(2),
-.front .description .caption {
+.front .description .mention {
   display: table-cell;
 }
 
@@ -419,8 +425,8 @@ body.lp-loaded {
   text-align: right;
 }
 
-.back .description .caption,
-.front .description .caption {
+.back .description .mention,
+.front .description .mention {
   width: 170px;
   color: #333333;
   text-transform: uppercase;
@@ -438,83 +444,83 @@ body.lp-loaded {
   content: "$";
 }
 
-.quart {
+.lp-480x325 {
   width: 480px;
   height: 325px;
 }
 
-.quart .logo {
+.lp-480x325 .logo {
   width: 165px;
   height: 75px;
 }
 
-.quart .front .description {
+.lp-480x325 .front .description {
   height: 78px;
 }
 
-.quart .front .description .title {
+.lp-480x325 .front .description .title {
   font: normal normal 16px/18px AmericanTypewriter;
 }
 
-.quart .front .description .subtitle {
+.lp-480x325 .front .description .subtitle {
   font: normal normal 23px/23px AmericanTypewriter-Bold;
 }
 
-.quart .front .description .caption {
+.lp-480x325 .front .description .mention {
   font: normal normal 12px/12px AmericanTypewriter;
 }
 
-.quart .front .description .price {
+.lp-480x325 .front .description .price {
   font: normal normal 33px/29px AmericanTypewriter-Bold;
 }
 
-.quart .front .description div:nth-child(2) {
+.lp-480x325 .front .description div:nth-child(2) {
   width: 145px;
 }
 
-.quart .back .description div:nth-child(2) {
+.lp-480x325 .back .description div:nth-child(2) {
   width: 210px;
 }
 
-.quart .back .description .title {
+.lp-480x325 .back .description .title {
   font: normal normal 19px/18px AmericanTypewriter;
   white-space: nowrap;
 }
 
-.quart .back .description .subtitle {
+.lp-480x325 .back .description .subtitle {
   font: normal normal 23px/23px AmericanTypewriter-Bold;
 }
 
-.quart .back .description .caption {
+.lp-480x325 .back .description .mention {
   font: normal normal 12px/14px AmericanTypewriter;
 }
 
-.quart .back .description .price {
+.lp-480x325 .back .description .price {
   font: normal normal 33px/29px AmericanTypewriter-Bold;
 }
 
-.quart .back .description .rating {
+.lp-480x325 .back .description .rating {
   display: table-row;
 }
 
-.quart .back .description .logo {
+.lp-480x325 .back .description .logo {
   width: 115px;
   height: 55px;
 }
 
-.quart .back .infos {
+.lp-480x325 .back .infos {
   font: normal normal 15px/20px AmericanTypewriter;
   -webkit-line-clamp: 6;
   width: 410px;
   height: 120px;
 }
 
-.quart .gallery {
+.lp-480x325 .gallery {
   width: 480px;
   height: 325px;
 }
 
-.quart .gallery .scroller > div {
+.lp-480x325 .gallery .scroller > div {
   width: 480px;
   height: 325px;
 }

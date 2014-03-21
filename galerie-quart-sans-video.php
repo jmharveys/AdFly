@@ -69,7 +69,7 @@
 	</style>
 </head>
 <body>
-	<div class='lp-ad quart'>
+	<div class='lp-ad lp-480x325'>
 		<!-- <div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/holguin-back.jpg');"></div> -->
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
@@ -86,7 +86,7 @@
 											<p class="subtitle">La Romana,<br/>République Dominicaine</p>
 										</div>
 										<div>
-											<p class="caption">à par pers.  </p>
+											<p class="mention">à par pers.  </p>
 											<p class="price">99 999</p>
 										</div>
 									</div>
@@ -99,7 +99,7 @@
 											<p class="subtitle">Holguin, Cuba</p>
 										</div>
 										<div>
-											<p class="caption">à partir de<br/>par pers.</p>
+											<p class="mention">à partir de<br/>par pers.</p>
 											<p class="price">839</p>
 										</div>
 									</div>	
@@ -112,7 +112,7 @@
 											<p class="subtitle">Acapulco, Mexique</p>
 										</div>
 										<div>
-											<p class="caption">à partir de</p>
+											<p class="mention">à partir de</p>
 											<p class="price">1 568</p>
 										</div>
 									</div>	
@@ -125,7 +125,7 @@
 											<p class="subtitle">Cayo Largo, Cuba</p>
 										</div>
 										<div>
-											<p class="caption">à partir de<br/>par pers.</p>
+											<p class="mention">à partir de<br/>par pers.</p>
 											<p class="price">1 098</p>
 										</div>
 									</div>	
@@ -147,28 +147,32 @@
 						<div class='gallery'>
 							<div class='scroller' style="width: 1920px;">
 								<div>
+									<div class="wrappper">
+										<div class="description">
+											<div>
+												<p class="title">Dreams La Romana Resort & Spa</p>
+												<p class="subtitle">La Romana,<br/>République Dominicaine</p>
+												<ul class="rating">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+											<div>
+												<p class="mention">à partir de<br/>par pers.</p>
+												<p class="price">99 999</p>
+											</div>
+										</div>
+										<div class="wrapper-height">
+											<div class="wrapper-infos">
+											<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe.</div>
+											</div>
+										</div>
+									</div>
 									<div class="close"></div>
-									<div class="description">
-										<div>
-											<p class="title">Dreams La Romana Resort & Spa</p>
-											<p class="subtitle">La Romana,<br/>République Dominicaine</p>
-											<ul class="rating">
-											<li></li>
-											<li></li>
-											<li></li>
-											<li></li>
-										</ul>
-										</div>
-										<div>
-											<p class="caption">à partir de<br/>par pers.</p>
-											<p class="price">99 999</p>
-										</div>
-										<div class="logo" style="background-image: url('public/images/demo/tmr-small.jpg');"></div>
+									<div class="logo" style="background-image: url('public/images/demo/tmr-small.jpg');"></div>
 									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
-									</div>
-									<div class="wrapper-infos">
-										<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe.</div>
-									</div>
 								</div>
 								<div>
 									<div class="close"></div>
@@ -178,7 +182,7 @@
 											<p class="subtitle">Holguin, Cuba</p>
 										</div>
 										<div>
-											<p class="caption">à partir de<br/>par pers.</p>
+											<p class="mention">à partir de<br/>par pers.</p>
 											<p class="price">839</p>
 										</div>
 										<ul class="rating">
@@ -312,6 +316,9 @@
 				document.body.classList.add('lp-is-android');
 			} else {
 				document.body.classList.add('lp-is-ios');
+			}
+			if(isMobile.Android() || isMobile.iOS()) {
+				 location.href = 'lpri://webContentFinishedLoading';
 			}
 			document.body.classList.add('lp-loaded');
 		}
