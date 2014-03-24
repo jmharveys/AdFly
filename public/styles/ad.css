@@ -5,7 +5,7 @@
   width: 480px;
   height: 480px;
   z-index: 100000;
-  opacity: 0.3;
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -221,6 +221,77 @@ body.lp-loaded {
   overflow: hidden;
 }
 
+/*=== LEGAL css | debut ==========================*/
+
+.lp-legal-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  cursor: pointer;
+  z-index: 9998;
+  -webkit-transform: translate3d(0, 325px, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 .5s linear;
+}
+
+.lp-legal-bg.lp-legal-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 0 linear;
+}
+
+.lp-legal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-family: helvetica, arial, sans-serif;
+  color: #868889;
+  z-index: 9999;
+  -webkit-transition: -webkit-transform .5s ease;
+}
+
+.lp-legal.lp-legal-active {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+}
+
+.lp-legal-btn {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 50px;
+  height: 21px;
+  background: #f1f1f1;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 175%;
+  cursor: pointer;
+}
+
+.lp-legal-text {
+  position: relative;
+  float: left;
+  width: 480px;
+  background: #f1f1f1;
+  font-size: 11px;
+  text-align: justify;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+}
+
+.legalOpen .pager-wrapper {
+  opacity: 0;
+  -webkit-transition: opacity 0s ease;
+}
+
+/*=== LEGAL css | fin ==========================*/
+
 /*=== RETOURNER css | debut ====================*/
 
 .flip {
@@ -296,9 +367,7 @@ body.lp-loaded {
 
 .pager-wrapper {
   position: absolute;
-  top: 239px;
   left: 0px;
-  width: 480px;
   text-align: center;
   z-index: 1;
   opacity: 1;
@@ -360,7 +429,7 @@ body.lp-loaded {
   vertical-align: top;
 }
 
-.back .wrappper {
+.back .wrapper-all {
   height: 265px;
   display: table;
 }
@@ -385,15 +454,12 @@ body.lp-loaded {
 
 .back .pager-wrapper {
   top: 300px;
+  width: 480px;
 }
 
 .back .logo {
   position: absolute;
   z-index: 3;
-  top: 265px;
-  left: 305px;
-  width: 115px;
-  height: 55px;
   -webkit-background-size: contain;
   background-size: contain;
   pointer-events: none;
@@ -447,11 +513,20 @@ body.lp-loaded {
 .lp-480x325 {
   width: 480px;
   height: 325px;
+  /*=== VIDEO css | debut ============================*/
+  /*=== VIDEO css | fin ============================*/
 }
 
-.lp-480x325 .logo {
+.lp-480x325 .front .logo {
   width: 165px;
   height: 75px;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: opacity 0.3s ease;
+}
+
+.lp-480x325 .front .logo.lp-video-active {
+  opacity: 0;
 }
 
 .lp-480x325 .front .description {
@@ -476,6 +551,23 @@ body.lp-loaded {
 
 .lp-480x325 .front .description div:nth-child(2) {
   width: 145px;
+}
+
+.lp-480x325 .front .pager-wrapper {
+  top: 239px;
+  width: 480px;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: opacity 0.3s ease;
+}
+
+.lp-480x325 .front .pager-wrapper.lp-video-active {
+  opacity: 0;
+}
+
+.lp-480x325 .back {
+  width: 480px;
+  height: 325px;
 }
 
 .lp-480x325 .back .description div:nth-child(2) {
@@ -503,16 +595,26 @@ body.lp-loaded {
   display: table-row;
 }
 
-.lp-480x325 .back .description .logo {
-  width: 115px;
-  height: 55px;
-}
-
 .lp-480x325 .back .infos {
   font: normal normal 15px/20px AmericanTypewriter;
   -webkit-line-clamp: 6;
   width: 410px;
-  height: 120px;
+}
+
+.lp-480x325 .back .logo {
+  width: 115px;
+  height: 55px;
+  top: 265px;
+  left: 305px;
+}
+
+.lp-480x325 .back .lp-legal-bg {
+  width: 480px;
+  height: 325px;
+}
+
+.lp-480x325 .back .lp-legal-text {
+  width: 480px;
 }
 
 .lp-480x325 .gallery {
@@ -523,6 +625,97 @@ body.lp-loaded {
 .lp-480x325 .gallery .scroller > div {
   width: 480px;
   height: 325px;
+}
+
+.lp-480x325 .lp-video-play {
+  position: absolute;
+  opacity: 1;
+  z-index: 2;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 ease;
+}
+
+.lp-480x325 .lp-video-play.lp-video-active {
+  opacity: 0;
+  -webkit-transform: translate3d(-9999px, 0, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 .5s ease;
+}
+
+.lp-480x325 .lp-video-play {
+  position: absolute;
+  top: 118px;
+  left: 206px;
+  z-index: 1;
+  width: 70px;
+  height: 70px;
+}
+
+.lp-480x325 .lp-video-close {
+  position: absolute;
+  opacity: 0;
+  z-index: 11;
+  -webkit-transform: translate3d(-9999px, 0, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 .5s ease;
+}
+
+.lp-480x325 .lp-video-active .lp-video-close {
+  top: -65px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 ease;
+}
+
+.lp-480x325 .lp-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  z-index: 9;
+  -webkit-transform: translate3d(-9999px, 0, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 .5s ease;
+}
+
+.lp-480x325 .lp-video-bg.lp-video-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 ease;
+}
+
+.lp-480x325 .lp-video {
+  position: absolute;
+  opacity: 0;
+  z-index: 10;
+  -webkit-transform: translate3d(-9999px, 0, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 .5s ease;
+}
+
+.lp-480x325 .lp-video.lp-video-active {
+  bottom: 0px;
+  left: 0px;
+  width: 480px;
+  height: 247px;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: opacity .5s ease, -webkit-transform 0 ease;
+}
+
+.lp-480x325 .lp-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  margin: 0;
+  padding: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  z-index: 1;
 }
 
 .une-offre .front .description {
@@ -545,80 +738,3 @@ body.lp-loaded {
 .huitieme-v .back {
   background-color: white;
 }
-
-/*=== GALERIE css | fin ====================*/
-
-/*=== LEGAL css | debut ==========================*/
-
-.lp-legal-bg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 480px;
-  height: 325px;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  cursor: pointer;
-  z-index: 9998;
-  -webkit-transform: translate3d(0, 450px, 0);
-  -webkit-transition: opacity .5s ease, -webkit-transform 0 .5s linear;
-}
-
-.lp-legal-bg.lp-legal-active {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-transition: opacity .5s ease, -webkit-transform 0 0 linear;
-}
-
-.lp-legal {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 65px;
-  font-family: helvetica, arial, sans-serif;
-  color: #4d4d4d;
-  z-index: 9999;
-  -webkit-transition: -webkit-transform .5s ease;
-}
-
-.lp-legal.lp-legal-active {
-  -webkit-transform: translate3d(0, 0, 0) !important;
-}
-
-.lp-legal-btn {
-  position: absolute;
-  top: -20px;
-  left: 0;
-  width: 50px;
-  height: 21px;
-  background: #f1f1f1;
-  font-size: 12px;
-  text-align: center;
-  text-transform: uppercase;
-  line-height: 175%;
-  cursor: pointer;
-}
-
-.lp-legal-text {
-  position: relative;
-  float: left;
-  width: 480px;
-  height: 65px;
-  background: #f1f1f1;
-  font-size: 11px;
-  text-align: justify;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 5px;
-  -webkit-overflow-scrolling: touch;
-  overflow: auto;
-}
-
-.legalOpen .pager-wrapper {
-  opacity: 0;
-  -webkit-transition: opacity 0s ease;
-}
-
-/*=== LEGAL css | fin ==========================*/

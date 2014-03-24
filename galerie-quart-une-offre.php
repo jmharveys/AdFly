@@ -71,7 +71,7 @@
 </head>
 <body>
 	<div class='lp-ad quart quart-une-offre'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/holguin-back.jpg');"></div>
+		<!-- <div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/holguin-back.jpg');"></div> -->
 		<!--=== RETOURNER html | debut ==============-->
 		<div class='wrapperFlip' style='top: 0px; left: 0px; width: 480px; height: 325px;'>
 			<div class='flip' style='0px; width: 480px; height: 325px;'> 
