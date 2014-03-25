@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Galerie 1/4 sans vidéo | AdFly </title>
+	<title>Galerie 1/4 avec vidéo | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -92,6 +92,8 @@
 
 			/* Bouton Fermer Vidéo */
 			.lp-video-close {
+				width: 30px;
+				height: 30px;
 				background: url(http://localhost:8888/Adfly/public/images/btn-close.png);
 				background-size: contain;
 			}
@@ -197,7 +199,7 @@
 									</div>	
 								</div>	
 							</div>
-							<div class='pager-wrapper 1395680443693_video'>
+							<div class='pager-wrapper'>
 								<ul class='pager'>
 									<li class='selected'>0</li>
 									<li>1</li>
@@ -288,7 +290,7 @@
 												</ul>
 											</div>
 											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
+												<p class="mention">à partir de.</p>
 												<p class="price">1 568</p>
 											</div>
 										</div>
