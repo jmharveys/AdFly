@@ -1,13 +1,73 @@
-<div class="lp-offer-front">
-    <img src="image.jpg" />
-    <div class="description">
-        <div>
-            <p class="title">{{moreDestination}}</p>
-            <p class="subtitle">{{destination}}</p>
+<div class='lp-front'>
+    <div class="lp-logo"></div>
+    <div class='lp-scroller'>
+        {{#list}}
+        <div class="lp-offer">
+            <div class="lp-infos">
+                <div>
+                    <span class="lp-more">{{moreDestination}}</span>
+                    <span class="lp-destination">{{destination}}</span>
+                </div>
+                <div>
+                    <span class="lp-mention">
+                        {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
+                    </span>
+                    <span class="lp-price">{{price}}</span>
+                </div>
+            </div>
         </div>
-        <div>
-            <p class="caption">à par pers.  </p>
-            <p class="price">{{price}}</p>
-        </div>
+        {{/list}}
     </div>
+    {{#gallery}}
+    <span class="lp-pager">
+        <span class="lp-wrapper">
+            {{#list}}
+                <span class="lp-bullet"></span>
+            {{/list}}
+        </span>
+    </span>
+    {{/gallery}}
+</div>
+<div class='lp-back'>
+    <span class="lp-close"></span>
+    <div class='lp-scroller'>
+        {{#list}}
+        <div class="lp-offer">
+            <span class="lp-close"></span>
+            <div class="lp-card">
+                <div class="lp-summary">
+                    <div>
+                        <span class="lp-more">{{moreDestination}}</span>
+                        <span class="lp-destination">{{destination}}</span>
+                        {{#rating}}
+                            <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
+                        {{/rating}}
+                    </div>
+                    <div>
+                        <span class="lp-mentions">
+                            {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
+                        </span>
+                        <span class="lp-price">{{price}}</span>
+                    </div>
+                </div>
+                <div class="lp-description">
+                    <p>
+                        <span>{{description}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="lp-logo"></div>
+            <a class="btn-plusWeb noFlip" href="{{link}}"></a>
+        </div>
+        {{/list}}
+    </div>
+    {{#gallery}}
+    <span class="lp-pager">
+        <span class="lp-wrapper">
+            {{#list}}
+                <span class="lp-bullet"></span>
+            {{/list}}
+        </span>
+    </span>
+    {{/gallery}}
 </div>

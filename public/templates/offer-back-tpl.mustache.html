@@ -1,24 +1,27 @@
 <div class="lp-offer">
-    <div class="close"></div>
-    <div class="description">
-        <div>
-            <p class="title">{{moreDestination}}</p>
-            <p class="subtitle">{{destination}}</p>
-            <ul class="rating">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+    <span class="lp-close"></span>
+    <div class="lp-card">
+        <div class="lp-summary">
+            <div>
+                <span class="lp-more">{{moreDestination}}</span>
+                <span class="lp-destination">{{destination}}</span>
+                {{#rating}}
+                    <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
+                {{/rating}}
+            </div>
+            <div>
+                <span class="lp-mentions">
+                    {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
+                </span>
+                <span class="lp-price">{{price}}</span>
+            </div>
         </div>
-        <div>
-            <p class="caption">{{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}</p>
-            <p class="price">{{price}}</p>
+        <div class="lp-description">
+            <p>
+                <span>{{description}}</span>
+            </p>
         </div>
-        <div class="logo" style="background-image: url('{{logo.name}}');"></div>
-        <a class="btn-plusWeb noFlip" href="{{link}}"></a>
     </div>
-    <div class="wrapper-infos">
-        <div class="infos">{{description}}</div>
-    </div>
+    <div class="lp-logo"></div>
+    <a class="btn-plusWeb noFlip" href="{{link}}"></a>
 </div>

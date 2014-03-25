@@ -30,6 +30,7 @@ class AdModel {
         $this->ad->offers = new stdClass();
         $this->ad->offers->nbr = count($id);
         $this->ad->offers->list = [];
+        $this->ad->offers->gallery = $this->ad->offers->nbr > 1 ? true : false;
 
         $this->ad->scroller = new stdClass();
         $this->ad->scroller->w = $this->ad->w * $this->ad->offers->nbr;
@@ -67,7 +68,7 @@ class AdModel {
                 array_push($obj->mentions, $mention2);
             }
             /* Rating */
-            $obj->rating = $_POST[$obj->id . "_rating"];
+            $obj->rating = intval($_POST[$obj->id . "_rating"]);
             /* Link */
             $obj->link = $_POST[$obj->id . "_link"];
             /* Image(s) */
