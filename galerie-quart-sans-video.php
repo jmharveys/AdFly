@@ -1,5 +1,5 @@
 <?php 
-	include 'configs/global.php'; 
+	include '../configs/global.php'; 
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8]> <html class="lt-ie10 lt-ie9 lt-ie8" lang="fr"> <![endif]-->
