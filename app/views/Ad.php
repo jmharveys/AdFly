@@ -12,8 +12,13 @@ class AdView {
         ob_start();
             $ad = $this->model->ad;
             $m = new Mustache_Engine;
-            $template   = file_get_contents("public/templates/offer-325x480-tpl.mustache.css");
+            $template = file_get_contents("public/templates/styles/offer-tpl.mustache.css");
+            print_r($ad); 
             echo $m->render($template, $ad);
+            if($this->model->ad->meta->format == "480x325") {
+                $t480x325 = file_get_contents("public/templates/styles/offer480x325-tpl.mustache.css");
+                echo $m->render($t480x325, $ad);
+            }
         ?>
         <?php
         $styles = ob_get_clean();
@@ -25,29 +30,35 @@ class AdView {
     	ob_start();
     	?>
             <div class="lp-ad lp-<?= $this->model->ad->meta->format; ?>">
-                <div class='flip'> 
+                <div class='lp-flip'> 
                     <div class='lp-front'>
                         <div class="lp-logo"></div>
-                        <div class='scroller'>
-                        <?php 
-                            for($x=0; $x<$this->model->ad->offers->nbr; $x++) { 
-                                $offer = $this->model->ad->offers->list[$x];
-                                $m = new Mustache_Engine;
-                                $template   = file_get_contents("public/templates/offer-front-tpl.mustache.html");
-                                echo $m->render($template, $offer);
-                            } 
-                         ?>
+                        <div class='lp-gallery'>
+                            <div class='lp-scroller'>
+                            <?php 
+                                for($x=0; $x<$this->model->ad->offers->nbr; $x++) { 
+                                    $offer = $this->model->ad->offers->list[$x];
+                                    $m = new Mustache_Engine;
+                                    $template = file_get_contents("public/templates/offer-front-tpl.mustache.html");
+                                    echo $m->render($template, $offer);
+                                } 
+                             ?>
+                            </div>
                         </div>
                     </div>
                     <div class='lp-back'>
-                    <?php
-                        for($x=0; $x<$this->model->ad->offers->nbr; $x++) { 
-                            $offer = $this->model->ad->offers->list[$x];
-                            $m = new Mustache_Engine;
-                            $template   = file_get_contents("public/templates/offer-back-tpl.mustache.html");
-                            echo $m->render($template, $offer);
-                        } 
-                    ?>
+                        <div class='lp-gallery'>
+                            <div class='lp-scroller'>
+                            <?php
+                                for($x=0; $x<$this->model->ad->offers->nbr; $x++) { 
+                                    $offer = $this->model->ad->offers->list[$x];
+                                    $m = new Mustache_Engine;
+                                    $template = file_get_contents("public/templates/offer-back-tpl.mustache.html");
+                                    echo $m->render($template, $offer);
+                                } 
+                            ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,7 +70,7 @@ class AdView {
 
     public function outputScripts() {
         ob_start();
-        ?>
+        ?>x        
         <?php
         $output = ob_get_clean();
         ob_end_clean();

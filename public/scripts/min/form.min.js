@@ -6,7 +6,7 @@ app = function(pCulture, pRoot) {
   var self = this;
   self.culture = pCulture;
   self.root = pRoot;
-  self.format = "325x480";
+  self.format = "480x325";
   self.step = 1;
   self.offersNbr = 0;
   self.gallery = false;
@@ -208,7 +208,7 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
     opt.price = false;
     opt.date = true;
   }
-  if(pFormat == '480x324') { // 1/4 H
+  if(pFormat == '480x325') { // 1/4 H
     opt.maxOffers = 4;
     opt.maxPictures = 4;
     maxOriginalPictures = 4;
@@ -217,7 +217,7 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
     opt.maxOffers = 2;
     opt.maxPictures = 2;
     maxOriginalPictures = 2;
-  } else if(pFormat == '230x324') { // 1/8 V
+  } else if(pFormat == '230x325') { // 1/8 V
     opt.maxOffers = 2;
     opt.maxPictures = 2;
     maxOriginalPicture = 2;
@@ -241,8 +241,6 @@ app.prototype.setAdPreview_ = function(pData) {
     contentType: false,
     processData: false,
     success: function(data) {
-      console.log("success");
-      console.log(data);
       self.dom.render.css({
         'width': self.format.split('x')[0] + 'px', 
         'height': self.format.split('x')[1] + 'px'
@@ -508,20 +506,16 @@ app.prototype.updateMultifiles_ = function() {
     var max = multifiles.length > 1 ? 1 : btns.eq(x).data('max-original');
 
     btn.data('max', max);
-    console.log(list.children().length);
     if(list.children().length == 0) {
       btn.removeClass('disabled');
       msg.html('');
       txt.html(self.t[self.culture]['uploadImage']);
     } else {
-      console.log('list avec stock');
       if(list.children().length < btn.data('max')) {
-        console.log('list PAS full');
         btn.removeClass('disabled');
         msg.html('');
         txt.html(self.t[self.culture]['uploadOtherImages']);
       } else {
-        console.log('list full');
         btn.addClass('disabled');
         msg.html(' <span class="msg">(' + self.t[self.culture]['maximumPicturesNumberReached'] + ')</span>');
         txt.html(self.t[self.culture]['uploadImage']);

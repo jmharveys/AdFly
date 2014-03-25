@@ -33,6 +33,7 @@
 </head>
 <body>
 	<?= $view->outputBody(); ?>
+	<script src="<?= URL ?>public/scripts/ad-basic.js"></script>
 	<?= $view->outputScripts(); ?>
 </body>
 </html>

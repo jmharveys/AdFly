@@ -1,0 +1,99 @@
+.lp-ad {
+	position: relative;
+    width: {{w}}px;
+    height: {{h}}px;
+    color: #333;
+}
+
+.lp-flip,
+.lp-front,
+.lp-back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.lp-flip {
+	-webkit-transition: -webkit-transform 1s ease;
+	-webkit-transform-style: preserve-3d;
+}
+
+.lp-back {
+	-webkit-transform: rotateY(180deg);
+}
+
+.lp-flip * {
+	-webkit-backface-visibility: hidden;
+}
+
+.lp-flip.lp-active,
+.lp-back {
+  -webkit-transform: rotateY(180deg);
+}
+
+.flipped .lp-back {
+  -webkit-transition: -webkit-transform 0s;
+  -webkit-transform: translateZ(-2px) rotateY(-180deg);
+}
+
+.lp-logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 165px;
+	height: 75px;
+	background-color: #fff;
+	background-image: url({{logo.name}});
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: contain;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.lp-gallery {
+	width: 100%;
+	height: 100%;
+}
+
+.lp-scroller {
+	position: relative;
+	float: left;
+	width: {{scroller.w}}px;
+	height: 100%;
+}
+
+.lp-offer {
+	position: relative;
+	float: left;
+	width: {{w}}px;
+	height: 100%;
+	background-color: #fff;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+
+{{#offers.list}}
+	.lp-offer:nth-child({{index}}) {
+		background-image: url({{pictures.0}});
+	}
+{{/offers.list}}
+
+.lp-infos {
+	display: table;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: #fff;
+	box-sizing: border-box;
+}
+
+.lp-price:after {
+  font-size: 60%;
+  vertical-align: super;
+  content: "$";
+}
