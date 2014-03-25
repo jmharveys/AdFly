@@ -76,72 +76,20 @@
 			top: -10px;
 			left: -10px;	
 		}	
-
-		/*Format 1/4 avec vidéo*/
-
-			/* Bouton Play */
-			.lp-video-play {
-				background: url(http://localhost:8888/Adfly/public/images/btn-play.png);
-				background-size: contain;
-			}	
-
-			.lp-video-play:active {
-				background: url(http://localhost:8888/Adfly/public/images/btn-play-pressed.png);
-				background-size: contain;
-			}	
-
-			/* Bouton Fermer Vidéo */
-			.lp-video-close {
-				width: 30px;
-				height: 30px;
-				background: url(http://localhost:8888/Adfly/public/images/btn-close.png);
-				background-size: contain;
-			}
-
 	</style>
 </head>
 <body>
 	<div class='lp-ad lp-480x325 uniqueOffer'>
-		<!-- VIDEO 1 html | debut --> 
-		<div class='lp-video-bg 1395680443693_video'></div> 
-		<div class='lp-video 1395680443693_video' style="width:480px; height:247px;"> 
-			<video width='480px' height='247px' controls> 
-				<source src='http://s2.cpl.delvenetworks.com/media/6aef184dd0a64f1183a9ec439e89fec8/6c078fb92c3248bda1b38215cf65f004/20130515-174149-5194011dc0d813-64803181-mp48deba435c56e79f2f2e23df7f10f60e694bcf29b.m3u8' /> 
-				Votre navigateur ne supporte pas la balise vidéo. 
-			</video> 
-			<div class='lp-video-close 1395680443693_video'></div> 
-		</div> 
-		<!-- VIDEO html 1 | fin -->		
-		<!--=== HORS-LIGNE Html | debut =========================-->
-		<div id='lp-offline-banner'>
-			<div class='lp-offline-warning'>
-				Une connexion internet est requise pour visualiser correctement certaines parties de cette annonce.
-			</div>
-		</div>
-		<!--=== HORS-LIGNE Html | fin ===========================-->
-
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
 						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
 						<div class='gallery'>
-							<div class='scroller' style="width: 1920px;">
+							<div class='scroller' style="width: 480px;">
 								<div>				
 									<div style="background: url('<?= URL ?>public/images/demo/mexique1.jpg'); width:480px; height:247px;"></div>
 								</div>
-								<div>
-									<!-- VIDEO 1 PLAY html | debut -->
-									<div class='lp-video-play 1395680443693_video noFlip'></div> 
-									<!-- VIDEO 1 PLAY html | fin -->
-									<div style="background: url('<?= URL ?>public/images/demo/mexique2.jpg'); width:480px; height:247px;"></div>
-								</div>	
-								<div>	
-									<div style="background: url('<?= URL ?>public/images/demo/mexique3.jpg'); width:480px; height:247px;"></div>
-								</div>		
-								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/mexique4.jpg'); width:480px; height:247px;"></div>
-								</div>	
 							</div>
 							<div class="table-cell-wrapper">
 								<div class="description">
@@ -154,14 +102,6 @@
 										<p class="price">1 568</p>
 									</div>
 								</div>
-							</div>
-							<div class='pager-wrapper'>
-								<ul class='pager'>
-									<li class='selected'>0</li>
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-								</ul>
 							</div>
 						</div>
 					</div>
@@ -370,89 +310,6 @@
 			for (var i = 0; i < legalList.length; ++i) {
 				new legal(legalList[i],cleanWhiteSpace(legalList[i]).childNodes[0],legalBg[i]);
 			}		
-
-		/* CODE POUR FORMAT 1/4 AVEC VIDÉO | DÉBUT */
-
-		/*=== VIDEO script | debut =========================*/
-		var videos = {
-			play: document.getElementsByClassName('lp-video-play'),
-			close: document.getElementsByClassName('lp-video-close'),
-			bg: document.getElementsByClassName('lp-video-bg'),
-			player: document.getElementsByClassName('lp-video'),
-			stop: function(pClass) {
-				var related = document.getElementsByClassName(pClass);
-				for(var x=0; x<related.length; x++) {
-					related[x].classList.remove('lp-video-active');
-					if(related[x].classList.contains('lp-video')) {
-					var video = related[x].querySelector('video');
-						if(video.currentTime != 0.1) {
-							try {
-								video.currentTime = 0.1;
-							} catch(e) {};
-						}
-						video.pause();
-					}
-				}
-			}
-		}
-
-		/*--- Click btn Jouer ---*/
-		for(var x=0; x<videos.play.length; x++) {
-			videos.play[x].onclick = function(e) {
-				e.stopImmediatePropagation();
-				var className = this.classList[1];
-				var related = document.getElementsByClassName(className);
-				var videoTags = document.getElementsByTagName('video');
-				for(var k=0; k<related.length; k++) {
-					related[k].classList.add('lp-video-active');
-				}
-				for(var j=0; j<videoTags.length; j++) {
-					if(videoTags[j].parentNode.classList[1] != className) {
-						videos.stop(videoTags[j].parentNode.classList[1]);
-					} else {
-						videoTags[j].play();
-					}
-				}
-			}
-		}
-
-		/*--- Click btn Fermer ---*/
-		for(var x=0; x<videos.close.length; x++) {
-			videos.close[x].onclick = function(e) {
-				e.stopImmediatePropagation();
-				videos.stop(this.classList[1]);
-			}
-		}
-
-		/*--- Click Arriere-plan ---*/
-		for(var x=0; x<videos.bg.length; x++) {
-			videos.bg[x].onclick = function(e) {
-				e.stopImmediatePropagation();
-				videos.stop(this.classList[1]);
-			}
-		}
-
-		/*--- Quand la video se termine ---*/
-		for(var x=0; x<videos.player.length; x++) {
-			videos.player[x].firstElementChild.addEventListener('ended', function() {
-				videos.stop(this.parentNode.classList[1]);
-			});
-		}
-		/*=== VIDEO script | fin ===========================*/
-
-
-		/*=== HORS-LIGNE script | debut ====================*/
-		var offlineBanner = document.getElementById('lp-offline-banner');
-		var offlineWarning = document.getElementsByClassName('lp-offline-warning')[0];
-		if(!window.navigator.onLine) {
-			offlineBanner.classList.add('lp-offline');
-		}
-		offlineWarning.onclick = function() {
-			offlineBanner.classList.remove('lp-offline');
-		}
-		/*=== HORS-LIGNE script | fin ======================*/
-
-		/*=== CODE POUR FORMAT 1/4 AVEC VIDÉO | FIN ===========================*/
 	</script>
 </body>
 </html>

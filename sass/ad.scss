@@ -583,6 +583,24 @@ body.lp-loaded {
 	/*=== HORS-LIGNE | fin ======*/
 
 }
+
+// 1/4 sans offre
+.lp-480x325.uniqueOffer .front .table-cell-wrapper {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background: rgba(255, 255, 255, 1);
+}
+
+.lp-480x325.uniqueOffer .front .pager-wrapper {
+	top: 225px;
+}
+
+.lp-480x325.uniqueOffer .back, .lp-480x325.uniqueOffer .front {
+	background-color: rgba(255,255,255,1);
+}
+
+
 /*=== FORMAT 1/4 | fin ======*/
 
 
@@ -591,29 +609,18 @@ body.lp-loaded {
 
 // AUTRES FORMATS
 
-// 1/4 sans offre
-.une-offre .front .description {
-	float: none;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}
-
-.une-offre .back {
-	background-color: rgba(255,255,255,1);
-}
 
 //1/8 V
 
-.huitieme-v .front .description {
-	float: none;
-	position: absolute;
-	bottom: 0;
-}
+// .huitieme-v .front .description {
+// 	float: none;
+// 	position: absolute;
+// 	bottom: 0;
+// }
 
-.huitieme-v .back {
-	background-color: rgba(255,255,255,1);
-}
+// .huitieme-v .back {
+// 	background-color: rgba(255,255,255,1);
+// }
 
 
 

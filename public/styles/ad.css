@@ -747,25 +747,20 @@ body.lp-loaded {
   -webkit-transform: translateY(0);
 }
 
-/*=== FORMAT 1/4 | fin ======*/
-
-.une-offre .front .description {
-  float: none;
+.lp-480x325.uniqueOffer .front .table-cell-wrapper {
   position: absolute;
   bottom: 0;
   right: 0;
+  background: white;
 }
 
-.une-offre .back {
+.lp-480x325.uniqueOffer .front .pager-wrapper {
+  top: 225px;
+}
+
+.lp-480x325.uniqueOffer .back,
+.lp-480x325.uniqueOffer .front {
   background-color: white;
 }
 
-.huitieme-v .front .description {
-  float: none;
-  position: absolute;
-  bottom: 0;
-}
-
-.huitieme-v .back {
-  background-color: white;
-}
+/*=== FORMAT 1/4 | fin ======*/
