@@ -30,6 +30,25 @@
 			z-index: 10;
 		}
 
+		/* Bouton Fermer */
+		.back .close {
+		  position: absolute;
+		  top: 0px;
+		  left: 0px;
+		  width: 40px;
+		  height: 40px;
+		  z-index: 1;
+		  background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
+		  -webkit-background-size: contain;
+		  background-size: contain;
+		}
+		
+		/* Bouton Fermer ACTIF */
+		.back .close:active {
+		  background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
+		}
+
+
 		/* Plus Web */
 		.back a.btn-plusWeb {
 			position: absolute;
@@ -42,10 +61,13 @@
 			background-size: contain;		
 		}
 
+
+		/* Bouton +Web ACTIF */
 		.back a.btn-plusWeb:active {
 			background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
 		}	
 
+		/* Bouton +Web : truc pour élargir zone cliquable ; */
 		.back a.btn-plusWeb:after {
 			position: absolute;
 			content: "";
@@ -57,22 +79,22 @@
 
 		/*Format 1/4 avec vidéo*/
 
-		/* Bouton Play */
-		.lp-video-play {
-			background: url(http://localhost:8888/Adfly/public/images/btn-play.png);
-			background-size: contain;
-		}	
+			/* Bouton Play */
+			.lp-video-play {
+				background: url(http://localhost:8888/Adfly/public/images/btn-play.png);
+				background-size: contain;
+			}	
 
-		.lp-video-play:active {
-			background: url(http://localhost:8888/Adfly/public/images/btn-play-pressed.png);
-			background-size: contain;
-		}	
+			.lp-video-play:active {
+				background: url(http://localhost:8888/Adfly/public/images/btn-play-pressed.png);
+				background-size: contain;
+			}	
 
-		/* Bouton Fermer Vidéo */
-		.lp-video-close {
-			background: url(http://localhost:8888/Adfly/public/images/btn-close.png);
-			background-size: contain;
-		}
+			/* Bouton Fermer Vidéo */
+			.lp-video-close {
+				background: url(http://localhost:8888/Adfly/public/images/btn-close.png);
+				background-size: contain;
+			}
 
 	</style>
 </head>
@@ -108,7 +130,7 @@
 			</div>
 		</div>
 		<!--=== HORS-LIGNE Html | fin ===========================-->
-		
+
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
@@ -214,6 +236,7 @@
 												& Spa, directement sur la page de Bayahibe.</div>
 											</div>
 										</div>
+										<div class="close"></div>
 										<div class="logo" style="background-image: url('public/images/demo/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
@@ -241,6 +264,7 @@
 												<div class="infos">29 mars 2014 - 8 jours, 7 nuits. Une semaine en formule tout-inclus à l'hôtel Blau Costa Verde sur la plage de Playa Pesquero Beach. Incluant une nouvelle section Plus qui est réservée à une catégorie de voyageurs, avec piscine privée, bar, et plus. 3 repas style buffet tous les jours, soupers À la carte illimités avec vin servi, divertissements en soirée, etc.</div>
 											</div>
 										</div>
+										<div class="close"></div>
 										<div class="logo" style="background-image: url('public/images/demo/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
@@ -305,6 +329,7 @@
 												<div class="infos">23 février 2014 - 8 jours, 7 nuits. Réservez un forfait tout inclus à Cayo Largo avec Vacances TMR à l'hôtel Playa Blanca, qui est reconnue comme l'un des meilleurs sites de plongée en raison de ses splendides récifs de corail débordant d'une panoplie de petits poissons.</div>
 											</div>
 										</div>
+										<div class="close"></div>
 										<div class="logo" style="background-image: url('public/images/demo/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
