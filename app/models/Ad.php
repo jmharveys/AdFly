@@ -23,18 +23,23 @@ class AdModel {
         $this->ad->logo->tmp = $_FILES['logo']['tmp_name'];
         $this->ad->logo->defaultName = $_FILES['logo']['name'];
         $this->ad->logo->ext = end(explode(".", $this->ad->logo->defaultName));
-        $this->ad->logo->name = 'logo' . $this->ad->logo->ext;
-        move_uploaded_file($this->ad->logo->tmp, $this->ad->assets . $this->ad->logo->name);
+        $this->ad->logo->name = $this->ad->assets . 'logo.' . $this->ad->logo->ext;
+        move_uploaded_file($this->ad->logo->tmp, $this->ad->assets . 'logo.' . $this->ad->logo->ext);
 
         $id = explode(",", $_POST["offersId"]);
         $this->ad->offers = new stdClass();
         $this->ad->offers->nbr = count($id);
         $this->ad->offers->list = [];
 
+        $this->ad->scroller = new stdClass();
+        $this->ad->scroller->w = $this->ad->w * $this->ad->offers->nbr;
+
         for($x=0; $x<$this->ad->offers->nbr; $x++) {
             $obj = new stdClass();
             /* ID */
             $obj->id = $id[$x];
+            /* Index */
+            $obj->index = $x + 1;
             /* Destination */
             $obj->destination = $_POST[$obj->id . "_destination"];
             /* More Destination */
@@ -66,8 +71,11 @@ class AdModel {
             /* Link */
             $obj->link = $_POST[$obj->id . "_link"];
             /* Image(s) */
-            foreach($_FILES['picture']['tmp_name'] as $key => $tmp_name) {
-                move_uploaded_file($_FILES['picture']['tmp_name'][$key], $this->ad->assets. $_FILES['picture']['name'][$key]);
+            $obj->pictures = array();
+            foreach($_FILES[$obj->id . '_picture']['tmp_name'] as $key => $tmp_name) {
+                $name = $_FILES[$obj->id . '_picture']['name'][$key];
+                array_push($obj->pictures, $this->ad->assets . $name);
+                move_uploaded_file($_FILES[$obj->id . '_picture']['tmp_name'][$key], $this->ad->assets. $name);
             }
             /* Description */
             $obj->description = $_POST[$obj->id . "_description"];

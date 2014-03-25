@@ -18,7 +18,7 @@
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/form.css">
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/rateit.css">
 	<!--[if lt IE 9]>
-		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
 <body class="no1">

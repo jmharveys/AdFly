@@ -1,0 +1,44 @@
+.lp-infos {
+	display: table;
+	width: 100%;
+	height: 78px;
+	box-sizing: border-box;
+	padding: 5px 10px 6px 15px;
+}
+
+.lp-infos > div {
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+.lp-infos > div:nth-child(1) {
+	width: 310px;
+}
+
+.lp-infos > div:nth-child(2) {
+	width: 145px;
+	text-align: right;
+}
+
+.lp-title {
+	font: normal normal 16px/18px AmericanTypewriter;
+	margin: 0;
+}
+
+.lp-subtitle {
+	font: normal normal 23px/23px AmericanTypewriter-Bold;
+	margin: 0;
+}
+
+.lp-mention {
+	width: 170px;
+	font: normal normal 12px/12px AmericanTypewriter;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.lp-price {
+	font: normal normal 33px/29px AmericanTypewriter-Bold;
+	letter-spacing: -1px;
+	margin: 0;
+}
