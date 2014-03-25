@@ -320,9 +320,9 @@ body.lp-loaded {
   -webkit-transform: translateZ(-2px) rotateY(-180deg);
 }
 
-/*=== RETOURNER css | fin ====================*/
+/*=== RETOURNER fin =======*/
 
-/*=== GALERIE css | debut ====================*/
+/*=== GALERIE ======*/
 
 .logo {
   position: absolute;
@@ -510,11 +510,15 @@ body.lp-loaded {
   content: "$";
 }
 
+/*=== FORMAT 1/4  ======*/
+
 .lp-480x325 {
   width: 480px;
   height: 325px;
-  /*=== VIDEO css | debut ============================*/
-  /*=== VIDEO css | fin ============================*/
+  /*=== VIDEO  ==*/
+  /*=== VIDEO  ===*/
+  /*=== HORS-LIGNE ====*/
+  /*=== HORS-LIGNE | fin ======*/
 }
 
 .lp-480x325 .front .logo {
@@ -523,10 +527,6 @@ body.lp-loaded {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: opacity 0.3s ease;
-}
-
-.lp-480x325 .front .logo.lp-video-active {
-  opacity: 0;
 }
 
 .lp-480x325 .front .description {
@@ -559,10 +559,6 @@ body.lp-loaded {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: opacity 0.3s ease;
-}
-
-.lp-480x325 .front .pager-wrapper.lp-video-active {
-  opacity: 0;
 }
 
 .lp-480x325 .back {
@@ -688,6 +684,8 @@ body.lp-loaded {
 }
 
 .lp-480x325 .lp-video {
+  left: 0;
+  bottom: 0;
   position: absolute;
   opacity: 0;
   z-index: 10;
@@ -696,10 +694,6 @@ body.lp-loaded {
 }
 
 .lp-480x325 .lp-video.lp-video-active {
-  bottom: 0px;
-  left: 0px;
-  width: 480px;
-  height: 247px;
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: opacity .5s ease, -webkit-transform 0 ease;
@@ -717,6 +711,45 @@ body.lp-loaded {
   -webkit-transform: translate3d(0, 0, 0);
   z-index: 1;
 }
+
+.lp-480x325 #lp-offline-banner {
+  position: absolute;
+  text-align: center;
+}
+
+.lp-480x325 #lp-offline-banner .lp-offline-warning {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  max-width: 680px;
+  min-height: 30px;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-position: 2% 50%, 98% 50%;
+  background-repeat: no-repeat, no-repeat;
+  -webkit-background-size: 20px 20px, 15px 15px;
+  background-size: 20px 20px, 15px 15px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkZFREU3NjA5QURFMTFFMkFFQUM5REE2OTlDQ0JGM0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkZFREU3NjE5QURFMTFFMkFFQUM5REE2OTlDQ0JGM0MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2RkVERTc1RTlBREUxMUUyQUVBQzlEQTY5OUNDQkYzQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2RkVERTc1RjlBREUxMUUyQUVBQzlEQTY5OUNDQkYzQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoyaQP8AAAF2SURBVHja7JjRbcIwEIZDxQDpBhmBTACdgLIB2SCdgDJBYYKkE9C+5JVkArIBjMAG5Sz9lpBlOyFxwkn1SSdFOGd/+HyXP5kURfEXMLaXgLl5QA/oARts2iEmJ//F9Zw8bRFzRVxFHiJuPQRggoWk/ZB/kx+xsAnujbxW/qSAzVymOFfgpImF95a4vQJ3P1/pErCyjJUdxyoORXIdq4rnlrGlZWzRcc6HAUXVvWt+nzVU5Ab36OZbuK7ig9Jmli3aRYgql3HRI21m4uWWB/SAHnBcwJj8AyqFJaBQHTvyFfkr5FXNNcVSZMbQcyXnM1gCMumrTvoCfhkEwb3IjMdMuwqYQhCcyT8NMv4CyPyZKY4gk86Wl6JkDMimMxgi7SeDphscsm2RzKDp1gbI+tmAcjczA+RqqOru8qjTQYrC2XJ6FmeaM7kbItV9xMJB04a2nABlKwqUTyEXTnIrBaj6qcOZTR3McVR2LeQGGGl28f8o6psAAwDkA0q/OZ6/AgAAAABJRU5ErkJggg==), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjA4MjE3MkI5QjA2MTFFMkFFQUM5REE2OTlDQ0JGM0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjA4MjE3MkM5QjA2MTFFMkFFQUM5REE2OTlDQ0JGM0MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2RkVERTc2MjlBREUxMUUyQUVBQzlEQTY5OUNDQkYzQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMDgyMTcyQTlCMDYxMUUyQUVBQzlEQTY5OUNDQkYzQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmuSIKsAAAFeSURBVHjarNbLbcMwDAZg50cHyArdwN0gPXqLeIOO0E7QEewRerKPWSEjdASNUDqgBMXVgxRNgAgSK/yQSJR0Wpal28WV8pvynfLeVWIYhuLzdV1DPRob6iGBTpRnyhtl3xmC0VCP3vcp2A/y4fGLEX2q53Fk0D1+NaL/cBTQOCYpXkCfcPDES6KKC9CAg1evs+KEfgjRLe7gljHhhE6Kf+7hnaI+7nkhnYUFRspZM/8epX522H34Jtk0ol9+a0FTG8ivdMfiuLSgKbjjudbgajQHH4kn0RJ8BP6TQ7d4qXzZ49oDYyZwLA2AoIg7cL5VsKZPw0nHm0oz3IKKcBROEAtaxXHUGazFkUGlK9i14jCg2wHxyq9qHAZ061PH/arGYUDjK64ahxVtxaHYlb5yaAuO6CZRu218SgoK8RG7a0zpiiOOCj7S8xkVQI1W8Aea2kDiwc1oBg/oFn8CDACNIqqZNBCYDQAAAABJRU5ErkJggg==);
+  font-size: 12px;
+  font-family: helvetica, arial, sans-serif;
+  text-align: left;
+  color: #fff;
+  line-height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px 40px;
+  margin: 0 auto;
+  -webkit-transform-origin: 0 0;
+  -webkit-transform: translateY(-90px);
+  -webkit-transition: -webkit-transform .5s ease;
+  z-index: 1;
+}
+
+.lp-480x325 #lp-offline-banner.lp-offline .lp-offline-warning {
+  -webkit-transform: translateY(0);
+}
+
+/*=== FORMAT 1/4 | fin ======*/
 
 .une-offre .front .description {
   float: none;
