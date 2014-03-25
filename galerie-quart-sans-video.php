@@ -19,88 +19,101 @@
 	<style>
 	/* ICONES */
 
-	/* Étoiles */
-	.back ul.rating > li {
-		display: inline-block;
-		background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-		background-size: contain;
-		width: 18px;
-		height: 18px;
-		margin: 5px 3px 0 0;
-		z-index: 10;
-	}
+		/* Étoiles */
+		.back ul.rating > li {
+			display: inline-block;
+			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
+			background-size: contain;
+			width: 18px;
+			height: 18px;
+			margin: 5px 3px 0 0;
+			z-index: 10;
+		}
 
-	/* Bouton Play */
-	.lp-video-play {
-		background: url(http://localhost:8888/Adfly/public/images/btn-play.png);
-		background-size: contain;
-	}	
+		/* Plus Web */
+		.back a.btn-plusWeb {
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			width: 40px;
+			height: 40px;
+			z-index: 1;
+			background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
+			background-size: contain;		
+		}
 
-	.lp-video-play:active {
-		background: url(http://localhost:8888/Adfly/public/images/btn-play-pressed.png);
-		background-size: contain;
-	}	
+		.back a.btn-plusWeb:active {
+			background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
+		}	
 
-	/* Bouton Fermer Vidéo */
-	.lp-video-close {
-		background: url(http://localhost:8888/Adfly/public/images/btn-close.png);
-		background-size: contain;
-	}
+		.back a.btn-plusWeb:after {
+			position: absolute;
+			content: "";
+			width: 80px;
+			height: 80px;
+			top: -10px;
+			left: -10px;	
+		}	
 
-	/* Plus Web */
-	.back a.btn-plusWeb {
-		position: absolute;
-		bottom: 10px;
-		right: 10px;
-		width: 40px;
-		height: 40px;
-		z-index: 1;
-		background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
-		background-size: contain;		
-	}
+		/*Format 1/4 avec vidéo*/
 
-	.back a.btn-plusWeb:active {
-		background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
-	}	
+		/* Bouton Play */
+		.lp-video-play {
+			background: url(http://localhost:8888/Adfly/public/images/btn-play.png);
+			background-size: contain;
+		}	
 
-	.back a.btn-plusWeb:after {
-		position: absolute;
-		content: "";
-		width: 80px;
-		height: 80px;
-		top: -10px;
-		left: -10px;	
-	}	
+		.lp-video-play:active {
+			background: url(http://localhost:8888/Adfly/public/images/btn-play-pressed.png);
+			background-size: contain;
+		}	
+
+		/* Bouton Fermer Vidéo */
+		.lp-video-close {
+			background: url(http://localhost:8888/Adfly/public/images/btn-close.png);
+			background-size: contain;
+		}
+
 	</style>
 </head>
 <body>
 	<div class='lp-ad lp-480x325'>
 		<!-- <div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/video.jpg');"></div> -->
+
+
+		<!-- VIDEO 1 html | debut --> 
+		<div class='lp-video-bg 1395680443693_video'></div> 
+		<div class='lp-video 1395680443693_video' style="width:480px; height:247px;"> 
+			<video width='480px' height='247px' controls> 
+				<source src='http://s2.cpl.delvenetworks.com/media/6aef184dd0a64f1183a9ec439e89fec8/6c078fb92c3248bda1b38215cf65f004/20130515-174149-5194011dc0d813-64803181-mp48deba435c56e79f2f2e23df7f10f60e694bcf29b.m3u8' /> 
+				Votre navigateur ne supporte pas la balise vidéo. 
+			</video> 
+			<div class='lp-video-close 1395680443693_video'></div> 
+		</div> 
+		<!-- VIDEO html 1 | fin -->		
+		<!-- VIDEO 2 html | debut --> 
+		<div class='lp-video-bg 1395680443692_video'></div> 
+		<div class='lp-video 1395680443692_video' style="width:480px; height:247px;"> 
+			<video width='480px' height='247px' controls> 
+				<source src='http://s2.cpl.delvenetworks.com/media/6aef184dd0a64f1183a9ec439e89fec8/8a7b892fd27b4b35bd419e8c0553d1d9/20130415-140101-516c405d8a2a64-83168024-mp4f6ba97a0bf6491751941907b11b1052e0f568e99.m3u8' /> 
+				Votre navigateur ne supporte pas la balise vidéo. 
+			</video> 
+			<div class='lp-video-close 1395680443692_video'></div> 
+		</div> 
+		<!-- VIDEO html 2 | fin -->
+		<!--=== HORS-LIGNE Html | debut =========================-->
+		<div id='lp-offline-banner'>
+			<div class='lp-offline-warning'>
+				Une connexion internet est requise pour visualiser correctement certaines parties de cette annonce.
+			</div>
+		</div>
+		<!--=== HORS-LIGNE Html | fin ===========================-->
+		
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
 						<div class="logo" style="background-image: url('public/images/demo/tmr.jpg');"></div>
-							<!-- VIDEO 1 html | debut --> 
-							<div class='lp-video-bg 1395680443693_video'></div> 
-							<div class='lp-video 1395680443693_video'> 
-								<video width='480px' height='247px' controls> 
-									<source src='http://s2.cpl.delvenetworks.com/media/6aef184dd0a64f1183a9ec439e89fec8/6c078fb92c3248bda1b38215cf65f004/20130515-174149-5194011dc0d813-64803181-mp48deba435c56e79f2f2e23df7f10f60e694bcf29b.m3u8' /> 
-									Votre navigateur ne supporte pas la balise vidéo. 
-								</video> 
-								<div class='lp-video-close 1395680443693_video'></div> 
-							</div> 
-							<!-- VIDEO html 1 | fin -->		
-							<!-- VIDEO 2 html | debut --> 
-							<div class='lp-video-bg 1395680443692_video'></div> 
-							<div class='lp-video 1395680443692_video'> 
-								<video width='480px' height='247px' controls> 
-									<source src='http://s2.cpl.delvenetworks.com/media/6aef184dd0a64f1183a9ec439e89fec8/8a7b892fd27b4b35bd419e8c0553d1d9/20130415-140101-516c405d8a2a64-83168024-mp4f6ba97a0bf6491751941907b11b1052e0f568e99.m3u8' /> 
-									Votre navigateur ne supporte pas la balise vidéo. 
-								</video> 
-								<div class='lp-video-close 1395680443692_video'></div> 
-							</div> 
-							<!-- VIDEO html 2 | fin -->															
 						<div class='gallery'>
 							<div class='scroller' style="width: 1920px;">
 								<div>
@@ -486,6 +499,8 @@
 				new legal(legalList[i],cleanWhiteSpace(legalList[i]).childNodes[0],legalBg[i]);
 			}		
 
+		/* CODE POUR FORMAT 1/4 AVEC VIDÉO | DÉBUT */
+
 		/*=== VIDEO script | debut =========================*/
 		var videos = {
 			play: document.getElementsByClassName('lp-video-play'),
@@ -553,6 +568,19 @@
 		}
 		/*=== VIDEO script | fin ===========================*/
 
+
+		/*=== HORS-LIGNE script | debut ====================*/
+		var offlineBanner = document.getElementById('lp-offline-banner');
+		var offlineWarning = document.getElementsByClassName('lp-offline-warning')[0];
+		if(!window.navigator.onLine) {
+			offlineBanner.classList.add('lp-offline');
+		}
+		offlineWarning.onclick = function() {
+			offlineBanner.classList.remove('lp-offline');
+		}
+		/*=== HORS-LIGNE script | fin ======================*/
+
+		/*=== CODE POUR FORMAT 1/4 AVEC VIDÉO | FIN ===========================*/
 	</script>
 </body>
 </html>
