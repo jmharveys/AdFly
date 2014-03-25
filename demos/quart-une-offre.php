@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Galerie 1/4 une offre avec vidéo  | AdFly </title>
+	<title>Galerie 1/4 Statique | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -133,6 +133,11 @@
 												<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus.</div>
 											</div>
 										</div>
+										<div class='lp-legal-bg noFlip'></div>
+										<div class='lp-legal noFlip' style="height:204px; -webkit-transform: translate3d(0, 204px, 0);">
+										<div class='lp-legal-btn noFlip'>Légal</div>
+										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
+									</div>
 										<div class="close"></div>
 										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
@@ -145,15 +150,17 @@
 			</div>
 		<!--=== RETOURNER html | fin ==============-->
 	</div>
-
-	<script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
 	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
 	<script>
 		var ad = document.getElementsByClassName('lp-ad')[0];
 
 		/*=== RETOURNER script | debut =============*/
 		var flipper = document.getElementsByClassName('flip')[0]; 
-		flipper.addEventListener('tap', flipMe, false); 
+
+		//Un appel pour le click et un pour le toucher sur IPAD
+		//a disposer selon le canvas utilisé
+		flipper.addEventListener('touchstart', flipMe, false); 
+		flipper.addEventListener('click', flipMe, false); 
 
 		function flipMe() { 
 			// Si je n'ai pas flipper et que je ne scroll pas.
@@ -205,31 +212,7 @@
 		  return node;
 		}
 
-		//Lorsqu'on scroll on 
-		function startScroll() {
-			ad.classList.add('moving');
-		}
-
-		function endScroll() {
-			ad.classList.remove('legalOpen','moving');
-			var currentPage = this.currentPage.pageX;
-			forEachQuery( 'selected', function( el2, index1, array1 ) {
-				el2.classList.remove('selected');
-			});
-			forEachQuery( 'pager', function( el2, index1, array1 ) {
-				var bullet = cleanWhiteSpace(el2).childNodes[currentPage];
-				bullet.classList.add('selected');
-			});			
-			Array.prototype.forEach.call(myGallerys, function(el) {
-		    	el.goToPage(currentPage, 0, 0);
-			});	
-			Array.prototype.forEach.call(currentLegal, function(el) {
-		    	el.classList.remove('lp-legal-active');
-			});			
-		}
-
-
-	
+		
 		var isMobile = {
 			Android: function() {
 				return navigator.userAgent.match(/Android/i);
@@ -253,31 +236,7 @@
 			document.body.classList.add('lp-loaded');
 		}
 
-			var gallery; 
-			var wrapper = document.getElementsByClassName('gallery');
-			var myGallerys = new Array();
-
-			function initGallery(elem) {
-			    gallery = new IScroll(elem, { 
-					snap: true, 
-					scrollX: true,
-					scrollY: false,
-					momentum: false, 
-					hScrollbar: false,
-					snapThreshold: 10,
-					tap: true,
-					click: true 
-					// Activé seulement pour desktop afin de rendre les liens cliquable
-				});
-				gallery.on('scrollEnd', endScroll);
-				gallery.on('scrollStart', startScroll);
-				myGallerys.push(gallery);
-			}
-
-			Array.prototype.forEach.call(wrapper, function(el) {
-			    initGallery(el);
-			});					
-
+			
 			//Gestion LÉGAL
 			var legalBg = document.getElementsByClassName('lp-legal-bg');
 			var legalList = document.getElementsByClassName('lp-legal');
