@@ -425,8 +425,8 @@ body.lp-loaded {
 
 		.infos {
 			font: $back-infos-quart;
-			-webkit-line-clamp: 6;
-			width: 410px;
+			-webkit-line-clamp: 5;
+			width: 440px;
 		}
 
 		.logo {
@@ -487,17 +487,16 @@ body.lp-loaded {
 	}
 
 	.lp-video-close {
+		top: -40px;
+		left: 20px;
 		position: absolute;
 		opacity: 0;
 		z-index: 11;
 		-webkit-transform: translate3d(-9999px,0,0);
 		-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s ease;
 	}
+
 	.lp-video-active .lp-video-close {
-		top: -65px;
-		right: 10px;
-		width: 50px;
-		height: 50px;
 		opacity: 1;
 		-webkit-transform: translate3d(0,0,0);
 		-webkit-transition: opacity .5s ease, -webkit-transform 0 ease;
@@ -522,7 +521,7 @@ body.lp-loaded {
 	}
 	.lp-video {
 		left: 0;
-		bottom: 0;
+		bottom: 20px;
 		position: absolute;
 		opacity: 0;
 		z-index: 10;
@@ -884,6 +883,8 @@ body.lp-loaded {
 // }
 
 // .seizieme-h .back a.btn-plusWeb {
+
+
 // 	bottom: -92px;
 // 	right: 42px;
 // }

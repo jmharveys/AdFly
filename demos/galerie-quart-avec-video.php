@@ -92,6 +92,8 @@
 
 			/* Bouton Fermer Vidéo */
 			.lp-video-close {
+				width: 30px;
+				height: 30px;
 				background: url(http://localhost:8888/Adfly/public/images/btn-close.png);
 				background-size: contain;
 			}
@@ -288,7 +290,7 @@
 												</ul>
 											</div>
 											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
+												<p class="mention">à partir de.</p>
 												<p class="price">1 568</p>
 											</div>
 										</div>
