@@ -20,25 +20,106 @@
 	text-align: right;
 }
 
-.lp-title {
-	font: normal normal 16px/18px AmericanTypewriter;
-	margin: 0;
+.lp-more {
+	font: normal normal 19px/18px AmericanTypewriter;
 }
 
-.lp-subtitle {
+.lp-destination {
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
-	margin: 0;
 }
 
-.lp-mention {
+.lp-mentions {
 	width: 170px;
 	font: normal normal 12px/12px AmericanTypewriter;
-	text-transform: uppercase;
-	margin: 0;
 }
 
 .lp-price {
 	font: normal normal 33px/29px AmericanTypewriter-Bold;
 	letter-spacing: -1px;
 	margin: 0;
+}
+
+.lp-summary {
+
+}
+
+.lp-card {
+	height: 265px;
+}
+/*--- Front ------------------------*/
+
+.lp-front .lp-pager {
+	top: 239px;
+}
+
+/*--- Back ------------------------*/
+.lp-back .lp-summary > div:nth-child(1) {
+	width: 288px;
+}
+
+.lp-back .lp-summary > div:nth-child(2) {
+	width: 143px;
+}
+
+.lp-back .lp-description span {
+	font: normal normal 15px/20px AmericanTypewriter;
+	-webkit-line-clamp: 6;
+	width: 410px;
+}
+
+.lp-back .lp-more {
+	font: normal normal 19px/18px AmericanTypewriter;
+}
+
+.lp-back .lp-destination {
+	font: normal normal 23px/23px AmericanTypewriter-Bold;
+}
+
+.lp-back .lp-rating {
+	height: 18px;
+	background-image: url("public/images/etoile-quart.png");
+}
+
+.lp-back .lp-rating.lp-1-stars {
+	width: 21px;
+}
+.lp-back .lp-rating.lp-2-stars {
+	width: 42px;
+}
+.lp-back .lp-rating.lp-3-stars {
+	width: 63px;
+}
+.lp-back .lp-rating.lp-4-stars {
+	width: 84px;
+}
+.lp-back .lp-rating.lp-5-stars {
+	width: 105px;
+}
+
+.lp-back .lp-mentions {
+	font: normal normal 12px/14px AmericanTypewriter;
+}
+
+.lp-back .btn-plusWeb {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	width: 40px;
+	height: 40px;
+	z-index: 1;
+	background-image: url("public/images/btn-plusweb.png");
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.lp-back .lp-logo {
+	top: 265px;
+	left: 305px;
+	width: 115px;
+	height: 55px;
+}
+
+.lp-back .lp-pager {
+	bottom: 10px;
 }
