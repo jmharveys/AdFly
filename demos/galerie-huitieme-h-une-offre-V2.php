@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>1/4 galerie sans vidéo | AdFly </title>
+	<title>1/8 H galerie | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -21,14 +21,26 @@
 
 		/* Étoiles */
 		.back ul.rating > li {
-			display: inline-block;
-			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-			background-size: contain;
-			width: 18px;
-			height: 18px;
-			margin: 5px 3px 0 0;
-			z-index: 10;
+				float: left;
+				list-style: none;
+				background: url(<?= URL; ?>/public/images/ico-etoile-autre.png) no-repeat 0 0 transparent;
+				background-size: contain;
+				width: 12.5px;
+				height: 12.5px;
+				margin: 0 3px 0 0;
+				z-index: 10;			
 		}
+
+		.quart .back ul.rating > li {
+				float: left;
+				list-style: none;
+				background: url(<?= URL; ?>/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
+				background-size: contain;
+				width: 18px;
+				height: 18px;
+				margin: 0 3px 0 0;
+				z-index: 10;
+		}	
 
 		/* Bouton Fermer */
 		.back .close {
@@ -38,33 +50,33 @@
 		  width: 40px;
 		  height: 40px;
 		  z-index: 1;
-		  background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
+		  background: url(<?= URL; ?>/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
 		  -webkit-background-size: contain;
 		  background-size: contain;
 		}
 		
 		/* Bouton Fermer ACTIF */
 		.back .close:active {
-		  background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
+		  background-image: url(<?= URL; ?>/public/images/btn-annuler-pressed.png);
 		}
 
 
 		/* Plus Web */
 		.back a.btn-plusWeb {
 			position: absolute;
-			bottom: 10px;
-			right: 10px;
+			bottom: 9px;
+			right: 9px;
 			width: 40px;
 			height: 40px;
 			z-index: 1;
-			background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
+			background: url(<?= URL; ?>/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
 			background-size: contain;		
 		}
 
 
 		/* Bouton +Web ACTIF */
 		.back a.btn-plusWeb:active {
-			background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
+			background-image: url(<?= URL; ?>/Adfly/public/images/btn-plusweb-pressed.png);	
 		}	
 
 		/* Bouton +Web : truc pour élargir zone cliquable ; */
@@ -73,69 +85,44 @@
 			content: "";
 			width: 80px;
 			height: 80px;
-			top: -10px;
-			left: -10px;	
+			top: -9px;
+			left: -9px;	
 		}	
 	</style>
 </head>
 <body>
-	<div class='lp-ad lp-480x325'>
+	<div class='lp-ad lp-480x152'>
+<!-- 		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/varadero-back.jpg');"></div> -->
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron.jpg');"></div>
 						<div class='gallery'>
-							<div class='scroller' style="width: 1920px;">
+							<div class='scroller' style="width: 960px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/romana.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/varadero.jpg'); width:328px; height:152px;display:table-cell;"></div>
 									<div class="description">
 										<div>
-											<p class="title">Dreams La Romana Resort & Spa</p>
-											<p class="subtitle">La Romana,<br/>République Dominicaine</p>
+											<p class="title">Barcelo Arenas Blancas</p>
+											<p class="subtitle">Varadero,<br>Cuba</p>
 										</div>
 										<div>
-											<p class="mention">à par pers.  </p>
+											<p class="mention">à partir de<br/>par pers.</p>
 											<p class="price">99 999</p>
 										</div>
 									</div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/holguin.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/mexique.jpg'); width:328px; height:152px;display:table-cell;"></div>
 									<div class="description">
 										<div>
-											<p class="title">Blau Costa Verde</p>
-											<p class="subtitle">Holguin, Cuba</p>
+											<p class="title">Azul Fives Hotel</p>
+											<p class="subtitle">Riviera Maya,<br/>Mexique</p>
 										</div>
 										<div>
 											<p class="mention">à partir de<br/>par pers.</p>
-											<p class="price">839</p>
-										</div>
-									</div>	
-								</div>	
-								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/acapulco.jpg'); width:480px; height:247px;"></div>
-									<div class="description">
-										<div>
-											<p class="title">Las Brisas Acapulco</p>
-											<p class="subtitle">Acapulco, Mexique</p>
-										</div>
-										<div>
-											<p class="mention">à partir de</p>
-											<p class="price">1 568</p>
-										</div>
-									</div>	
-								</div>		
-								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/playa.jpg'); width:480px; height:247px;"></div>
-									<div class="description">
-										<div>
-											<p class="title">Playa Blanca</p>
-											<p class="subtitle">Cayo Largo, Cuba</p>
-										</div>
-										<div>
-											<p class="mention">à partir de<br/>par pers.</p>
-											<p class="price">1 098</p>
+											<p class="price">995</p>
 										</div>
 									</div>	
 								</div>	
@@ -144,8 +131,6 @@
 								<ul class='pager'>
 									<li class='selected'>0</li>
 									<li>1</li>
-									<li>2</li>
-									<li>3</li>
 								</ul>
 							</div>
 						</div>
@@ -154,20 +139,20 @@
 				<div class='back'>
 					<div class="wrapper">
 						<div class='gallery'>
-							<div class='scroller' style="width: 1920px;">
+							<div class='scroller' style="width: 960px;">
 								<div>
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Dreams La Romana Resort & Spa</p>
-												<p class="subtitle">La Romana,<br/>République Dominicaine</p>
-												<ul class="rating">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-												</ul>
+												<p class="title">Barcelo Arenas Blancas</p>
+												<p class="subtitle">Varadero, Cuba</p>
 											</div>
+											<ul class="rating">
+												<li></li>
+											<!-- 	<li></li>
+												<li></li>
+												<li></li> -->
+											</ul>
 											<div>
 												<p class="mention">à partir de<br/>par pers.</p>
 												<p class="price">99 999</p>
@@ -175,12 +160,11 @@
 										</div>
 										<div class="wrapper-height">
 											<div class="wrapper-infos">
-												<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort 
-												& Spa, directement sur la page de Bayahibe.</div>
+												<div class="infos">11 avril 2014 - 8 nuits, 7 jours. Réservez votre forfait au magnifique hôtel Barcela Arenas Blancas, situés au bord de la plage de Cuba, Varadero. Restaurants et bar disponibles, et plus.</div>
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 								</div>
@@ -204,7 +188,7 @@
 										</div>
 										<div class="wrapper-height">
 											<div class="wrapper-infos">
-												<div class="infos">29 mars 2014 - 8 jours, 7 nuits. Une semaine en formule tout-inclus à l'hôtel Blau Costa Verde sur la plage de Playa Pesquero Beach. Incluant une nouvelle section Plus qui est réservée à une catégorie de voyageurs, avec piscine privée, bar, et plus. 3 repas style buffet tous les jours, soupers À la carte illimités avec vin servi, divertissements en soirée, etc.</div>
+												<div class="infos">18 avril 2014 - 7 nuits, 6 jours. Réservez votre forfait tout inclus 5 étoiles au Azul Fives Hotel, dans la superbe ville de Riviera Maya. Un hôtel de rêve pour des gens qui désirent des vacances de rêve.</div>
 											</div>
 										</div>
 										<div class="close"></div>
@@ -216,80 +200,12 @@
 										<div class='lp-legal-btn noFlip'>Légal</div>
 										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
 									</div>
-								</div>		
-								<div>
-									<div class="wrapper-all">
-										<div class="description">
-											<div>
-												<p class="title">Las Brisas Acapulco</p>
-												<p class="subtitle">Acapulco, Mexique</p>
-												<ul class="rating">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-												</ul>
-											</div>
-											<div>
-												<p class="mention">à partir de.</p>
-												<p class="price">1 568</p>
-											</div>
-										</div>
-										<div class="wrapper-height">
-											<div class="wrapper-infos">
-												<div class="infos">26 février 2014 - 8 jours, 7 nuits. Forfait tout inclus à Acapulco avec Vacances TMR à l'hôtel Las Brisas Acapulco, qui est situés à flanc de montagne, au dessus de la baie d'Acapulco. Pleins de services inclus.</div>
-											</div>
-										</div>
-										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
-										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
-									</div>
-									<div class='lp-legal-bg noFlip'></div>
-									<div class='lp-legal noFlip' style="height:204px; -webkit-transform: translate3d(0, 204px, 0);">
-										<div class='lp-legal-btn noFlip'>Légal</div>
-										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
-									</div>
-								</div>	
-								<div>
-									<div class="wrapper-all">
-										<div class="description">
-											<div>
-												<p class="title">Playa Blanca</p>
-												<p class="subtitle">Cayo Largo, Cuba</p>
-												<ul class="rating">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-												</ul>
-											</div>
-											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
-												<p class="price">1 098</p>
-											</div>
-										</div>
-										<div class="wrapper-height">
-											<div class="wrapper-infos">
-												<div class="infos">23 février 2014 - 8 jours, 7 nuits. Réservez un forfait tout inclus à Cayo Largo avec Vacances TMR à l'hôtel Playa Blanca, qui est reconnue comme l'un des meilleurs sites de plongée en raison de ses splendides récifs de corail débordant d'une panoplie de petits poissons.</div>
-											</div>
-										</div>
-										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
-										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
-									</div>
-									<div class='lp-legal-bg noFlip'></div>
-									<div class='lp-legal noFlip' style="height:204px; -webkit-transform: translate3d(0, 204px, 0);">
-										<div class='lp-legal-btn noFlip'>Légal</div>
-										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
-									</div>
-								</div>																			
+								</div>
 							</div>				
 						</div>
 						<div class='pager-wrapper'>
 							<ul class='pager'>
 								<li class='selected'>0</li>
-								<li>1</li>
-								<li>1</li>
 								<li>1</li>
 							</ul>
 						</div>	

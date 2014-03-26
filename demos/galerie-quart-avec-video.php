@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Galerie 1/4 avec vidéo | AdFly </title>
+	<title>1/4 galerie avec vidéo | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -299,6 +299,7 @@
 												<div class="infos">26 février 2014 - 8 jours, 7 nuits. Forfait tout inclus à Acapulco avec Vacances TMR à l'hôtel Las Brisas Acapulco, qui est situés à flanc de montagne, au dessus de la baie d'Acapulco. Pleins de services inclus.</div>
 											</div>
 										</div>
+										<div class="close"></div>
 										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
