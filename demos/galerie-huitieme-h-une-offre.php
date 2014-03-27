@@ -1,5 +1,5 @@
 <?php 
-	include 'configs/global.php'; 
+	include '../configs/global.php'; 
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8]> <html class="lt-ie10 lt-ie9 lt-ie8" lang="fr"> <![endif]-->
@@ -91,10 +91,10 @@
 						<div class='gallery'>
 							<div class='scroller' style="width: 656px;">
 								<div>
-									<div style='width: 328px; height: 152px; background-image: url("public/images/demo/barcelo1.jpg");float: left;'></div>
+									<div style='width: 328px; height: 152px; background-image: url("<?= URL ?>/public/images/demo/barcelo1.jpg");float: left;'></div>
 								</div>
 								<div>
-									<div style='width: 328px; height: 152px; background-image: url("public/images/demo/barcelo2.jpg");float:left;'></div>
+									<div style='width: 328px; height: 152px; background-image: url("<?= URL ?>/public/images/demo/barcelo2.jpg");float:left;'></div>
 								</div>	
 							</div>
 							<div class='pager-wrapper'>
@@ -136,7 +136,7 @@
 								<li></li>
 							</ul>
 							<div class="infos">30 avril 2014 - 8 jours, 7 nuits. L'hôtel Barcelo Huatulco Beach jouit d'un emplacement de choix au bord de la mer sur la baie de Tangolunda, et offre une vue imprenable sur les plages du Mexique.</div>
-						<div class="logo" style="background-image: url('public/images/demo/bergeron-small.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>/public/images/demo/bergeron-small.jpg');"></div>
 						<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 						</div>
 					</div>
@@ -148,17 +148,14 @@
 	</div>
 	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
 	<script>
-var ad = document.getElementsByClassName('lp-ad')[0];
-
-		/*=== RETOURNER script | debut =============*/
+/*=== RETOURNER script | debut =============*/
 		var flipper = document.getElementsByClassName('flip')[0]; 
 		flipper.addEventListener('tap', flipMe, false); 
-		flipper.addEventListener('click', flipMe, false); 
 
 		function flipMe() { 
 			// Si je n'ai pas flipper et que je ne scroll pas.
 			if(!(flipper.classList.contains('active')) && !(ad.classList.contains('moving')) ) { 
-				if ( !(flipper.classList.contains('flipped')) ) {
+				if (  !(event.target.classList.contains('noFlip'))  ) {
 					flipper.classList.add('active');
 					flipper.addEventListener("transitionend", flipDone, false);
 				} 
@@ -225,7 +222,7 @@ var ad = document.getElementsByClassName('lp-ad')[0];
 			});	
 			Array.prototype.forEach.call(currentLegal, function(el) {
 		    	el.classList.remove('lp-legal-active');
-			});					
+			});			
 		}
 
 
@@ -246,6 +243,10 @@ var ad = document.getElementsByClassName('lp-ad')[0];
 			} else {
 				document.body.classList.add('lp-is-ios');
 			}
+			//Gardez pour tester et remettre ensuite
+			// if(isMobile.Android() || isMobile.iOS()) {
+			// 	 location.href = 'lpri://webContentFinishedLoading';
+			// }
 			document.body.classList.add('lp-loaded');
 		}
 
@@ -305,7 +306,8 @@ var ad = document.getElementsByClassName('lp-ad')[0];
 
 			for (var i = 0; i < legalList.length; ++i) {
 				new legal(legalList[i],cleanWhiteSpace(legalList[i]).childNodes[0],legalBg[i]);
-			}				
+			}		
+		
 	</script>
 </body>
 </html>

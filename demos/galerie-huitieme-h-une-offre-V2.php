@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>1/4 galerie une offre et une vidéo  | AdFly </title>
+	<title>1/8 H galerie | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -21,14 +21,26 @@
 
 		/* Étoiles */
 		.back ul.rating > li {
-			display: inline-block;
-			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-			background-size: contain;
-			width: 18px;
-			height: 18px;
-			margin: 5px 3px 0 0;
-			z-index: 10;
+				float: left;
+				list-style: none;
+				background: url(<?= URL; ?>/public/images/ico-etoile-autre.png) no-repeat 0 0 transparent;
+				background-size: contain;
+				width: 12.5px;
+				height: 12.5px;
+				margin: 0 3px 0 0;
+				z-index: 10;			
 		}
+
+		.quart .back ul.rating > li {
+				float: left;
+				list-style: none;
+				background: url(<?= URL; ?>/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
+				background-size: contain;
+				width: 18px;
+				height: 18px;
+				margin: 0 3px 0 0;
+				z-index: 10;
+		}	
 
 		/* Bouton Fermer */
 		.back .close {
@@ -38,33 +50,33 @@
 		  width: 40px;
 		  height: 40px;
 		  z-index: 1;
-		  background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
+		  background: url(<?= URL; ?>/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
 		  -webkit-background-size: contain;
 		  background-size: contain;
 		}
 		
 		/* Bouton Fermer ACTIF */
 		.back .close:active {
-		  background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
+		  background-image: url(<?= URL; ?>/public/images/btn-annuler-pressed.png);
 		}
 
 
 		/* Plus Web */
 		.back a.btn-plusWeb {
 			position: absolute;
-			bottom: 10px;
-			right: 10px;
+			bottom: 9px;
+			right: 9px;
 			width: 40px;
 			height: 40px;
 			z-index: 1;
-			background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
+			background: url(<?= URL; ?>/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
 			background-size: contain;		
 		}
 
 
 		/* Bouton +Web ACTIF */
 		.back a.btn-plusWeb:active {
-			background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
+			background-image: url(<?= URL; ?>/Adfly/public/images/btn-plusweb-pressed.png);	
 		}	
 
 		/* Bouton +Web : truc pour élargir zone cliquable ; */
@@ -73,94 +85,52 @@
 			content: "";
 			width: 80px;
 			height: 80px;
-			top: -10px;
-			left: -10px;	
+			top: -9px;
+			left: -9px;	
 		}	
-
-		/*Format 1/4 avec vidéo*/
-
-			/* Bouton Play */
-			.lp-video-play {
-				background: url(http://localhost:8888/Adfly/public/images/btn-play.png);
-				background-size: contain;
-			}	
-
-			.lp-video-play:active {
-				background: url(http://localhost:8888/Adfly/public/images/btn-play-pressed.png);
-				background-size: contain;
-			}	
-
-			/* Bouton Fermer Vidéo */
-			.lp-video-close {
-				width: 30px;
-				height: 30px;
-				background: url(http://localhost:8888/Adfly/public/images/btn-close.png);
-				background-size: contain;
-			}
-
 	</style>
 </head>
 <body>
-	<div class='lp-ad lp-480x325 uniqueOffer'>
-		<!-- VIDEO 1 html | debut --> 
-		<div class='lp-video-bg 1395680443693_video'></div> 
-		<div class='lp-video 1395680443693_video' style="width:480px; height:247px;"> 
-			<video width='480px' height='247px' controls> 
-				<source src='http://s2.cpl.delvenetworks.com/media/6aef184dd0a64f1183a9ec439e89fec8/6c078fb92c3248bda1b38215cf65f004/20130515-174149-5194011dc0d813-64803181-mp48deba435c56e79f2f2e23df7f10f60e694bcf29b.m3u8' /> 
-				Votre navigateur ne supporte pas la balise vidéo. 
-			</video> 
-			<div class='lp-video-close 1395680443693_video'></div> 
-		</div> 
-		<!-- VIDEO html 1 | fin -->		
-		<!--=== HORS-LIGNE Html | debut =========================-->
-		<div id='lp-offline-banner'>
-			<div class='lp-offline-warning'>
-				Une connexion internet est requise pour visualiser correctement certaines parties de cette annonce.
-			</div>
-		</div>
-		<!--=== HORS-LIGNE Html | fin ===========================-->
-
+	<div class='lp-ad lp-480x152'>
+<!-- 		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/varadero-back.jpg');"></div> -->
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron.jpg');"></div>
 						<div class='gallery'>
-							<div class='scroller' style="width: 1920px;">
-								<div>				
-									<div style="background: url('<?= URL ?>public/images/demo/mexique1.jpg'); width:480px; height:247px;"></div>
-								</div>
+							<div class='scroller' style="width: 960px;">
 								<div>
-									<!-- VIDEO 1 PLAY html | debut -->
-									<div class='lp-video-play 1395680443693_video noFlip'></div> 
-									<!-- VIDEO 1 PLAY html | fin -->
-									<div style="background: url('<?= URL ?>public/images/demo/mexique2.jpg'); width:480px; height:247px;"></div>
-								</div>	
-								<div>	
-									<div style="background: url('<?= URL ?>public/images/demo/mexique3.jpg'); width:480px; height:247px;"></div>
-								</div>		
-								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/mexique4.jpg'); width:480px; height:247px;"></div>
-								</div>	
-							</div>
-							<div class="table-cell-wrapper">
-								<div class="description">
-									<div>
-										<p class="title">Las Brisas Acapulco</p>
-										<p class="subtitle">Acapulco, Mexique</p>
-									</div>
-									<div>
-										<p class="mention">à partir de<br/>par pers.</p>
-										<p class="price">1 568</p>
+									<div style="background: url('<?= URL ?>public/images/demo/varadero.jpg'); width:328px; height:152px;display:table-cell;"></div>
+									<div class="description">
+										<div>
+											<p class="title">Barcelo Arenas Blancas</p>
+											<p class="subtitle">Varadero,<br>Cuba</p>
+										</div>
+										<div>
+											<p class="mention">à partir de<br/>par pers.</p>
+											<p class="price">99 999</p>
+										</div>
 									</div>
 								</div>
+								<div>
+									<div style="background: url('<?= URL ?>public/images/demo/mexique.jpg'); width:328px; height:152px;display:table-cell;"></div>
+									<div class="description">
+										<div>
+											<p class="title">Azul Fives Hotel</p>
+											<p class="subtitle">Riviera Maya,<br/>Mexique</p>
+										</div>
+										<div>
+											<p class="mention">à partir de<br/>par pers.</p>
+											<p class="price">995</p>
+										</div>
+									</div>	
+								</div>	
 							</div>
 							<div class='pager-wrapper'>
 								<ul class='pager'>
 									<li class='selected'>0</li>
 									<li>1</li>
-									<li>2</li>
-									<li>3</li>
 								</ul>
 							</div>
 						</div>
@@ -169,44 +139,82 @@
 				<div class='back'>
 					<div class="wrapper">
 						<div class='gallery'>
-							<div class='scroller' style="width: 480px;">
+							<div class='scroller' style="width: 960px;">
 								<div>
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Las Brisas Acapulco</p>
-												<p class="subtitle">Acapulco, Mexique</p>
-												<ul class="rating">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-												</ul>
+												<p class="title">Barcelo Arenas Blancas</p>
+												<p class="subtitle">Varadero, Cuba</p>
 											</div>
+											<ul class="rating">
+												<li></li>
+												<li></li>
+												<li></li>
+												<li></li>
+											</ul>
 											<div>
 												<p class="mention">à partir de<br/>par pers.</p>
-												<p class="price">1 568</p>
+												<p class="price">99 999</p>
 											</div>
 										</div>
 										<div class="wrapper-height">
 											<div class="wrapper-infos">
-												<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus.</div>
+												<div class="infos">11 avril 2014 - 8 nuits, 7 jours. Réservez votre forfait au magnifique hôtel Barcela Arenas Blancas, situés au bord de la plage de Cuba, Varadero. Restaurants et bar disponibles, et plus.</div>
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
-								</div>				
+								</div>
+								<div>
+									<div class="wrapper-all">
+										<div class="description">
+											<div>
+												<p class="title">Blau Costa Verde</p>
+												<p class="subtitle">Holguin, Cuba</p>
+											</div>
+											<ul class="rating">
+												<li></li>
+												<li></li>
+												<li></li>
+												<li></li>
+											</ul>
+											<div>
+												<p class="mention">à partir de<br/>par pers.</p>
+												<p class="price">839</p>
+											</div>
+										</div>
+										<div class="wrapper-height">
+											<div class="wrapper-infos">
+												<div class="infos">18 avril 2014 - 7 nuits, 6 jours. Réservez votre forfait tout inclus 5 étoiles au Azul Fives Hotel, dans la superbe ville de Riviera Maya. Un hôtel de rêve pour des gens qui désirent des vacances de rêve.</div>
+											</div>
+										</div>
+										<div class="close"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
+										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
+									</div>
+									<div class='lp-legal-bg noFlip'></div>
+									<div class='lp-legal noFlip' style="height:204px; -webkit-transform: translate3d(0, 204px, 0);">
+										<div class='lp-legal-btn noFlip'>Légal</div>
+										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
+									</div>									
+								</div>
 							</div>				
 						</div>
+						<div class='pager-wrapper'>
+							<ul class='pager'>
+								<li class='selected'>0</li>
+								<li>1</li>
+							</ul>
+						</div>	
 					</div>
 				</div>
 			</div>
 		<!--=== RETOURNER html | fin ==============-->
 	</div>
 
-	<script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
 	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
 	<script>
 		var ad = document.getElementsByClassName('lp-ad')[0];
@@ -371,88 +379,6 @@
 				new legal(legalList[i],cleanWhiteSpace(legalList[i]).childNodes[0],legalBg[i]);
 			}		
 
-		/* CODE POUR FORMAT 1/4 AVEC VIDÉO | DÉBUT */
-
-		/*=== VIDEO script | debut =========================*/
-		var videos = {
-			play: document.getElementsByClassName('lp-video-play'),
-			close: document.getElementsByClassName('lp-video-close'),
-			bg: document.getElementsByClassName('lp-video-bg'),
-			player: document.getElementsByClassName('lp-video'),
-			stop: function(pClass) {
-				var related = document.getElementsByClassName(pClass);
-				for(var x=0; x<related.length; x++) {
-					related[x].classList.remove('lp-video-active');
-					if(related[x].classList.contains('lp-video')) {
-					var video = related[x].querySelector('video');
-						if(video.currentTime != 0.1) {
-							try {
-								video.currentTime = 0.1;
-							} catch(e) {};
-						}
-						video.pause();
-					}
-				}
-			}
-		}
-
-		/*--- Click btn Jouer ---*/
-		for(var x=0; x<videos.play.length; x++) {
-			videos.play[x].onclick = function(e) {
-				e.stopImmediatePropagation();
-				var className = this.classList[1];
-				var related = document.getElementsByClassName(className);
-				var videoTags = document.getElementsByTagName('video');
-				for(var k=0; k<related.length; k++) {
-					related[k].classList.add('lp-video-active');
-				}
-				for(var j=0; j<videoTags.length; j++) {
-					if(videoTags[j].parentNode.classList[1] != className) {
-						videos.stop(videoTags[j].parentNode.classList[1]);
-					} else {
-						videoTags[j].play();
-					}
-				}
-			}
-		}
-
-		/*--- Click btn Fermer ---*/
-		for(var x=0; x<videos.close.length; x++) {
-			videos.close[x].onclick = function(e) {
-				e.stopImmediatePropagation();
-				videos.stop(this.classList[1]);
-			}
-		}
-
-		/*--- Click Arriere-plan ---*/
-		for(var x=0; x<videos.bg.length; x++) {
-			videos.bg[x].onclick = function(e) {
-				e.stopImmediatePropagation();
-				videos.stop(this.classList[1]);
-			}
-		}
-
-		/*--- Quand la video se termine ---*/
-		for(var x=0; x<videos.player.length; x++) {
-			videos.player[x].firstElementChild.addEventListener('ended', function() {
-				videos.stop(this.parentNode.classList[1]);
-			});
-		}
-		/*=== VIDEO script | fin ===========================*/
-
-
-		/*=== HORS-LIGNE script | debut ====================*/
-		var offlineBanner = document.getElementById('lp-offline-banner');
-		var offlineWarning = document.getElementsByClassName('lp-offline-warning')[0];
-		if(!window.navigator.onLine) {
-			offlineBanner.classList.add('lp-offline');
-		}
-		offlineWarning.onclick = function() {
-			offlineBanner.classList.remove('lp-offline');
-		}
-		/*=== HORS-LIGNE script | fin ======================*/
-
-		/*=== CODE POUR FORMAT 1/4 AVEC VIDÉO | FIN ===========================*/
 	</script>
 </body>
 </html>

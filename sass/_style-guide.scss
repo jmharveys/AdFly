@@ -24,15 +24,28 @@ $speed: .5s;
 $gal-legal: #868889;
 $gal-grey: #333333;
 
-
+// Format 1/4 
 $front-title-quart: normal normal 16px/18px AmericanTypewriter;
 $front-subtitle-quart: normal normal 23px/23px AmericanTypewriter-Bold;
+$front-mention-quart: normal normal 12px/12px AmericanTypewriter;
 $front-price-quart: normal normal 33px/29px AmericanTypewriter-Bold;
-$front-caption-quart: normal normal 12px/12px AmericanTypewriter;
+
 
 $back-title-quart: normal normal 19px/18px AmericanTypewriter;
 $back-subtitle-quart: normal normal 23px/23px AmericanTypewriter-Bold;
+$back-mention-quart: normal normal 12px/14px AmericanTypewriter;
 $back-price-quart: normal normal 33px/29px AmericanTypewriter-Bold;
-$back-caption-quart: normal normal 12px/14px AmericanTypewriter;
 $back-infos-quart: normal normal 15px/20px AmericanTypewriter;
 
+// Format 1/8
+$front-title-huitieme: normal normal 17px/18px AmericanTypewriter;
+$front-subtitle-huitieme: normal normal 18px/19px AmericanTypewriter-Bold;
+$front-mention-huitieme: normal normal 12px/12px AmericanTypewriter;
+$front-price-huitieme: normal normal 28px/26px AmericanTypewriter-Bold;
+
+$back-title-huitieme: normal normal 17px/16px AmericanTypewriter;
+$back-subtitle-huitieme: normal normal 18px/23px AmericanTypewriter-Bold;
+$back-mention-huitieme: normal normal 12px/14px AmericanTypewriter;
+$back-price-huitieme: normal normal 28px/29px AmericanTypewriter-Bold;
+$back-infos-huitieme: normal normal 13px/16px AmericanTypewriter;
+					
