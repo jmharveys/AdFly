@@ -57,6 +57,16 @@
 	width: 145px;
 }
 
+{{#offers.list}}
+	{{#gallery}}
+		{{#exist}}
+			.lp-pictures > .lp-scroller {
+				width: {{gallery.w}}px;
+			}
+		{{/exist}}
+	{{/gallery}}
+{{/offers.list}}
+
 .lp-front .lp-logo {
 	width: 165px;
 	height: 75px;
@@ -64,6 +74,7 @@
 
 .lp-front .lp-more {
 	font: normal normal 16px/18px AmericanTypewriter;
+	white-space: nowrap;
 }
 
 .lp-front-destination {
@@ -72,10 +83,11 @@
 
 {{#exist.picturesGallery}}
 .lp-gallery.lp-pictures {
+	width: 100%;
 	height: 245px;
 }
 .lp-front .lp-picture {
-	width: {{w}}px;
+	width: 480px;
 	height: 245px;
 }
 {{/exist.picturesGallery}}

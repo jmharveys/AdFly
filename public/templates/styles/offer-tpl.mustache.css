@@ -102,10 +102,6 @@ html, body {
 }
 
 {{#exist.picturesGallery}}
-	.lp-pictures {
-		width: 100%;
-	}
-	
 	.lp-front .lp-picture {
 		position: relative;
 		float: left;
@@ -249,7 +245,6 @@ html, body {
 
 .lp-more {
 	display: block;
-	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
