@@ -1,23 +1,5 @@
-.lp-infos {
-	display: table;
-	width: 100%;
-	height: 78px;
-	box-sizing: border-box;
-	padding: 5px 10px 6px 15px;
-}
+.lp-summary {
 
-.lp-infos > div {
-	display: table-cell;
-	vertical-align: bottom;
-}
-
-.lp-infos > div:nth-child(1) {
-	width: 310px;
-}
-
-.lp-infos > div:nth-child(2) {
-	width: 145px;
-	text-align: right;
 }
 
 .lp-more {
@@ -27,34 +9,73 @@
 .lp-destination {
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
 }
-
+{{#exist.mentions}}
 .lp-mentions {
 	width: 170px;
 	font: normal normal 12px/12px AmericanTypewriter;
 }
-
+{{/exist.mentions}}
 .lp-price {
 	font: normal normal 33px/29px AmericanTypewriter-Bold;
 	letter-spacing: -1px;
-	margin: 0;
 }
-
-.lp-summary {
-
+{{#exist.video}}
+.lp-video {
+	bottom: 20px;
+	width: 480px;
+	height: 247px;
 }
-
-.lp-card {
-	height: 265px;
-}
+{{/exist.video}}
 /*--- Front ------------------------*/
+{{#exist.video}}
+.lp-front .lp-video-play {
+	top: 118px;
+	left: 206px;
+}
+{{/exist.video}}
 
+.lp-front .lp-summary {
+	height: 78px;
+	padding: 5px 10px 6px 15px;
+	-webkit-transform: translate3d(0,245px,0);
+}
+
+.lp-front .lp-summary > div:nth-child(1) {
+	width: 310px;
+}
+
+.lp-front .lp-summary > div:nth-child(2) {
+	width: 145px;
+}
+
+.lp-front .lp-more {
+	font: normal normal 16px/18px AmericanTypewriter;
+}
+
+.lp-front-destination {
+	font: normal normal 23px/23px AmericanTypewriter-Bold;
+}
+
+{{#exist.picturesGallery}}
+.lp-gallery.lp-pictures {
+	height: 245px;
+}
+.lp-front .lp-picture {
+	width: {{w}}px;
+	height: 245px;
+}
+{{/exist.picturesGallery}}
 .lp-front .lp-pager {
 	top: 239px;
 }
 
 /*--- Back ------------------------*/
+.lp-back .lp-card {
+	height: 265px;
+}
+
 .lp-back .lp-summary > div:nth-child(1) {
-	width: 288px;
+	width: 310px;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {
@@ -75,6 +96,7 @@
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
 }
 
+{{#exist.rating}}
 .lp-back .lp-rating {
 	height: 18px;
 	background-image: url("public/images/etoile-quart.png");
@@ -95,22 +117,17 @@
 .lp-back .lp-rating.lp-5-stars {
 	width: 105px;
 }
-
+{{/exist.rating}}
+{{#exist.mentions}}
 .lp-back .lp-mentions {
 	font: normal normal 12px/14px AmericanTypewriter;
 }
-
-.lp-back .btn-plusWeb {
-	position: absolute;
+{{/exist.mentions}}
+.lp-back .lp-plus-web {
 	bottom: 10px;
 	right: 10px;
 	width: 40px;
 	height: 40px;
-	z-index: 1;
-	background-image: url("public/images/btn-plusweb.png");
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	background-size: contain;
 }
 
 .lp-back .lp-logo {

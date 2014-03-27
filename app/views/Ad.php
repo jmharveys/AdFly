@@ -2,24 +2,24 @@
 class AdView {
     private $model;
     private $controller;
+    public $ad;
+    private $m;
  
     public function __construct($controller,$model) {
         $this->controller = $controller;
         $this->model = $model;
+        $this->ad = $this->model->ad;
+        $this->m = new Mustache_Engine;
     }
 
     public function outputStyles() {
         ob_start();
-            $ad = $this->model->ad;
-            $m = new Mustache_Engine;
-            $template = file_get_contents("public/templates/styles/offer-tpl.mustache.css");
-            echo $m->render($template, $ad);
-            if($this->model->ad->meta->format == "480x325") {
-                $t480x325 = file_get_contents("public/templates/styles/offer480x325-tpl.mustache.css");
-                echo $m->render($t480x325, $ad);
-            }
-        ?>
-        <?php
+        $template = file_get_contents("public/templates/styles/offer-tpl.mustache.css");
+        echo $this->m->render($template, $this->ad);
+        if($this->model->ad->meta->format == "480x325") {
+            $t480x325 = file_get_contents("public/templates/styles/offer480x325-tpl.mustache.css");
+            echo $this->m->render($t480x325, $this->ad);
+        }
         $styles = ob_get_clean();
         ob_end_clean();
         return $styles;
@@ -29,14 +29,10 @@ class AdView {
     	ob_start();
     	?>
             <div class="lp-ad lp-<?= $this->model->ad->meta->format; ?>">
-                <div class='lp-flip'> 
-                    <?php 
-                        $offer = $this->model->ad->offers;
-                        $m = new Mustache_Engine;
-                        $template = file_get_contents("public/templates/offer-tpl.mustache.html");
-                        echo $m->render($template, $offer);
-                    ?>
-                </div>
+                <?php 
+                    $template = file_get_contents("public/templates/offer-tpl.mustache.html");
+                    echo $this->m->render($template, $this->ad);
+                ?>
             </div>
     	<?php
     	$output = ob_get_clean();
@@ -46,11 +42,20 @@ class AdView {
 
     public function outputScripts() {
         ob_start();
-        ?>x        
+        ?>
+        <script src="public/scripts/min/iscroll5.min.js"></script>
+        <script>
+            console.log(<?= json_encode($this->model->ad) ?>);
         <?php
-        $output = ob_get_clean();
-        ob_end_clean();
-        return $output;
+            $template = file_get_contents("public/templates/scripts/offer-tpl.mustache.js");
+            echo $this->m->render($template, $this->ad);
+        ?>
+        </script>
+        <?php
+            $scripts = ob_get_clean();
+            ob_end_clean();
+        $scripts.= '';
+        return $scripts;
     }
 }
 ?>
