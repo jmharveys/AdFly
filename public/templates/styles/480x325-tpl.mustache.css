@@ -1,5 +1,10 @@
-.lp-summary {
+.lp-summary > div {
+	display: table-cell;
+}
 
+.lp-offer {
+	background-position: 50% 50%;
+	background-size: 100% auto;
 }
 
 .lp-more {
