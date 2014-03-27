@@ -535,7 +535,12 @@ body.lp-loaded {
 
 			.scroller > div {
 				display: table;
+
+				> div:nth-child(1){
+					display: table-cell;
+				}
 			}
+
 
 			.pager-wrapper {
 				top: 125px;

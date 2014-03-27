@@ -849,6 +849,10 @@ body.lp-loaded {
   display: table;
 }
 
+.lp-480x152 .front .scroller > div > div:nth-child(1) {
+  display: table-cell;
+}
+
 .lp-480x152 .front .pager-wrapper {
   top: 125px;
   width: 480px;

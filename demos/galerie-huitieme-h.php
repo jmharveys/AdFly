@@ -1,5 +1,5 @@
 <?php 
-	include 'configs/global.php'; 
+	include '../configs/global.php'; 
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8]> <html class="lt-ie10 lt-ie9 lt-ie8" lang="fr"> <![endif]-->
@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Galerie 1/8 H  | AdFly </title>
+	<title>1/8 H galerie | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -17,101 +17,111 @@
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<style>
-		/* ICONES rétina POUR L'ARRIÈRE DU FLIP */
-	.back ul.rating > li {
-			float: left;
-			list-style: none;
-			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-autre.png) no-repeat 0 0 transparent;
-			background-size: contain;
-			width: 12.5px;
-			height: 12.5px;
-			margin: 0 3px 0 0;
-			z-index: 10;			
-	}
+	/* ICONES */
 
-	.quart .back ul.rating > li {
-			float: left;
-			list-style: none;
-			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-			background-size: contain;
-			width: 18px;
-			height: 18px;
-			margin: 0 3px 0 0;
-			z-index: 10;
-	}	
-	.back .close {
-			position: absolute;
-			top: 0px;
-			left: 0px;
-			width: 40px;
-			height: 40px;
-			z-index: 1;
-			background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
-			background-size: contain;
+		/* Étoiles */
+		.back ul.rating > li {
+				float: left;
+				list-style: none;
+				background: url(<?= URL; ?>/public/images/ico-etoile-autre.png) no-repeat 0 0 transparent;
+				background-size: contain;
+				width: 12.5px;
+				height: 12.5px;
+				margin: 0 3px 0 0;
+				z-index: 10;			
 		}
 
-	.back .close:active {
-			background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
+		.quart .back ul.rating > li {
+				float: left;
+				list-style: none;
+				background: url(<?= URL; ?>/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
+				background-size: contain;
+				width: 18px;
+				height: 18px;
+				margin: 0 3px 0 0;
+				z-index: 10;
 		}	
 
-	.back a.btn-plusWeb {
+		/* Bouton Fermer */
+		.back .close {
+		  position: absolute;
+		  top: 0px;
+		  left: 0px;
+		  width: 40px;
+		  height: 40px;
+		  z-index: 1;
+		  background: url(<?= URL; ?>/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
+		  -webkit-background-size: contain;
+		  background-size: contain;
+		}
+		
+		/* Bouton Fermer ACTIF */
+		.back .close:active {
+		  background-image: url(<?= URL; ?>/public/images/btn-annuler-pressed.png);
+		}
+
+
+		/* Plus Web */
+		.back a.btn-plusWeb {
 			position: absolute;
-			bottom: 10px;
-			right: 10px;
+			bottom: 9px;
+			right: 9px;
 			width: 40px;
 			height: 40px;
 			z-index: 1;
-			background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
+			background: url(<?= URL; ?>/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
 			background-size: contain;		
 		}
 
+
+		/* Bouton +Web ACTIF */
 		.back a.btn-plusWeb:active {
-			background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
+			background-image: url(<?= URL; ?>/Adfly/public/images/btn-plusweb-pressed.png);	
 		}	
 
+		/* Bouton +Web : truc pour élargir zone cliquable ; */
 		.back a.btn-plusWeb:after {
 			position: absolute;
 			content: "";
 			width: 80px;
 			height: 80px;
-			top: -10px;
-			left: -10px;	
+			top: -9px;
+			left: -9px;	
 		}	
 	</style>
 </head>
 <body>
-	<div class='lp-ad huitieme-h'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/mexique-back.jpg');"></div>
+	<div class='lp-ad lp-480x152'>
+<!-- 		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/varadero-back.jpg');"></div> -->
 		<!--=== RETOURNER html | debut ==============-->
-		<div class='wrapperFlip'>
 			<div class='flip'> 
 				<div class='front'>
-					<div class="logo" style="background-image: url('public/images/demo/bergeron.jpg');"></div>
 					<div class="wrapper">
+						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 960px;">
 								<div>
-									<div style='width: 328px; height: 152px; background-image: url("public/images/demo/varadero.jpg");float: left;'></div>
+									<div style="background: url('<?= URL ?>public/images/demo/varadero.jpg'); width:328px; height:152px;"></div>
 									<div class="description">
 										<div>
-											<p class="title">Barcelo Arenas<br/>Blancas</p>
-											<p class="subtitle">Varadero,<br/>Cuba</p>
+											<p class="title">Barcelo Arenas Blancas</p>
+											<p class="subtitle">Varadero,<br>Cuba</p>
 										</div>
 										<div>
-											<p class="caption">à partir de<br/>par pers.</p>
-											<p class="price">718</p>
+											<p class="mention">à partir de<br/>par pers.</p>
+											<p class="price">99 999</p>
 										</div>
 									</div>
 								</div>
 								<div>
-									<div style='width: 328px; height: 152px; background-image: url("public/images/demo/mexique.jpg");float:left;'></div>
+									<div style="background: url('<?= URL ?>public/images/demo/mexique.jpg'); width:328px; height:152px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Azul Fives Hotel</p>
 											<p class="subtitle">Riviera Maya,<br/>Mexique</p>
 										</div>
-										<div class="opposite">
-											<p class="caption">à partir de<br/>par pers.</p>
+										<div>
+											<p class="mention">à partir de<br/>par pers.</p>
 											<p class="price">995</p>
 										</div>
 									</div>	
@@ -131,57 +141,64 @@
 						<div class='gallery'>
 							<div class='scroller' style="width: 960px;">
 								<div>
-									<div class="close"></div>
-									<div class="description">
-										<div>
-											<p class="title">Barcelo Arenas Blancas</p>
-											<p class="subtitle">Varadero, Cuba</p>
+									<div class="wrapper-all">
+										<div class="description">
+											<div>
+												<p class="title">Barcelo Arenas Blancas<br/>par pers asd</p>
+												<ul class="rating">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+												<p class="subtitle">Varadero, Cuba</p>
+											</div>
+											<div>
+												<p class="mention">à partir de.</p>
+												<p class="price">99 999</p>
+											</div>
 										</div>
-										<div>
-											<p class="caption">à partir de</p>
-											<p class="price">718</p>
+										<div class="wrapper-height">
+											<div class="wrapper-infos">
+												<div class="infos">11 avril 2014 - 8 nuits, 7 jours. Réservez votre forfait au magnifique hôtel Barcela Arenas Blancas, situés au bord de la plage de Cuba, Varadero. Restaurants et bar disponibles, et plus.</div>
+											</div>
 										</div>
-										<ul class="rating">
-											<li></li>
-											<li></li>
-											<li></li>
-											<li></li>
-										</ul>
-										<div class="infos">11 avril 2014 - 8 nuits, 7 jours. Réservez votre forfait au magnifique hôtel Barcela Arenas Blancas, situés au bord de la plage de Cuba, Varadero. Restaurants et bar disponibles, et plus.</div>
-									
-									<div class="logo" style="background-image: url('public/images/demo/bergeron-small.jpg');"></div>
-									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
+										<div class="close"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
+										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 								</div>
 								<div>
-									<div class="close"></div>
-									<div class="description special">
-										<div>
-											<p class="title">Azul Fives Hotel</p>
-											<p class="subtitle">Riviera Maya, Mexique</p>
+									<div class="wrapper-all">
+										<div class="description">
+											<div>
+												<p class="title">Blau Costa Verde</p>
+												<ul class="rating">
+													<li></li>
+						
+												</ul>
+												<p class="subtitle">Holguin, Cuba</p>
+											</div>
+											<div>
+												<p class="mention">à partir de<br/>par pers.</p>
+												<p class="price">839</p>
+											</div>
 										</div>
-										<div class="opposite">
-											<p class="caption">à partir de</p>
-											<p class="price">995</p>
+										<div class="wrapper-height">
+											<div class="wrapper-infos">
+												<div class="infos">18 avril 2014 - 7 nuits, 6 jours. Réservez votre forfait tout inclus 5 étoiles au Azul Fives Hotel, dans la superbe ville de Riviera Maya. Un hôtel de rêve pour des gens qui désirent des vacances de rêve.</div>
+											</div>
 										</div>
-										<ul class="rating">
-											<li></li>
-											<li></li>
-											<li></li>
-											<li></li>
-											<li></li>
-										</ul>
-										<div class="infos">18 avril 2014 - 7 nuits, 6 jours. Réservez votre forfait tout inclus 5 étoiles au Azul Fives Hotel, dans la superbe ville de Riviera Maya. Un hôtel de rêve pour des gens qui désirent des vacances de rêve.</div>
-									
-									<div class="logo" style="background-image: url('public/images/demo/bergeron-small.jpg');"></div>
-									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
+										<div class="close"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
+										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>
-									<div class='lp-legal noFlip' style="-webkit-transform: translate3d(0,92px,0); height:92px;">
+									<div class='lp-legal noFlip' style="height:100px; -webkit-transform: translate3d(0, 100px, 0);">
 										<div class='lp-legal-btn noFlip'>Légal</div>
-										<div class='lp-legal-text noFlip' style="height:204px;">45841141 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. En magasin seule...</div>
-									</div>
-								</div>	
+										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
+									</div>									
+								</div>
 							</div>				
 						</div>
 						<div class='pager-wrapper'>
@@ -194,12 +211,10 @@
 				</div>
 			</div>
 		<!--=== RETOURNER html | fin ==============-->
-		</div>
 	</div>
-	<script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
+
 	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
 	<script>
-
 		var ad = document.getElementsByClassName('lp-ad')[0];
 
 		/*=== RETOURNER script | debut =============*/
@@ -209,7 +224,7 @@
 		function flipMe() { 
 			// Si je n'ai pas flipper et que je ne scroll pas.
 			if(!(flipper.classList.contains('active')) && !(ad.classList.contains('moving')) ) { 
-				if ( !(flipper.classList.contains('flipped')) ) {
+				if (  !(event.target.classList.contains('noFlip'))  ) {
 					flipper.classList.add('active');
 					flipper.addEventListener("transitionend", flipDone, false);
 				} 
@@ -276,7 +291,7 @@
 			});	
 			Array.prototype.forEach.call(currentLegal, function(el) {
 		    	el.classList.remove('lp-legal-active');
-			});					
+			});			
 		}
 
 
@@ -297,6 +312,10 @@
 			} else {
 				document.body.classList.add('lp-is-ios');
 			}
+			//Gardez pour tester et remettre ensuite
+			// if(isMobile.Android() || isMobile.iOS()) {
+			// 	 location.href = 'lpri://webContentFinishedLoading';
+			// }
 			document.body.classList.add('lp-loaded');
 		}
 
@@ -357,6 +376,7 @@
 			for (var i = 0; i < legalList.length; ++i) {
 				new legal(legalList[i],cleanWhiteSpace(legalList[i]).childNodes[0],legalBg[i]);
 			}		
+
 	</script>
 </body>
 </html>
