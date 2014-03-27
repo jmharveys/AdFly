@@ -1,5 +1,5 @@
 <?php 
-	include '../configs/global.php'; 
+	include '../../configs/global.php'; 
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8]> <html class="lt-ie10 lt-ie9 lt-ie8" lang="fr"> <![endif]-->
@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>1/4 galerie avec vidéo | AdFly </title>
+	<title>1/4 galerie sans vidéo | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -16,123 +16,12 @@
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<style>
-	/* ICONES */
-
-		/* Étoiles */
-		.back ul.rating > li {
-			display: inline-block;
-			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-			background-size: contain;
-			width: 18px;
-			height: 18px;
-			margin: 5px 3px 0 0;
-			z-index: 10;
-		}
-
-		/* Bouton Fermer */
-		.back .close {
-		  position: absolute;
-		  top: 0px;
-		  left: 0px;
-		  width: 40px;
-		  height: 40px;
-		  z-index: 1;
-		  background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
-		  -webkit-background-size: contain;
-		  background-size: contain;
-		}
-		
-		/* Bouton Fermer ACTIF */
-		.back .close:active {
-		  background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
-		}
-
-
-		/* Plus Web */
-		.back a.btn-plusWeb {
-			position: absolute;
-			bottom: 10px;
-			right: 10px;
-			width: 40px;
-			height: 40px;
-			z-index: 1;
-			background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
-			background-size: contain;		
-		}
-
-
-		/* Bouton +Web ACTIF */
-		.back a.btn-plusWeb:active {
-			background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
-		}	
-
-		/* Bouton +Web : truc pour élargir zone cliquable ; */
-		.back a.btn-plusWeb:after {
-			position: absolute;
-			content: "";
-			width: 80px;
-			height: 80px;
-			top: -10px;
-			left: -10px;	
-		}	
-
-		/*Format 1/4 avec vidéo*/
-
-			/* Bouton Play */
-			.lp-video-play {
-				background: url(http://localhost:8888/Adfly/public/images/btn-play.png);
-				background-size: contain;
-			}	
-
-			.lp-video-play:active {
-				background: url(http://localhost:8888/Adfly/public/images/btn-play-pressed.png);
-				background-size: contain;
-			}	
-
-			/* Bouton Fermer Vidéo */
-			.lp-video-close {
-				width: 30px;
-				height: 30px;
-				background: url(http://localhost:8888/Adfly/public/images/btn-close.png);
-				background-size: contain;
-			}
-
+		<style>
+		<?php include '../images-adgear.php'; ?>
 	</style>
 </head>
 <body>
 	<div class='lp-ad lp-480x325'>
-		<!-- <div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/video.jpg');"></div> -->
-
-
-		<!-- VIDEO 1 html | debut --> 
-		<div class='lp-video-bg 1395680443693_video'></div> 
-		<div class='lp-video 1395680443693_video' style="width:480px; height:247px;"> 
-			<video width='480px' height='247px' controls> 
-				<source src='http://s2.cpl.delvenetworks.com/media/6aef184dd0a64f1183a9ec439e89fec8/6c078fb92c3248bda1b38215cf65f004/20130515-174149-5194011dc0d813-64803181-mp48deba435c56e79f2f2e23df7f10f60e694bcf29b.m3u8' /> 
-				Votre navigateur ne supporte pas la balise vidéo. 
-			</video> 
-			<div class='lp-video-close 1395680443693_video'></div> 
-		</div> 
-		<!-- VIDEO html 1 | fin -->		
-		<!-- VIDEO 2 html | debut --> 
-		<div class='lp-video-bg 1395680443692_video'></div> 
-		<div class='lp-video 1395680443692_video' style="width:480px; height:247px;"> 
-			<video width='480px' height='247px' controls> 
-				<source src='http://s2.cpl.delvenetworks.com/media/6aef184dd0a64f1183a9ec439e89fec8/8a7b892fd27b4b35bd419e8c0553d1d9/20130415-140101-516c405d8a2a64-83168024-mp4f6ba97a0bf6491751941907b11b1052e0f568e99.m3u8' /> 
-				Votre navigateur ne supporte pas la balise vidéo. 
-			</video> 
-			<div class='lp-video-close 1395680443692_video'></div> 
-		</div> 
-		<!-- VIDEO html 2 | fin -->
-		<!--=== HORS-LIGNE Html | debut =========================-->
-		<div id='lp-offline-banner'>
-			<div class='lp-offline-warning'>
-				Une connexion internet est requise pour visualiser correctement certaines parties de cette annonce.
-			</div>
-		</div>
-		<!--=== HORS-LIGNE Html | fin ===========================-->
-
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
@@ -141,9 +30,6 @@
 						<div class='gallery'>
 							<div class='scroller' style="width: 1920px;">
 								<div>
-									<!-- VIDEO 1 PLAY html | debut -->
-									<div class='lp-video-play 1395680443693_video noFlip'></div> 
-									<!-- VIDEO 1 PLAY html | fin -->					
 									<div style="background: url('<?= URL ?>public/images/demo/romana.jpg'); width:480px; height:247px;"></div>
 									<div class="description">
 										<div>
@@ -152,7 +38,7 @@
 										</div>
 										<div>
 											<p class="mention">à par pers.  </p>
-											<p class="price">9 999</p>
+											<p class="price">99 999</p>
 										</div>
 									</div>
 								</div>
@@ -170,9 +56,6 @@
 									</div>	
 								</div>	
 								<div>
-									<!-- VIDEO 2 PLAY html | debut -->
-									<div class='lp-video-play 1395680443692_video noFlip'></div> 
-									<!-- VIDEO 2 PLAY html | fin -->		
 									<div style="background: url('<?= URL ?>public/images/demo/acapulco.jpg'); width:480px; height:247px;"></div>
 									<div class="description">
 										<div>
@@ -358,10 +241,9 @@
 		<!--=== RETOURNER html | fin ==============-->
 	</div>
 
-	<script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
 	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
 	<script>
-		var ad = document.getElementsByClassName('lp-ad')[0];
+			var ad = document.getElementsByClassName('lp-ad')[0];
 
 		/*=== RETOURNER script | debut =============*/
 		var flipper = document.getElementsByClassName('flip')[0]; 
@@ -521,90 +403,10 @@
 
 			for (var i = 0; i < legalList.length; ++i) {
 				new legal(legalList[i],cleanWhiteSpace(legalList[i]).childNodes[0],legalBg[i]);
-			}		
+			}				
 
-		/* CODE POUR FORMAT 1/4 AVEC VIDÉO | DÉBUT */
+			
 
-		/*=== VIDEO script | debut =========================*/
-		var videos = {
-			play: document.getElementsByClassName('lp-video-play'),
-			close: document.getElementsByClassName('lp-video-close'),
-			bg: document.getElementsByClassName('lp-video-bg'),
-			player: document.getElementsByClassName('lp-video'),
-			stop: function(pClass) {
-				var related = document.getElementsByClassName(pClass);
-				for(var x=0; x<related.length; x++) {
-					related[x].classList.remove('lp-video-active');
-					if(related[x].classList.contains('lp-video')) {
-					var video = related[x].querySelector('video');
-						if(video.currentTime != 0.1) {
-							try {
-								video.currentTime = 0.1;
-							} catch(e) {};
-						}
-						video.pause();
-					}
-				}
-			}
-		}
-
-		/*--- Click btn Jouer ---*/
-		for(var x=0; x<videos.play.length; x++) {
-			videos.play[x].onclick = function(e) {
-				e.stopImmediatePropagation();
-				var className = this.classList[1];
-				var related = document.getElementsByClassName(className);
-				var videoTags = document.getElementsByTagName('video');
-				for(var k=0; k<related.length; k++) {
-					related[k].classList.add('lp-video-active');
-				}
-				for(var j=0; j<videoTags.length; j++) {
-					if(videoTags[j].parentNode.classList[1] != className) {
-						videos.stop(videoTags[j].parentNode.classList[1]);
-					} else {
-						videoTags[j].play();
-					}
-				}
-			}
-		}
-
-		/*--- Click btn Fermer ---*/
-		for(var x=0; x<videos.close.length; x++) {
-			videos.close[x].onclick = function(e) {
-				e.stopImmediatePropagation();
-				videos.stop(this.classList[1]);
-			}
-		}
-
-		/*--- Click Arriere-plan ---*/
-		for(var x=0; x<videos.bg.length; x++) {
-			videos.bg[x].onclick = function(e) {
-				e.stopImmediatePropagation();
-				videos.stop(this.classList[1]);
-			}
-		}
-
-		/*--- Quand la video se termine ---*/
-		for(var x=0; x<videos.player.length; x++) {
-			videos.player[x].firstElementChild.addEventListener('ended', function() {
-				videos.stop(this.parentNode.classList[1]);
-			});
-		}
-		/*=== VIDEO script | fin ===========================*/
-
-
-		/*=== HORS-LIGNE script | debut ====================*/
-		var offlineBanner = document.getElementById('lp-offline-banner');
-		var offlineWarning = document.getElementsByClassName('lp-offline-warning')[0];
-		if(!window.navigator.onLine) {
-			offlineBanner.classList.add('lp-offline');
-		}
-		offlineWarning.onclick = function() {
-			offlineBanner.classList.remove('lp-offline');
-		}
-		/*=== HORS-LIGNE script | fin ======================*/
-
-		/*=== CODE POUR FORMAT 1/4 AVEC VIDÉO | FIN ===========================*/
 	</script>
 </body>
 </html>

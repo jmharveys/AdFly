@@ -19,66 +19,77 @@
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<style>
-		/* ICONES rétina POUR L'ARRIÈRE DU FLIP */
-	.back ul.rating > li {
-			float: left;
-			list-style: none;
-			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-autre.png) no-repeat 0 0 transparent;
-			background-size: contain;
-			width: 12.5px;
-			height: 12.5px;
-			margin: 0 3px 0 0;
-			z-index: 10;			
-	}
+			<style>
+	/* ICONES */
 
-	.quart .back ul.rating > li {
-			float: left;
-			list-style: none;
-			background: url(http://localhost:8888/Adfly/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-			background-size: contain;
-			width: 18px;
-			height: 18px;
-			margin: 0 3px 0 0;
-			z-index: 10;
-	}	
-	.back .close {
-			position: absolute;
-			top: 0px;
-			left: 0px;
-			width: 40px;
-			height: 40px;
-			z-index: 1;
-			background: url(http://localhost:8888/Adfly/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
-			background-size: contain;
+		/* Étoiles */
+		.back ul.rating > li {
+				float: left;
+				list-style: none;
+				background: url(<?= URL; ?>/public/images/ico-etoile-autre.png) no-repeat 0 0 transparent;
+				background-size: contain;
+				width: 12.5px;
+				height: 12.5px;
+				margin: 0 3px 0 0;
+				z-index: 10;			
 		}
 
-	.back .close:active {
-			background-image: url(http://localhost:8888/Adfly/public/images/btn-annuler-pressed.png);
+		.lp-480x325 .back ul.rating > li {
+				float: left;
+				list-style: none;
+				background: url(<?= URL; ?>/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
+				background-size: contain;
+				width: 18px;
+				height: 18px;
+				margin: 0 3px 0 0;
+				z-index: 10;
 		}	
 
-	.back a.btn-plusWeb {
+		/* Bouton Fermer */
+		.back .close {
+		  position: absolute;
+		  top: 0px;
+		  left: 0px;
+		  width: 40px;
+		  height: 40px;
+		  z-index: 1;
+		  background: url(<?= URL; ?>/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
+		  -webkit-background-size: contain;
+		  background-size: contain;
+		}
+		
+		/* Bouton Fermer ACTIF */
+		.back .close:active {
+		  background-image: url(<?= URL; ?>/public/images/btn-annuler-pressed.png);
+		}
+
+
+		/* Plus Web */
+		.back a.btn-plusWeb {
 			position: absolute;
-			bottom: 10px;
-			right: 10px;
+			bottom: 9px;
+			right: 9px;
 			width: 40px;
 			height: 40px;
 			z-index: 1;
-			background: url(http://localhost:8888/Adfly/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
+			background: url(<?= URL; ?>/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
 			background-size: contain;		
 		}
 
+
+		/* Bouton +Web ACTIF */
 		.back a.btn-plusWeb:active {
-			background-image: url(http://localhost:8888/Adfly/public/images/btn-plusweb-pressed.png);	
+			background-image: url(<?= URL; ?>/public/images/btn-plusweb-pressed.png);	
 		}	
 
+		/* Bouton +Web : truc pour élargir zone cliquable ; */
 		.back a.btn-plusWeb:after {
 			position: absolute;
 			content: "";
 			width: 80px;
 			height: 80px;
-			top: -10px;
-			left: -10px;	
+			top: -9px;
+			left: -9px;	
 		}	
 	</style>
 </head>

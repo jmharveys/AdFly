@@ -169,6 +169,51 @@ body.lp-loaded {
 		}
 
 }
+
+.back {
+		.description {
+			//Les étoiles
+			.rating > li {
+				float: left;
+				list-style: none;
+				width: 12.5px;
+				height: 12.5px;
+				margin: 0 3px 0 0;
+				z-index: 10;	
+			}	
+		}	
+
+		/* Bouton Fermer */
+		.close {
+		  position: absolute;
+		  top: 0px;
+		  left: 0px;
+		  width: 40px;
+		  height: 40px;
+		  z-index: 1;
+		}
+
+		/* Bouton +Web : */
+		a.btn-plusWeb {
+			position: absolute;
+			bottom: 9px;
+			right: 9px;
+			width: 40px;
+			height: 40px;
+			z-index: 1;	
+		}
+
+		/* Bouton +Web : truc pour élargir zone cliquable ; */
+		a.btn-plusWeb:after {
+			position: absolute;
+			content: "";
+			width: 80px;
+			height: 80px;
+			top: -9px;
+			left: -9px;	
+		}	
+		
+}
 /*=========================================================*/
 /*=== Commun à tous les formats  | fin  =================*/
 /*=========================================================*/
@@ -257,6 +302,11 @@ body.lp-loaded {
 
 				.rating {
 					display: table-row;
+						> li {
+							width: 18px;
+							height: 18px;
+							margin: 10px 3px 0 0;
+						}
 				}
 
 			}
@@ -330,7 +380,7 @@ body.lp-loaded {
 				}
 		}
 
-		.front, .back, .gallery, .scroller > div { 
+		.front, .back, .gallery, .scroller > div, .wrapper { 
 			width: 480px; 
 			height: 325px; 
 		} 
@@ -460,20 +510,32 @@ body.lp-loaded {
 	}
 
 	// 1/4 sans offre
-	.lp-480x325.uniqueOffer .front .table-cell-wrapper {
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		background: rgba(255, 255, 255, 1);
-	}
+	.lp-480x325.uniqueOffer {
+		
+		.front {
 
-	.lp-480x325.uniqueOffer .front .pager-wrapper {
-		top: 225px;
-	}
+			.table-cell-wrapper {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				background: rgba(255, 255, 255, 1);
+			}
 
-	.lp-480x325.uniqueOffer .back, .lp-480x325.uniqueOffer .front {
-		background-color: rgba(255,255,255,1);
-	}
+			.pager-wrapper {
+				top: 225px;
+			}
+
+		}
+	
+		.back {
+			background-color: rgba(255,255,255,1);
+		}
+	} 
+
+
+
+	
+
 
 /*=========================================================*/
 /*=== FORMAT 1/4  | fin  ==================================*/
@@ -535,7 +597,12 @@ body.lp-loaded {
 
 			.scroller > div {
 				display: table;
+
+				> div:nth-child(1){
+					display: table-cell;
+				}
 			}
+
 
 			.pager-wrapper {
 				top: 125px;
@@ -649,7 +716,7 @@ body.lp-loaded {
 				}
 		}
 
-		.front, .back, .gallery, .scroller > div { 
+		.front, .back, .gallery, .scroller > div,  .wrapper { 
 			width: 480px; 
 			height: 152px; 
 		} 
@@ -657,6 +724,39 @@ body.lp-loaded {
 
 
 }
+
+
+	// 1/8 avec une seul offre
+
+	.lp-480x152.uniqueOffer {
+
+		.gallery,
+		.scroller > div {
+			width: 328px; 
+			height: 152px; 
+		}
+
+		.front {
+
+				.table-cell-wrapper {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					background: rgba(255, 255, 255, 1);
+				}
+
+				.pager-wrapper {
+					width: 328px;
+				}
+		}
+
+		.back {
+			background-color: rgba(255,255,255,1);
+		}
+
+	}
+
+
 
 /*=========================================================*/
 /*=== FORMAT 1/8  | fin  ==================================*/
@@ -735,366 +835,3 @@ body.lp-loaded {
 /*=========================================================*/
 /*=== LÉGAL | fin  ==================================*/
 /*=========================================================*/
-
-
-
-
-
-
-
-
-
-// AUTRES FORMATS
-
-
-//1/8 V
-
-// .huitieme-v .front .description {
-// 	float: none;
-// 	position: absolute;
-// 	bottom: 0;
-// }
-
-// .huitieme-v .back {
-// 	background-color: rgba(255,255,255,1);
-// }
-
-
-
-
-// .huitieme-v,
-// .huitieme-v .wrapperFlip,
-// .huitieme-v .flip,
-// .huitieme-v .front,
-// .huitieme-v .back {
-// 	width: 230px;
-// 	height: 325px;
-// }
-
-// .huitieme-v .logo {
-// 	width: 100px;
-// 	height: 35px;
-// }
-
-// .huitieme-v .back .logo {
-// 	width: 100px;
-// 	height: 40px;
-// 	top: 277px;
-// 	left: 72px;
-// }
-
-// .huitieme-v .description {
-// 	height: 104px;
-// }
-
-// .huitieme-v .description .subtitle {
-// 	font: normal bold 18px/16px helvetica, sans-serif;
-// 	height: 35px;
-// }
-
-// .huitieme-v .description div:nth-child(2) {
-// 	float: none;
-// }
-
-// .huitieme-v .description .price {
-// 	float: none;
-// 	font: normal bold 28px/29px helvetica, sans-serif;
-// }
-
-// .huitieme-v .back .description .price {
-// 	position: absolute;
-// 	top: 104px;
-// 	left: 50px;
-// 	float: none;
-// 	font: normal bold 28px/29px helvetica, sans-serif;
-// }
-
-// .huitieme-v .description .mention,
-// .huitieme-v .back .description .mention  {
-// 	position: absolute;
-// 	top: 84px;
-// 	left: 57px;
-// 	display: block;
-// 	vertical-align: initial;
-// 	width: auto;
-// 	float: none;
-// 	// font: normal bold 28px/29px helvetica, sans-serif;
-// }
-
-// .huitieme-v .back .description .mention  {
-// 	position: absolute;
-// 	top: 96px;
-// 	left: 51px;
-// 	display: block;
-// 	vertical-align: initial;
-// 	width: auto;
-// 	float: none;
-// 	// font: normal bold 28px/29px helvetica, sans-serif;
-// }
-
-// .huitieme-v .back .description .title,
-// .huitieme-v .back .description .subtitle  {
-// 	font: normal normal 18px/16px helvetica, sans-serif;
-// }
-
-// .huitieme-v .back .description .subtitle  {
-// 	font: normal normal 18px/16px helvetica, sans-serif;
-// }
-
-// .huitieme-v .back .description .infos {
-// 	font: normal normal 14px/17px helvetica, sans-serif;
-// 	line-clamp: 7;
-// 	position: absolute;
-// 	top: 147px;
-// 	left: 19px;
-// 	width: 200px;
-// }
-
-// .huitieme-v .back .description {
-// 	padding: 14px 19px 10px 27px;
-// }
-
-// .huitieme-v .back .description .title {
-// 	height: 21px;
-// }
-
-// .huitieme-v .back .description .rating {
-// 	height: 81px;
-// 	padding: 8px 0 0 25px;
-// }
-
-
-
-// .huitieme-h,
-// .huitieme-h .wrapperFlip,
-// .huitieme-h .flip,
-// .huitieme-h .front,
-// .huitieme-h .back,
-// .huitieme-h .gallery,
-// .huitieme-h .gallery .scroller > div {
-// 	width: 480px;
-// 	height: 152px;
-// }
-
-
-// .une-offre .gallery, .une-offre .gallery .scroller > div {
-// 	width: 328px;
-// 	height: 152px;
-// }
-
-
-
-// .huitieme-h .wrapper {	
-// 	width: 480px;
-// 	height: 152px;
-// 	z-index: 0;
-// 	overflow: hidden;
-// 	position: absolute;	
-// }
-
-// .huitieme-h .logo {
-// 	width: 100px;
-// 	height: 50px;
-// }
-
-// .huitieme-h .back .logo {
-// 	top:117px;
-// 	left: 335px;
-// 	width: 85px;
-// 	height: 30px;
-// }
-
-// .huitieme-h .front .description {
-// 	width: 152px;
-// 	height: 152px;
-// }
-
-// .huitieme-h .description .title {
-// 	font: normal normal 17px/18px helvetica, sans-serif;
-// }
-
-// .huitieme-h .description .subtitle {
-// 	font: normal bold 18px/20px helvetica, sans-serif;
-// }
-
-// .huitieme-h .description .price {
-// 	font: normal bold 28px/26px helvetica, sans-serif;
-// }
-
-// .huitieme-h .description .opposite .mention {
-// 	height: 48px;
-// }
-
-// .huitieme-h .back .description .title {
-// 	font: normal normal 17px/16px helvetica, sans-serif;
-// 	height: 20px;
-// }
-// .huitieme-h .back .description .subtitle {
-// 	font: normal bold 18px/16px helvetica, sans-serif;
-// 	height: auto;
-// }
-
-// .huitieme-h .back .description .rating {
-// 	float: none;
-// 	clear: none;
-// 	padding: 0;
-// 	height: auto;
-// 	position: absolute;
-// 	top: 16px;
-// 	left: 242px;
-// }
-
-// .huitieme-h .back .special .rating {
-// 	top: 15px;
-// 	left: 185px;
-// }
-
-// .huitieme-h .back .description .title, .huitieme-h .back .description .subtitle {
-// 	padding: 0 0 0 51px
-// }
-
-// .huitieme-h .back .description {
-// 	padding: 14px 19px 10px 3px;
-// }
-
-// .huitieme-h .back .description .infos {
-// 	font: normal normal 13px/16px helvetica, sans-serif;
-// 	line-clamp: 3;
-// 	position: absolute;
-// 	top: 57px;
-// 	left: 28px;
-// 	width: 390px;
-// 	height: 50px;
-// }
-
-// .huitieme-h .back .description div:nth-child(2) {
-// 	float: none;
-// 	position: absolute;
-// 	top: -22px;
-// 	left: 393px;
-// }
-
-// .huitieme-h .back .description .price {
-// 	font: normal bold 28px/16px helvetica, sans-serif;
-// }
-
-// .huitieme-h .pager-wrapper, .huitieme-h .back .pager-wrapper  {
-// 	top: 129px;
-// }
-
-// .huitieme-h .description .mention  {
-// 	height: 31px;
-// }
-
-// .seizieme-h,
-// .seizieme-h .wrapperFlip,
-// .seizieme-h .flip,
-// .seizieme-h .front,
-// .seizieme-h .back {
-// 	width: 230px;
-// 	height: 152px;
-// }
-
-// .seizieme-h .wrapper {	
-// 	width: 230px;
-// 	height: 152px;
-// 	z-index: 0;
-// 	overflow: hidden;
-// 	position: absolute;	
-// }
-
-// .seizieme-h .description .title, 
-// .seizieme-h .description .subtitle,
-// .seizieme-h .back .description .subtitle,
-// .seizieme-h .back .description .title  {
-// 	font: normal normal 16px/16px helvetica, sans-serif;
-// }
-
-// .seizieme-h .description .price, .seizieme-h .back .description .price  {
-// 	font: normal normal 24px/24px helvetica, sans-serif;
-// 	position: absolute;
-// 	top:116px;
-// 	left:153px;
-// }
-
-// .seizieme-h .flip {
-// 	background-color: rgba(255,255,255,1);
-// }
-
-// .seizieme-h .back .description .price {
-// 	top: 66px;
-// 	left: 23px;
-// }
-
-// .seizieme-h .back a.btn-plusWeb {
-
-
-// 	bottom: -92px;
-// 	right: 42px;
-// }
-
-// .seizieme-h .description .mention {
-// 	position: absolute;
-// 	top: 133px;
-// 	left: 36px;
-// 	font-weight: bold;
-// 	height: 20px;
-// 	font: normal normal 11px/11px helvetica, sans-serif;
-// }
-
-// .seizieme-h .back .description .mention {
-// 	position: absolute;
-// 	top: 60px;
-// 	left: 24px;
-// 	font-weight: bold;
-// 	height: 20px;
-// 	font: normal normal 11px/11px helvetica, sans-serif;
-// }
-
-// .seizieme-h .description .subtitle, .seizieme-h .back .description .subtitle {
-// 	height: 20px;
-// 	font-weight: bold;
-// }
-
-// .seizieme-h .description {
-// 	padding: 49px 10px 0px 15px;
-// }
-
-// .seizieme-h .back .description {
-// 	position: absolute;
-// 	padding: 0;
-// 	float: none;
-// 	top: 11px;
-// 	left: 31px;
-// }
-
-// .seizieme-h .back .description .title {
-// 	height: 19px;
-// }
-
-// .seizieme-h .description .rating {
-// 	float: none;
-// 	clear: none;
-// 	position: absolute;
-// 	height: auto;
-// 	padding: 0;
-// 	top: 25px;
-// }
-
-// .seizieme-h .lp-legal-text {
-// 	width: 230px;
-// }
-
-// .seizieme-h .logo, .seizieme-h .back .logo {
-// 	width: 90px;
-// 	height: 35px;
-// 	top: 3px;
-// 	left: 5px;
-// }
-
-// .seizieme-h .back .logo {
-// 	top: 100px;
-// 	left: 48px;
-// }
-	
-

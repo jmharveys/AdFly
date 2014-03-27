@@ -457,6 +457,48 @@ body.lp-loaded {
   content: "$";
 }
 
+.back {
+  /* Bouton Fermer */
+  /* Bouton +Web : */
+  /* Bouton +Web : truc pour élargir zone cliquable ; */
+}
+
+.back .description .rating > li {
+  float: left;
+  list-style: none;
+  width: 12.5px;
+  height: 12.5px;
+  margin: 0 3px 0 0;
+  z-index: 10;
+}
+
+.back .close {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+
+.back a.btn-plusWeb {
+  position: absolute;
+  bottom: 9px;
+  right: 9px;
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+
+.back a.btn-plusWeb:after {
+  position: absolute;
+  content: "";
+  width: 80px;
+  height: 80px;
+  top: -9px;
+  left: -9px;
+}
+
 /*=========================================================*/
 
 /*=== Commun à tous les formats  | fin  =================*/
@@ -545,6 +587,12 @@ body.lp-loaded {
   display: table-row;
 }
 
+.lp-480x325 .back .description .rating > li {
+  width: 18px;
+  height: 18px;
+  margin: 10px 3px 0 0;
+}
+
 .lp-480x325 .back .wrapper-all {
   height: 265px;
   display: table;
@@ -613,7 +661,8 @@ body.lp-loaded {
 .lp-480x325 .front,
 .lp-480x325 .back,
 .lp-480x325 .gallery,
-.lp-480x325 .scroller > div {
+.lp-480x325 .scroller > div,
+.lp-480x325 .wrapper {
   width: 480px;
   height: 325px;
 }
@@ -787,8 +836,7 @@ body.lp-loaded {
   top: 225px;
 }
 
-.lp-480x325.uniqueOffer .back,
-.lp-480x325.uniqueOffer .front {
+.lp-480x325.uniqueOffer .back {
   background-color: white;
 }
 
@@ -847,6 +895,10 @@ body.lp-loaded {
 
 .lp-480x152 .front .scroller > div {
   display: table;
+}
+
+.lp-480x152 .front .scroller > div > div:nth-child(1) {
+  display: table-cell;
 }
 
 .lp-480x152 .front .pager-wrapper {
@@ -946,9 +998,31 @@ body.lp-loaded {
 .lp-480x152 .front,
 .lp-480x152 .back,
 .lp-480x152 .gallery,
-.lp-480x152 .scroller > div {
+.lp-480x152 .scroller > div,
+.lp-480x152 .wrapper {
   width: 480px;
   height: 152px;
+}
+
+.lp-480x152.uniqueOffer .gallery,
+.lp-480x152.uniqueOffer .scroller > div {
+  width: 328px;
+  height: 152px;
+}
+
+.lp-480x152.uniqueOffer .front .table-cell-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: white;
+}
+
+.lp-480x152.uniqueOffer .front .pager-wrapper {
+  width: 328px;
+}
+
+.lp-480x152.uniqueOffer .back {
+  background-color: white;
 }
 
 /*=========================================================*/
