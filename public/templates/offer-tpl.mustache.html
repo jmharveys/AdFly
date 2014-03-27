@@ -1,102 +1,54 @@
-{{#exist.video}}
-<div id="lp-offline-banner">
-    <div class="lp-offline-warning">
-        Une connexion internet est requise pour visualiser correctement certaines parties de cette annonce.
-    </div>
-</div>
-{{/exist.video}}
-
-{{#exist.video}}
-{{#offers.list}}
-{{#video.exist}}
-<div class="lp-video-bg {{index}}_video"></div>
-<div class="lp-video {{index}}_video"> 
-    <video controls="">
-        <source src="{{video.name}}">
-        Votre navigateur ne supporte pas la balise vidéo. 
-    </video> 
-    <div class="lp-video-close {{index}}_video"></div> 
-</div>
-{{/video.exist}}
-{{/offers.list}}
-{{/exist.video}}
-
-<div class='lp-flip'>
-    <div class='lp-front'>
-        <span class="lp-logo"></span>
-        {{#exist.offersGallery}}
-        <div class='lp-gallery lp-offers'>
-            <div class='lp-scroller'>
-        {{/exist.offersGallery}}
-                {{#offers.list}}
-                <section class="lp-offer">
-                    {{#video.exist}}
-                    <div class="lp-video-play {{index}}_video"></div>
-                    {{/video.exist}}
-
-                    {{#gallery.exist}}
-                    <div class='lp-gallery lp-pictures'>
-                        <div class='lp-scroller'>
-                            {{#gallery.pictures}}
-                            <div class="lp-picture"></div>
-                            {{/gallery.pictures}}
-                        </div>
-                    </div>
-                    {{/gallery.exist}}
-
-                    <div class="lp-summary">
-                        <div>
-                            <span class="lp-more">{{moreDestination}}</span>
-                            <span class="lp-destination">{{destination}}</span>
-                        </div>
-                        <div>
-                            <span class="lp-mentions">
-                                {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
-                            </span>
-                            <span class="lp-price">{{price}}</span>
-                        </div>
-                    </div>
-                </section>
-                {{/offers.list}}
-        {{#exist.offersGallery}}
-            </div>
+<div class="lp-ad">
+    {{#exist.video}}
+    <div id="lp-offline-banner">
+        <div class="lp-offline-warning">
+            Une connexion internet est requise pour visualiser correctement certaines parties de cette annonce.
         </div>
-        {{/exist.offersGallery}}
-
-        {{#exist.gallery}}
-        <span class="lp-pager{{#exist.offersGallery}} lp-offers{{/exist.offersGallery}}{{#exist.picturesGallery}} lp-pictures{{/exist.picturesGallery}}">
-            <span class="lp-wrapper">
-                {{#exist.offersGallery}}
-                {{#offers.list}}
-                    <span class="lp-bullet"></span>
-                {{/offers.list}}
-                {{/exist.offersGallery}}
-
-                {{#exist.picturesGallery}}
-                {{#offers.list.0.gallery.pictures}}
-                    <span class="lp-bullet"></span>
-                {{/offers.list.0.gallery.pictures}}
-                {{/exist.picturesGallery}}
-            </span>
-        </span>
-        {{/exist.gallery}}
     </div>
-    <div class='lp-back'>
-        {{#exist.offersGallery}}
-        <div class='lp-gallery lp-offers'>
-            <div class='lp-scroller'>
-        {{/exist.offersGallery}}
-                {{#offers.list}}
-                <div class="lp-offer">
-                    <span class="lp-close"></span>
-                    <div class="lp-card">
+    {{/exist.video}}
+
+    {{#exist.video}}
+    {{#offers.list}}
+    {{#video.exist}}
+    <div class="lp-video-bg {{index}}_video"></div>
+    <div class="lp-video {{index}}_video"> 
+        <video controls="">
+            <source src="{{video.name}}">
+            Votre navigateur ne supporte pas la balise vidéo. 
+        </video> 
+        <div class="lp-video-close {{index}}_video"></div> 
+    </div>
+    {{/video.exist}}
+    {{/offers.list}}
+    {{/exist.video}}
+
+    <div class='lp-flip'>
+        <div class='lp-front'>
+            <span class="lp-logo"></span>
+            {{#exist.offersGallery}}
+            <div class='lp-gallery lp-offers'>
+                <div class='lp-scroller'>
+            {{/exist.offersGallery}}
+                    {{#offers.list}}
+                    <section class="lp-offer">
+                        {{#video.exist}}
+                        <div class="lp-video-play {{index}}_video"></div>
+                        {{/video.exist}}
+
+                        {{#gallery.exist}}
+                        <div class='lp-gallery lp-pictures'>
+                            <div class='lp-scroller'>
+                                {{#gallery.pictures}}
+                                <div class="lp-picture"></div>
+                                {{/gallery.pictures}}
+                            </div>
+                        </div>
+                        {{/gallery.exist}}
+
                         <div class="lp-summary">
                             <div>
                                 <span class="lp-more">{{moreDestination}}</span>
                                 <span class="lp-destination">{{destination}}</span>
-                                {{#rating}}
-                                <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
-                                {{/rating}}
                             </div>
                             <div>
                                 <span class="lp-mentions">
@@ -105,35 +57,87 @@
                                 <span class="lp-price">{{price}}</span>
                             </div>
                         </div>
-                        <div class="lp-description">
-                            <p>
-                                <span>{{description}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lp-logo"></div>
-                    <a class="lp-plus-web" href="{{link}}"></a>
+                    </section>
+                    {{/offers.list}}
+            {{#exist.offersGallery}}
                 </div>
-                {{/offers.list}}
-        {{#exist.offersGallery}}
             </div>
-        </div>
-        {{/exist.offersGallery}}
-        {{#exist.offersGallery}}
-        <span class="lp-pager lp-offers">
-            <span class="lp-wrapper">
-                {{#offers.list}}
-                <span class="lp-bullet"></span>
-                {{/offers.list}}
-            </span>
-        </span>
-        {{/exist.offersGallery}}
+            {{/exist.offersGallery}}
 
-        {{#offers.legal.exist}}
-        <div class="lp-legal">
-            <div class="lp-legal-btn">Légal</div>
-            <div class="lp-legal-text">{{offers.legal.text}}</div>
+            {{#exist.gallery}}
+            <span class="lp-pager{{#exist.offersGallery}} lp-offers{{/exist.offersGallery}}{{#exist.picturesGallery}} lp-pictures{{/exist.picturesGallery}}">
+                <span class="lp-wrapper">
+                    {{#exist.offersGallery}}
+                    {{#offers.list}}
+                        <span class="lp-bullet"></span>
+                    {{/offers.list}}
+                    {{/exist.offersGallery}}
+
+                    {{#exist.picturesGallery}}
+                    {{#offers.list.0.gallery.pictures}}
+                        <span class="lp-bullet"></span>
+                    {{/offers.list.0.gallery.pictures}}
+                    {{/exist.picturesGallery}}
+                </span>
+            </span>
+            {{/exist.gallery}}
         </div>
-        {{/offers.legal.exist}}
+        <div class='lp-back'>
+            {{#exist.offersGallery}}
+            <div class='lp-gallery lp-offers'>
+                <div class='lp-scroller'>
+            {{/exist.offersGallery}}
+                    {{#offers.list}}
+                    <div class="lp-offer">
+                        <span class="lp-close"></span>
+                        <div class="lp-card">
+                            <div class="lp-summary">
+                                <div>
+                                    <span class="lp-more">{{moreDestination}}</span>
+                                    <span class="lp-destination">{{destination}}</span>
+                                    {{#rating}}
+                                    <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
+                                    {{/rating}}
+                                </div>
+                                <div>
+                                    <span class="lp-mentions">
+                                        {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
+                                    </span>
+                                    <span class="lp-price">{{price}}</span>
+                                </div>
+                            </div>
+                            <div class="lp-description">
+                                <p>
+                                    <span>{{description}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="lp-logo"></div>
+                        <a class="lp-plus-web" href="{{link}}"></a>
+                        {{#legal.exist}}
+                        <div class="lp-legal">
+                            <div class="lp-legal-btn">Légal</div>
+                            <div class="lp-legal-text">{{legal.text}}</div>
+                        </div>
+                        <span class="lp-legal-bg"></span>
+                        {{/legal.exist}}
+                    </div>
+                    {{/offers.list}}
+            {{#exist.offersGallery}}
+                </div>
+            </div>
+            {{/exist.offersGallery}}
+            {{#exist.offersGallery}}
+            <span class="lp-pager lp-offers">
+                <span class="lp-wrapper">
+                    {{#offers.list}}
+                    <span class="lp-bullet"></span>
+                    {{/offers.list}}
+                </span>
+            </span>
+            {{/exist.offersGallery}}
+
+            
+        </div>
     </div>
 </div>

@@ -42,6 +42,7 @@ class AdModel {
         $this->ad->exist->gallery = false;
         $this->ad->exist->offersGallery = $this->ad->offers->nbr > 1 ? true : false;
         $this->ad->exist->picturesGallery = false;
+        $this->ad->exist->legal = false;
 
         for($x=0; $x<$this->ad->offers->nbr; $x++) {
             $obj = new stdClass();
@@ -119,6 +120,9 @@ class AdModel {
             $obj->legal = new stdClass();
             $obj->legal->text = trim($_POST[$obj->id . "_legal"]);
             $obj->legal->exist = $obj->legal->text == '' ? false : true;
+            if($obj->legal->exist) {
+                $this->ad->exist->legal = true;
+            }
 
             array_push($this->ad->offers->list, $obj);
         }
