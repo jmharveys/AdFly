@@ -359,25 +359,25 @@
 
 		//Lorsqu'on scroll on 
 		function startScroll() {
-			ad.classList.add('moving');
+			ad.classList.add('js-scrolling');
 		}
 
 		function endScroll() {
-			ad.classList.remove('legalOpen','moving');
+			ad.classList.remove('legalOpen','js-scrolling');
 			var currentPage = this.currentPage.pageX;
 			forEachQuery( 'selected', function( el2, index1, array1 ) {
 				el2.classList.remove('selected');
 			});
 			forEachQuery( 'pager', function( el2, index1, array1 ) {
-				var bullet = cleanWhiteSpace(el2).childNodes[currentPage];
+				var bullet = el2.childNodes[currentPage];
 				bullet.classList.add('selected');
 			});			
-			Array.prototype.forEach.call(myGallerys, function(el) {
+			Array.prototype.forEach.call(galleries, function(el) {
 		    	el.goToPage(currentPage, 0, 0);
 			});	
 			Array.prototype.forEach.call(currentLegal, function(el) {
 		    	el.classList.remove('lp-legal-active');
-			});			
+			});	
 		}
 
 

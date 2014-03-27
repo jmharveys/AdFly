@@ -1,0 +1,20 @@
+
+/*--- Front ------------------------*/
+.lp-front .lp-summary {
+	width: 152px;
+	height: 100%;
+	padding: 9px 10px 6px 15px;
+	-webkit-transform: translate3d(282px,0,0);
+}
+
+.lp-front .lp-logo {
+	width: 100px;
+	height: 50px;
+}
+
+.lp-front .lp-more {
+	font: normal normal 17px/18px AmericanTypewriter;
+	-webkit-line-clamp: 2;
+}
+
+/*--- Back -------------------------*/

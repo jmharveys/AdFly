@@ -21,19 +21,11 @@
 	<meta name='author' content='La Presse'>
 	<meta name='dcterms.date' content='<?= date("Y-m-d"); ?>'>
 	<style>
-		html, body {
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-		}
 		<?= $view->outputStyles(); ?>
 	</style>
 </head>
 <body>
 	<?= $view->outputBody(); ?>
-	<script src="<?= URL ?>public/scripts/ad-basic.js"></script>
 	<?= $view->outputScripts(); ?>
 </body>
 </html>
