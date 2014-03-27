@@ -25,17 +25,11 @@ class AdView {
      
     public function outputBody() {
     	ob_start();
-    	?>
-            <div class="lp-ad lp-<?= $this->model->ad->meta->format; ?>">
-                <?php 
-                    $template = file_get_contents("public/templates/offer-tpl.mustache.html");
-                    echo $this->m->render($template, $this->ad);
-                ?>
-            </div>
-    	<?php
-    	$output = ob_get_clean();
+        $template = file_get_contents("public/templates/offer-tpl.mustache.html");
+        echo $this->m->render($template, $this->ad);
+    	$html = ob_get_clean();
         ob_end_clean();
-        return $output;
+        return $html;
     }
 
     public function outputScripts() {

@@ -82,6 +82,35 @@ for(var x=0; x<videos.player.length; x++) {
 /*=== VIDEO script | fin ===========================*/
 {{/exist.video}}
 
+{{#exist.legal}}
+/*=== Legal ========================================*/
+var legalBg = document.getElementsByClassName('lp-legal-bg');
+var legalList = document.getElementsByClassName('lp-legal');
+//var currentLegal = new Array();
+function legal(container, bg) {
+	function animate() {
+		if(container.classList.contains('lp-active')) {
+			container.classList.remove('lp-active');
+		} else {
+			container.classList.add('lp-active');
+			//currentLegal.push(bg, container);
+		}
+	}
+	container.onclick = function(e) { 
+		e.stopImmediatePropagation();
+		animate();
+	};
+	bg.onclick = function(e) { 
+		e.stopImmediatePropagation();
+		animate();
+	};			
+}
+
+for(var i=0; i<legalList.length; i++) {
+	new legal(legalList[i], legalBg[i]);
+}
+{{/exist.legal}}	
+
 {{#exist.gallery}}
 /*=== Gallerie offres ==============================*/
 var gallery; 
@@ -117,8 +146,10 @@ function startScroll() {
 }
 
 function endScroll() {
-	ad.classList.remove('legalOpen','lp-scrolling');
 	var currentPage = this.currentPage.pageX;
+	var legals = flipper.querySelectorAll('.lp-legal.lp-active');
+
+	ad.classList.remove('lp-scrolling');
 	forEachQuery('lp-selected', function(el2, index1, array1) {
 		el2.classList.remove('lp-selected');
 	});
@@ -129,18 +160,18 @@ function endScroll() {
 	Array.prototype.forEach.call(galleries, function(el) {
     	el.goToPage(currentPage, 0, 0);
 	});	
-	/*Array.prototype.forEach.call(currentLegal, function(el) {
-    	el.classList.remove('lp-legal-active');
-	});	*/		
+    for(var x=0; x<legals.length; x++) {
+    	legals[x].classList.remove('lp-active');
+    }	
 }
 {{/exist.gallery}}
 
 /*=== Flip =========================================*/
 flipper.addEventListener('click', flipMe, false); 
 function flipMe() { 
-    if(!flipper.classList.contains('lp-active') && !ad.classList.contains('lp-scrolling')) { 
+    if(!flipper.classList.contains('lp-active') /*&& !ad.classList.contains('lp-scrolling')*/) { 
         flipper.classList.add('lp-active');
-    } else if(flipper.classList.contains('lp-active') && !ad.classList.contains('lp-scrolling')) {
+    } else if(flipper.classList.contains('lp-active') /*&& !ad.classList.contains('lp-scrolling')*/) {
         flipper.classList.remove('lp-active');
     }
 }
