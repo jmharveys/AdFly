@@ -1,3 +1,7 @@
+@import '_reset';
+@import '_style-guide';
+@import '_fonts';
+
 //Juste pour tester le layer avec les maquettes #overlay
 #overlay {
 	position: absolute;
@@ -10,9 +14,6 @@
 	// opacity: 0;
 	pointer-events: none;
 }
-	
-@import '_reset';
-@import '_style-guide';
 
 body {
 	opacity: 0; 
@@ -30,6 +31,14 @@ body.lp-loaded {
 	background-color: rgba(0, 0, 0, 0);
 	margin: 0 auto;
 	overflow: hidden;
+}
+
+.ellipsis {
+	display: box;
+	display: -webkit-box;
+	box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 
@@ -194,6 +203,7 @@ body.lp-loaded {
 
 				.subtitle {
 					font: $front-subtitle-quart;
+					font-family: AmericanTypewriter-Bold;
 				}	
 
 				.mention {
@@ -545,7 +555,6 @@ body.lp-loaded {
 				div:nth-child(1){
 					display: table-cell;
 					padding: 4px 0 0 0;
-					width: 194px;
 				}
 				div:nth-child(3){
 					text-align: right;

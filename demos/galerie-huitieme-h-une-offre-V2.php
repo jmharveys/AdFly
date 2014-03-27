@@ -149,9 +149,9 @@
 											</div>
 											<ul class="rating">
 												<li></li>
-											<!-- 	<li></li>
 												<li></li>
-												<li></li> -->
+												<li></li>
+												<li></li>
 											</ul>
 											<div>
 												<p class="mention">à partir de<br/>par pers.</p>
@@ -174,13 +174,13 @@
 											<div>
 												<p class="title">Blau Costa Verde</p>
 												<p class="subtitle">Holguin, Cuba</p>
-												<ul class="rating">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-												</ul>
 											</div>
+											<ul class="rating">
+												<li></li>
+												<li></li>
+												<li></li>
+												<li></li>
+											</ul>
 											<div>
 												<p class="mention">à partir de<br/>par pers.</p>
 												<p class="price">839</p>
@@ -192,14 +192,14 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>
 									<div class='lp-legal noFlip' style="height:204px; -webkit-transform: translate3d(0, 204px, 0);">
 										<div class='lp-legal-btn noFlip'>Légal</div>
 										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
-									</div>
+									</div>									
 								</div>
 							</div>				
 						</div>

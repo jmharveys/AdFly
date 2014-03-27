@@ -1,17 +1,6 @@
 @charset "UTF-8";
 
 
-#overlay {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 480px;
-  height: 152px;
-  z-index: 100000;
-  opacity: 0.3;
-  pointer-events: none;
-}
-
 /* _reset.scss */
 
 html,
@@ -206,25 +195,57 @@ img {
 
 /* _style-guide.scss */
 
-.ellipsis,
-.lp-480x325 .back .wrapper-height .wrapper-infos .infos,
-.lp-480x152 .front .description .title,
-.lp-480x152 .front .description .subtitle,
-.lp-480x152 .back .wrapper-height .wrapper-infos .infos {
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: box;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: vertical;
-  -moz-box-orient: vertical;
-  -moz-box-direction: normal;
-  -ms-flex-direction: vertical;
-  box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* _fonts.scss */
+
+@font-face {
+  font-family: 'Rubrik_ExtraLight';
+  src: url("../fonts/rubrik/Rubrik_ExtraLight.eot");
+  src: url("../fonts/rubrik/Rubrik_ExtraLight.eot?#iefix") format("embedded-opentype"), url("../fonts/rubrik/Rubrik_ExtraLight.woff") format("woff"), url("../fonts/rubrik/Rubrik_ExtraLight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubrik_Medium';
+  src: url("../fonts/rubrik/Rubrik_Light.eot");
+  src: url("../fonts/rubrik/Rubrik_Light.eot?#iefix") format("embedded-opentype"), url("../fonts/rubrik/Rubrik_Light.woff") format("woff"), url("../fonts/rubrik/Rubrik_Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Verlag_Book';
+  src: url("../fonts/verlag/Verlag_Book.eot");
+  src: url("../fonts/verlag/Verlag_Book.eot?#iefix") format("embedded-opentype"), url("../fonts/verlag/Verlag_Book.woff") format("woff"), url("../fonts/verlag/Verlag_Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AmericanTypewriter';
+  src: url("../fonts/americantype/ameritypmed-webfont.eot");
+  src: url("../fonts/americantype/ameritypmed-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/americantype/ameritypmed-webfont.woff") format("woff"), url("../fonts/americantype/ameritypmed-webfont.ttf") format("truetype"), url("../fonts/americantype/ameritypmed-webfont.svg#itc_american_typewriterRg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AmericanTypewriter-Bold';
+  src: url("../fonts/americantype/ameritypbol-webfont.eot");
+  src: url("../fonts/americantype/ameritypbol-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/americantype/ameritypbol-webfont.woff") format("woff"), url("../fonts/americantype/ameritypbol-webfont.ttf") format("truetype"), url("../fonts/americantype/ameritypbol-webfont.svg#AmericanTypewriter-Bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+#overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 480px;
+  height: 152px;
+  z-index: 100000;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 body {
@@ -244,6 +265,27 @@ body.lp-loaded {
   background-color: rgba(0, 0, 0, 0);
   margin: 0 auto;
   overflow: hidden;
+}
+
+.ellipsis,
+.lp-480x325 .back .wrapper-height .wrapper-infos .infos,
+.lp-480x152 .front .description .title,
+.lp-480x152 .front .description .subtitle,
+.lp-480x152 .back .wrapper-height .wrapper-infos .infos {
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: box;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: vertical;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: vertical;
+  box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*=== RETOURNER  | début  =================*/
@@ -453,6 +495,7 @@ body.lp-loaded {
 
 .lp-480x325 .front .description .subtitle {
   font: normal normal 23px/23px AmericanTypewriter-Bold;
+  font-family: AmericanTypewriter-Bold;
 }
 
 .lp-480x325 .front .description .mention {
@@ -820,7 +863,6 @@ body.lp-loaded {
 .lp-480x152 .back .description div:nth-child(1) {
   display: table-cell;
   padding: 4px 0 0 0;
-  width: 194px;
 }
 
 .lp-480x152 .back .description div:nth-child(3) {

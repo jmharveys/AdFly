@@ -1,3 +1,5 @@
+/* _fonts.scss */
+
 @font-face {
     font-family: 'Rubrik_ExtraLight';
     src: url('../fonts/rubrik/Rubrik_ExtraLight.eot');
@@ -27,6 +29,33 @@
     font-weight: normal;
     font-style: normal;
 }
+
+
+@font-face {
+    font-family: 'AmericanTypewriter';
+    src: url('../fonts/americantype/ameritypmed-webfont.eot');
+    src: url('../fonts/americantype/ameritypmed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/americantype/ameritypmed-webfont.woff') format('woff'),
+         url('../fonts/americantype/ameritypmed-webfont.ttf') format('truetype'),
+         url('../fonts/americantype/ameritypmed-webfont.svg#itc_american_typewriterRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+    
+
+@font-face {
+    font-family: 'AmericanTypewriter-Bold';
+    src: url('../fonts/americantype/ameritypbol-webfont.eot');
+    src: url('../fonts/americantype/ameritypbol-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/americantype/ameritypbol-webfont.woff') format('woff'),
+         url('../fonts/americantype/ameritypbol-webfont.ttf') format('truetype'),
+         url('../fonts/americantype/ameritypbol-webfont.svg#AmericanTypewriter-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 
 
 
