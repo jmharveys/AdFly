@@ -16,10 +16,8 @@ class AdView {
         ob_start();
         $template = file_get_contents("public/templates/styles/offer-tpl.mustache.css");
         echo $this->m->render($template, $this->ad);
-        if($this->model->ad->meta->format == "480x325") {
-            $t480x325 = file_get_contents("public/templates/styles/offer480x325-tpl.mustache.css");
-            echo $this->m->render($t480x325, $this->ad);
-        }
+        $t = file_get_contents("public/templates/styles/". $this->model->ad->meta->format ."-tpl.mustache.css");
+        echo $this->m->render($t, $this->ad);
         $styles = ob_get_clean();
         ob_end_clean();
         return $styles;

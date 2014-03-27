@@ -1,9 +1,8 @@
 var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
-var offers = document.getElementsByClassName('lp-offer');
 //flipper.addEventListener('tap', flipMe, false); 
 
-{{#video.exist}}
+{{#exist.video}}
 /*=== HORS-LIGNE script | debut ====================*/
 var offlineBanner = document.getElementById('lp-offline-banner');
 var offlineWarning = document.getElementsByClassName('lp-offline-warning')[0];
@@ -81,8 +80,9 @@ for(var x=0; x<videos.player.length; x++) {
 	});
 }
 /*=== VIDEO script | fin ===========================*/
-{{/video.exist}}
+{{/exist.video}}
 
+{{#exist.gallery}}
 /*=== Gallerie offres ==============================*/
 var gallery; 
 var wrapper = document.getElementsByClassName('lp-gallery');
@@ -133,15 +133,14 @@ function endScroll() {
     	el.classList.remove('lp-legal-active');
 	});	*/		
 }
+{{/exist.gallery}}
 
 /*=== Flip =========================================*/
 flipper.addEventListener('click', flipMe, false); 
 function flipMe() { 
     if(!flipper.classList.contains('lp-active') && !ad.classList.contains('lp-scrolling')) { 
-        console.log('Retourner à l\'envers');
         flipper.classList.add('lp-active');
     } else if(flipper.classList.contains('lp-active') && !ad.classList.contains('lp-scrolling')) {
-        console.log('Retourner à l\'endroit');
         flipper.classList.remove('lp-active');
     }
 }
