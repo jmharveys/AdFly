@@ -271,7 +271,8 @@ body.lp-loaded {
 .lp-480x325 .back .wrapper-height .wrapper-infos .infos,
 .lp-480x152 .front .description .title,
 .lp-480x152 .front .description .subtitle,
-.lp-480x152 .back .wrapper-height .wrapper-infos .infos {
+.lp-480x152 .back .wrapper-height .wrapper-infos .infos,
+.lp-325x230 .back .wrapper-height .wrapper-infos .infos {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -846,7 +847,7 @@ body.lp-loaded {
 
 /*=========================================================*/
 
-/*=== FORMAT 1/8  | début  ==================================*/
+/*=== FORMAT 1/8 H | début  ==================================*/
 
 .lp-480x152 {
   width: 480px;
@@ -1027,7 +1028,171 @@ body.lp-loaded {
 
 /*=========================================================*/
 
-/*=== FORMAT 1/8  | fin  ==================================*/
+/*=== FORMAT 1/8 H | fin  ==================================*/
+
+/*=========================================================*/
+
+/*=== FORMAT 1/8 V  | début  ==================================*/
+
+.lp-325x230 {
+  width: 230px;
+  height: 325px;
+}
+
+.lp-325x230 .front .logo {
+  width: 165px;
+  height: 75px;
+}
+
+.lp-325x230 .front .description {
+  padding: 5px 10px 6px 15px;
+  height: 78px;
+}
+
+.lp-325x230 .front .description > div {
+  width: 310px;
+  vertical-align: bottom;
+}
+
+.lp-325x230 .front .description .title {
+  font: normal normal 16px/18px AmericanTypewriter;
+}
+
+.lp-325x230 .front .description .subtitle {
+  font: normal normal 23px/23px AmericanTypewriter-Bold;
+  font-family: AmericanTypewriter-Bold;
+}
+
+.lp-325x230 .front .description .mention {
+  font: normal normal 12px/12px AmericanTypewriter;
+}
+
+.lp-325x230 .front .description .price {
+  font: normal normal 33px/29px AmericanTypewriter-Bold;
+}
+
+.lp-325x230 .front .pager-wrapper {
+  top: 239px;
+  width: 230px;
+}
+
+.lp-325x230 .back .description {
+  padding: 26px 10px 6px 39px;
+  display: table-cell;
+}
+
+.lp-325x230 .back .description div:nth-child(1) {
+  width: 310px;
+}
+
+.lp-325x230 .back .description > div {
+  vertical-align: top;
+}
+
+.lp-325x230 .back .description .title {
+  font: normal normal 19px/18px AmericanTypewriter;
+  white-space: nowrap;
+}
+
+.lp-325x230 .back .description .subtitle {
+  font: normal normal 23px/23px AmericanTypewriter-Bold;
+}
+
+.lp-325x230 .back .description .mention {
+  font: normal normal 12px/14px AmericanTypewriter;
+}
+
+.lp-325x230 .back .description .price {
+  font: normal normal 33px/29px AmericanTypewriter-Bold;
+}
+
+.lp-325x230 .back .description .rating {
+  display: table-row;
+}
+
+.lp-325x230 .back .description .rating > li {
+  width: 18px;
+  height: 18px;
+  margin: 10px 3px 0 0;
+}
+
+.lp-325x230 .back .wrapper-all {
+  height: 265px;
+  display: table;
+}
+
+.lp-325x230 .back .wrapper-height {
+  height: 100%;
+  display: table-row;
+}
+
+.lp-325x230 .back .wrapper-height .wrapper-infos {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.lp-325x230 .back .wrapper-height .wrapper-infos .infos {
+  padding: 0 0 0 20px;
+  font: normal normal 15px/20px AmericanTypewriter;
+  -webkit-line-clamp: 5;
+  width: 440px;
+}
+
+.lp-325x230 .back .pager-wrapper {
+  top: 300px;
+  width: 230px;
+}
+
+.lp-325x230 .back .logo {
+  top: 265px;
+  left: 305px;
+  width: 115px;
+  height: 55px;
+}
+
+.lp-325x230 .back .lp-legal-bg {
+  width: 230px;
+  height: 325px;
+}
+
+.lp-325x230 .back .lp-legal-text {
+  width: 230px;
+}
+
+.lp-325x230 .front .description,
+.lp-325x230 .back .description {
+  display: table;
+}
+
+.lp-325x230 .front .description div:nth-child(1),
+.lp-325x230 .front .description div:nth-child(2),
+.lp-325x230 .front .description .mention,
+.lp-325x230 .back .description div:nth-child(1),
+.lp-325x230 .back .description div:nth-child(2),
+.lp-325x230 .back .description .mention {
+  display: table-cell;
+}
+
+.lp-325x230 .front .description div:nth-child(2),
+.lp-325x230 .front .description .mention,
+.lp-325x230 .back .description div:nth-child(2),
+.lp-325x230 .back .description .mention {
+  width: 170px;
+  text-align: right;
+}
+
+.lp-325x230 .front,
+.lp-325x230 .back,
+.lp-325x230 .gallery,
+.lp-325x230 .scroller > div,
+.lp-325x230 .wrapper {
+  width: 230px;
+  height: 325px;
+}
+
+/*=========================================================*/
+
+/*=== FORMAT 1/8 V | fin  ==================================*/
 
 /*=========================================================*/
 
