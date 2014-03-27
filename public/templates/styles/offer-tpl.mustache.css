@@ -87,9 +87,7 @@ html, body {
 	width: {{w}}px;
 	height: 100%;
 	background-color: #fff;
-	background-position: 50% 50%;
 	background-repeat: no-repeat;
-	background-size: 100% auto;
 }
 
 {{#exist.picturesGallery}}
