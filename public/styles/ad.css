@@ -856,28 +856,30 @@ body.lp-loaded {
 
 .lp-480x152 .back .description {
   padding: 10px 10px 0px 54px;
-  display: table-cell;
+  display: table;
   width: 480px;
 }
 
 .lp-480x152 .back .description div:nth-child(1) {
-  display: table-cell;
+  display: table;
+  vertical-align: top;
   padding: 4px 0 0 0;
 }
 
-.lp-480x152 .back .description div:nth-child(3) {
-  text-align: right;
-  display: table-cell;
-  vertical-align: top;
-  width: 150px;
-}
-
 .lp-480x152 .back .description .rating {
-  display: table-cell;
+  vertical-align: top;
+  display: inline-block;
   padding: 0 0 0 10px;
 }
 
+.lp-480x152 .back .description div:nth-child(2) {
+  vertical-align: top;
+  display: table-cell;
+  text-align: right;
+}
+
 .lp-480x152 .back .description .title {
+  display: inline-block;
   font: normal normal 17px/16px AmericanTypewriter;
 }
 
@@ -894,7 +896,6 @@ body.lp-loaded {
 }
 
 .lp-480x152 .back .wrapper-all {
-  width: 480px;
   height: 104px;
   display: table;
 }

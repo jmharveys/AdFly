@@ -144,17 +144,17 @@
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Barcelo Arenas Blancas</p>
+												<p class="title">Barcelo Arenas Blancas<br/>par pers asd</p>
+												<ul class="rating">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
 												<p class="subtitle">Varadero, Cuba</p>
 											</div>
-											<ul class="rating">
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-											</ul>
 											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
+												<p class="mention">à partir de.</p>
 												<p class="price">99 999</p>
 											</div>
 										</div>
@@ -173,14 +173,12 @@
 										<div class="description">
 											<div>
 												<p class="title">Blau Costa Verde</p>
+												<ul class="rating">
+													<li></li>
+						
+												</ul>
 												<p class="subtitle">Holguin, Cuba</p>
 											</div>
-											<ul class="rating">
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-											</ul>
 											<div>
 												<p class="mention">à partir de<br/>par pers.</p>
 												<p class="price">839</p>

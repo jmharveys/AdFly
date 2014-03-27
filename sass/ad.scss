@@ -549,25 +549,28 @@ body.lp-loaded {
 
 			.description {
 				padding: 10px 10px 0px 54px;
-	 			display:table-cell;
+	 			display:table;
 	 			width: 480px;
 
 				div:nth-child(1){
-					display: table-cell;
+					display: table;
+					vertical-align: top;
 					padding: 4px 0 0 0;
 				}
-				div:nth-child(3){
-					text-align: right;
-					display: table-cell;
-					vertical-align: top;
-					width: 150px;
-				}				
 				.rating {
-					display: table-cell;
+					vertical-align: top;
+					display: inline-block;
 					padding: 0 0 0 10px;
-				}
+				}				
+				div:nth-child(2){
+					vertical-align: top;
+					display: table-cell;
+					text-align: right;
+				}				
+
 	
 				.title {
+					display: inline-block;
 					font: $back-title-huitieme;
 				}
 
@@ -587,7 +590,6 @@ body.lp-loaded {
 			}
 
 			.wrapper-all {
-					width: 480px;
 					height: 104px;
 					display:table;
 				}

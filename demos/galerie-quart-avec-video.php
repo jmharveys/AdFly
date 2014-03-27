@@ -152,7 +152,7 @@
 										</div>
 										<div>
 											<p class="mention">à par pers.  </p>
-											<p class="price">99 999</p>
+											<p class="price">9 999</p>
 										</div>
 									</div>
 								</div>
