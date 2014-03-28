@@ -21,7 +21,7 @@
 	</style>
 </head>
 <body>
-	<div class='lp-ad lp-325x230'>
+	<div class='lp-ad lp-230x325'>
 		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/reference-2.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 

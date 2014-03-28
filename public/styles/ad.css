@@ -272,7 +272,7 @@ body.lp-loaded {
 .lp-480x152 .front .description .title,
 .lp-480x152 .front .description .subtitle,
 .lp-480x152 .back .wrapper-height .wrapper-infos .infos,
-.lp-325x230 .back .wrapper-height .wrapper-infos .infos {
+.lp-230x325 .back .wrapper-height .wrapper-infos .infos {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1036,165 +1036,165 @@ body.lp-loaded {
 
 /*=== FORMAT 1/8 V  | début  ==================================*/
 
-.lp-325x230 {
+.lp-230x325 {
   width: 230px;
   height: 325px;
 }
 
-.lp-325x230 .front .logo {
+.lp-230x325 .front .logo {
   width: 100px;
   height: 50px;
 }
 
-.lp-325x230 .front .description {
+.lp-230x325 .front .description {
   padding: 6px 10px 5px 10px;
   height: 104px;
 }
 
-.lp-325x230 .front .description div:nth-child(1) {
+.lp-230x325 .front .description div:nth-child(1) {
   vertical-align: top;
   display: table-row;
 }
 
-.lp-325x230 .front .description div:nth-child(2) {
+.lp-230x325 .front .description div:nth-child(2) {
   display: table-cell;
   vertical-align: bottom;
   text-align: right;
 }
 
-.lp-325x230 .front .description .title {
+.lp-230x325 .front .description .title {
   font: normal normal 18px/18px AmericanTypewriter;
 }
 
-.lp-325x230 .front .description .subtitle {
+.lp-230x325 .front .description .subtitle {
   font: normal normal 18px/19px AmericanTypewriter-Bold;
 }
 
-.lp-325x230 .front .description .mention {
+.lp-230x325 .front .description .mention {
   display: inline-block;
   font: normal normal 12px/12px AmericanTypewriter;
   padding: 0 8px 0 0;
 }
 
-.lp-325x230 .front .description .price {
+.lp-230x325 .front .description .price {
   display: inline-block;
   font: normal normal 28px/26px AmericanTypewriter-Bold;
 }
 
-.lp-325x230 .front .pager-wrapper {
+.lp-230x325 .front .pager-wrapper {
   top: 200px;
   width: 230px;
 }
 
-.lp-325x230 .back .description {
+.lp-230x325 .back .description {
   padding: 15px 10px 6px 50px;
   display: table-cell;
 }
 
-.lp-325x230 .back .description > div {
+.lp-230x325 .back .description > div {
   vertical-align: top;
 }
 
-.lp-325x230 .back .description .title {
+.lp-230x325 .back .description .title {
   font: normal normal 18px/17px AmericanTypewriter;
 }
 
-.lp-325x230 .back .description .subtitle {
+.lp-230x325 .back .description .subtitle {
   font: normal normal 18px/23px AmericanTypewriter-Bold;
 }
 
-.lp-325x230 .back .description .mention {
+.lp-230x325 .back .description .mention {
   font: normal normal 12px/14px AmericanTypewriter;
 }
 
-.lp-325x230 .back .description .price {
+.lp-230x325 .back .description .price {
   font: normal normal 28px/20px AmericanTypewriter-Bold;
 }
 
-.lp-325x230 .back .description .rating {
+.lp-230x325 .back .description .rating {
   display: table-row;
 }
 
-.lp-325x230 .back .description .rating > li {
+.lp-230x325 .back .description .rating > li {
   margin: 10px 3px 10px 0;
 }
 
-.lp-325x230 .back .wrapper-all {
+.lp-230x325 .back .wrapper-all {
   height: 257px;
   display: table;
 }
 
-.lp-325x230 .back .wrapper-height {
+.lp-230x325 .back .wrapper-height {
   height: 100%;
   display: table-row;
 }
 
-.lp-325x230 .back .wrapper-height .wrapper-infos {
+.lp-230x325 .back .wrapper-height .wrapper-infos {
   display: table-cell;
   vertical-align: middle;
 }
 
-.lp-325x230 .back .wrapper-height .wrapper-infos .infos {
+.lp-230x325 .back .wrapper-height .wrapper-infos .infos {
   padding: 0 0 0 20px;
   font: normal normal 14px/16px AmericanTypewriter;
   -webkit-line-clamp: 4;
   width: 216px;
 }
 
-.lp-325x230 .back .pager-wrapper {
+.lp-230x325 .back .pager-wrapper {
   top: 257px;
   width: 230px;
 }
 
-.lp-325x230 .back .logo {
+.lp-230x325 .back .logo {
   top: 287px;
   left: 72px;
   width: 100px;
   height: 30px;
 }
 
-.lp-325x230 .back .lp-legal-bg {
+.lp-230x325 .back .lp-legal-bg {
   width: 230px;
   height: 325px;
 }
 
-.lp-325x230 .back .lp-legal-text {
+.lp-230x325 .back .lp-legal-text {
   width: 230px;
 }
 
-.lp-325x230 .front .description,
-.lp-325x230 .back .description {
+.lp-230x325 .front .description,
+.lp-230x325 .back .description {
   display: table;
   width: 100%;
 }
 
-.lp-325x230 .front,
-.lp-325x230 .back,
-.lp-325x230 .gallery,
-.lp-325x230 .scroller > div,
-.lp-325x230 .wrapper {
+.lp-230x325 .front,
+.lp-230x325 .back,
+.lp-230x325 .gallery,
+.lp-230x325 .scroller > div,
+.lp-230x325 .wrapper {
   width: 230px;
   height: 325px;
 }
 
-.lp-325x230.uniqueOffer .gallery,
-.lp-325x230.uniqueOffer .scroller > div {
+.lp-230x325.uniqueOffer .gallery,
+.lp-230x325.uniqueOffer .scroller > div {
   width: 230px;
   height: 221px;
 }
 
-.lp-325x230.uniqueOffer .front .table-cell-wrapper {
+.lp-230x325.uniqueOffer .front .table-cell-wrapper {
   position: absolute;
   bottom: 0;
   right: 0;
   background: white;
 }
 
-.lp-325x230.uniqueOffer .back {
+.lp-230x325.uniqueOffer .back {
   background-color: white;
 }
 
-.lp-325x230.uniqueOffer .back .wrapper-all {
+.lp-230x325.uniqueOffer .back .wrapper-all {
   height: 276px;
 }
 
