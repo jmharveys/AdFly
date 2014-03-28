@@ -22,62 +22,37 @@
 </head>
 <body>
 	<div class='lp-ad lp-325x230'>
+		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/reference-2.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
 						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
 						<div class='gallery'>
-							<div class='scroller' style="width: 920px;">
+							<div class='scroller' style="width: 460px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/romana.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/1e_a.jpg'); width:230px; height:221px;"></div>
 									<div class="description">
 										<div>
-											<p class="title">Dreams La Romana Resort & Spa</p>
-											<p class="subtitle">La Romana,<br/>République Dominicaine</p>
+											<p class="title">Memories Paraiso Azul</p>
+											<p class="subtitle"><!-- Cayo Santa Maria,<br/> -->Cuba</p>
 										</div>
 										<div>
-											<p class="mention">à par pers.  </p>
+											<p class="mention">à partir de<br/>par pers.</p>
 											<p class="price">99 999</p>
 										</div>
 									</div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/holguin.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/1e_b.jpg'); width:230px; height:221px;"></div>
 									<div class="description">
 										<div>
-											<p class="title">Blau Costa Verde</p>
-											<p class="subtitle">Holguin, Cuba</p>
+											<p class="title">Oasis Palm</p>
+											<p class="subtitle">Cancun, Mexique</p>
 										</div>
 										<div>
 											<p class="mention">à partir de<br/>par pers.</p>
-											<p class="price">839</p>
-										</div>
-									</div>	
-								</div>	
-								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/acapulco.jpg'); width:480px; height:247px;"></div>
-									<div class="description">
-										<div>
-											<p class="title">Las Brisas Acapulco</p>
-											<p class="subtitle">Acapulco, Mexique</p>
-										</div>
-										<div>
-											<p class="mention">à partir de</p>
-											<p class="price">1 568</p>
-										</div>
-									</div>	
-								</div>		
-								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/playa.jpg'); width:480px; height:247px;"></div>
-									<div class="description">
-										<div>
-											<p class="title">Playa Blanca</p>
-											<p class="subtitle">Cayo Largo, Cuba</p>
-										</div>
-										<div>
-											<p class="mention">à partir de<br/>par pers.</p>
-											<p class="price">1 098</p>
+											<p class="price">615</p>
 										</div>
 									</div>	
 								</div>	
@@ -86,8 +61,6 @@
 								<ul class='pager'>
 									<li class='selected'>0</li>
 									<li>1</li>
-									<li>2</li>
-									<li>3</li>
 								</ul>
 							</div>
 						</div>
@@ -96,13 +69,13 @@
 				<div class='back'>
 					<div class="wrapper">
 						<div class='gallery'>
-							<div class='scroller' style="width: 920px;">
+							<div class='scroller' style="width: 460px;">
 								<div>
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Dreams La Romana Resort & Spa</p>
-												<p class="subtitle">La Romana,<br/>République Dominicaine</p>
+												<p class="title">Memories Paraiso Azul</p>
+												<p class="subtitle"><!-- Cayo Santa Maria,<br/> -->Cuba</p>
 												<ul class="rating">
 													<li></li>
 													<li></li>
@@ -154,84 +127,17 @@
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>
-									<div class='lp-legal noFlip' style="height:204px; -webkit-transform: translate3d(0, 204px, 0);">
+									<div class='lp-legal noFlip' style="height:180px; -webkit-transform: translate3d(0, 180px, 0);">
 										<div class='lp-legal-btn noFlip'>Légal</div>
-										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
+										<div class='lp-legal-text noFlip' style="height:180px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
 									</div>
 								</div>		
-								<div>
-									<div class="wrapper-all">
-										<div class="description">
-											<div>
-												<p class="title">Las Brisas Acapulco</p>
-												<p class="subtitle">Acapulco, Mexique</p>
-												<ul class="rating">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-												</ul>
-											</div>
-											<div>
-												<p class="mention">à partir de.</p>
-												<p class="price">1 568</p>
-											</div>
-										</div>
-										<div class="wrapper-height">
-											<div class="wrapper-infos">
-												<div class="infos">26 février 2014 - 8 jours, 7 nuits. Forfait tout inclus à Acapulco avec Vacances TMR à l'hôtel Las Brisas Acapulco, qui est situés à flanc de montagne, au dessus de la baie d'Acapulco. Pleins de services inclus.</div>
-											</div>
-										</div>
-										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
-										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
-									</div>
-									<div class='lp-legal-bg noFlip'></div>
-									<div class='lp-legal noFlip' style="height:204px; -webkit-transform: translate3d(0, 204px, 0);">
-										<div class='lp-legal-btn noFlip'>Légal</div>
-										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
-									</div>
-								</div>	
-								<div>
-									<div class="wrapper-all">
-										<div class="description">
-											<div>
-												<p class="title">Playa Blanca</p>
-												<p class="subtitle">Cayo Largo, Cuba</p>
-												<ul class="rating">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-												</ul>
-											</div>
-											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
-												<p class="price">1 098</p>
-											</div>
-										</div>
-										<div class="wrapper-height">
-											<div class="wrapper-infos">
-												<div class="infos">23 février 2014 - 8 jours, 7 nuits. Réservez un forfait tout inclus à Cayo Largo avec Vacances TMR à l'hôtel Playa Blanca, qui est reconnue comme l'un des meilleurs sites de plongée en raison de ses splendides récifs de corail débordant d'une panoplie de petits poissons.</div>
-											</div>
-										</div>
-										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
-										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
-									</div>
-									<div class='lp-legal-bg noFlip'></div>
-									<div class='lp-legal noFlip' style="height:204px; -webkit-transform: translate3d(0, 204px, 0);">
-										<div class='lp-legal-btn noFlip'>Légal</div>
-										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
-									</div>
-								</div>																			
+																				
 							</div>				
 						</div>
 						<div class='pager-wrapper'>
 							<ul class='pager'>
 								<li class='selected'>0</li>
-								<li>1</li>
-								<li>1</li>
 								<li>1</li>
 							</ul>
 						</div>	
@@ -404,9 +310,6 @@
 			for (var i = 0; i < legalList.length; ++i) {
 				new legal(legalList[i],cleanWhiteSpace(legalList[i]).childNodes[0],legalBg[i]);
 			}				
-
-			
-
 	</script>
 </body>
 </html>
