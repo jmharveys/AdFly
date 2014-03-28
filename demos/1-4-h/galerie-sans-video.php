@@ -30,7 +30,7 @@
 						<div class='gallery'>
 							<div class='scroller' style="width: 1920px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/romana.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/romana.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Dreams La Romana Resort & Spa</p>
@@ -43,7 +43,7 @@
 									</div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/holguin.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/holguin.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Blau Costa Verde</p>
@@ -56,7 +56,7 @@
 									</div>	
 								</div>	
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/acapulco.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/acapulco.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Las Brisas Acapulco</p>
@@ -69,7 +69,7 @@
 									</div>	
 								</div>		
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/playa.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/playa.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Playa Blanca</p>

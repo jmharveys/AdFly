@@ -64,20 +64,20 @@
 									<!-- VIDEO 1 PLAY html | debut -->
 									<div class='lp-video-play 1395680443693_video noFlip'></div> 
 									<!-- VIDEO 1 PLAY html | fin -->					
-									<div style="background: url('<?= URL ?>public/images/demo/romana.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/romana.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Dreams La Romana Resort & Spa</p>
 											<p class="subtitle">La Romana,<br/>République Dominicaine</p>
 										</div>
 										<div>
-											<p class="mention">à par pers.  </p>
+											<p class="mention">à par pers. </p>
 											<p class="price">9 999</p>
 										</div>
 									</div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/holguin.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/holguin.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Blau Costa Verde</p>
@@ -93,7 +93,7 @@
 									<!-- VIDEO 2 PLAY html | debut -->
 									<div class='lp-video-play 1395680443692_video noFlip'></div> 
 									<!-- VIDEO 2 PLAY html | fin -->		
-									<div style="background: url('<?= URL ?>public/images/demo/acapulco.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/acapulco.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Las Brisas Acapulco</p>
@@ -106,7 +106,7 @@
 									</div>	
 								</div>		
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/playa.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/playa.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Playa Blanca</p>

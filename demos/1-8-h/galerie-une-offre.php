@@ -40,12 +40,12 @@
 							<div class="table-cell-wrapper">
 								<div class="description">
 									<div>
-										<p class="title">Barcelo Huatulco Beach</p>
-										<p class="subtitle">Huatulco,<br/>Mexique</p>
+										<p class="title">Dreams La Romana Resort</p>
+										<p class="subtitle">La Romana, Rép. Dominicaine</p>
 									</div>
 									<div>
 										<p class="mention">à partir de.<br/>par pers.</p>
-										<p class="price">725</p>
+										<p class="price">99 999</p>
 									</div>
 								</div>	
 							</div>							
@@ -66,16 +66,19 @@
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Blau Costa Verde</p>
+												<p class="title">Dreams La Romana Resort</p>
 												<ul class="rating">
 													<li></li>
-						
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
 												</ul>
-												<p class="subtitle">Holguin, Cuba</p>
+												<p class="subtitle">La Romana, Rép. Dominicaine</p>
 											</div>
 											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
-												<p class="price">725</p>
+												<p class="mention">à partir de</p>
+												<p class="price">99 999</p>
 											</div>
 										</div>
 										<div class="wrapper-height">

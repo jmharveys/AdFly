@@ -121,6 +121,7 @@ body.lp-loaded {
 			opacity: 1;
 			transition: opacity 1s ease; 
 			pointer-events: none;
+			height: 13px;
 
 				.pager { 
 					position: relative; 
@@ -236,12 +237,12 @@ body.lp-loaded {
 			}
 
 			.description {
-				 padding: 5px 10px 6px 15px;
-				 height: 78px;
+				 padding: 7px 10px 6px 15px;
+				 height: 95px;
 
 				> div {
 					width: 310px;	
-					vertical-align: bottom;
+					vertical-align: top;
 				}
 
 				.title {
@@ -263,7 +264,7 @@ body.lp-loaded {
 			}
 
 			.pager-wrapper {
-				top: 239px;
+				bottom: 8px;
 				width: 480px;
 			}
 		}
@@ -273,7 +274,7 @@ body.lp-loaded {
 
 
 			.description {
-				padding: 26px 10px 6px 39px;
+				padding: 26px 10px 6px 40px;
 	 			display:table-cell;
 
 				div:nth-child(1){
@@ -330,7 +331,7 @@ body.lp-loaded {
 
 							.infos {
 								@extend .ellipsis;
-								padding: 0 0 0 20px;
+								padding: 0 0 0 40px;
 								font: $back-infos-1-4H;
 								-webkit-line-clamp: 5;
 								width: 440px;
@@ -523,7 +524,7 @@ body.lp-loaded {
 			}
 
 			.pager-wrapper {
-				top: 225px;
+				bottom: 102px;
 			}
 
 		}
@@ -606,7 +607,10 @@ body.lp-loaded {
 
 
 			.pager-wrapper {
-				top: 125px;
+				text-align: left;
+				bottom: 8px;
+				left: 309px;
+				bottom: 8px;
 				width: 480px;
 			}
 		}
@@ -616,14 +620,14 @@ body.lp-loaded {
 
 
 			.description {
-				padding: 10px 10px 0px 54px;
+				padding: 10px 10px 0px 40px;
 	 			display:table;
 	 			width: 480px;
 
 				div:nth-child(1){
 					display: table;
-					vertical-align: top;
-					padding: 4px 0 0 0;
+					vertical-align: bottom;
+					padding: 19px 0 0 0;
 				}
 				.rating {
 					vertical-align: top;
@@ -631,7 +635,7 @@ body.lp-loaded {
 					padding: 0 0 0 10px;
 				}				
 				div:nth-child(2){
-					vertical-align: top;
+					vertical-align: bottom;
 					display: table-cell;
 					text-align: right;
 				}				
@@ -674,7 +678,7 @@ body.lp-loaded {
 
 							.infos {
 								@extend .ellipsis;
-								padding: 0 0 0 20px;
+								padding: 0 0 0 40px;
 								font: $back-infos-1-8H;
 								-webkit-line-clamp: 2;
 								width: 370px;
@@ -684,7 +688,7 @@ body.lp-loaded {
 				}
 
 				.pager-wrapper {
-					top: 125px;
+					bottom: 8px;
 					width: 480px;
 				}	
 
@@ -747,6 +751,9 @@ body.lp-loaded {
 				}
 
 				.pager-wrapper {
+					left: 0;
+					text-align: center;
+					bottom: 8px;
 					width: 328px;
 				}
 		}
@@ -827,7 +834,7 @@ body.lp-loaded {
 
 
 			.description {
-				padding: 15px 10px 6px 50px;
+				padding: 25px 10px 6px 40px;
 	 			display:table-cell;
 				
 				div:nth-child(1){
@@ -857,7 +864,7 @@ body.lp-loaded {
 				.rating {
 					display: table-row;
 					> li {
-						margin: 10px 3px 10px 0;
+						margin: 6px 3px 10px 0;
 					}
 				}
 
@@ -881,10 +888,10 @@ body.lp-loaded {
 
 							.infos {
 								@extend .ellipsis;
-								padding: 0 0 0 20px;
+								padding: 0 0 0 40px;
 								font: $back-infos-1-8V;
 								-webkit-line-clamp: 4;
-								 width: 216px;
+								 width: 215px;
 							}
 					}
 					
@@ -966,6 +973,155 @@ body.lp-loaded {
 /*=========================================================*/
 /*=== FORMAT 1/8 V | fin  ==================================*/
 /*=========================================================*/
+
+/*=== FORMAT 1/16  | début  ==================================*/
+
+.lp-230x152 {
+
+		width: 230px;
+		height: 152px;
+
+		.front {	
+
+			.logo {
+				width: 75px;
+				height: 30px;	
+				top: 6px;
+				left: 6px;
+			}
+
+			.description {
+				 padding: 50px 10px 5px 15px;
+				 height: 100%;
+
+
+				div:nth-child(1) {
+					vertical-align: top;
+					display:table-row;
+				}
+				
+				div:nth-child(2){
+					display: table-cell;
+					vertical-align: bottom;
+					text-align: right
+				}				
+
+				.title {
+					font: $front-title-1-16;
+				}
+
+				.subtitle {
+					font: $front-subtitle-1-16;
+				}	
+
+				.mention {
+					display: inline-block;
+					font: $front-mention-1-16;
+					padding: 0 8px 0 0;
+				}
+
+				.price {
+					display: inline-block;
+					font: $front-price-1-16;
+				}	
+
+
+			}
+
+			.scroller > div {
+				background-color: rgba(229,238,248,1);
+			}
+
+			.pager-wrapper {
+				top: 200px;
+				width: 230px;
+			}
+		}
+
+
+		.back {
+
+
+			.description {
+				padding: 19px 10px 6px 40px;
+	 			display:table-cell;
+				
+
+				> div {
+					vertical-align: top;
+				}	 			
+
+				.title {
+					font: $back-title-1-16;
+				}
+
+				.subtitle {
+					font: $back-subtitle-1-16;
+				}	
+
+				.mention {
+					font: $back-mention-1-16;
+				}
+
+				.price {
+					font: $back-price-1-16;
+				}	
+
+				.rating {
+					display: table-row;
+					> li {
+						margin: -3px 3px 4px 0;
+					}
+				}
+
+			}
+
+				.pager-wrapper {
+					top: 257px;
+					width: 230px;
+				}	
+
+
+			.logo {
+				top: 114px;
+				left: 72px;
+				width: 100px;
+				height: 30px;
+			}
+				
+			.lp-legal-bg {
+				width: 230px;
+				height: 152px;
+			}
+
+			.lp-legal-text {
+				width: 230px;
+			}
+
+
+		}
+
+		.front, .back  {
+
+				.description {
+					display:table;
+					width: 100%;
+				}
+
+
+		}
+
+		.front, .back, .gallery, .scroller > div, .wrapper { 
+			width: 230px; 
+			height: 152px; 
+		} 
+}
+
+
+/*=========================================================*/
+/*=== FORMAT 1/16 | fin  ==================================*/
+/*=========================================================*/
+
 
 /*=== LEGAL css | debut ==========================*/
 	.lp-legal-bg {

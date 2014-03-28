@@ -74,8 +74,8 @@
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Memories Paraiso Azul</p>
-												<p class="subtitle"><!-- Cayo Santa Maria,<br/> -->Cuba</p>
+												<p class="title">Dreams La Romana Resort</p>
+												<p class="subtitle">La Romana, Rép. Dominigaine</p>
 												<ul class="rating">
 													<li></li>
 													<li></li>
@@ -83,16 +83,16 @@
 													<li></li>
 												</ul>
 											</div>
-											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
-												<p class="price">99 999</p>
-											</div>
 										</div>
 										<div class="wrapper-height">
 											<div class="wrapper-infos">
 												<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort 
 												& Spa, directement sur la page de Bayahibe.</div>
 											</div>
+										</div>
+										<div>
+											<p class="mention">à partir de<br/>par pers.</p>
+											<p class="price">99 999</p>
 										</div>
 										<div class="close"></div>
 										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>

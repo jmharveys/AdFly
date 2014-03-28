@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>1/8 V statique | AdFly </title>
+	<title>1/16 statique | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -21,31 +21,28 @@
 	</style>
 </head>
 <body>
-	<div class='lp-ad lp-230x325 uniqueOffer'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/reference-2.jpg');"></div>
+	<div class='lp-ad lp-230x152'>
+		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/allegro-back.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/beltour.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 230px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/1-8v-1.jpg'); width:230px; height:221px;"></div>
+									<div class="description">
+										<div>
+											<p class="title">Allegro Varadero</p>
+											<p class="subtitle">Varadero, Cuba</p>
+										</div>
+										<div>
+											<p class="mention">à partir de<br/>par pers.</p>
+											<p class="price">99 999</p>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="table-cell-wrapper">
-								<div class="description">
-									<div>
-										<p class="title">Memories Paraiso Azul</p>
-										<p class="subtitle"><!-- Cayo Santa Maria,<br/> -->Cuba</p>
-									</div>
-									<div>
-										<p class="mention">à partir de<br/>par pers.</p>
-										<p class="price">99 999</p>
-									</div>
-								</div>
-							</div>								
 						</div>
 					</div>
 				</div>
@@ -54,34 +51,26 @@
 						<div class='gallery'>
 							<div class='scroller' style="width: 230px;">
 								<div>
-									<div class="wrapper-all">
-										<div class="description">
-											<div>
-												<p class="title">Memories Paraiso Azul</p>
-												<p class="subtitle"><!-- Cayo Santa Maria,<br/> -->Cuba</p>
-												<ul class="rating">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-												</ul>
-											</div>
-											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
-												<p class="price">99 999</p>
-											</div>
+									<div class="description">
+										<div>
+											<p class="title">Rio Playa Turquesa</p>
+											<p class="subtitle">Hoglin, Cuba</p>
+											<ul class="rating">
+												<li></li>
+												<li></li>
+												<li></li>
+												<li></li>
+											</ul>
 										</div>
-										<div class="wrapper-height">
-											<div class="wrapper-infos">
-												<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort 
-												& Spa, directement sur la page de Bayahibe.</div>
-											</div>
+										<div>
+											<p class="mention">à partir de</p>
+											<p class="price">99 999</p>
 										</div>
 									</div>
 								</div>											
 							</div>
 							<div class="close"></div>
-							<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+							<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/beltour.jpg');"></div>
 							<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>			
 						</div>
 					</div>
