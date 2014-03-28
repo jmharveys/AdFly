@@ -1,5 +1,5 @@
 <?php 
-	include 'configs/global.php'; 
+	include '../../configs/global.php'; 
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8]> <html class="lt-ie10 lt-ie9 lt-ie8" lang="fr"> <![endif]-->
@@ -8,159 +8,109 @@
 <!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Galerie 1/8 H  | AdFly </title>
+	<title>1/8 V galerie une offre | AdFly </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/ad.css">
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-			<style>
-	/* ICONES */
-
-		/* Étoiles */
-		.back ul.rating > li {
-				float: left;
-				list-style: none;
-				background: url(<?= URL; ?>/public/images/ico-etoile-autre.png) no-repeat 0 0 transparent;
-				background-size: contain;
-				width: 12.5px;
-				height: 12.5px;
-				margin: 0 3px 0 0;
-				z-index: 10;			
-		}
-
-		.lp-480x325 .back ul.rating > li {
-				float: left;
-				list-style: none;
-				background: url(<?= URL; ?>/public/images/ico-etoile-quart.png) no-repeat 0 0 transparent;
-				background-size: contain;
-				width: 18px;
-				height: 18px;
-				margin: 0 3px 0 0;
-				z-index: 10;
-		}	
-
-		/* Bouton Fermer */
-		.back .close {
-		  position: absolute;
-		  top: 0px;
-		  left: 0px;
-		  width: 40px;
-		  height: 40px;
-		  z-index: 1;
-		  background: url(<?= URL; ?>/public/images/btn-annuler-light.png) no-repeat 0 0 transparent;
-		  -webkit-background-size: contain;
-		  background-size: contain;
-		}
-		
-		/* Bouton Fermer ACTIF */
-		.back .close:active {
-		  background-image: url(<?= URL; ?>/public/images/btn-annuler-pressed.png);
-		}
-
-
-		/* Plus Web */
-		.back a.btn-plusWeb {
-			position: absolute;
-			bottom: 9px;
-			right: 9px;
-			width: 40px;
-			height: 40px;
-			z-index: 1;
-			background: url(<?= URL; ?>/public/images/btn-plusweb.png) no-repeat 0 0 transparent;
-			background-size: contain;		
-		}
-
-
-		/* Bouton +Web ACTIF */
-		.back a.btn-plusWeb:active {
-			background-image: url(<?= URL; ?>/public/images/btn-plusweb-pressed.png);	
-		}	
-
-		/* Bouton +Web : truc pour élargir zone cliquable ; */
-		.back a.btn-plusWeb:after {
-			position: absolute;
-			content: "";
-			width: 80px;
-			height: 80px;
-			top: -9px;
-			left: -9px;	
-		}	
+		<style>
+		<?php include '../images-adgear.php'; ?>
 	</style>
 </head>
 <body>
-	<div class='lp-ad seizieme-h'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/allegro-back.jpg');"></div>
+	<div class='lp-ad lp-230x325 uniqueOffer'>
+		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/reference-2.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
-		<div class='wrapperFlip'>
 			<div class='flip'> 
 				<div class='front'>
-					<div class="logo" style="background-image: url('public/images/demo/beltour.jpg');"></div>
-					<div class="wrapper">				
-						<div class="description">
-							<div>
-								<p class="title">Allegro Varadero</p>
-								<p class="subtitle">Varadero, Cuba</p>
+					<div class="wrapper">
+						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class='gallery'>
+							<div class='scroller' style="width: 460px;">
+								<div>
+									<div style="background: url('<?= URL ?>public/images/demo/1-8v-1.jpg'); width:230px; height:221px;"></div>
+								</div>
+								<div>
+									<div style="background: url('<?= URL ?>public/images/demo/1-8v-2.jpg'); width:230px; height:221px;"></div>
+								</div>	
 							</div>
-							<div>
-								<p class="caption">par pers.</p>
-								<p class="price">1 009</p>
+							<div class="table-cell-wrapper">
+								<div class="description">
+									<div>
+										<p class="title">Memories Paraiso Azul</p>
+										<p class="subtitle"><!-- Cayo Santa Maria,<br/> -->Cuba</p>
+									</div>
+									<div>
+										<p class="mention">à partir de<br/>par pers.</p>
+										<p class="price">99 999</p>
+									</div>
+								</div>
+							</div>								
+							<div class='pager-wrapper'>
+								<ul class='pager'>
+									<li class='selected'>0</li>
+									<li>1</li>
+								</ul>
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 				<div class='back'>
-					<div class='wrapper'>
-						<div>
-							<div class="close"></div>
-							<div class="description">
-								<div class="opposite">
-									<p class="title">Allegro Varadero</p>
-									<p class="subtitle">Varadero, Cuba</p>
-								</div>
+					<div class="wrapper">
+						<div class='gallery'>
+							<div class='scroller' style="width: 230px;">
 								<div>
-									<p class="caption">à partir de</p>
-									<p class="price">1 009</p>
-								</div>
-								<ul class="rating">
-									<li></li>
-									<li></li>
-									<li></li>
-									<li></li>
-								</ul>
-							<div class="logo" style="background-image: url('public/images/demo/beltour.jpg');"></div>
-							<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
+									<div class="wrapper-all">
+										<div class="description">
+											<div>
+												<p class="title">Memories Paraiso Azul</p>
+												<p class="subtitle"><!-- Cayo Santa Maria,<br/> -->Cuba</p>
+												<ul class="rating">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+											<div>
+												<p class="mention">à partir de<br/>par pers.</p>
+												<p class="price">99 999</p>
+											</div>
+										</div>
+										<div class="wrapper-height">
+											<div class="wrapper-infos">
+												<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort 
+												& Spa, directement sur la page de Bayahibe.</div>
+											</div>
+										</div>
+									</div>
+								</div>											
 							</div>
-							<div class='lp-legal-bg noFlip'></div>
-							<div class='lp-legal noFlip' style="-webkit-transform: translate3d(0,92px,0); height:92px;">
-								<div class='lp-legal-btn noFlip'>Légal</div>
-								<div class='lp-legal-text noFlip' style="height:92px;">45841141 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. En magasin seule...</div>
-							</div>							
+							<div class="close"></div>
+							<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+							<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>			
 						</div>
-					</div>	
+					</div>
 				</div>
 			</div>
 		<!--=== RETOURNER html | fin ==============-->
-		</div>
 	</div>
+
 	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
 	<script>
-		var ad = document.getElementsByClassName('lp-ad')[0];
+			var ad = document.getElementsByClassName('lp-ad')[0];
 
 		/*=== RETOURNER script | debut =============*/
 		var flipper = document.getElementsByClassName('flip')[0]; 
 		flipper.addEventListener('tap', flipMe, false); 
-		flipper.addEventListener('click', flipMe, false); 
 
 		function flipMe() { 
 			// Si je n'ai pas flipper et que je ne scroll pas.
 			if(!(flipper.classList.contains('active')) && !(ad.classList.contains('moving')) ) { 
-				if ( !(flipper.classList.contains('flipped')) ) {
+				if (  !(event.target.classList.contains('noFlip'))  ) {
 					flipper.classList.add('active');
 					flipper.addEventListener("transitionend", flipDone, false);
 				} 
@@ -227,7 +177,7 @@
 			});	
 			Array.prototype.forEach.call(currentLegal, function(el) {
 		    	el.classList.remove('lp-legal-active');
-			});					
+			});			
 		}
 
 
@@ -248,6 +198,10 @@
 			} else {
 				document.body.classList.add('lp-is-ios');
 			}
+			//Gardez pour tester et remettre ensuite
+			// if(isMobile.Android() || isMobile.iOS()) {
+			// 	 location.href = 'lpri://webContentFinishedLoading';
+			// }
 			document.body.classList.add('lp-loaded');
 		}
 

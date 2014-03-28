@@ -241,10 +241,10 @@ img {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 480px;
-  height: 152px;
+  width: 230px;
+  height: 325px;
   z-index: 100000;
-  opacity: 0.3;
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -272,7 +272,7 @@ body.lp-loaded {
 .lp-480x152 .front .description .title,
 .lp-480x152 .front .description .subtitle,
 .lp-480x152 .back .wrapper-height .wrapper-infos .infos,
-.lp-325x230 .back .wrapper-height .wrapper-infos .infos {
+.lp-230x325 .back .wrapper-height .wrapper-infos .infos {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -345,6 +345,9 @@ body.lp-loaded {
   position: absolute;
   z-index: 1;
   pointer-events: none;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .back .wrapper,
@@ -456,6 +459,7 @@ body.lp-loaded {
   font-size: 60%;
   vertical-align: super;
   content: "$";
+  margin: 0 0 0 2px;
 }
 
 .back {
@@ -470,7 +474,6 @@ body.lp-loaded {
   width: 12.5px;
   height: 12.5px;
   margin: 0 3px 0 0;
-  z-index: 10;
 }
 
 .back .close {
@@ -538,7 +541,6 @@ body.lp-loaded {
 
 .lp-480x325 .front .description .subtitle {
   font: normal normal 23px/23px AmericanTypewriter-Bold;
-  font-family: AmericanTypewriter-Bold;
 }
 
 .lp-480x325 .front .description .mention {
@@ -1034,160 +1036,166 @@ body.lp-loaded {
 
 /*=== FORMAT 1/8 V  | début  ==================================*/
 
-.lp-325x230 {
+.lp-230x325 {
   width: 230px;
   height: 325px;
 }
 
-.lp-325x230 .front .logo {
-  width: 165px;
-  height: 75px;
+.lp-230x325 .front .logo {
+  width: 100px;
+  height: 50px;
 }
 
-.lp-325x230 .front .description {
-  padding: 5px 10px 6px 15px;
-  height: 78px;
+.lp-230x325 .front .description {
+  padding: 6px 10px 5px 10px;
+  height: 104px;
 }
 
-.lp-325x230 .front .description > div {
-  width: 310px;
-  vertical-align: bottom;
-}
-
-.lp-325x230 .front .description .title {
-  font: normal normal 16px/18px AmericanTypewriter;
-}
-
-.lp-325x230 .front .description .subtitle {
-  font: normal normal 23px/23px AmericanTypewriter-Bold;
-  font-family: AmericanTypewriter-Bold;
-}
-
-.lp-325x230 .front .description .mention {
-  font: normal normal 12px/12px AmericanTypewriter;
-}
-
-.lp-325x230 .front .description .price {
-  font: normal normal 33px/29px AmericanTypewriter-Bold;
-}
-
-.lp-325x230 .front .pager-wrapper {
-  top: 239px;
-  width: 230px;
-}
-
-.lp-325x230 .back .description {
-  padding: 26px 10px 6px 39px;
-  display: table-cell;
-}
-
-.lp-325x230 .back .description div:nth-child(1) {
-  width: 310px;
-}
-
-.lp-325x230 .back .description > div {
+.lp-230x325 .front .description div:nth-child(1) {
   vertical-align: top;
-}
-
-.lp-325x230 .back .description .title {
-  font: normal normal 19px/18px AmericanTypewriter;
-  white-space: nowrap;
-}
-
-.lp-325x230 .back .description .subtitle {
-  font: normal normal 23px/23px AmericanTypewriter-Bold;
-}
-
-.lp-325x230 .back .description .mention {
-  font: normal normal 12px/14px AmericanTypewriter;
-}
-
-.lp-325x230 .back .description .price {
-  font: normal normal 33px/29px AmericanTypewriter-Bold;
-}
-
-.lp-325x230 .back .description .rating {
   display: table-row;
 }
 
-.lp-325x230 .back .description .rating > li {
-  width: 18px;
-  height: 18px;
-  margin: 10px 3px 0 0;
+.lp-230x325 .front .description div:nth-child(2) {
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: right;
 }
 
-.lp-325x230 .back .wrapper-all {
-  height: 265px;
+.lp-230x325 .front .description .title {
+  font: normal normal 18px/18px AmericanTypewriter;
+}
+
+.lp-230x325 .front .description .subtitle {
+  font: normal normal 18px/19px AmericanTypewriter-Bold;
+}
+
+.lp-230x325 .front .description .mention {
+  display: inline-block;
+  font: normal normal 12px/12px AmericanTypewriter;
+  padding: 0 8px 0 0;
+}
+
+.lp-230x325 .front .description .price {
+  display: inline-block;
+  font: normal normal 28px/26px AmericanTypewriter-Bold;
+}
+
+.lp-230x325 .front .pager-wrapper {
+  top: 200px;
+  width: 230px;
+}
+
+.lp-230x325 .back .description {
+  padding: 15px 10px 6px 50px;
+  display: table-cell;
+}
+
+.lp-230x325 .back .description > div {
+  vertical-align: top;
+}
+
+.lp-230x325 .back .description .title {
+  font: normal normal 18px/17px AmericanTypewriter;
+}
+
+.lp-230x325 .back .description .subtitle {
+  font: normal normal 18px/23px AmericanTypewriter-Bold;
+}
+
+.lp-230x325 .back .description .mention {
+  font: normal normal 12px/14px AmericanTypewriter;
+}
+
+.lp-230x325 .back .description .price {
+  font: normal normal 28px/20px AmericanTypewriter-Bold;
+}
+
+.lp-230x325 .back .description .rating {
+  display: table-row;
+}
+
+.lp-230x325 .back .description .rating > li {
+  margin: 10px 3px 10px 0;
+}
+
+.lp-230x325 .back .wrapper-all {
+  height: 257px;
   display: table;
 }
 
-.lp-325x230 .back .wrapper-height {
+.lp-230x325 .back .wrapper-height {
   height: 100%;
   display: table-row;
 }
 
-.lp-325x230 .back .wrapper-height .wrapper-infos {
+.lp-230x325 .back .wrapper-height .wrapper-infos {
   display: table-cell;
   vertical-align: middle;
 }
 
-.lp-325x230 .back .wrapper-height .wrapper-infos .infos {
+.lp-230x325 .back .wrapper-height .wrapper-infos .infos {
   padding: 0 0 0 20px;
-  font: normal normal 15px/20px AmericanTypewriter;
-  -webkit-line-clamp: 5;
-  width: 440px;
+  font: normal normal 14px/16px AmericanTypewriter;
+  -webkit-line-clamp: 4;
+  width: 216px;
 }
 
-.lp-325x230 .back .pager-wrapper {
-  top: 300px;
+.lp-230x325 .back .pager-wrapper {
+  top: 257px;
   width: 230px;
 }
 
-.lp-325x230 .back .logo {
-  top: 265px;
-  left: 305px;
-  width: 115px;
-  height: 55px;
+.lp-230x325 .back .logo {
+  top: 287px;
+  left: 72px;
+  width: 100px;
+  height: 30px;
 }
 
-.lp-325x230 .back .lp-legal-bg {
+.lp-230x325 .back .lp-legal-bg {
   width: 230px;
   height: 325px;
 }
 
-.lp-325x230 .back .lp-legal-text {
+.lp-230x325 .back .lp-legal-text {
   width: 230px;
 }
 
-.lp-325x230 .front .description,
-.lp-325x230 .back .description {
+.lp-230x325 .front .description,
+.lp-230x325 .back .description {
   display: table;
+  width: 100%;
 }
 
-.lp-325x230 .front .description div:nth-child(1),
-.lp-325x230 .front .description div:nth-child(2),
-.lp-325x230 .front .description .mention,
-.lp-325x230 .back .description div:nth-child(1),
-.lp-325x230 .back .description div:nth-child(2),
-.lp-325x230 .back .description .mention {
-  display: table-cell;
-}
-
-.lp-325x230 .front .description div:nth-child(2),
-.lp-325x230 .front .description .mention,
-.lp-325x230 .back .description div:nth-child(2),
-.lp-325x230 .back .description .mention {
-  width: 170px;
-  text-align: right;
-}
-
-.lp-325x230 .front,
-.lp-325x230 .back,
-.lp-325x230 .gallery,
-.lp-325x230 .scroller > div,
-.lp-325x230 .wrapper {
+.lp-230x325 .front,
+.lp-230x325 .back,
+.lp-230x325 .gallery,
+.lp-230x325 .scroller > div,
+.lp-230x325 .wrapper {
   width: 230px;
   height: 325px;
+}
+
+.lp-230x325.uniqueOffer .gallery,
+.lp-230x325.uniqueOffer .scroller > div {
+  width: 230px;
+  height: 221px;
+}
+
+.lp-230x325.uniqueOffer .front .table-cell-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: white;
+}
+
+.lp-230x325.uniqueOffer .back {
+  background-color: white;
+}
+
+.lp-230x325.uniqueOffer .back .wrapper-all {
+  height: 276px;
 }
 
 /*=========================================================*/
