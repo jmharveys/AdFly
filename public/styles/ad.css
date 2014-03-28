@@ -1176,6 +1176,27 @@ body.lp-loaded {
   height: 325px;
 }
 
+.lp-325x230.uniqueOffer .gallery,
+.lp-325x230.uniqueOffer .scroller > div {
+  width: 230px;
+  height: 221px;
+}
+
+.lp-325x230.uniqueOffer .front .table-cell-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: white;
+}
+
+.lp-325x230.uniqueOffer .back {
+  background-color: white;
+}
+
+.lp-325x230.uniqueOffer .back .wrapper-all {
+  height: 276px;
+}
+
 /*=========================================================*/
 
 /*=== FORMAT 1/8 V | fin  ==================================*/

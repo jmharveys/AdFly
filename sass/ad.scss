@@ -919,16 +919,6 @@ body.lp-loaded {
 				.description {
 					display:table;
 					width: 100%;
-					// div:nth-child(1), div:nth-child(2) {
-					// 	display:table-row;
-					// }
-
-					// div:nth-child(2){
-					// 	// width: 170px;
-					// 	text-align: right;
-
-					// }
-
 				}
 		}
 
@@ -937,6 +927,40 @@ body.lp-loaded {
 			height: 325px; 
 		} 
 }
+
+// 1/8 V avec une seul offre
+
+	.lp-325x230.uniqueOffer {
+
+		.gallery,
+		.scroller > div {
+			width: 230px; 
+			height: 221px; 
+		}
+
+		.front {
+
+				.table-cell-wrapper {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					background: rgba(255, 255, 255, 1);
+				}
+
+		}
+
+		.back {
+			background-color: rgba(255,255,255,1);
+
+
+				.wrapper-all {
+					height: 276px;
+				}
+
+
+		}
+
+	}
 
 /*=========================================================*/
 /*=== FORMAT 1/8 V | fin  ==================================*/
