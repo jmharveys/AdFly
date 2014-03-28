@@ -55,7 +55,7 @@ html, body {
 .lp-logo {
 	display: block;
 	position: absolute;
-	background-image: url('{{logo.name}}');
+	background-image: url('{{logo.path}}');
 	background-repeat: no-repeat;
 	background-size: contain;
 	z-index: 1;
@@ -78,7 +78,7 @@ html, body {
 }
 
 .lp-pager {
-	height: 15px;
+	height: 14px;
 }
 {{/exist.gallery}}
 {{#exist.offersGallery}}

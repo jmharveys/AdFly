@@ -52,6 +52,9 @@
 	width: 328px;
 	height: 100%;
 }
+.lp-front .lp-pager.lp-pictures {
+	width: 328px;
+}
 {{/exist.picturesGallery}}
 
 .lp-front .lp-mentions {

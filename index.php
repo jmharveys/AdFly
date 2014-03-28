@@ -36,6 +36,7 @@
 	</header>
 
 	<form method="post" action="ad.php" enctype="multipart/form-data" autocomplete="off" class="js-form form">
+		<input type="hidden" name="id" />
 		<input type="hidden" name="offersId" />
 		<div class="steps">
 			<!-- === Step 1 ================================================= -->
@@ -131,7 +132,26 @@
 
 					<footer class="footer">
 						<div class="btn lft js-previousStep"><?= $t[$culture]['previous']; ?></div>
+						<div class="btn blue rgt js-download disabled"><?= $t[$culture]['download']; ?></div>
+						<label>
+							<input type="checkbox" name="iConfirm">
+							<span>
+								<?= $t[$culture]['iConfirm']; ?>
+							</span>
+						</label>
 					</footer>
+				</div>
+
+				<div class="popup confirmation">
+					<div class="window">
+						<span class="close js-cancel"></span>
+						<h2><?= $t[$culture]['confirmation']; ?></h2>
+						<div class="text"><?= $t[$culture]['confirmationText']; ?></div>
+						<label>
+							<div class="btn lft js-cancel"><?= $t[$culture]['cancel']; ?></div>
+							<div class="btn blue rgt js-confirm"><?= $t[$culture]['download']; ?></div>
+						</label>
+					</div>
 				</div>
 			</section>
 		</div>

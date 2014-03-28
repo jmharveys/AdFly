@@ -6,7 +6,7 @@ class AdModel {
     public function __construct() {
         $date = new DateTime();
         $this->ad->meta = new stdClass();
-        $this->ad->meta->id = $date->getTimestamp() . rand(0, 100);
+        $this->ad->meta->id = $_POST["id"];
         $this->ad->meta->noClient = $_POST["noClient"];
         $this->ad->meta->noAd = $_POST["noAd"];
         $this->ad->meta->date = date("c");
@@ -14,18 +14,24 @@ class AdModel {
         $this->ad->meta->format = $_POST["format"];
         $this->ad->meta->version = VERSION;
 
-        $this->ad->url = URL;
         $this->ad->w = intval(explode("x", $this->ad->meta->format)[0]);
         $this->ad->h = intval(explode("x", $this->ad->meta->format)[1]);
-        $this->ad->folder = 'temps/' . $this->ad->meta->id;
-        $this->ad->assets = $this->ad->folder . '/assets/';
-        $this->createFolder($this->ad->folder);
+
+        $this->ad->url = new stdClass();
+        $this->ad->url->root = URL;
+        $this->ad->url->folder = 'temps/' . $this->ad->meta->id;
+        $this->ad->url->assets = $this->ad->url->folder . '/assets/';
+
+        $this->ad->assets = ['btn-annuler-light.png', 'btn-annuler-pressed.png', 'btn-plusWeb.png', 'btn-plusWeb-pressed.png'];
+
         $this->ad->logo = new stdClass();
         $this->ad->logo->tmp = $_FILES['logo']['tmp_name'];
-        $this->ad->logo->defaultName = $_FILES['logo']['name'];
-        $this->ad->logo->ext = end(explode(".", $this->ad->logo->defaultName));
-        $this->ad->logo->name = $this->ad->assets . 'logo.' . $this->ad->logo->ext;
-        move_uploaded_file($this->ad->logo->tmp, $this->ad->assets . 'logo.' . $this->ad->logo->ext);
+        $this->ad->logo->dflt = $_FILES['logo']['name'];
+        $this->ad->logo->ext = end(explode(".", $this->ad->logo->dflt));
+        $this->ad->logo->name = 'logo.' . $this->ad->logo->ext;
+        $this->ad->logo->path = $this->ad->url->assets . $this->ad->logo->name;
+        array_push($this->ad->assets, $this->ad->logo);
+        //move_uploaded_file($this->ad->logo->tmp, $this->ad->url->assets . 'logo.' . $this->ad->logo->ext);
 
         $id = explode(",", $_POST["offersId"]);
         $this->ad->offers = new stdClass();
@@ -43,6 +49,7 @@ class AdModel {
         $this->ad->exist->offersGallery = $this->ad->offers->nbr > 1 ? true : false;
         $this->ad->exist->picturesGallery = false;
         $this->ad->exist->legal = false;
+
 
         for($x=0; $x<$this->ad->offers->nbr; $x++) {
             $obj = new stdClass();
@@ -92,11 +99,13 @@ class AdModel {
                 $name = $_FILES[$obj->id . '_picture']['name'][$key];
                 if($name != '') {
                     $img = new stdClass();
+                    $img->name = $name;
+                    $img->tmp = $_FILES[$obj->id . '_picture']['tmp_name'][$key];
                     $img->index = $key + 1;
-                    $img->path = $this->ad->assets . $name;
+                    $img->path = $this->ad->url->assets . $name;
 
                     array_push($obj->gallery->pictures, $img);
-                    move_uploaded_file($_FILES[$obj->id . '_picture']['tmp_name'][$key], $this->ad->assets. $name);
+                    array_push($this->ad->assets, $img);
                 }
             }
             $obj->gallery->nbr = count($obj->gallery->pictures);
@@ -111,8 +120,13 @@ class AdModel {
             $obj->video->exist = $videoName == '' ? false : true;
             if($obj->video->exist) {
                 $this->ad->exist->video = true;
-                $obj->video->name = $this->ad->assets . $videoName;
-                move_uploaded_file($_FILES[$obj->id . '_video']['tmp_name'], $obj->video->name);
+                $obj->video->path = $this->ad->url->assets . $videoName;
+                $obj->video->name = $videoName;
+                $obj->video->tmp = $_FILES[$obj->id . '_video']['tmp_name'];
+                $obj->video->ext = end(explode(".", $obj->video->name));
+                array_push($this->ad->assets, $obj->video);
+
+                //move_uploaded_file($_FILES[$obj->id . '_video']['tmp_name'], $obj->video->name);
             }
             /* Description */
             $obj->description = $_POST[$obj->id . "_description"];
@@ -129,17 +143,34 @@ class AdModel {
         if($this->ad->exist->offersGallery || $this->ad->exist->picturesGallery) {
             $this->ad->exist->gallery = true;
         }
-        //print_r($this->ad);
+        if($this->ad->exist->video) {
+            array_push($this->ad->assets, 'btn-play.png');
+            array_push($this->ad->assets, 'btn-play-pressed.png');
+        }
+
+        $this->createFolder();
+        $this->adAssets($this->ad->assets);
+
+        print_r($this->ad);
     }
 
-    private function createFolder($folder) {
-        rrmdir($folder);
+    private function createFolder() {
+        rrmdir($this->ad->url->folder);
         umask(0);
-        if(!mkdir($folder, 0777, true)) {
+        if(!mkdir($this->ad->url->folder, 0777, true)) {
             die('Echec lors de la création du répertoire');
         }
-        mkdir($folder, 0777, true);
-        mkdir($folder ."/assets", 0777, true);
+        mkdir($this->ad->url->folder, 0777, true);
+        mkdir($this->ad->url->assets, 0777, true);
+    }
+
+    private function adAssets($assets) {
+        $folder = 'temps/' . $this->ad->meta->id . "/assets/";
+        for($x=0; $x<count($assets); $x++) {
+            if(!move_uploaded_file($assets[$x]->tmp, $folder . $assets[$x]->name)) {
+                copy('public/images/' . $assets[$x], $folder . $assets[$x]);
+            }
+        }
     }
 }
 ?>

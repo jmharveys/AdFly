@@ -40,14 +40,20 @@ app.prototype.map_ = function() {
     addOfferMsg: $('.addOfferMsg'),
     offersList: $('.offersList'),
     render: $('iframe.render'),
+    downloadBtn: $('.js-download'),
+    popupConfirmation: $('.popup.confirmation'),
+    cancel: $('.js-cancel'),
+    confirmBtn: $('.js-confirm'),
     field: {
+      id: $('[name="id"]'),
       offersId: $('[name="offersId"]'),
       noClient: $('[name="noClient"]'),
       noAd: $('[name="noAd"]'),
       category: $('[name="category"]'),
       date: $('[name="date"]'),
       formatRadio: $(".row.format input"),
-      format: $(".row.format .radio")
+      format: $(".row.format .radio"),
+      iConfirm: $('[name="iConfirm"]')
     }
   };
   self.path = {
@@ -59,6 +65,8 @@ app.prototype.map_ = function() {
 //=== INIT START =====================================================
 app.prototype.init_ = function(pObj) {
   var self = this;
+  self.id = new Date().getTime() + Math.floor(Math.random() * 10);
+  self.dom.field.id.val(self.id);
 
   /* jQuery Validate */
   self.validator = self.dom.f.validate({
@@ -162,6 +170,42 @@ app.prototype.bindEvents_ = function() {
     e.preventDefault();
     var offer = $(this).closest('fieldset');
     self.deleteOffer_(offer);
+  });
+
+  self.dom.downloadBtn.on('click', function(e) {
+    e.preventDefault();
+    self.dom.popupConfirmation.addClass('active');
+  });
+
+  self.dom.cancel.on('click', function(e) {
+    e.preventDefault();
+    self.dom.popupConfirmation.removeClass('active');
+  });
+
+  self.dom.field.iConfirm.on('change', function(e) {
+    self.dom.downloadBtn.toggleClass('disabled');
+  });
+
+  self.dom.confirmBtn.on('click', function(e) {
+    e.preventDefault();
+    self.downloadAd_();
+  });
+};
+
+app.prototype.downloadAd_ = function(pValue) {
+  var self = this;
+  var html = self.dom.render.contents().find("html").html();
+  $.ajax({
+    type: "POST",
+    url: self.root + 'app/libraries/createFiles.php',
+    data: {"id": self.id, "h": html},
+    success: function(data) {
+      console.log("success");
+      console.log(data);
+    }, error: function(data) {
+      console.log("error");
+      console.log(data);
+    }
   });
 };
 
