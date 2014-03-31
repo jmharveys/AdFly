@@ -27,14 +27,14 @@
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/beltour.jpg');"></div>
+						<div class="wrapper-logo"><div class="logo" style="background-image: url('<?= URL ?>public/images/demo/beltour.jpg');"></div></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 230px;">
 								<div>
 									<div class="description">
 										<div>
-											<p class="title">Allegro Varadero</p>
-											<p class="subtitle">Varadero, Cuba</p>
+											<p class="title">Dreams La Romana</p>
+											<p class="subtitle">Rép. Dominicaine</p>
 										</div>
 										<div>
 											<p class="mention">à partir de<br/>par pers.</p>
@@ -53,8 +53,8 @@
 								<div>
 									<div class="description">
 										<div>
-											<p class="title">Rio Playa Turquesa</p>
-											<p class="subtitle">Hoglin, Cuba</p>
+											<p class="title">Dreams La Romana</p>
+											<p class="subtitle">Rép. Dominicaine</p>
 											<ul class="rating">
 												<li></li>
 												<li></li>
@@ -63,7 +63,7 @@
 											</ul>
 										</div>
 										<div>
-											<p class="mention">à partir de</p>
+											<p class="mention">à partir de<br/>par pers.</p>
 											<p class="price">99 999</p>
 										</div>
 									</div>
