@@ -15,9 +15,16 @@ class AdView {
     public function outputStyles() {
         ob_start();
         $template = file_get_contents("public/templates/styles/offer-tpl.mustache.css");
+        ?>
+        <link rel="stylesheet" href="<?= $this->model->ad->url->assets ?>fonts.css" type="text/css">
+        <style>
+        <?php
         echo $this->m->render($template, $this->ad);
         $t = file_get_contents("public/templates/styles/". $this->model->ad->meta->format ."-tpl.mustache.css");
         echo $this->m->render($t, $this->ad);
+        ?>
+        </style>
+        <?php
         $styles = ob_get_clean();
         ob_end_clean();
         return $styles;
@@ -34,8 +41,10 @@ class AdView {
 
     public function outputScripts() {
         ob_start();
+        if($this->model->ad->exist->gallery) {
         ?>
-        <script src="public/scripts/min/iscroll5.min.js"></script>
+        <script src="<?= $this->model->ad->url->assets ?>iscroll5.min.js"></script>
+        <?php } ?>
         <script>
             console.log(<?= json_encode($this->model->ad) ?>);
         <?php

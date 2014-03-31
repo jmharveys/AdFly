@@ -20,9 +20,7 @@
 	<meta name='format-detection' content='telephone=no'>
 	<meta name='author' content='La Presse'>
 	<meta name='dcterms.date' content='<?= date("Y-m-d"); ?>'>
-	<style>
-		<?= $view->outputStyles(); ?>
-	</style>
+	<?= $view->outputStyles(); ?>
 </head>
 <body>
 	<?= $view->outputBody(); ?>

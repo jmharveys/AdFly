@@ -22,7 +22,7 @@ class AdModel {
         $this->ad->url->folder = 'temps/' . $this->ad->meta->id;
         $this->ad->url->assets = $this->ad->url->folder . '/assets/';
 
-        $this->ad->assets = ['btn-annuler-light.png', 'btn-annuler-pressed.png', 'btn-plusWeb.png', 'btn-plusWeb-pressed.png'];
+        $this->ad->assets = ['images/btn-annuler-light.png', 'images/btn-annuler-pressed.png', 'images/btn-plusWeb.png', 'images/btn-plusWeb-pressed.png', 'fonts/americantype/ameritypbol-webfont.eot', 'fonts/americantype/ameritypbol-webfont.svg', 'fonts/americantype/ameritypbol-webfont.ttf', 'fonts/americantype/ameritypbol-webfont.woff', 'fonts/americantype/ameritypmed-webfont.eot', 'fonts/americantype/ameritypmed-webfont.svg', 'fonts/americantype/ameritypmed-webfont.ttf', 'fonts/americantype/ameritypmed-webfont.woff', 'styles/fonts.css'];
 
         $this->ad->logo = new stdClass();
         $this->ad->logo->tmp = $_FILES['logo']['tmp_name'];
@@ -30,8 +30,9 @@ class AdModel {
         $this->ad->logo->ext = end(explode(".", $this->ad->logo->dflt));
         $this->ad->logo->name = 'logo.' . $this->ad->logo->ext;
         $this->ad->logo->path = $this->ad->url->assets . $this->ad->logo->name;
+        list($this->ad->logo->width, $this->ad->logo->height) = getimagesize($this->ad->logo->tmp);
+        $this->ad->logo->ratio = $this->ad->logo->width / $this->ad->logo->height;
         array_push($this->ad->assets, $this->ad->logo);
-        //move_uploaded_file($this->ad->logo->tmp, $this->ad->url->assets . 'logo.' . $this->ad->logo->ext);
 
         $id = explode(",", $_POST["offersId"]);
         $this->ad->offers = new stdClass();
@@ -125,8 +126,6 @@ class AdModel {
                 $obj->video->tmp = $_FILES[$obj->id . '_video']['tmp_name'];
                 $obj->video->ext = end(explode(".", $obj->video->name));
                 array_push($this->ad->assets, $obj->video);
-
-                //move_uploaded_file($_FILES[$obj->id . '_video']['tmp_name'], $obj->video->name);
             }
             /* Description */
             $obj->description = $_POST[$obj->id . "_description"];
@@ -142,16 +141,18 @@ class AdModel {
         }
         if($this->ad->exist->offersGallery || $this->ad->exist->picturesGallery) {
             $this->ad->exist->gallery = true;
+            array_push($this->ad->assets, 'scripts/min/iscroll5.min.js');
         }
         if($this->ad->exist->video) {
-            array_push($this->ad->assets, 'btn-play.png');
-            array_push($this->ad->assets, 'btn-play-pressed.png');
+            array_push($this->ad->assets, 'images/btn-play.png');
+            array_push($this->ad->assets, 'images/btn-play-pressed.png');
         }
 
         $this->createFolder();
         $this->adAssets($this->ad->assets);
+        $this->createJsonObj();
 
-        print_r($this->ad);
+        //print_r($this->ad);
     }
 
     private function createFolder() {
@@ -168,9 +169,15 @@ class AdModel {
         $folder = 'temps/' . $this->ad->meta->id . "/assets/";
         for($x=0; $x<count($assets); $x++) {
             if(!move_uploaded_file($assets[$x]->tmp, $folder . $assets[$x]->name)) {
-                copy('public/images/' . $assets[$x], $folder . $assets[$x]);
+                copy('public/' . $assets[$x], $folder . end(explode("/", $assets[$x])));
             }
         }
+    }
+
+    private function createJsonObj() {
+         $folder = 'temps/' . $this->ad->meta->id . "/assets/";
+         $obj = json_encode($this->ad);
+         file_put_contents($folder . '/_source.json', $obj);
     }
 }
 ?>
