@@ -74,44 +74,16 @@
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Barcelo Arenas Blancas<br/>par pers asd</p>
+												<p class="title">Dreams La Romana Resort</p>
 												<ul class="rating">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
+														<li></li>
+														<li></li>
 												</ul>
-												<p class="subtitle">Varadero, Cuba</p>
+												<p class="subtitle">La Romana, Rép. Dominicaine</p>
 											</div>
 											<div>
-												<p class="mention">à partir de.</p>
+												<p class="mention">à partir de</p>
 												<p class="price">99 999</p>
-											</div>
-										</div>
-										<div class="wrapper-height">
-											<div class="wrapper-infos">
-												<div class="infos">11 avril 2014 - 8 nuits, 7 jours. Réservez votre forfait au magnifique hôtel Barcela Arenas Blancas, situés au bord de la plage de Cuba, Varadero. Restaurants et bar disponibles, et plus.</div>
-											</div>
-										</div>
-										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
-										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
-									</div>
-								</div>
-								<div>
-									<div class="wrapper-all">
-										<div class="description">
-											<div>
-												<p class="title">Blau Costa Verde</p>
-												<ul class="rating">
-													<li></li>
-						
-												</ul>
-												<p class="subtitle">Holguin, Cuba</p>
-											</div>
-											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
-												<p class="price">839</p>
 											</div>
 										</div>
 										<div class="wrapper-height">
@@ -119,10 +91,35 @@
 												<div class="infos">18 avril 2014 - 7 nuits, 6 jours. Réservez votre forfait tout inclus 5 étoiles au Azul Fives Hotel, dans la superbe ville de Riviera Maya. Un hôtel de rêve pour des gens qui désirent des vacances de rêve.</div>
 											</div>
 										</div>
-										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
-										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
+									<div class="close"></div>
+									<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
+									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
+								</div>
+								<div>
+									<div class="wrapper-all">
+										<div class="description">
+											<div>
+												<p class="title">Blau Costa Verde</p>
+												<ul class="rating">
+														<li></li>
+												</ul>
+												<p class="subtitle">Holguin, Cuba</p>
+											</div>
+											<div>
+												<p class="mention">à partir de<br/>par pers.</p>
+												<p class="price">99 999</p>
+											</div>
+										</div>
+										<div class="wrapper-height">
+											<div class="wrapper-infos">
+												<div class="infos">18 avril 2014 - 7 nuits, 6 jours. Réservez votre forfait tout inclus 5 étoiles au Azul Fives Hotel, dans la superbe ville de Riviera Maya. Un hôtel de rêve pour des gens qui désirent des vacances de rêve.</div>
+											</div>
+										</div>
+									</div>
+									<div class="close"></div>
+									<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
+									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>									
 									<div class='lp-legal-bg noFlip'></div>
 									<div class='lp-legal noFlip' style="height:100px; -webkit-transform: translate3d(0, 100px, 0);">
 										<div class='lp-legal-btn noFlip'>Légal</div>

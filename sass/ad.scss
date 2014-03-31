@@ -620,8 +620,7 @@ body.lp-loaded {
 
 
 			.description {
-				padding: 10px 10px 0px 40px;
-	 			display:table;
+				padding: 0px 10px 6px 40px;
 	 			width: 480px;
 
 				div:nth-child(1){
@@ -629,21 +628,20 @@ body.lp-loaded {
 					vertical-align: bottom;
 					padding: 19px 0 0 0;
 				}
-				.rating {
-					vertical-align: top;
-					display: inline-block;
-					padding: 0 0 0 10px;
-				}				
 				div:nth-child(2){
 					vertical-align: bottom;
 					display: table-cell;
 					text-align: right;
-				}				
-
+				}						
+				.rating {
+					display: inline-block;
+					padding: 0 0 0 10px;
+				}						
 	
 				.title {
 					display: inline-block;
 					font: $back-title-1-8H;
+					white-space: nowrap;
 				}
 
 				.subtitle {
@@ -652,6 +650,7 @@ body.lp-loaded {
 
 				.mention {
 					font: $back-mention-1-8H;
+					padding: 0 0 2px 0;
 				}
 
 				.price {

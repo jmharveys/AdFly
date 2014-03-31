@@ -914,8 +914,7 @@ body.lp-loaded {
 }
 
 .lp-480x152 .back .description {
-  padding: 10px 10px 0px 40px;
-  display: table;
+  padding: 0px 10px 6px 40px;
   width: 480px;
 }
 
@@ -925,33 +924,34 @@ body.lp-loaded {
   padding: 19px 0 0 0;
 }
 
-.lp-480x152 .back .description .rating {
-  vertical-align: top;
-  display: inline-block;
-  padding: 0 0 0 10px;
-}
-
 .lp-480x152 .back .description div:nth-child(2) {
   vertical-align: bottom;
   display: table-cell;
   text-align: right;
 }
 
+.lp-480x152 .back .description .rating {
+  display: inline-block;
+  padding: 0 0 0 10px;
+}
+
 .lp-480x152 .back .description .title {
   display: inline-block;
-  font: normal normal 17px/16px AmericanTypewriter;
+  font: normal normal 17px/32px AmericanTypewriter;
+  white-space: nowrap;
 }
 
 .lp-480x152 .back .description .subtitle {
-  font: normal normal 18px/18px AmericanTypewriter-Bold;
+  font: normal normal 18px/10px AmericanTypewriter-Bold;
 }
 
 .lp-480x152 .back .description .mention {
-  font: normal normal 12px/14px AmericanTypewriter;
+  font: normal normal 12px/12px AmericanTypewriter;
+  padding: 0 0 2px 0;
 }
 
 .lp-480x152 .back .description .price {
-  font: normal normal 28px/19px AmericanTypewriter-Bold;
+  font: normal normal 28px/17px AmericanTypewriter-Bold;
 }
 
 .lp-480x152 .back .wrapper-all {
