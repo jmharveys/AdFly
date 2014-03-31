@@ -22,7 +22,7 @@ class AdModel {
         $this->ad->url->folder = 'temps/' . $this->ad->meta->id;
         $this->ad->url->assets = $this->ad->url->folder . '/assets/';
 
-        $this->ad->assets = ['images/btn-annuler-light.png', 'images/btn-annuler-pressed.png', 'images/btn-plusWeb.png', 'images/btn-plusWeb-pressed.png', 'fonts/americantype/ameritypbol-webfont.eot', 'fonts/americantype/ameritypbol-webfont.svg', 'fonts/americantype/ameritypbol-webfont.ttf', 'fonts/americantype/ameritypbol-webfont.woff', 'fonts/americantype/ameritypmed-webfont.eot', 'fonts/americantype/ameritypmed-webfont.svg', 'fonts/americantype/ameritypmed-webfont.ttf', 'fonts/americantype/ameritypmed-webfont.woff', 'styles/fonts.css'];
+        $this->ad->assets = ['images/basic@2x.png', 'fonts/americantype/ameritypbol-webfont.eot', 'fonts/americantype/ameritypbol-webfont.svg', 'fonts/americantype/ameritypbol-webfont.ttf', 'fonts/americantype/ameritypbol-webfont.woff', 'fonts/americantype/ameritypmed-webfont.eot', 'fonts/americantype/ameritypmed-webfont.svg', 'fonts/americantype/ameritypmed-webfont.ttf', 'fonts/americantype/ameritypmed-webfont.woff', 'styles/fonts.css'];
 
         $this->ad->logo = new stdClass();
         $this->ad->logo->tmp = $_FILES['logo']['tmp_name'];
@@ -139,13 +139,18 @@ class AdModel {
 
             array_push($this->ad->offers->list, $obj);
         }
+
+        if($this->ad->exist->rating) {
+            if($this->ad->meta->format === "480x325") {
+                array_push($this->ad->assets, 'images/etoile-quart.png');
+            }
+        }
+        if($this->ad->exist->video) {
+            array_push($this->ad->assets, 'images/video@2x.png');
+        }
         if($this->ad->exist->offersGallery || $this->ad->exist->picturesGallery) {
             $this->ad->exist->gallery = true;
             array_push($this->ad->assets, 'scripts/min/iscroll5.min.js');
-        }
-        if($this->ad->exist->video) {
-            array_push($this->ad->assets, 'images/btn-play.png');
-            array_push($this->ad->assets, 'images/btn-play-pressed.png');
         }
 
         $this->createFolder();

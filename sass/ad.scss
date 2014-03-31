@@ -2,6 +2,8 @@
 @import '_style-guide';
 @import '_fonts';
 
+*, *:before, *:after {box-sizing: border-box; }
+
 //Juste pour tester le layer avec les maquettes #overlay
 #overlay {
 	position: absolute;

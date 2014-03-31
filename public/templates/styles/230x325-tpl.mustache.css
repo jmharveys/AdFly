@@ -1,0 +1,121 @@
+.lp-offer {
+	background-position: 0 50%;
+	background-size: auto 100%;
+}
+
+.lp-pager {
+	bottom: 15px;
+}
+
+/*--- Front ------------------------*/
+.lp-front .lp-summary {
+	width: 152px;
+	height: 100%;
+	padding: 9px 10px 6px 15px;
+	-webkit-transform: translate3d(326px,0,0);
+}
+
+.lp-front .lp-summary > div:nth-child(1) {
+	display: table-row;
+	vertical-align: top;
+}
+
+.lp-front .lp-summary > div:nth-child(2) {
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+.lp-front .lp-logo {
+	width: 100px;
+	height: 50px;
+}
+
+.lp-front .lp-more {
+	font: normal normal 17px/18px AmericanTypewriter;
+	-webkit-line-clamp: 2;
+}
+
+.lp-front .lp-destination {
+	font: normal normal 18px/19px AmericanTypewriter-Bold;
+	-webkit-line-clamp: 2;
+}
+
+{{#exist.picturesGallery}}
+.lp-gallery.lp-pictures {
+	height: 100%;
+	width: 328px;
+}
+.lp-pictures > .lp-scroller {
+	width: 656px;
+}
+.lp-front .lp-picture {
+	width: 328px;
+	height: 100%;
+}
+.lp-front .lp-pager.lp-pictures {
+	width: 328px;
+}
+{{/exist.picturesGallery}}
+
+.lp-front .lp-mentions {
+	font: normal normal 12px/12px AmericanTypewriter;
+}
+
+.lp-front .lp-price {
+	font: normal normal 28px/26px AmericanTypewriter-Bold;
+}
+
+/*--- Back -------------------------*/
+.lp-back .lp-summary {
+	width: 100%;
+	padding: 10px 10px 0px 54px;
+}
+
+.lp-back .lp-summary > div:nth-child(1) {
+	display: table-cell;
+	width: 305px;
+	vertical-align: top;
+}
+
+.lp-back .lp-summary > div:nth-child(2) {
+	display: table-cell;
+	width: 110px;
+	vertical-align: top;
+}
+
+.lp-back .lp-card {
+	top: 0;
+	left: 0;
+	height: 104px;
+}
+
+.lp-back .lp-logo {
+	bottom: 5px;
+	left: 335px;
+	width: 85px;
+	height: 30px;
+}
+
+.lp-back .lp-more {
+	display: inline-block;
+	font: normal normal 17px/16px AmericanTypewriter;
+}
+
+.lp-back .lp-destination {
+	font: normal normal 18px/23px AmericanTypewriter-Bold;
+}
+
+.lp-back .lp-mentions {
+	font: normal normal 12px/14px AmericanTypewriter;
+}
+
+.lp-back .lp-price {
+	font: normal normal 28px/29px AmericanTypewriter-Bold;
+}
+
+.lp-back .lp-description {
+	font: normal normal 13px/16px AmericanTypewriter;
+}
+.lp-back .lp-description span {
+	-webkit-line-clamp: 2;
+}

@@ -206,7 +206,7 @@ app.prototype.downloadAd_ = function(pValue) {
       $.ajax({
         type: "POST",
         url: self.root + 'app/libraries/zipFolder.php',
-        data: {"folder": folder},
+        data: {"folder": folder, "name": "annonce"},
         success: function(data) {
           var url = self.root + '/temps/' + self.id + '/annonce.zip';
           $("<iframe />").css("display", "none").bind("load", function(e) {

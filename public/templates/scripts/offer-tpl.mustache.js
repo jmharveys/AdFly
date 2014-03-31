@@ -1,6 +1,11 @@
 var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
+var link = document.getElementsByClassName('lp-plus-web')[0];
 //flipper.addEventListener('tap', flipMe, false); 
+
+link.onclick = function(e) {
+	e.stopImmediatePropagation();
+}
 
 {{#exist.video}}
 /*=== HORS-LIGNE script | debut ====================*/
