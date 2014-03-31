@@ -31,11 +31,11 @@
 						<div class='gallery'>
 							<div class='scroller' style="width: 460px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/1e_a.jpg'); width:230px; height:221px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/1e_a.jpg'); width:230px; height:197px;"></div>
 									<div class="description">
 										<div>
-											<p class="title">Memories Paraiso Azul</p>
-											<p class="subtitle"><!-- Cayo Santa Maria,<br/> -->Cuba</p>
+											<p class="title">Dreams La Romana</p>
+											<p class="subtitle">La Romana, Républiques</p>
 										</div>
 										<div>
 											<p class="mention">à partir de<br/>par pers.</p>
@@ -44,7 +44,7 @@
 									</div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/1e_b.jpg'); width:230px; height:221px;"></div>
+									<div style="background: url('<?= URL ?>public/images/demo/1e_b.jpg'); width:230px; height:197px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Oasis Palm</p>
@@ -74,8 +74,8 @@
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Dreams La Romana Resort</p>
-												<p class="subtitle">La Romana, Rép. Dominigaine</p>
+												<p class="title">Dreams La Romana</p>
+												<p class="subtitle">La Romana, Républiques</p>
 												<ul class="rating">
 													<li></li>
 													<li></li>
@@ -110,29 +110,28 @@
 													<li></li>
 													<li></li>
 													<li></li>
+													<li></li>
 												</ul>
-											</div>
-											<div>
-												<p class="mention">à partir de<br/>par pers.</p>
-												<p class="price">839</p>
 											</div>
 										</div>
 										<div class="wrapper-height">
 											<div class="wrapper-infos">
-												<div class="infos">29 mars 2014 - 8 jours, 7 nuits. Une semaine en formule tout-inclus à l'hôtel Blau Costa Verde sur la plage de Playa Pesquero Beach. Incluant une nouvelle section Plus qui est réservée à une catégorie de voyageurs, avec piscine privée, bar, et plus. 3 repas style buffet tous les jours, soupers À la carte illimités avec vin servi, divertissements en soirée, etc.</div>
+												<div class="infos">21 février 2014 - 7 jours, 6 nuits. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort & Spa, directement sur la page de Bayahibe. 3 repas style buffet tous les jours, soupers À la carte illimités, vin servi pendant les repas, divertissements en soirée et plus. Une semaine en formule tout-inclus à l'hôtel Dreams La Romanan Resort 
+												& Spa, directement sur la page de Bayahibe.</div>
 											</div>
 										</div>
+										<p class="mention">à partir de<br/>par pers.</p>
+										<p class="price">839</p>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/sunwing-back.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
+										<div class='lp-legal-bg noFlip'></div>
+										<div class='lp-legal noFlip' style="height:210px; -webkit-transform: translate3d(0, 210px, 0);">
+											<div class='lp-legal-btn noFlip'>Légal</div>
+											<div class='lp-legal-text noFlip' style="height:210px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
+										</div>		
 									</div>
-									<div class='lp-legal-bg noFlip'></div>
-									<div class='lp-legal noFlip' style="height:180px; -webkit-transform: translate3d(0, 180px, 0);">
-										<div class='lp-legal-btn noFlip'>Légal</div>
-										<div class='lp-legal-text noFlip' style="height:180px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
-									</div>
-								</div>		
-																				
+								</div>									
 							</div>				
 						</div>
 						<div class='pager-wrapper'>
