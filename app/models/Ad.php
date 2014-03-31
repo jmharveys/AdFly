@@ -143,6 +143,8 @@ class AdModel {
         if($this->ad->exist->rating) {
             if($this->ad->meta->format === "480x325") {
                 array_push($this->ad->assets, 'images/etoile-quart.png');
+            } else {
+                array_push($this->ad->assets, 'images/star@2x.png');
             }
         }
         if($this->ad->exist->video) {

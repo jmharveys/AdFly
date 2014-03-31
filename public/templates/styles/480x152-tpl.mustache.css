@@ -89,6 +89,30 @@
 	height: 104px;
 }
 
+{{#exist.rating}}
+.lp-back .lp-rating {
+	height: 13px;
+	background-image: url("public/images/star@2x.png");
+	margin: 0;
+}
+
+.lp-back .lp-rating.lp-1-stars {
+	width: 16px;
+}
+.lp-back .lp-rating.lp-2-stars {
+	width: 32px;
+}
+.lp-back .lp-rating.lp-3-stars {
+	width: 48px;
+}
+.lp-back .lp-rating.lp-4-stars {
+	width: 64px;
+}
+.lp-back .lp-rating.lp-5-stars {
+	width: 80px;
+}
+{{/exist.rating}}
+
 .lp-back .lp-logo {
 	bottom: 5px;
 	left: 335px;

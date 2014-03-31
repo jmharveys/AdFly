@@ -261,7 +261,8 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
     picture: true,
     maxPictures: 2,
     maxOriginalPictures: 2,
-    video: false
+    video: false,
+    description: true
   };
   if(pCategory == 'conferences') {
     opt.price = false;
@@ -270,21 +271,22 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
   if(pFormat == '480x325') { // 1/4 H
     opt.maxOffers = 4;
     opt.maxPictures = 4;
-    maxOriginalPictures = 4;
+    opt.maxOriginalPictures = 4;
     opt.video = true;
   } else if(pFormat == '480x152') { // 1/8 H
     opt.maxOffers = 2;
     opt.maxPictures = 2;
-    maxOriginalPictures = 2;
+    opt.maxOriginalPictures = 2;
   } else if(pFormat == '230x325') { // 1/8 V
     opt.maxOffers = 2;
     opt.maxPictures = 2;
-    maxOriginalPicture = 2;
+    opt.maxOriginalPicture = 2;
   } else if(pFormat == '230x152') { // 1/16 H
     opt.picture = false;
     opt.maxOffers = 1;
     opt.maxPictures = 0;
-    maxOriginalPictures = 0;
+    opt.maxOriginalPictures = 0;
+    opt.description = false;
   }
   return opt;
 };
@@ -399,12 +401,14 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
       });
 
       // Description
-      $("textarea[name='"+ pObj.id +"_description']").rules('add', {
-        required: true,
-        messages: {
-          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
-        }
-      });
+      if(pObj.opt.description == true) {
+        $("textarea[name='"+ pObj.id +"_description']").rules('add', {
+          required: true,
+          messages: {
+            required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
+          }
+        });
+      }
 
       self.initMultiFiles_($('input[name="'+ pObj.id +'_picture[]"]'));
 

@@ -1,28 +1,29 @@
 .lp-offer {
-	background-position: 0 50%;
-	background-size: auto 100%;
+	background-position: 50% 0;
+	background-size: 100% auto;
 }
 
 .lp-pager {
-	bottom: 15px;
+	bottom: 8px;
 }
 
 /*--- Front ------------------------*/
 .lp-front .lp-summary {
-	width: 152px;
-	height: 100%;
-	padding: 9px 10px 6px 15px;
-	-webkit-transform: translate3d(326px,0,0);
+	width: 100%;
+	height: 128px;
+	padding: 10px 10px 0px 10px;
+	-webkit-transform: translate3d(0,197px,0);
 }
 
 .lp-front .lp-summary > div:nth-child(1) {
 	display: table-row;
+	height: 56px;
 	vertical-align: top;
 }
 
 .lp-front .lp-summary > div:nth-child(2) {
 	display: table-cell;
-	vertical-align: bottom;
+	vertical-align: top;
 }
 
 .lp-front .lp-logo {
@@ -32,68 +33,95 @@
 
 .lp-front .lp-more {
 	font: normal normal 17px/18px AmericanTypewriter;
-	-webkit-line-clamp: 2;
 }
 
 .lp-front .lp-destination {
 	font: normal normal 18px/19px AmericanTypewriter-Bold;
-	-webkit-line-clamp: 2;
 }
 
 {{#exist.picturesGallery}}
 .lp-gallery.lp-pictures {
-	height: 100%;
-	width: 328px;
+	width: 230px;
+	height: 197px;
 }
 .lp-pictures > .lp-scroller {
-	width: 656px;
+	width: 460px;
 }
 .lp-front .lp-picture {
-	width: 328px;
+	width: 230px;
 	height: 100%;
 }
 .lp-front .lp-pager.lp-pictures {
-	width: 328px;
+	bottom: 136px;
 }
 {{/exist.picturesGallery}}
 
 .lp-front .lp-mentions {
+	display: inline-block;
 	font: normal normal 12px/12px AmericanTypewriter;
 }
 
 .lp-front .lp-price {
+	display: inline-block;
 	font: normal normal 28px/26px AmericanTypewriter-Bold;
 }
 
 /*--- Back -------------------------*/
 .lp-back .lp-summary {
 	width: 100%;
-	padding: 10px 10px 0px 54px;
+	padding: 25px 10px 0px 40px;
 }
 
 .lp-back .lp-summary > div:nth-child(1) {
-	display: table-cell;
-	width: 305px;
-	vertical-align: top;
+	float: left;
+	width: 100%;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {
-	display: table-cell;
-	width: 110px;
-	vertical-align: top;
+	float: left;
+	width: 100%;
+	text-align: left;
 }
 
 .lp-back .lp-card {
 	top: 0;
 	left: 0;
-	height: 104px;
+	height: 257px;
 }
 
+{{#exist.rating}}
+.lp-back .lp-rating {
+	height: 13px;
+	background-image: url("public/images/star@2x.png");
+	margin: 5px 0;
+}
+
+.lp-back .lp-rating.lp-1-stars {
+	width: 16px;
+}
+.lp-back .lp-rating.lp-2-stars {
+	width: 32px;
+}
+.lp-back .lp-rating.lp-3-stars {
+	width: 48px;
+}
+.lp-back .lp-rating.lp-4-stars {
+	width: 64px;
+}
+.lp-back .lp-rating.lp-5-stars {
+	width: 80px;
+}
+{{/exist.rating}}
+
 .lp-back .lp-logo {
-	bottom: 5px;
-	left: 335px;
-	width: 85px;
+	bottom: 29px;
+	left: 72px;
+	width: 100px;
 	height: 30px;
+}
+
+.lp-back .lp-plus-web {
+	bottom: 25px;
 }
 
 .lp-back .lp-more {
@@ -116,6 +144,11 @@
 .lp-back .lp-description {
 	font: normal normal 13px/16px AmericanTypewriter;
 }
+
+.lp-back .lp-description p {
+	margin: 0;
+}
 .lp-back .lp-description span {
-	-webkit-line-clamp: 2;
+	padding: 0 15px 0 40px;
+	-webkit-line-clamp: 4;
 }

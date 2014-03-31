@@ -1,0 +1,121 @@
+
+/*--- Front ------------------------*/
+.lp-front .lp-summary {
+	width: 100%;
+	height: 100%;
+	background-color: #e5eef8;
+	padding: 50px 10px 5px 15px;
+}
+
+.lp-front .lp-summary > div:nth-child(1) {
+	display: table-row;
+	vertical-align: top;
+}
+
+.lp-front .lp-summary > div:nth-child(2) {
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+.lp-front .lp-logo {
+	width: 75px;
+	height: 30px;
+}
+
+.lp-front .lp-more {
+	font: normal normal 16px/16px AmericanTypewriter;
+}
+
+.lp-front .lp-destination {
+	font: normal normal 16px/19px AmericanTypewriter-Bold;
+}
+
+.lp-front .lp-mentions {
+	display: inline-block;
+	font: normal normal 11px/11px AmericanTypewriter;
+	padding: 0 8px 0 0;
+}
+
+.lp-front .lp-price {
+	display: inline-block;
+	font: normal normal 24px/26px AmericanTypewriter-Bold;
+}
+
+/*--- Back -------------------------*/
+.lp-back .lp-summary {
+	width: 100%;
+	height:103px;
+	padding: 19px 10px 0px 40px;
+}
+
+.lp-back .lp-summary > div:nth-child(1) {
+	display: table-row;
+	vertical-align: top;
+}
+
+.lp-back .lp-summary > div:nth-child(2) {
+	display: table-cell;
+	vertical-align: bottom;
+	text-align: left;
+}
+
+.lp-back .lp-card {
+	top: 0;
+	left: 0;
+	height: 257px;
+}
+
+{{#exist.rating}}
+.lp-back .lp-rating {
+	height: 13px;
+	background-image: url("public/images/star@2x.png");
+	margin: 0 0 5px 0;
+}
+
+.lp-back .lp-rating.lp-1-stars {
+	width: 16px;
+}
+.lp-back .lp-rating.lp-2-stars {
+	width: 32px;
+}
+.lp-back .lp-rating.lp-3-stars {
+	width: 48px;
+}
+.lp-back .lp-rating.lp-4-stars {
+	width: 64px;
+}
+.lp-back .lp-rating.lp-5-stars {
+	width: 80px;
+}
+{{/exist.rating}}
+
+.lp-back .lp-logo {
+	bottom: 5px;
+	left: 72px;
+	width: 100px;
+	height: 30px;
+}
+
+.lp-back .lp-plus-web {
+	bottom: 4px;
+}
+
+.lp-back .lp-more {
+	font: normal normal 16px/16px AmericanTypewriter;
+}
+
+.lp-back .lp-destination {
+	font: normal normal 16px/16px AmericanTypewriter-Bold;
+}
+
+.lp-back .lp-mentions {
+	font: normal normal 11px/11px AmericanTypewriter;
+}
+
+.lp-back .lp-price {
+	font: normal normal 24px/17px AmericanTypewriter-Bold;
+}
+
+.lp-back .lp-description {
+	display: none;
+}

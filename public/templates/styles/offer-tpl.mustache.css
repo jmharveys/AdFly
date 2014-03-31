@@ -381,7 +381,6 @@ html, body {
 }
 
 .lp-back .lp-more {
-	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
