@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'AmericanTypewriter';
+    src: url('ameritypmed-webfont.eot');
+    src: url('ameritypmed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('ameritypmed-webfont.woff') format('woff'),
+         url('ameritypmed-webfont.ttf') format('truetype'),
+         url('ameritypmed-webfont.svg#itc_american_typewriterRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+@font-face {
+    font-family: 'AmericanTypewriter-Bold';
+    src: url('ameritypbol-webfont.eot');
+    src: url('ameritypbol-webfont.eot?#iefix') format('embedded-opentype'),
+         url('ameritypbol-webfont.woff') format('woff'),
+         url('ameritypbol-webfont.ttf') format('truetype'),
+         url('ameritypbol-webfont.svg#AmericanTypewriter-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+} 

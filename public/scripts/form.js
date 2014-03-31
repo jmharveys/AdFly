@@ -200,11 +200,26 @@ app.prototype.downloadAd_ = function(pValue) {
     url: self.root + 'app/libraries/createFiles.php',
     data: {"id": self.id, "h": html},
     success: function(data) {
-      console.log("success");
-      console.log(data);
+      console.log("success: create folder");
+      self.dom.popupConfirmation.removeClass('active');
+      var folder = '../../temps/' + self.id;
+      $.ajax({
+        type: "POST",
+        url: self.root + 'app/libraries/zipFolder.php',
+        data: {"folder": folder},
+        success: function(data) {
+          var url = self.root + '/temps/' + self.id + '/annonce.zip';
+          $("<iframe />").css("display", "none").bind("load", function(e) {
+            this.src == url && $(this).remove();
+          }).attr("src", url).appendTo($(document.body));
+          console.log("success: zip");
+        }, error: function(data) {
+          console.log("error: zip");
+        }
+      });
     }, error: function(data) {
-      console.log("error");
-      console.log(data);
+      console.log("error: create folder");
+      self.dom.popupConfirmation.removeClass('active');
     }
   });
 };
