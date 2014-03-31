@@ -1124,7 +1124,7 @@ body.lp-loaded {
 }
 
 .lp-230x325 .back .wrapper-all a.btn-plusWeb {
-  bottom: 29px;
+  bottom: 25px;
 }
 
 .lp-230x325 .back .wrapper-all .mention {
@@ -1332,8 +1332,12 @@ body.lp-loaded {
   width: 230px;
 }
 
+.lp-230x152 .back a.btn-plusWeb {
+  bottom: 4px;
+}
+
 .lp-230x152 .back .logo {
-  top: 114px;
+  top: 117px;
   left: 72px;
   width: 100px;
   height: 30px;
