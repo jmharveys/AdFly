@@ -46,17 +46,16 @@
 }
 
 .lp-front .lp-summary > div {
-	width: 310px;
 	vertical-align: top;
 }
 
-/*.lp-front .lp-summary > div:nth-child(1) {
+.lp-front .lp-summary > div:nth-child(1) {
 	width: 310px;
 }
 
 .lp-front .lp-summary > div:nth-child(2) {
-	width: 145px;
-}*/
+	width: 170px;
+}
 
 {{#offers.list}}
 	{{#gallery}}
@@ -93,7 +92,7 @@
 }
 {{/exist.picturesGallery}}
 .lp-front .lp-pager {
-	top: 239px;
+	bottom: 8px;
 }
 
 /*--- Back -------------------------*/
