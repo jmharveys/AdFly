@@ -107,18 +107,28 @@
                                     {{/rating}}
                                     {{/meta.f480x152}}
                                 </div>
+                                {{^meta.f230x325}}
                                 <div>
                                     <span class="lp-mentions">
                                         {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
                                     </span>
                                     <span class="lp-price">{{price}}</span>
                                 </div>
+                                {{/meta.f230x325}}
                             </div>
                             <div class="lp-description">
                                 <p>
                                     <span>{{description}}</span>
                                 </p>
                             </div>
+                            {{#meta.f230x325}}
+                            <div>
+                                <span class="lp-mentions">
+                                    {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
+                                </span>
+                                <span class="lp-price">{{price}}</span>
+                            </div>
+                            {{/meta.f230x325}}
                         </div>
                         <div class="lp-logo"></div>
                         <a class="lp-plus-web" href="{{link}}"></a>
@@ -144,8 +154,6 @@
                 </span>
             </span>
             {{/exist.offersGallery}}
-
-            
         </div>
     </div>
 </div>
