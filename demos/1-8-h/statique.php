@@ -22,7 +22,6 @@
 </head>
 <body>
 	<div class='lp-ad lp-480x152 uniqueOffer'>
-<!-- 		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/varadero-back.jpg');"></div> -->
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
@@ -37,7 +36,7 @@
 							<div class="table-cell-wrapper">
 								<div class="description">
 									<div>
-										<p class="title">Barcelo Huatulco Beach</p>
+										<p class="title">Barcelo Huatulco</p>
 										<p class="subtitle">Huatulco,<br/>Mexique</p>
 									</div>
 									<div>
@@ -57,10 +56,9 @@
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Blau Costa Verde</p>
+												<p class="title">Barcelo Huatulco</p>
 												<ul class="rating">
 													<li></li>
-						
 												</ul>
 												<p class="subtitle">Holguin, Cuba</p>
 											</div>

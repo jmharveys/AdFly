@@ -22,7 +22,6 @@
 </head>
 <body>
 	<div class='lp-ad lp-480x152'>
-<!-- 		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/varadero-back.jpg');"></div> -->
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
@@ -34,8 +33,8 @@
 									<div style="background: url('<?= URL ?>public/images/demo/varadero.jpg'); width:328px; height:152px;"></div>
 									<div class="description">
 										<div>
-											<p class="title">Barcelo Arenas Blancas</p>
-											<p class="subtitle">Varadero,<br>Cuba</p>
+											<p class="title">Dreams La Romana</p>
+											<p class="subtitle">République Dominicaine</p>
 										</div>
 										<div>
 											<p class="mention">à partir de<br/>par pers.</p>
@@ -74,12 +73,12 @@
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Dreams La Romana Resort</p>
+												<p class="title">Dreams La Romana</p>
 												<ul class="rating">
 														<li></li>
 														<li></li>
 												</ul>
-												<p class="subtitle">La Romana, Rép. Dominicaine</p>
+												<p class="subtitle">République Dominicaine</p>
 											</div>
 											<div>
 												<p class="mention">à partir de</p>

@@ -40,8 +40,8 @@
 							<div class="table-cell-wrapper">
 								<div class="description">
 									<div>
-										<p class="title">Dreams La Romana Resort</p>
-										<p class="subtitle">La Romana, Rép. Dominicaine</p>
+										<p class="title">Dreams La Romana</p>
+										<p class="subtitle">République Dominicaine</p>
 									</div>
 									<div>
 										<p class="mention">à partir de.<br/>par pers.</p>
@@ -66,7 +66,7 @@
 									<div class="wrapper-all">
 										<div class="description">
 											<div>
-												<p class="title">Dreams La Romana Resort</p>
+												<p class="title">Dreams La Romana</p>
 												<ul class="rating">
 													<li></li>
 													<li></li>
@@ -74,7 +74,7 @@
 													<li></li>
 													<li></li>
 												</ul>
-												<p class="subtitle">La Romana, Rép. Dominicaine</p>
+												<p class="subtitle">République Dominicaine</p>
 											</div>
 											<div>
 												<p class="mention">à partir de</p>
