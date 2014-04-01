@@ -114,18 +114,10 @@
 	width: 410px;
 }
 
-.lp-back .lp-more {
-	font: normal normal 19px/18px AmericanTypewriter;
-}
-
-.lp-back .lp-destination {
-	font: normal normal 23px/23px AmericanTypewriter-Bold;
-}
-
 {{#exist.rating}}
 .lp-back .lp-rating {
 	height: 18px;
-	background-image: url("public/images/etoile-quart.png");
+	background-image: url("public/images/starBig@2x.png");
 }
 
 .lp-back .lp-rating.lp-1-stars {

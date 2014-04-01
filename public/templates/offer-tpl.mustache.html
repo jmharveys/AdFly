@@ -94,10 +94,18 @@
                             <div class="lp-summary">
                                 <div>
                                     <span class="lp-more">{{moreDestination}}</span>
+                                    {{#meta.f480x152}}
+                                    {{#rating}}
+                                    <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
+                                    {{/rating}}
+                                    <span class="lp-destination">{{destination}}</span>
+                                    {{/meta.f480x152}}
+                                    {{^meta.f480x152}}
                                     <span class="lp-destination">{{destination}}</span>
                                     {{#rating}}
                                     <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
                                     {{/rating}}
+                                    {{/meta.f480x152}}
                                 </div>
                                 <div>
                                     <span class="lp-mentions">

@@ -30,6 +30,11 @@ class AdModel {
         $this->ad->meta->date = date("c");
         $this->ad->meta->category = $_POST["category"];
         $this->ad->meta->format = $_POST["format"];
+        $this->ad->meta->f480x325 = false;
+        $this->ad->meta->f480x152 = false;
+        $this->ad->meta->f230x325 = false;
+        $this->ad->meta->f230x152 = false;
+        $this->ad->meta->{'f' . $this->ad->meta->format} = true;
         $this->ad->meta->version = VERSION;
 
         $this->ad->w = intval(explode("x", $this->ad->meta->format)[0]);
@@ -167,7 +172,7 @@ class AdModel {
 
         if($this->ad->exist->rating) {
             if($this->ad->meta->format === "480x325") {
-                array_push($this->ad->assets, 'images/etoile-quart.png');
+                array_push($this->ad->assets, 'images/starBig@2x.png');
             } else {
                 array_push($this->ad->assets, 'images/star@2x.png');
             }

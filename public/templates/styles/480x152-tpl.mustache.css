@@ -91,9 +91,11 @@
 
 {{#exist.rating}}
 .lp-back .lp-rating {
+	float: none;
+	display: inline-block;
 	height: 13px;
 	background-image: url("public/images/star@2x.png");
-	margin: 0;
+	margin: 0 0 0 10px;
 }
 
 .lp-back .lp-rating.lp-1-stars {
