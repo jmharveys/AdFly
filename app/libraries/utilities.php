@@ -74,4 +74,17 @@
        rmdir($dir); 
      } 
    }
+
+   function rrmDirOlderThan($dir) {
+      $objects = scandir($dir);
+      foreach($objects as $object) {
+        if($object != "." && $object != "..") {
+          if(filetype($dir."/".$object) == "dir") {
+            if(filemtime($dir."/".$object) <= time()-1800) {
+              rrmdir($dir."/".$object);
+            }
+          }
+        }
+      }
+   }
  ?>

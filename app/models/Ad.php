@@ -5,6 +5,24 @@ class AdModel {
 
     public function __construct() {
         $date = new DateTime();
+        $settings = new stdClass();
+        $settings->f480x325 = new stdClass();
+        $settings->f480x325->logo = new stdClass();
+        $settings->f480x325->logo->w = 165;
+        $settings->f480x325->logo->h = 75;
+        $settings->f480x152 = new stdClass();
+        $settings->f480x152->logo = new stdClass();
+        $settings->f480x152->logo->w = 100;
+        $settings->f480x152->logo->h = 50;
+        $settings->f230x325 = new stdClass();
+        $settings->f230x325->logo = new stdClass();
+        $settings->f230x325->logo->w = 100;
+        $settings->f230x325->logo->h = 50;
+        $settings->f230x152 = new stdClass();
+        $settings->f230x152->logo = new stdClass();
+        $settings->f230x152->logo->w = 75;
+        $settings->f230x152->logo->h = 30;
+
         $this->ad->meta = new stdClass();
         $this->ad->meta->id = $_POST["id"];
         $this->ad->meta->noClient = $_POST["noClient"];
@@ -12,6 +30,11 @@ class AdModel {
         $this->ad->meta->date = date("c");
         $this->ad->meta->category = $_POST["category"];
         $this->ad->meta->format = $_POST["format"];
+        $this->ad->meta->f480x325 = false;
+        $this->ad->meta->f480x152 = false;
+        $this->ad->meta->f230x325 = false;
+        $this->ad->meta->f230x152 = false;
+        $this->ad->meta->{'f' . $this->ad->meta->format} = true;
         $this->ad->meta->version = VERSION;
 
         $this->ad->w = intval(explode("x", $this->ad->meta->format)[0]);
@@ -30,8 +53,15 @@ class AdModel {
         $this->ad->logo->ext = end(explode(".", $this->ad->logo->dflt));
         $this->ad->logo->name = 'logo.' . $this->ad->logo->ext;
         $this->ad->logo->path = $this->ad->url->assets . $this->ad->logo->name;
-        list($this->ad->logo->width, $this->ad->logo->height) = getimagesize($this->ad->logo->tmp);
-        $this->ad->logo->ratio = $this->ad->logo->width / $this->ad->logo->height;
+        list($this->ad->logo->w, $this->ad->logo->h) = getimagesize($this->ad->logo->tmp);
+        $this->ad->logo->ratio = $this->ad->logo->w / $this->ad->logo->h;
+        if($this->ad->logo->ratio > 1) {
+            $this->ad->logo->w = $settings->{'f' . $this->ad->meta->format}->logo->w;
+            $this->ad->logo->h = $settings->{'f' . $this->ad->meta->format}->logo->w / $this->ad->logo->ratio;
+        } else {
+            $this->ad->logo->w = $settings->{'f' . $this->ad->meta->format}->logo->h * $this->ad->logo->ratio;
+            $this->ad->logo->h = $settings->{'f' . $this->ad->meta->format}->logo->h;
+        }
         array_push($this->ad->assets, $this->ad->logo);
 
         $id = explode(",", $_POST["offersId"]);
@@ -142,7 +172,7 @@ class AdModel {
 
         if($this->ad->exist->rating) {
             if($this->ad->meta->format === "480x325") {
-                array_push($this->ad->assets, 'images/etoile-quart.png');
+                array_push($this->ad->assets, 'images/starBig@2x.png');
             } else {
                 array_push($this->ad->assets, 'images/star@2x.png');
             }

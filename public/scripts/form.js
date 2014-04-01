@@ -1,3 +1,4 @@
+
 // JavaScript Document
 var _g = globals = {};
 var app = app || {};  //Évite d'overwritter des plugins si il y en a. 

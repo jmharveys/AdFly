@@ -21,14 +21,9 @@
 	vertical-align: top;
 }
 
-.lp-front .lp-summary > div:nth-child(2) {
-	display: table-cell;
-	vertical-align: top;
-}
-
 .lp-front .lp-logo {
-	width: 100px;
-	height: 50px;
+	max-width: 100px;
+	max-height: 50px;
 }
 
 .lp-front .lp-more {
@@ -135,10 +130,12 @@
 
 .lp-back .lp-mentions {
 	font: normal normal 12px/14px AmericanTypewriter;
+	padding: 0 0 0 40px;
 }
 
 .lp-back .lp-price {
 	font: normal normal 28px/29px AmericanTypewriter-Bold;
+	padding: 0 0 0 40px;
 }
 
 .lp-back .lp-description {
