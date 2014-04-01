@@ -11,7 +11,7 @@ if(file_exists($zip)) {
 
 try {
     App_File_Zip::CreateFromFilesystem($folder, $zip);
-    $file_name = basename($zip);
+    rrmDirOlderThan('../../temps');
 } catch (App_File_Zip_Exception $e) { // Zip file was not created.
     echo "Le zip n'as pu être créé.";
 }

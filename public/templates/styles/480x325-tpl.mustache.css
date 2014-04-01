@@ -68,8 +68,8 @@
 {{/offers.list}}
 
 .lp-front .lp-logo {
-	width: 165px;
-	height: 75px;
+	max-width: 165px;
+	max-height: 75px;
 }
 
 .lp-front .lp-more {
