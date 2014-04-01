@@ -14,7 +14,7 @@
     <div class="lp-video {{index}}_video"> 
         <video controls="">
             <source src="{{video.path}}">
-            Votre navigateur ne supporte pas la balise vidéo. 
+            Votre navigateur ne supporte pas la balise vidéo.
         </video> 
         <div class="lp-video-close {{index}}_video"></div> 
     </div>
@@ -51,10 +51,16 @@
                                 <span class="lp-destination">{{destination}}</span>
                             </div>
                             <div>
+                                {{#exist.price}}
                                 <span class="lp-mentions">
                                     {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
                                 </span>
                                 <span class="lp-price">{{price}}</span>
+                                {{/exist.price}}
+                                {{#exist.date}}
+                                <span class="lp-date">{{date.text}}</span>
+                                <span class="lp-time">{{time.text}}</span>
+                                {{/exist.date}}
                             </div>
                         </div>
                     </section>
@@ -109,12 +115,18 @@
                                 </div>
                                 {{^meta.f230x325}}
                                 <div>
+                                    {{#exist.price}}
                                     <span class="lp-mentions">
                                         {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
                                     </span>
                                     <span class="lp-price">{{price}}</span>
-                                </div>
-                                {{/meta.f230x325}}
+                                    {{/exist.price}}
+                                    {{#exist.date}}
+                                    <span class="lp-date">{{date.text}}</span>
+                                    <span class="lp-time">{{time.text}}</span>
+                                    {{/exist.date}}
+                                    </div>
+                                    {{/meta.f230x325}}
                             </div>
                             <div class="lp-description">
                                 <p>
@@ -123,10 +135,16 @@
                             </div>
                             {{#meta.f230x325}}
                             <div>
+                                {{#exist.price}}
                                 <span class="lp-mentions">
                                     {{mentions.0}}{{#mentions.1}}<br>{{mentions.1}}{{/mentions.1}}
                                 </span>
                                 <span class="lp-price">{{price}}</span>
+                                {{/exist.price}}
+                                {{#exist.date}}
+                                <span class="lp-date">{{date.text}}</span>
+                                <span class="lp-time">{{time.text}}</span>
+                                {{/exist.date}}
                             </div>
                             {{/meta.f230x325}}
                         </div>

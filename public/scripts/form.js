@@ -115,6 +115,10 @@ app.prototype.init_ = function(pObj) {
   self.dom.field.noClient.mask('000000'); // 6 char
   self.dom.field.noAd.mask('0000000'); // 7 char
 
+  $.validator.addMethod("time", function(value, element) {  
+    return this.optional(element) || /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value);  
+  }, "Please enter a valid time.");
+
   // replace the checkboxes with the images
   self.dom.field.formatRadio.each(function() {
       var radio = $(this);
@@ -239,10 +243,17 @@ app.prototype.changeStep_ = function(pValue) {
 
   if(valid) {
     if(self.step == 1) {
-      if(self.offersNbr == 0) {
+      /*if(self.offersNbr == 0) {*/
+        var fieldsets = self.dom.offersList.children('fieldset');
+        for(var x=0; x<fieldsets.length; x++) {
+          key = fieldsets.eq(x);
+          self.deleteOffer_(key);
+        }
+        self.offersNbr = 0;
+        self.gallery = false;
         self.opts = self.setStep2_(self.dom.field.category.val(), $('.row.format input:checked').val());
         self.setOffer_(0);
-      }
+      /*}*/
     } else if(self.step == 2) {
       var data = new FormData($('form')[0]); // serializes the form's elements.
       self.setAdPreview_(data);
@@ -374,8 +385,8 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
             required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
           }
         });
+        $("input[name='"+ pObj.id +"_price']").mask('99999');
       }
-      $("input[name='"+ pObj.id +"_price']").mask('99999');
       // Date
       if(pObj.opt.date == true) {
         self.dom.f.find("input[name='"+ pObj.id +"_date']").rules('add', {
@@ -386,8 +397,18 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
             date: ' <span class="msg">(' + self.t[self.culture]['enterValidDate'] + ')'
           }
         });
+        $("input[name='"+ pObj.id +"_date']").mask('0000-09-09');
+        // Heure
+        self.dom.f.find("input[name='"+ pObj.id +"_time']").rules('add', {
+          required: true,
+          time: true,
+          messages: {
+            required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
+            time: ' <span class="msg">(' + self.t[self.culture]['enterValidHour'] + ')'
+          }
+        });
+        $("input[name='"+ pObj.id +"_time']").mask('09:00');
       }
-      $("input[name='"+ pObj.id +"_date']").mask('0000-09-09');
 
       $('.' + pObj.id + '_rateit').rateit({ max: 5, step: 1, backingfld: '#' + pObj.id + '_rateit_val' });
 
@@ -545,7 +566,7 @@ app.prototype.addMultiFiles_ = function(pInput) {
 
         list.append(Mustache.render($(template).filter('#filePreviewTpl').html(), obj));
         txt.html(self.t[self.culture]['uploadOtherImages']);
-        btn.append('<input type="file" name="'+ name +'" data-key="'+ newKey +'" />');
+        btn.append('<input type="file" accept="image/*" capture="camera" name="'+ name +'" data-key="'+ newKey +'" />');
 
         self.gallery = list.children().length > 1 ? true : false;
         self.updateAddOfferBtn_();

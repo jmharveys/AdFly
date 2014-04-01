@@ -22,6 +22,7 @@ class AdModel {
         $settings->f230x152->logo = new stdClass();
         $settings->f230x152->logo->w = 75;
         $settings->f230x152->logo->h = 30;
+        $settings->months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
 
         $this->ad->meta = new stdClass();
         $this->ad->meta->id = $_POST["id"];
@@ -74,6 +75,8 @@ class AdModel {
 
         $this->ad->exist = new stdClass();
         $this->ad->exist->mentions = false;
+        $this->ad->exist->price = false;
+        $this->ad->exist->date = false;
         $this->ad->exist->rating = false;
         $this->ad->exist->video = false;
         $this->ad->exist->gallery = false;
@@ -94,13 +97,28 @@ class AdModel {
             $obj->moreDestination = $_POST[$obj->id . "_moreDestination"];
             /* Price */
             if(isset($_POST[$obj->id . "_price"])) {
+                $this->ad->exist->price = true;
                 $price = intval($_POST[$obj->id . "_price"]);
                 $price = number_format($price, 0, '',' ');
                 $obj->price = $price;
             }
             /* Date */
             if(isset($_POST[$obj->id . "_date"])) {
-                $obj->date = $_POST[$obj->id . "_date"];
+                $this->ad->exist->date = true;
+                $obj->date = new stdClass();
+                $obj->date->raw = $_POST[$obj->id . "_date"];
+                $dateArr = explode("-", $obj->date->raw);
+                $obj->date->year = intval($dateArr[0]);
+                $obj->date->month = $settings->months[intval($dateArr[1]) -1];
+                $obj->date->day = intval($dateArr[2]);
+                $obj->date->text = $obj->date->day ." ". $obj->date->month ." ". $obj->date->year;
+            }
+            /* Heure */
+            if(isset($_POST[$obj->id . "_date"])) {
+                $obj->time = new stdClass();
+                $obj->time->raw = $_POST[$obj->id . "_time"];
+                $timeArr = explode(":", $obj->time->raw);
+                $obj->time->text = intval($timeArr[0]) ."h ". $timeArr[1];
             }
             /* Mentions */
             $obj->mentions = [];

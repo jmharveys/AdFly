@@ -46,7 +46,6 @@ class AdView {
         <script src="<?= $this->model->ad->url->assets ?>iscroll5.min.js"></script>
         <?php } ?>
         <script>
-            console.log(<?= json_encode($this->model->ad) ?>);
         <?php
             $template = file_get_contents("public/templates/scripts/offer-tpl.mustache.js");
             echo $this->m->render($template, $this->ad);

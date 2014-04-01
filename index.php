@@ -159,7 +159,7 @@
 
 	<footer class="main-footer">
 		<div class="legend">
-			<span class="color opt"></span> <?= $t[$culture]['optionalField']; ?>
+			<span class="color opt"></span> <?= $t[$culture]['optionalFields']; ?>
 		</div>
 	</footer>
 
