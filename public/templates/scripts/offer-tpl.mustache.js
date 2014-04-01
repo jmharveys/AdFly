@@ -1,11 +1,12 @@
 var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
 var link = document.getElementsByClassName('lp-plus-web')[0];
-//flipper.addEventListener('tap', flipMe, false); 
+var defaultEvent = "tap";
 
-link.onclick = function(e) {
+link.addEventListener('tap', linkTap, false); 
+function linkTap(e) {
 	e.stopImmediatePropagation();
-}
+}	
 
 {{#exist.video}}
 /*=== HORS-LIGNE script | debut ====================*/
@@ -91,24 +92,23 @@ for(var x=0; x<videos.player.length; x++) {
 /*=== Legal ========================================*/
 var legalBg = document.getElementsByClassName('lp-legal-bg');
 var legalList = document.getElementsByClassName('lp-legal');
-//var currentLegal = new Array();
+
+
 function legal(container, bg) {
 	function animate() {
 		if(container.classList.contains('lp-active')) {
 			container.classList.remove('lp-active');
 		} else {
 			container.classList.add('lp-active');
-			//currentLegal.push(bg, container);
 		}
 	}
-	container.onclick = function(e) { 
+	//Faire fonction pour DESKTOP; clap pour IPAD et click pour DESKTOP
+	container.addEventListener('tap', legalTap, false); 
+	bg.addEventListener('tap', legalTap, false); 
+	function legalTap(e) {
 		e.stopImmediatePropagation();
 		animate();
-	};
-	bg.onclick = function(e) { 
-		e.stopImmediatePropagation();
-		animate();
-	};			
+	}	
 }
 
 for(var i=0; i<legalList.length; i++) {
@@ -153,7 +153,6 @@ function startScroll() {
 function endScroll() {
 	var currentPage = this.currentPage.pageX;
 	var legals = flipper.querySelectorAll('.lp-legal.lp-active');
-
 	ad.classList.remove('lp-scrolling');
 	forEachQuery('lp-selected', function(el2, index1, array1) {
 		el2.classList.remove('lp-selected');
@@ -172,16 +171,44 @@ function endScroll() {
 {{/exist.gallery}}
 
 /*=== Flip =========================================*/
-flipper.addEventListener('click', flipMe, false); 
-function flipMe() { 
-    if(!flipper.classList.contains('lp-active') /*&& !ad.classList.contains('lp-scrolling')*/) { 
-        flipper.classList.add('lp-active');
-    } else if(flipper.classList.contains('lp-active') /*&& !ad.classList.contains('lp-scrolling')*/) {
-        flipper.classList.remove('lp-active');
-    }
-}
+// flipper.addEventListener('click', flipMe, false); 
+flipper.addEventListener('tap', flipMe, false); 
 
+function flipDone() {
+	if (!ad.classList.contains('lp-flipped')) {
+		ad.classList.add('lp-flipped');
+		flipper.removeEventListener("transitionend", flipDone, false);
+	} 
+}	
+
+function flipMe() { 
+	if(!(flipper.classList.contains('lp-active')) && !(ad.classList.contains('lp-scrolling')) ) { 
+			flipper.classList.add('lp-active');
+			flipper.addEventListener("transitionend", flipDone, false);
+	}
+	if ( flipper.classList.contains('lp-active') && ad.classList.contains('lp-flipped') && !(ad.classList.contains('lp-scrolling')) ) { 
+			flipper.classList.remove('lp-active'); 
+			ad.classList.remove('lp-flipped'); 
+	} 
+}
+var isMobile = {
+	Android: function() {
+		return navigator.userAgent.match(/Android/i);
+	},
+	iOS: function() {
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+	}
+ 	any: function() {
+        return (isMobile.Android() || isMobile.iOS());
+    }	
+};
 window.onload = function() {
+	if( isMobile.any() ){
+ 		location.href = 'lpri://webContentFinishedLoading';
+	} else {
+		defaultEvent = 'click';
+	}
+	flipper.addEventListener(defaultEvent, flipMe, false); 
 	var pagers = document.querySelectorAll('.lp-wrapper');
 	for(var x=0; x<pagers.length; x++) {
 		pagers[x].querySelector('.lp-bullet').classList.add('lp-selected');

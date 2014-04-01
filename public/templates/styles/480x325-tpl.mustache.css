@@ -3,12 +3,12 @@
 }
 
 .lp-offer {
-	background-position: 50% 50%;
+	background-position: 50% 0;
 	background-size: 100% auto;
 }
 
 .lp-more {
-	font: normal normal 19px/18px AmericanTypewriter;
+	font: normal normal 16px/18px AmericanTypewriter;
 }
 
 .lp-destination {
@@ -40,13 +40,13 @@
 {{/exist.video}}
 
 .lp-front .lp-summary {
-	height: 78px;
-	padding: 5px 10px 6px 15px;
-	-webkit-transform: translate3d(0,247px,0);
+	padding: 7px 10px 6px 15px;
+ 	height: 95px;
+	-webkit-transform: translate3d(0,230px,0);
 }
 
 .lp-front .lp-summary > div {
-	vertical-align: bottom;
+	vertical-align: top;
 }
 
 .lp-front .lp-summary > div:nth-child(1) {
@@ -54,7 +54,7 @@
 }
 
 .lp-front .lp-summary > div:nth-child(2) {
-	width: 145px;
+	width: 170px;
 }
 
 {{#offers.list}}
@@ -92,7 +92,7 @@
 }
 {{/exist.picturesGallery}}
 .lp-front .lp-pager {
-	top: 239px;
+	bottom: 8px;
 }
 
 /*--- Back -------------------------*/
