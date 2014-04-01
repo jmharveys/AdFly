@@ -4,19 +4,6 @@
 
 *, *:before, *:after {box-sizing: border-box; }
 
-//Juste pour tester le layer avec les maquettes #overlay
-#overlay {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 230px;
-	height: 325px;
-	z-index: 100000;
-	// opacity: 0.3;
-	opacity: 0;
-	pointer-events: none;
-}
-
 body {
 	opacity: 0; 
 	transition: opacity .3s ease;
