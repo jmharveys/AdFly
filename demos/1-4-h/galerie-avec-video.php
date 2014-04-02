@@ -68,7 +68,7 @@
 									<div class="description">
 										<div>
 											<p class="title">Dreams La Romana Resort & Spa</p>
-											<p class="subtitle">La Romana,<br/>République Dominicaine</p>
+											<p class="subtitle">La Romana, République Dominicaine</p>
 										</div>
 										<div>
 											<p class="mention">à par pers. </p>
@@ -139,7 +139,7 @@
 										<div class="description">
 											<div>
 												<p class="title">Dreams La Romana Resort & Spa</p>
-												<p class="subtitle">La Romana,<br/>République Dominicaine</p>
+												<p class="subtitle">La Romana, République Dominicaine</p>
 												<ul class="rating">
 													<li></li>
 													<li></li>

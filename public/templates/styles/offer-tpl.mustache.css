@@ -287,6 +287,7 @@ html, body {
 	text-align: center;
 	z-index: 1;
 	pointer-events: none;
+	-webkit-transition: opacity 1s ease; 
 }
 
 .lp-pager .lp-bullet {
@@ -442,6 +443,15 @@ html, body {
 
 .lp-back .lp-plus-web:active {
 	background-position: 0 -40px;
+}
+
+.lp-back .lp-plus-web:after {
+  position: absolute;
+  content: "";
+  width: 80px;
+  height: 80px;
+  top: -9px;
+  left: -9px;
 }
 
 .lp-legal-bg {

@@ -1,10 +1,24 @@
-console.log('allo');
 var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
 var link = document.getElementsByClassName('lp-plus-web')[0];
-var defaultEvent = "tap";
-
-link.addEventListener('tap', linkTap, false); 
+link.addEventListener(defaultEvent, linkTap, false); 
+var defaultEvent = "touchstart";
+var isMobile = {
+	Android: function() {
+		return navigator.userAgent.match(/Android/i);
+	},
+	iOS: function() {
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+	},
+ 	any: function() {
+        return (isMobile.Android() || isMobile.iOS());
+    }	
+}
+if( isMobile.any() ){
+ 	location.href = 'lpri://webContentFinishedLoading';
+} else {
+	defaultEvent = 'click';
+}
 function linkTap(e) {
 	e.stopImmediatePropagation();
 }	
@@ -103,9 +117,8 @@ function legal(container, bg) {
 			container.classList.add('lp-active');
 		}
 	}
-	//Faire fonction pour DESKTOP; clap pour IPAD et click pour DESKTOP
-	container.addEventListener('tap', legalTap, false); 
-	bg.addEventListener('tap', legalTap, false); 
+	container.addEventListener(defaultEvent, legalTap, false); 
+	bg.addEventListener(defaultEvent, legalTap, false); 
 	function legalTap(e) {
 		e.stopImmediatePropagation();
 		animate();
@@ -172,8 +185,8 @@ function endScroll() {
 {{/exist.gallery}}
 
 /*=== Flip =========================================*/
-// flipper.addEventListener('click', flipMe, false); 
-flipper.addEventListener('tap', flipMe, false); 
+
+flipper.addEventListener(defaultEvent, flipMe, false); 
 
 function flipDone() {
 	if (!ad.classList.contains('lp-flipped')) {
@@ -192,24 +205,8 @@ function flipMe() {
 			ad.classList.remove('lp-flipped'); 
 	} 
 }
-var isMobile = {
-	Android: function() {
-		return navigator.userAgent.match(/Android/i);
-	},
-	iOS: function() {
-		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-	},
- 	any: function() {
-        return (isMobile.Android() || isMobile.iOS());
-    }	
-};
-window.onload = function() {
-	if( isMobile.any() ){
- 		location.href = 'lpri://webContentFinishedLoading';
-	} else {
-		defaultEvent = 'click';
-	}
-	flipper.addEventListener('click', flipMe, false); 
+
+window.onload = function() {	
 	var pagers = document.querySelectorAll('.lp-wrapper');
 	for(var x=0; x<pagers.length; x++) {
 		pagers[x].querySelector('.lp-bullet').classList.add('lp-selected');
