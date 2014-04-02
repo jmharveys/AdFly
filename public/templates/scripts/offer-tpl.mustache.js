@@ -1,7 +1,7 @@
 var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
-var link = document.getElementsByClassName('lp-plus-web')[0];
-link.addEventListener(defaultEvent, linkTap, false); 
+var link = document.getElementsByClassName('lp-plus-web');
+
 var defaultEvent = "touchstart";
 var isMobile = {
 	Android: function() {
@@ -18,6 +18,9 @@ if( isMobile.any() ){
  	location.href = 'lpri://webContentFinishedLoading';
 } else {
 	defaultEvent = 'click';
+}
+for(var x=0; x<link.length; x++) {
+	link[x].addEventListener(defaultEvent, linkTap, false); 
 }
 function linkTap(e) {
 	e.stopImmediatePropagation();
