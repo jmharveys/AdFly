@@ -1,3 +1,4 @@
+console.log('allo');
 var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
 var link = document.getElementsByClassName('lp-plus-web')[0];
@@ -197,7 +198,7 @@ var isMobile = {
 	},
 	iOS: function() {
 		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-	}
+	},
  	any: function() {
         return (isMobile.Android() || isMobile.iOS());
     }	
@@ -208,7 +209,7 @@ window.onload = function() {
 	} else {
 		defaultEvent = 'click';
 	}
-	flipper.addEventListener(defaultEvent, flipMe, false); 
+	flipper.addEventListener('click', flipMe, false); 
 	var pagers = document.querySelectorAll('.lp-wrapper');
 	for(var x=0; x<pagers.length; x++) {
 		pagers[x].querySelector('.lp-bullet').classList.add('lp-selected');
