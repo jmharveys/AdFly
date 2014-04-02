@@ -92,9 +92,13 @@ class AdModel {
             /* Index */
             $obj->index = $x + 1;
             /* Destination */
-            $obj->destination = $_POST[$obj->id . "_destination"];
+            $dest = nl2br($_POST[$obj->id . "_destination"]);
+            $dest = strip_tags($dest, '<br>');
+            $obj->destination = $dest;
             /* More Destination */
-            $obj->moreDestination = $_POST[$obj->id . "_moreDestination"];
+            $more = nl2br($_POST[$obj->id . "_moreDestination"]);
+            $more = strip_tags($more, '<br>');
+            $obj->moreDestination = $more;
             /* Price */
             if(isset($_POST[$obj->id . "_price"])) {
                 $this->ad->exist->price = true;

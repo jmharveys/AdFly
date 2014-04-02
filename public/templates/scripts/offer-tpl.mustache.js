@@ -197,7 +197,7 @@ var isMobile = {
 	},
 	iOS: function() {
 		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-	}
+	},
  	any: function() {
         return (isMobile.Android() || isMobile.iOS());
     }	

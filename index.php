@@ -105,7 +105,6 @@
 
 			<!-- === Step 2 ================================================= -->
 			<section class="step no2">
-				
 				<div class="content">
 					<header class="header">
 						<input name="offersNbr" type="hidden" value="0" />

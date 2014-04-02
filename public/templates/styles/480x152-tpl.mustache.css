@@ -32,7 +32,6 @@
 
 .lp-front .lp-more {
 	font: normal normal 17px/18px AmericanTypewriter;
-	-webkit-line-clamp: 2;
 }
 
 .lp-front .lp-destination {

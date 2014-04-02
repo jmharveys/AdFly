@@ -24,10 +24,12 @@
 
 .lp-front .lp-more {
 	font: normal normal 16px/16px AmericanTypewriter;
+	white-space: nowrap;
 }
 
 .lp-front .lp-destination {
 	font: normal normal 16px/19px AmericanTypewriter-Bold;
+	white-space: nowrap;
 }
 
 .lp-front .lp-mentions {
@@ -102,10 +104,12 @@
 
 .lp-back .lp-more {
 	font: normal normal 16px/16px AmericanTypewriter;
+	white-space: nowrap;
 }
 
 .lp-back .lp-destination {
 	font: normal normal 16px/16px AmericanTypewriter-Bold;
+	white-space: nowrap;
 }
 
 .lp-back .lp-mentions {
