@@ -2,7 +2,7 @@ var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
 var link = document.getElementsByClassName('lp-plus-web');
 
-var defaultEvent = "touchstart";
+var defaultEvent = "tap ";
 var isMobile = {
 	Android: function() {
 		return navigator.userAgent.match(/Android/i);
@@ -116,8 +116,10 @@ function legal(container, bg) {
 	function animate() {
 		if(container.classList.contains('lp-active')) {
 			container.classList.remove('lp-active');
+			ad.classList.remove('lp-legalOpen');
 		} else {
 			container.classList.add('lp-active');
+			ad.classList.add('lp-legalOpen');
 		}
 	}
 	container.addEventListener(defaultEvent, legalTap, false); 

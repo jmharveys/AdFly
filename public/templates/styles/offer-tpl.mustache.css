@@ -82,6 +82,12 @@ html, body {
 .lp-pager {
 	height: 14px;
 }
+
+.lp-legalOpen .lp-pager {
+	opacity: 0;
+	-webkit-transition: opacity 0s ease; 
+}
+
 {{/exist.gallery}}
 {{#exist.offersGallery}}
 .lp-gallery.lp-offers {
@@ -286,6 +292,7 @@ html, body {
 	width: 100%;
 	text-align: center;
 	z-index: 1;
+	opacity: 1;
 	pointer-events: none;
 	-webkit-transition: opacity 1s ease; 
 }
@@ -421,7 +428,6 @@ html, body {
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	padding: 0 0 0 20px;
 }
 
 .lp-back .lp-logo {

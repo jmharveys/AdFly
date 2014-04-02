@@ -116,6 +116,7 @@
 	font: normal normal 15px/20px AmericanTypewriter;
 	-webkit-line-clamp: 5;
 	width: 440px;
+	padding: 0 0 0 40px;
 }
 
 {{#exist.rating}}
