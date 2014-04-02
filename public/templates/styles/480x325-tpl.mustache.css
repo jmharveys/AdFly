@@ -8,7 +8,8 @@
 }
 
 .lp-more {
-	font: normal normal 16px/18px AmericanTypewriter;
+	font: normal normal 17px/18px AmericanTypewriter;
+	white-space: nowrap;
 }
 
 .lp-destination {
@@ -16,7 +17,6 @@
 }
 {{#exist.mentions}}
 .lp-mentions {
-	width: 170px;
 	font: normal normal 12px/12px AmericanTypewriter;
 }
 {{/exist.mentions}}
@@ -100,6 +100,10 @@
 	height: 265px;
 }
 
+.lp-back .lp-summary {
+	padding: 26px 10px 6px 40px;
+}
+
 .lp-back .lp-summary > div:nth-child(1) {
 	width: 310px;
 }
@@ -110,14 +114,16 @@
 
 .lp-back .lp-description span {
 	font: normal normal 15px/20px AmericanTypewriter;
-	-webkit-line-clamp: 6;
-	width: 410px;
+	-webkit-line-clamp: 5;
+	width: 440px;
+	padding: 0 0 0 40px;
 }
 
 {{#exist.rating}}
 .lp-back .lp-rating {
 	height: 18px;
 	background-image: url("public/images/starBig@2x.png");
+	margin: 10px 3px 0 0;
 }
 
 .lp-back .lp-rating.lp-1-stars {

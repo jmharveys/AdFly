@@ -1,9 +1,27 @@
 var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
-var link = document.getElementsByClassName('lp-plus-web')[0];
-var defaultEvent = "tap";
+var link = document.getElementsByClassName('lp-plus-web');
 
-link.addEventListener('tap', linkTap, false); 
+var defaultEvent = "tap ";
+var isMobile = {
+	Android: function() {
+		return navigator.userAgent.match(/Android/i);
+	},
+	iOS: function() {
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+	},
+ 	any: function() {
+        return (isMobile.Android() || isMobile.iOS());
+    }	
+}
+if( isMobile.any() ){
+ 	location.href = 'lpri://webContentFinishedLoading';
+} else {
+	defaultEvent = 'click';
+}
+for(var x=0; x<link.length; x++) {
+	link[x].addEventListener(defaultEvent, linkTap, false); 
+}
 function linkTap(e) {
 	e.stopImmediatePropagation();
 }	
@@ -98,13 +116,14 @@ function legal(container, bg) {
 	function animate() {
 		if(container.classList.contains('lp-active')) {
 			container.classList.remove('lp-active');
+			ad.classList.remove('lp-legalOpen');
 		} else {
 			container.classList.add('lp-active');
+			ad.classList.add('lp-legalOpen');
 		}
 	}
-	//Faire fonction pour DESKTOP; clap pour IPAD et click pour DESKTOP
-	container.addEventListener('tap', legalTap, false); 
-	bg.addEventListener('tap', legalTap, false); 
+	container.addEventListener(defaultEvent, legalTap, false); 
+	bg.addEventListener(defaultEvent, legalTap, false); 
 	function legalTap(e) {
 		e.stopImmediatePropagation();
 		animate();
@@ -171,8 +190,8 @@ function endScroll() {
 {{/exist.gallery}}
 
 /*=== Flip =========================================*/
-// flipper.addEventListener('click', flipMe, false); 
-flipper.addEventListener('tap', flipMe, false); 
+
+flipper.addEventListener(defaultEvent, flipMe, false); 
 
 function flipDone() {
 	if (!ad.classList.contains('lp-flipped')) {
@@ -191,24 +210,8 @@ function flipMe() {
 			ad.classList.remove('lp-flipped'); 
 	} 
 }
-var isMobile = {
-	Android: function() {
-		return navigator.userAgent.match(/Android/i);
-	},
-	iOS: function() {
-		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-	},
- 	any: function() {
-        return (isMobile.Android() || isMobile.iOS());
-    }	
-};
-window.onload = function() {
-	if( isMobile.any() ){
- 		location.href = 'lpri://webContentFinishedLoading';
-	} else {
-		defaultEvent = 'click';
-	}
-	flipper.addEventListener(defaultEvent, flipMe, false); 
+
+window.onload = function() {	
 	var pagers = document.querySelectorAll('.lp-wrapper');
 	for(var x=0; x<pagers.length; x++) {
 		pagers[x].querySelector('.lp-bullet').classList.add('lp-selected');
