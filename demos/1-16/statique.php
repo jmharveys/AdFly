@@ -87,8 +87,9 @@
 
 		//Un appel pour le click et un pour le toucher sur IPAD
 		//a disposer selon le canvas utilisé
-		flipper.addEventListener('touchstart', flipMe, false); 
+		// flipper.addEventListener('touchstart', flipMe, false); 
 		flipper.addEventListener('click', flipMe, false); 
+		flipper.addEventListener('tap', flipMe, false); 
 
 		function flipMe() { 
 			// Si je n'ai pas flipper et que je ne scroll pas.
