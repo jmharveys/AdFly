@@ -7,6 +7,7 @@ app = function(pCulture, pRoot) {
   var self = this;
   self.culture = pCulture;
   self.root = pRoot;
+  self.category = "deals";
   self.format = "480x325";
   self.step = 1;
   self.offersNbr = 0;
@@ -70,10 +71,15 @@ app.prototype.init_ = function(pObj) {
   self.dom.field.id.val(self.id);
 
   /* jQuery Validate */
-
   jQuery.extend(jQuery.validator.messages, {
     required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')</span>',
+    maxlength: jQuery.validator.format(' <span class="msg">(' + self.t[self.culture]['maxlength'] + ')</span>')
   });
+
+  $.validator.addMethod("time", function(value, element) {  
+    return this.optional(element) || /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value);  
+  }, "Please enter a valid time.");
+
   self.validator = self.dom.f.validate({
     debug: true,
     errorPlacement: function(error, element) {
@@ -115,10 +121,6 @@ app.prototype.init_ = function(pObj) {
   self.dom.field.noClient.mask('000000'); // 6 char
   self.dom.field.noAd.mask('0000000'); // 7 char
 
-  $.validator.addMethod("time", function(value, element) {  
-    return this.optional(element) || /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value);  
-  }, "Please enter a valid time.");
-
   // replace the checkboxes with the images
   self.dom.field.formatRadio.each(function() {
       var radio = $(this);
@@ -157,6 +159,10 @@ app.prototype.bindEvents_ = function() {
 
   self.dom.step1.on('click', '.radio', function() {
     self.updateRadioFormat_($(this));
+  });
+
+  self.dom.field.category.on('change', function() {
+    self.category = $(this).val();
   });
 
   self.dom.steps.on('change', '.file-input', function() {
@@ -250,7 +256,7 @@ app.prototype.changeStep_ = function(pValue) {
       }
       self.offersNbr = 0;
       self.gallery = false;
-      self.opts = self.setStep2_(self.dom.field.category.val(), $('.row.format input:checked').val());
+      self.setStep2_(self.category, self.format);
       self.setOffer_(0);
     } else if(self.step == 2) {
       var data = new FormData($('form')[0]); // serializes the form's elements.
@@ -264,46 +270,27 @@ app.prototype.changeStep_ = function(pValue) {
 /*=== Set Step 2 ===========================================*/
 app.prototype.setStep2_ = function(pCategory, pFormat) {
   var self = this;
-  var opt = {
-    maxCharDestination: 22,
-    maxCharMore: 16,
-    price: true,
-    date: false,
-    maxOffers: 2,
-    picture: true,
-    maxPictures: 2,
-    maxOriginalPictures: 2,
-    video: false,
-    description: true
-  };
-  if(pCategory == 'conferences') {
-    opt.price = false;
-    opt.date = true;
-  }
-  if(pFormat == '480x325') { // 1/4 H
-    opt.maxCharDestination = 32;
-    opt.maxCharMore = 29;
-    opt.maxOffers = 4;
-    opt.maxPictures = 4;
-    opt.maxOriginalPictures = 4;
-    opt.video = true;
-  } else if(pFormat == '480x152') { // 1/8 H
-    opt.maxOffers = 2;
-    opt.maxPictures = 2;
-    opt.maxOriginalPictures = 2;
-  } else if(pFormat == '230x325') { // 1/8 V
-    opt.maxOffers = 2;
-    opt.maxPictures = 2;
-    opt.maxOriginalPicture = 2;
-  } else if(pFormat == '230x152') { // 1/16 H
-    opt.maxCharDestination = 16;
-    opt.picture = false;
-    opt.maxOffers = 1;
-    opt.maxPictures = 0;
-    opt.maxOriginalPictures = 0;
-    opt.description = false;
-  }
-  return opt;
+   $.ajax({
+      url: self.root + "public/data/settings/default.json",
+      async: false,
+      dataType: "json",
+      success: function(data) {
+        $.ajax({
+          url: self.root + "public/data/settings/" + self.format + ".json",
+          async: false,
+          dataType: "json",
+          success: function(formatSettings) {
+            $.extend(data, formatSettings);
+            if(pCategory == 'conferences') {
+              data.price = false;
+              data.date = true;
+            }
+            self.opts = data;
+            console.log(self.opts);
+          }
+        });
+      }
+  });
 };
 
 /*=== Set Ad Preview ===========================================*/
@@ -323,7 +310,6 @@ app.prototype.setAdPreview_ = function(pData) {
       })
       var idoc = self.dom.render[0].contentDocument;
       idoc.open();
-      //console.log(data);
       idoc.write(data);
       idoc.close();
     }, error: function(data) {

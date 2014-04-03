@@ -1,0 +1,12 @@
+{
+	"maxlength": {
+        "destination": 16,
+        "more": 16,
+        "mention": 14
+    },
+	"picture": false,
+	"maxOffers": 1,
+	"maxPictures": 0,
+	"maxOriginalPictures": 0,
+	"description": false
+}

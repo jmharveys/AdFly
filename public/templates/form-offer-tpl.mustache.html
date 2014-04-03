@@ -10,14 +10,14 @@
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.destination}}</span><br>
-				<textarea name="{{id}}_destination" class="input js-validate" maxlength="{{opt.maxCharDestination}}" required>Cancun, Mexique</textarea>
+				<textarea name="{{id}}_destination" class="input js-validate" maxlength="{{opt.maxlength.destination}}" required>Cancun, Mexique</textarea>
 			</label>
 		</div>
 
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.moreAboutTheDestination}}</span><br>
-				<textarea name="{{id}}_moreDestination" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{opt.maxCharMore}}" required>Barcelo Costa Cancun</textarea>
+				<textarea name="{{id}}_moreDestination" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{opt.maxlength.more}}" required>Barcelo Costa Cancun</textarea>
 			</label>
 		</div>
 
@@ -72,7 +72,7 @@
 				<label>
 					<input type="radio" name="{{id}}_mention_1" value="freetext" /> 
 				</label>
-				<input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="14" class="input short" />
+				<input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short" />
 			</div>
 
 			<div class="half field">
@@ -100,7 +100,7 @@
 				<label>
 					<input type="radio" name="{{id}}_mention_2" value="freetext" /> 
 				</label>
-				<input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="14" class="input short" />
+				<input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short" />
 			</div>
 		</div>
 

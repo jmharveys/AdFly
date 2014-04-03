@@ -28,4 +28,14 @@
 			background: $optional;
 		}
 	}
+
+	.return {
+		position: relative;
+		float: right;
+		height: 100%;
+		color: #fff;
+		text-decoration: none;
+		line-height: 45px;
+		margin: 0 1rem;
+	}
 }
