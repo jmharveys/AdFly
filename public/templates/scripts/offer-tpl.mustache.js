@@ -1,8 +1,6 @@
 var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
 var link = document.getElementsByClassName('lp-plus-web');
-
-var defaultEvent = "tap ";
 var isMobile = {
 	Android: function() {
 		return navigator.userAgent.match(/Android/i);
@@ -16,8 +14,9 @@ var isMobile = {
 }
 if( isMobile.any() ){
  	location.href = 'lpri://webContentFinishedLoading';
+ 	var defaultEvent = "tap";
 } else {
-	defaultEvent = 'click';
+	var defaultEvent = 'click';
 }
 for(var x=0; x<link.length; x++) {
 	link[x].addEventListener(defaultEvent, linkTap, false); 

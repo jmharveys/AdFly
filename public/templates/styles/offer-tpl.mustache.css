@@ -259,7 +259,6 @@ html, body {
 
 .lp-more {
 	display: block;
-	text-overflow: ellipsis;
 }
 
 .lp-destination {
@@ -397,9 +396,6 @@ html, body {
 	background-position: 100% -40px;
 }
 
-.lp-back .lp-more {
-	text-overflow: ellipsis;
-}
 
 {{#exist.rating}}
 .lp-back .lp-rating {

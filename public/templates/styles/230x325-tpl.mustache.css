@@ -2,6 +2,16 @@
 	background-position: 50% 0;
 	background-size: 100% auto;
 }
+
+.lp-more br {
+	display: none;
+}
+
+.lp-destination {
+	height: 38px;
+	overflow: hidden;
+}
+
 {{#exist.date}}
 .lp-date,
 .lp-time {
@@ -34,7 +44,6 @@
 
 .lp-front .lp-more {
 	font: normal normal 17px/18px AmericanTypewriter;
-	white-space: nowrap;
 }
 
 .lp-front .lp-destination {
@@ -75,20 +84,16 @@
 	padding: 25px 10px 0px 40px;
 }
 
-.lp-back .lp-summary > div:nth-child(1) {
+.lp-back .lp-summary > div {
 	float: left;
 	width: 100%;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {
-	float: left;
-	width: 100%;
 	text-align: left;
 }
 
 .lp-back .lp-card {
-	top: 0;
-	left: 0;
 	height: 257px;
 }
 
@@ -129,12 +134,11 @@
 
 .lp-back .lp-more {
 	display: inline-block;
-	font: normal normal 17px/16px AmericanTypewriter;
-	white-space: nowrap;
+	font: normal normal 17px/18px AmericanTypewriter;
 }
 
 .lp-back .lp-destination {
-	font: normal normal 18px/23px AmericanTypewriter-Bold;
+	font: normal normal 18px/19px AmericanTypewriter-Bold;
 }
 {{#exist.price}}
 {{#exist.mentions}}
@@ -144,12 +148,12 @@
 }
 {{/exist.mentions}}
 .lp-back .lp-price {
-	font: normal normal 28px/29px AmericanTypewriter-Bold;
+	font: normal normal 28px/20px AmericanTypewriter-Bold;
 	padding: 0 0 0 40px;
 }
 {{/exist.price}}
 .lp-back .lp-description {
-	font: normal normal 13px/16px AmericanTypewriter;
+	font: normal normal 14px/16px AmericanTypewriter;
 }
 
 .lp-back .lp-description p {

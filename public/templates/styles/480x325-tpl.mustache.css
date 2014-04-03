@@ -9,12 +9,18 @@
 
 .lp-more {
 	font: normal normal 17px/18px AmericanTypewriter;
-	white-space: nowrap;
+}
+
+.lp-more br {
+	display: none;
 }
 
 .lp-destination {
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
+	overflow: hidden;
+	height: 47px;
 }
+
 {{#exist.price}}
 {{#exist.mentions}}
 .lp-mentions {
@@ -81,8 +87,7 @@
 }
 
 .lp-front .lp-more {
-	font: normal normal 16px/18px AmericanTypewriter;
-	white-space: nowrap;
+	font-size: 16px;
 }
 
 .lp-front .lp-destination {

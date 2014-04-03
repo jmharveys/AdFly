@@ -37,7 +37,7 @@
 											<p class="subtitle">Rép. Dominicaine</p>
 										</div>
 										<div>
-											<p class="mention">à partir de<br/>par pers.</p>
+											<p class="mention">par personne</p>
 											<p class="price">99 999</p>
 										</div>
 									</div>
@@ -63,7 +63,7 @@
 											</ul>
 										</div>
 										<div>
-											<p class="mention">à partir de<br/>par pers.</p>
+											<p class="mention">par personne</p>
 											<p class="price">99 999</p>
 										</div>
 									</div>
