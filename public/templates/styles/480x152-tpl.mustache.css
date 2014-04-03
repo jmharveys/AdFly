@@ -41,11 +41,14 @@
 
 .lp-front .lp-more {
 	font: normal normal 17px/18px AmericanTypewriter;
+	max-height: 37px;
+	overflow: hidden;
 }
 
 .lp-front .lp-destination {
 	font: normal normal 18px/19px AmericanTypewriter-Bold;
-	-webkit-line-clamp: 2;
+	max-height: 37px;
+	overflow: hidden;
 }
 
 {{#exist.picturesGallery}}
@@ -83,13 +86,14 @@
 
 .lp-back .lp-summary > div:nth-child(1) {
 	display: table;
-	padding: 19px 0 0 0;
+	padding: 16px 0 0 0;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {
 	display: table-cell;
 	vertical-align: bottom;
 	text-align: right;
+	padding: 0 0 3px 0;
 }
 
 .lp-back .lp-card {
@@ -132,11 +136,17 @@
 
 .lp-back .lp-more {
 	display: inline-block;
-	font: normal normal 17px/32px AmericanTypewriter;
+	font: normal normal 17px/19px AmericanTypewriter;
+}
+
+.lp-back .lp-more br {
+	display: none;
 }
 
 .lp-back .lp-destination {
-	font: normal normal 18px/10px AmericanTypewriter-Bold;
+	font: normal normal 18px/18px AmericanTypewriter-Bold;
+	max-height: 37px;
+	overflow: hidden;
 }
 {{#exist.price}}
 {{#exist.mentions}}
