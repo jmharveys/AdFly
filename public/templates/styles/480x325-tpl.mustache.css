@@ -15,6 +15,7 @@
 .lp-destination {
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
 }
+{{#exist.price}}
 {{#exist.mentions}}
 .lp-mentions {
 	font: normal normal 12px/12px AmericanTypewriter;
@@ -24,6 +25,13 @@
 	font: normal normal 33px/29px AmericanTypewriter-Bold;
 	letter-spacing: -1px;
 }
+{{/exist.price}}
+{{#exist.date}}
+.lp-date,
+.lp-time {
+	font: normal normal 23px/23px AmericanTypewriter-Bold;
+}
+{{/exist.date}}
 {{#exist.video}}
 .lp-video {
 	bottom: 20px;
@@ -58,13 +66,13 @@
 }
 
 {{#offers.list}}
-	{{#gallery}}
-		{{#exist}}
-			.lp-pictures > .lp-scroller {
-				width: {{gallery.w}}px;
-			}
-		{{/exist}}
-	{{/gallery}}
+{{#gallery}}
+{{#exist}}
+.lp-pictures > .lp-scroller {
+	width: {{gallery.w}}px;
+}
+{{/exist}}
+{{/gallery}}
 {{/offers.list}}
 
 .lp-front .lp-logo {
@@ -77,7 +85,7 @@
 	white-space: nowrap;
 }
 
-.lp-front-destination {
+.lp-front .lp-destination {
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
 }
 
@@ -147,7 +155,6 @@
 	font: normal normal 12px/14px AmericanTypewriter;
 }
 {{/exist.mentions}}
-
 .lp-back .lp-logo {
 	top: 265px;
 	left: 305px;

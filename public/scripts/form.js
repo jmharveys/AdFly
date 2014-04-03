@@ -70,6 +70,10 @@ app.prototype.init_ = function(pObj) {
   self.dom.field.id.val(self.id);
 
   /* jQuery Validate */
+
+  jQuery.extend(jQuery.validator.messages, {
+    required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')</span>',
+  });
   self.validator = self.dom.f.validate({
     debug: true,
     errorPlacement: function(error, element) {
@@ -97,16 +101,12 @@ app.prototype.init_ = function(pObj) {
     },
     messages: {
       noClient: {
-        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')</span>',
         minlength: ' <span class="msg">(' + self.t[self.culture]['mustContain6digits'] + ')</span>',
         maxlength: ' <span class="msg">(' + self.t[self.culture]['mustContain6digits'] + ')</span>'
       },
       noAd: {
         minlength: ' <span class="msg">(' + self.t[self.culture]['mustContain7digits'] + ')</span>',
         maxlength: ' <span class="msg">(' + self.t[self.culture]['mustContain7digits'] + ')</span>'
-      },
-      logo: {
-        required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')</span>'
       }
     }
   });
@@ -199,7 +199,7 @@ app.prototype.bindEvents_ = function() {
 
 app.prototype.downloadAd_ = function(pValue) {
   var self = this;
-  var html = self.dom.render.contents().find("html").html();
+  var html = self.dom.render.contents().find("html")[0].outerHTML;
   $.ajax({
     type: "POST",
     url: self.root + 'app/libraries/createFiles.php',
@@ -369,25 +369,16 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
 
       // Destination
       $("textarea[name='"+ pObj.id +"_destination']").rules('add', {
-        required: true,
-        messages: {
-          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
-        }
+        required: true
       });
       // Précision
       $("textarea[name='"+ pObj.id +"_moreDestination']").rules('add', {
-        required: true,
-        messages: {
-          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
-        }
+        required: true
       });
       // Prix
       if(pObj.opt.price == true) {
         self.dom.f.find("input[name='"+ pObj.id +"_price']").rules('add', {
-          required: true,
-          messages: {
-            required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
-          }
+          required: true
         });
         $("input[name='"+ pObj.id +"_price']").mask('99999');
       }
@@ -397,7 +388,6 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
           required: true,
           date: true,
           messages: {
-            required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
             date: ' <span class="msg">(' + self.t[self.culture]['enterValidDate'] + ')'
           }
         });
@@ -407,7 +397,6 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
           required: true,
           time: true,
           messages: {
-            required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
             time: ' <span class="msg">(' + self.t[self.culture]['enterValidHour'] + ')'
           }
         });
@@ -421,7 +410,6 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
         required: true,
         url: true,
         messages: {
-          required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')',
           url: ' <span class="msg">(' + self.t[self.culture]['enterValidURL'] + ')'
         }
       });
@@ -429,10 +417,7 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
       // Description
       if(pObj.opt.description == true) {
         $("textarea[name='"+ pObj.id +"_description']").rules('add', {
-          required: true,
-          messages: {
-            required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
-          }
+          required: true
         });
       }
 

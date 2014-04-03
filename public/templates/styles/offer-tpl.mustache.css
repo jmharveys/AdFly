@@ -1,4 +1,4 @@
-*, *:before, *:after {box-sizing: border-box; }
+*, *:before, *:after {box-sizing: border-box;}
 
 html, body {
 	width: 100%;
@@ -65,6 +65,12 @@ html, body {
 	-webkit-user-select: none;
 }
 
+{{#exist.date}}
+.lp-time {
+	display: block;
+}
+{{/exist.date}}
+
 {{#exist.gallery}}
 .lp-gallery {
 	position: absolute;
@@ -110,34 +116,34 @@ html, body {
 }
 
 {{#exist.picturesGallery}}
-	.lp-front .lp-picture {
-		position: relative;
-		float: left;
-		background-color: #fff;
-		background-position: 50% 50%;
-		background-repeat: no-repeat;
-		background-size: 100% auto;
-	}
+.lp-front .lp-picture {
+	position: relative;
+	float: left;
+	background-color: #fff;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
 {{/exist.picturesGallery}}
 
 {{#offers.list}}
-	{{#gallery}}
-		{{#exist}}
-			.lp-pictures > .lp-scroller {
-				width: {{gallery.w}}px;
-			}
-			{{#pictures}}
-				.lp-front .lp-picture:nth-child({{index}}) {
-					background-image: url('{{path}}');
-				}
-			{{/pictures}}
-		{{/exist}}
-		{{^exist}}
-			.lp-front .lp-offer:nth-of-type({{index}}) {
-				background-image: url('{{pictures.0.path}}');
-			}
-		{{/exist}}
-	{{/gallery}}
+{{#gallery}}
+{{#exist}}
+.lp-pictures > .lp-scroller {
+	width: {{gallery.w}}px;
+}
+{{#pictures}}
+.lp-front .lp-picture:nth-child({{index}}) {
+	background-image: url('{{path}}');
+}
+{{/pictures}}
+{{/exist}}
+{{^exist}}
+.lp-front .lp-offer:nth-of-type({{index}}) {
+	background-image: url('{{pictures.0.path}}');
+}
+{{/exist}}
+{{/gallery}}
 {{/offers.list}}
 
 .lp-summary {
@@ -259,14 +265,13 @@ html, body {
 .lp-destination {
 	display: block;
 }
-
+{{#exist.price}}
 {{#exist.mentions}}
 .lp-mentions {
 	display: block;
 	text-transform: uppercase;
 }
 {{/exist.mentions}}
-
 .lp-price {
 	display: block;
 }
@@ -276,7 +281,8 @@ html, body {
 	vertical-align: super;
 	content: "$";
 }
-
+{{/exist.price}}
+{{#exist.gallery}}
 .lp-pager .lp-wrapper {
 	display: inline-block;
 	position: relative;
@@ -313,7 +319,7 @@ html, body {
 .lp-pager .lp-bullet.lp-selected {
 	background: #fff;
 }
-
+{{/exist.gallery}}
 /*--- Front ------------------------*/
 .lp-front .lp-logo {
 	top: 0;
@@ -458,7 +464,7 @@ html, body {
   top: -9px;
   left: -9px;
 }
-
+{{#exist.legal}}
 .lp-legal-bg {
 	position: absolute;
 	top: 0;
@@ -523,3 +529,4 @@ html, body {
 	overflow-scrolling: touch;
 	overflow: auto;
 }
+{{/exist.legal}}
