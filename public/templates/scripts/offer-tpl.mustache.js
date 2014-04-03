@@ -1,7 +1,6 @@
 var ad = document.getElementsByClassName('lp-ad')[0];
 var flipper = document.getElementsByClassName('lp-flip')[0];
 var link = document.getElementsByClassName('lp-plus-web');
-
 var defaultEvent = "tap ";
 var isMobile = {
 	Android: function() {

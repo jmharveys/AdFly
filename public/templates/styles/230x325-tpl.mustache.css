@@ -55,6 +55,7 @@
 .lp-front .lp-mentions {
 	display: inline-block;
 	font: normal normal 12px/12px AmericanTypewriter;
+	padding: 0 3px 0 0;
 }
 
 .lp-front .lp-price {
