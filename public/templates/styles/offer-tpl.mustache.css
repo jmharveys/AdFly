@@ -358,15 +358,14 @@ html, body {
 /*--- Back -------------------------*/
 .lp-back .lp-card {
 	display: table;
-	position: absolute;
-	z-index: 0;
+/*	position: absolute;
+	z-index: 0;*/
 }
 
 .lp-back .lp-summary {
 	float: left;
 	position: relative;
 	width: 100%;
-	box-sizing: border-box;
 	padding: 26px 10px 6px 39px;
 }
 

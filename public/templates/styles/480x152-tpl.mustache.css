@@ -4,7 +4,10 @@
 }
 
 .lp-pager {
-	bottom: 15px;
+	text-align: left;
+	bottom: 8px;
+	left: 309px;
+	width: 480px;
 }
 
 /*--- Front ------------------------*/
@@ -12,7 +15,7 @@
 	width: 152px;
 	height: 100%;
 	padding: 9px 10px 6px 15px;
-	-webkit-transform: translate3d(326px,0,0);
+	-webkit-transform: translate3d(328px,0,0);
 }
 
 .lp-front .lp-summary > div:nth-child(1) {
@@ -67,25 +70,24 @@
 
 /*--- Back -------------------------*/
 .lp-back .lp-summary {
+	display: table;
 	width: 100%;
-	padding: 10px 10px 0px 54px;
+	padding: 0px 10px 6px 40px;
 }
 
 .lp-back .lp-summary > div:nth-child(1) {
-	display: table-cell;
-	width: 305px;
-	vertical-align: top;
+	display: table;
+	padding: 19px 0 0 0;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {
 	display: table-cell;
-	width: 110px;
-	vertical-align: top;
+	vertical-align: bottom;
+	text-align: right;
 }
 
 .lp-back .lp-card {
-	top: 0;
-	left: 0;
+	width: 100%;
 	height: 104px;
 }
 
@@ -124,19 +126,20 @@
 
 .lp-back .lp-more {
 	display: inline-block;
-	font: normal normal 17px/16px AmericanTypewriter;
+	font: normal normal 17px/32px AmericanTypewriter;
 }
 
 .lp-back .lp-destination {
-	font: normal normal 18px/23px AmericanTypewriter-Bold;
+	font: normal normal 18px/10px AmericanTypewriter-Bold;
 }
 
 .lp-back .lp-mentions {
-	font: normal normal 12px/14px AmericanTypewriter;
+	font: normal normal 12px/12px AmericanTypewriter;
+	padding: 0 0 5px 0;
 }
 
 .lp-back .lp-price {
-	font: normal normal 28px/29px AmericanTypewriter-Bold;
+	font: normal normal 28px/17px AmericanTypewriter-Bold;
 }
 
 .lp-back .lp-description {
@@ -144,4 +147,10 @@
 }
 .lp-back .lp-description span {
 	-webkit-line-clamp: 2;
+	padding: 0 0 0 40px;
+	width: 370px;
+}
+.lp-back .lp-pager {
+	text-align: center;
+	left: 0;
 }
