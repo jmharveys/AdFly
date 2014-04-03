@@ -74,6 +74,7 @@ class AdModel {
         $this->ad->scroller->w = $this->ad->w * $this->ad->offers->nbr;
 
         $this->ad->exist = new stdClass();
+        $this->ad->exist->strapline = false;
         $this->ad->exist->mentions = false;
         $this->ad->exist->price = false;
         $this->ad->exist->date = false;
@@ -90,14 +91,17 @@ class AdModel {
             $obj->id = $id[$x];
             /* Index */
             $obj->index = $x + 1;
-            /* Destination */
-            $dest = nl2br($_POST[$obj->id . "_destination"]);
-            $dest = strip_tags($dest, '<br>');
-            $obj->destination = $dest;
-            /* More Destination */
-            $more = nl2br($_POST[$obj->id . "_moreDestination"]);
-            $more = strip_tags($more, '<br>');
-            $obj->moreDestination = $more;
+            /* Surtitre */
+            if(isset($_POST[$obj->id . "_strapline"])) {
+                $this->ad->exist->strapline = true;
+                $strapline = nl2br($_POST[$obj->id . "_strapline"]);
+                $strapline = strip_tags($strapline, '<br>');
+                $obj->strapline = $strapline;
+            }
+            /* Titre */
+            $title = nl2br($_POST[$obj->id . "_title"]);
+            $title = strip_tags($title, '<br>');
+            $obj->title = $title;
             /* Price */
             if(isset($_POST[$obj->id . "_price"])) {
                 $this->ad->exist->price = true;
@@ -179,13 +183,17 @@ class AdModel {
                 array_push($this->ad->assets, $obj->video);
             }
             /* Description */
-            $obj->description = $_POST[$obj->id . "_description"];
+            $description = nl2br($_POST[$obj->id . "_description"]);
+            $description = strip_tags($description, '<br>');
+            $obj->description = $description;
             /* Légal */
-            $obj->legal = new stdClass();
-            $obj->legal->text = trim($_POST[$obj->id . "_legal"]);
-            $obj->legal->exist = $obj->legal->text == '' ? false : true;
-            if($obj->legal->exist) {
+            if($_POST[$obj->id . "_legal"]) {
                 $this->ad->exist->legal = true;
+                $legal = nl2br($_POST[$obj->id . "_legal"]);
+                $legal = strip_tags($legal, '<p><u><b><i><br>');
+                $obj->legal = new stdClass();
+                $obj->legal->text = $legal;
+                $obj->legal->exist = $obj->legal->text == '' ? false : true;
             }
 
             array_push($this->ad->offers->list, $obj);

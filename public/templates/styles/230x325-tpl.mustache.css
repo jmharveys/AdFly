@@ -3,11 +3,11 @@
 	background-size: 100% auto;
 }
 
-.lp-more br {
+.lp-strapline br {
 	display: none;
 }
 
-.lp-destination {
+.lp-title {
 	height: 38px;
 	overflow: hidden;
 }
@@ -42,11 +42,11 @@
 	max-height: 50px;
 }
 
-.lp-front .lp-more {
+.lp-front .lp-strapline {
 	font: normal normal 17px/18px AmericanTypewriter;
 }
 
-.lp-front .lp-destination {
+.lp-front .lp-title {
 	font: normal normal 18px/19px AmericanTypewriter-Bold;
 }
 
@@ -132,12 +132,12 @@
 	bottom: 25px;
 }
 
-.lp-back .lp-more {
+.lp-back .lp-strapline {
 	display: inline-block;
 	font: normal normal 17px/18px AmericanTypewriter;
 }
 
-.lp-back .lp-destination {
+.lp-back .lp-title {
 	font: normal normal 18px/19px AmericanTypewriter-Bold;
 }
 {{#exist.price}}

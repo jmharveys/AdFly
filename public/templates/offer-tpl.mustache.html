@@ -47,8 +47,8 @@
 
                         <div class="lp-summary">
                             <div>
-                                <span class="lp-more">{{{moreDestination}}}</span>
-                                <span class="lp-destination">{{{destination}}}</span>
+                                <span class="lp-strapline">{{{strapline}}}</span>
+                                <span class="lp-title">{{{title}}}</span>
                             </div>
                             <div>
                                 {{#exist.price}}
@@ -99,15 +99,15 @@
                         <div class="lp-card">
                             <div class="lp-summary">
                                 <div>
-                                    <span class="lp-more">{{{moreDestination}}}</span>
+                                    <span class="lp-strapline">{{{strapline}}}</span>
                                     {{#meta.f480x152}}
                                     {{#rating}}
                                     <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
                                     {{/rating}}
-                                    <span class="lp-destination">{{{destination}}}</span>
+                                    <span class="lp-destination">{{{title}}}</span>
                                     {{/meta.f480x152}}
                                     {{^meta.f480x152}}
-                                    <span class="lp-destination">{{{destination}}}</span>
+                                    <span class="lp-destination">{{{title}}}</span>
                                     {{#rating}}
                                     <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
                                     {{/rating}}
@@ -130,7 +130,7 @@
                             </div>
                             <div class="lp-description">
                                 <p>
-                                    <span>{{description}}</span>
+                                    <span>{{{description}}}</span>
                                 </p>
                             </div>
                             {{#meta.f230x325}}
@@ -153,7 +153,7 @@
                         {{#legal.exist}}
                         <div class="lp-legal">
                             <div class="lp-legal-btn">Légal</div>
-                            <div class="lp-legal-text">{{legal.text}}</div>
+                            <div class="lp-legal-text">{{{legal.text}}}</div>
                         </div>
                         <span class="lp-legal-bg"></span>
                         {{/legal.exist}}

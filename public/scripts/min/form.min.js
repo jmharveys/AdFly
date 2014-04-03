@@ -163,6 +163,12 @@ app.prototype.bindEvents_ = function() {
 
   self.dom.field.category.on('change', function() {
     self.category = $(this).val();
+    self.resetOffers_();
+  });
+
+  self.dom.steps.on('focus', '[name$="_freetext"]', function() {
+    console.log('oui');
+    $(this).prev('label').children('input').prop('checked', true);
   });
 
   self.dom.steps.on('change', '.file-input', function() {
@@ -249,15 +255,10 @@ app.prototype.changeStep_ = function(pValue) {
 
   if(valid) {
     if(self.step == 1) {
-      var fieldsets = self.dom.offersList.children('fieldset');
-      for(var x=0; x<fieldsets.length; x++) {
-        key = fieldsets.eq(x);
-        self.deleteOffer_(key);
-      }
-      self.offersNbr = 0;
-      self.gallery = false;
       self.setStep2_(self.category, self.format);
-      self.setOffer_(0);
+      if(!self.offersNbr) {
+        self.setOffer_(0);
+      }
     } else if(self.step == 2) {
       var data = new FormData($('form')[0]); // serializes the form's elements.
       self.setAdPreview_(data);
@@ -265,6 +266,17 @@ app.prototype.changeStep_ = function(pValue) {
     self.step += parseInt(pValue);
     self.dom.b.removeClass('no1 no2 no3').addClass('no' + self.step);
   }
+};
+
+app.prototype.resetOffers_ = function() {
+  var self = this;
+  var fieldsets = self.dom.offersList.children('fieldset');
+  for(var x=0; x<fieldsets.length; x++) {
+    key = fieldsets.eq(x);
+    self.deleteOffer_(key);
+  }
+  self.offersNbr = 0;
+  self.gallery = false;
 };
 
 /*=== Set Step 2 ===========================================*/
@@ -353,12 +365,8 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
     setTimeout(function() {
       self.dom.offersList.append(Mustache.render($(template).filter('#formOfferTpl').html(), pObj));
 
-      // Destination
-      $("textarea[name='"+ pObj.id +"_destination']").rules('add', {
-        required: true
-      });
-      // Précision
-      $("textarea[name='"+ pObj.id +"_moreDestination']").rules('add', {
+      // Titre
+      $("textarea[name='"+ pObj.id +"_title']").rules('add', {
         required: true
       });
       // Prix
@@ -615,6 +623,7 @@ app.prototype.getUploadedImageObj_ = function(pInput, callback) {
 /*=== Update Radio Format ============================================*/
 app.prototype.updateRadioFormat_ = function(pRadio) {
   var self = this;
+  self.resetOffers_();
   pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
   pRadio.addClass('valid').prev().attr('checked', 'true');
 

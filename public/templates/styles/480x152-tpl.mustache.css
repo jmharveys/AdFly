@@ -39,13 +39,13 @@
 	max-height: 50px;
 }
 
-.lp-front .lp-more {
+.lp-front .lp-strapline {
 	font: normal normal 17px/18px AmericanTypewriter;
 	max-height: 37px;
 	overflow: hidden;
 }
 
-.lp-front .lp-destination {
+.lp-front .lp-title {
 	font: normal normal 18px/19px AmericanTypewriter-Bold;
 	max-height: 37px;
 	overflow: hidden;
@@ -134,16 +134,16 @@
 	height: 30px;
 }
 
-.lp-back .lp-more {
+.lp-back .lp-strapline {
 	display: inline-block;
 	font: normal normal 17px/19px AmericanTypewriter;
 }
 
-.lp-back .lp-more br {
+.lp-back .lp-strapline br {
 	display: none;
 }
 
-.lp-back .lp-destination {
+.lp-back .lp-title {
 	font: normal normal 18px/18px AmericanTypewriter-Bold;
 	max-height: 37px;
 	overflow: hidden;

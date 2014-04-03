@@ -7,17 +7,17 @@
 			</span>
 		</legend>
 
-		<div class="row field">
+		<div class="row field opt">
 			<label>
-				<span class="lbl">{{t.destination}}</span><br>
-				<textarea name="{{id}}_destination" class="input js-validate" maxlength="{{opt.maxlength.destination}}" required>Cancun, Mexique</textarea>
+				<span class="lbl">{{t.strapline}}</span><br>
+				<textarea name="{{id}}_strapline" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{opt.maxlength.more}}">Barcelo Costa</textarea>
 			</label>
 		</div>
 
 		<div class="row field">
 			<label>
-				<span class="lbl">{{t.moreAboutTheDestination}}</span><br>
-				<textarea name="{{id}}_moreDestination" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{opt.maxlength.more}}" required>Barcelo Costa Cancun</textarea>
+				<span class="lbl">{{t.title}}</span><br>
+				<textarea name="{{id}}_title" class="input js-validate" maxlength="{{opt.maxlength.title}}" required>Cancun, Mexique</textarea>
 			</label>
 		</div>
 
@@ -75,6 +75,7 @@
 				<input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short" />
 			</div>
 
+			{{#opt.mention2}}
 			<div class="half field">
 				<span class="lbl">{{t.mention}} 2</span><br>
 				<label>
@@ -102,6 +103,7 @@
 				</label>
 				<input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short" />
 			</div>
+			{{/opt.mention2}}
 		</div>
 
 		<div class="row opt">
@@ -149,7 +151,7 @@
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.description}}</span><br>
-				<textarea name="{{id}}_description" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra." required>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor.</textarea>
+				<textarea name="{{id}}_description" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra." maxlength="{{opt.maxlength.description}}" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
 			</label>
 		</div>
 		{{/opt.description}}

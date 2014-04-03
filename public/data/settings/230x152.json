@@ -1,8 +1,9 @@
 {
 	"maxlength": {
-        "destination": 16,
-        "more": 16,
-        "mention": 14
+        "strapline": 16,
+        "title": 16,
+        "mention": 14,
+        "description": 140
     },
     "mention2": false,
 	"picture": false,

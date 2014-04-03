@@ -257,11 +257,11 @@ html, body {
 }
 {{/exist.video}}
 
-.lp-more {
+.lp-strapline {
 	display: block;
 }
 
-.lp-destination {
+.lp-title {
 	display: block;
 }
 {{#exist.price}}

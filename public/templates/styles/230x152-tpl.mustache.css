@@ -5,12 +5,12 @@
 }
 {{/exist.date}}
 
-.lp-more br,
-.lp-destination br{
+.lp-strapline br,
+.lp-title br{
 	display: none;
 }
 
-.lp-more {
+.lp-strapline {
 	font: normal normal 16px/16px AmericanTypewriter;
 }
 /*--- Front ------------------------*/
@@ -36,7 +36,7 @@
 	max-height: 30px;
 }
 
-.lp-front .lp-destination {
+.lp-front .lp-title {
 	font: normal normal 16px/19px AmericanTypewriter-Bold;
 }
 {{#exist.price}}
@@ -106,7 +106,7 @@
 	bottom: 4px;
 }
 
-.lp-back .lp-destination {
+.lp-back .lp-title {
 	font: normal normal 16px/16px AmericanTypewriter-Bold;
 }
 {{#exist.price}}

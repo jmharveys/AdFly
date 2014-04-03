@@ -7,15 +7,15 @@
 	background-size: 100% auto;
 }
 
-.lp-more {
+.lp-strapline {
 	font: normal normal 17px/18px AmericanTypewriter;
 }
 
-.lp-more br {
+.lp-strapline br {
 	display: none;
 }
 
-.lp-destination {
+.lp-title {
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
 	overflow: hidden;
 	height: 47px;
@@ -86,11 +86,11 @@
 	max-height: 75px;
 }
 
-.lp-front .lp-more {
+.lp-front .lp-strapline {
 	font-size: 16px;
 }
 
-.lp-front .lp-destination {
+.lp-front .lp-title {
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
 }
 
