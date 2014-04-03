@@ -1290,6 +1290,7 @@ body.lp-loaded {
 .lp-230x152 .back .description div:nth-child(2) {
   display: table-cell;
   vertical-align: bottom;
+  padding: 7px 0 0 0;
 }
 
 .lp-230x152 .back .description .title {
