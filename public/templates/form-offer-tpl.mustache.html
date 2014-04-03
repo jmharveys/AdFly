@@ -124,7 +124,7 @@
 					<span class="lbl">{{t.picture}}(s) <span class="msg"></span></span><br>
 					<div class="btn blue file" data-max="{{opt.maxPictures}}" data-max-original="{{opt.maxOriginalPictures}}">
 						<span class="text">{{t.uploadImage}}</span>
-						<input type="file" accept="image/*" capture="camera" name="{{id}}_picture[]" data-key="{{id}}" class="js-multi-files" />
+						<input type="file" accept="image/*" capture="camera" name="{{id}}_picture[]" data-key="{{id}}" class="js-multi-files js-validate" required />
 					</div>
 				</label>
 			</div>

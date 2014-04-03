@@ -2,14 +2,20 @@
 	background-position: 0 50%;
 	background-size: auto 100%;
 }
-
+{{#exist.date}}
+.lp-date,
+.lp-time {
+	font: normal normal 19px/19px AmericanTypewriter-Bold;
+}
+{{/exist.date}}
+{{#exist.gallery}}
 .lp-pager {
 	text-align: left;
 	bottom: 8px;
 	left: 309px;
 	width: 480px;
 }
-
+{{/exist.gallery}}
 /*--- Front ------------------------*/
 .lp-front .lp-summary {
 	width: 152px;
@@ -58,15 +64,16 @@
 	width: 328px;
 }
 {{/exist.picturesGallery}}
-
+{{#exist.price}}
+{{#exist.mentions}}
 .lp-front .lp-mentions {
 	font: normal normal 12px/12px AmericanTypewriter;
 }
-
+{{/exist.mentions}}
 .lp-front .lp-price {
 	font: normal normal 28px/26px AmericanTypewriter-Bold;
 }
-
+{{/exist.price}}
 /*--- Back -------------------------*/
 .lp-back .lp-summary {
 	display: table;
@@ -131,16 +138,17 @@
 .lp-back .lp-destination {
 	font: normal normal 18px/10px AmericanTypewriter-Bold;
 }
-
+{{#exist.price}}
+{{#exist.mentions}}
 .lp-back .lp-mentions {
 	font: normal normal 12px/12px AmericanTypewriter;
 	padding: 0 0 5px 0;
 }
-
+{{/exist.mentions}}
 .lp-back .lp-price {
 	font: normal normal 28px/17px AmericanTypewriter-Bold;
 }
-
+{{/exist.price}}
 .lp-back .lp-description {
 	font: normal normal 13px/16px AmericanTypewriter;
 }
@@ -149,7 +157,9 @@
 	padding: 0 0 0 40px;
 	width: 370px;
 }
+{{#exist.gallery}}
 .lp-back .lp-pager {
 	text-align: center;
 	left: 0;
 }
+{{/exist.gallery}}
