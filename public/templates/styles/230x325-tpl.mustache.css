@@ -2,6 +2,16 @@
 	background-position: 50% 0;
 	background-size: 100% auto;
 }
+
+.lp-more br {
+	display: none;
+}
+
+.lp-destination {
+	height: 38px;
+	overflow: hidden;
+}
+
 {{#exist.date}}
 .lp-date,
 .lp-time {
@@ -34,7 +44,6 @@
 
 .lp-front .lp-more {
 	font: normal normal 17px/18px AmericanTypewriter;
-	white-space: nowrap;
 }
 
 .lp-front .lp-destination {
@@ -126,7 +135,6 @@
 .lp-back .lp-more {
 	display: inline-block;
 	font: normal normal 17px/18px AmericanTypewriter;
-	white-space: nowrap;
 }
 
 .lp-back .lp-destination {
