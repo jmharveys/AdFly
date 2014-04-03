@@ -1,0 +1,10 @@
+{
+	"maxlength": {
+		"destination": 22,
+        "more": 16,
+        "mention": 12
+    },
+	"maxOffers": 2,
+    "maxPictures": 2,
+    "maxOriginalPictures": 2
+}

@@ -84,7 +84,6 @@ class AdModel {
         $this->ad->exist->picturesGallery = false;
         $this->ad->exist->legal = false;
 
-
         for($x=0; $x<$this->ad->offers->nbr; $x++) {
             $obj = new stdClass();
             /* ID */

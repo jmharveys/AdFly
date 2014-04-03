@@ -240,6 +240,15 @@ img {
   z-index: 1;
 }
 
+.main-header .logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  -webkit-transition: height .5s ease, border .5s ease;
+  transition: height .5s ease, border .5s ease;
+}
+
 .main-header .title {
   position: absolute;
   top: 0;
@@ -281,6 +290,17 @@ img {
   background-image: url("../images/lang-en.png");
 }
 
+.no1 .main-header .logo {
+  height: 75px;
+  border: solid 10px #232323;
+}
+
+.no2 .main-header .logo,
+.no3 .main-header .logo {
+  height: 45px;
+  border: solid 0px #232323;
+}
+
 [lang="en"] .main-header .action.lang {
   background-image: url("../images/lang-fr.png");
 }
@@ -315,6 +335,16 @@ img {
 
 .main-footer .legend .color.opt {
   background: #ffefc6;
+}
+
+.main-footer .return {
+  position: relative;
+  float: right;
+  height: 100%;
+  color: #fff;
+  text-decoration: none;
+  line-height: 45px;
+  margin: 0 1rem;
 }
 
 html,

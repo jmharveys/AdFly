@@ -23,6 +23,9 @@
 </head>
 <body class="no1">
 	<header class="main-header">
+		<a href="<?= $t[$culture]['creationKitLink']; ?>">
+			<img src="http://plus.lapresse.ca/cdn/img/LaPressePlus.svg" class="logo">
+		</a>
 		<div class="title">
 			<h2><?= $t[$culture]['generalData']; ?></h2>
 			<h2><?= $t[$culture]['offers']; ?></h2>
@@ -160,6 +163,7 @@
 		<div class="legend">
 			<span class="color opt"></span> <?= $t[$culture]['optionalFields']; ?>
 		</div>
+		<a href="<?= $t[$culture]['creationKitLink']; ?>" class="return"><?= $t[$culture]['returnToTheCreationKit']; ?></a>
 	</footer>
 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
