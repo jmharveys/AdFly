@@ -80,7 +80,7 @@
       foreach($objects as $object) {
         if($object != "." && $object != "..") {
           if(filetype($dir."/".$object) == "dir") {
-            if(filemtime($dir."/".$object) <= time()-1800) {
+            if(filemtime($dir."/".$object) <= time()-10800) { // Plus vieux que 3h
               rrmdir($dir."/".$object);
             }
           }

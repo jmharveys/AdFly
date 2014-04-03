@@ -243,17 +243,15 @@ app.prototype.changeStep_ = function(pValue) {
 
   if(valid) {
     if(self.step == 1) {
-      /*if(self.offersNbr == 0) {*/
-        var fieldsets = self.dom.offersList.children('fieldset');
-        for(var x=0; x<fieldsets.length; x++) {
-          key = fieldsets.eq(x);
-          self.deleteOffer_(key);
-        }
-        self.offersNbr = 0;
-        self.gallery = false;
-        self.opts = self.setStep2_(self.dom.field.category.val(), $('.row.format input:checked').val());
-        self.setOffer_(0);
-      /*}*/
+      var fieldsets = self.dom.offersList.children('fieldset');
+      for(var x=0; x<fieldsets.length; x++) {
+        key = fieldsets.eq(x);
+        self.deleteOffer_(key);
+      }
+      self.offersNbr = 0;
+      self.gallery = false;
+      self.opts = self.setStep2_(self.dom.field.category.val(), $('.row.format input:checked').val());
+      self.setOffer_(0);
     } else if(self.step == 2) {
       var data = new FormData($('form')[0]); // serializes the form's elements.
       self.setAdPreview_(data);
@@ -267,6 +265,8 @@ app.prototype.changeStep_ = function(pValue) {
 app.prototype.setStep2_ = function(pCategory, pFormat) {
   var self = this;
   var opt = {
+    maxCharDestination: 22,
+    maxCharMore: 16,
     price: true,
     date: false,
     maxOffers: 2,
@@ -281,6 +281,8 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
     opt.date = true;
   }
   if(pFormat == '480x325') { // 1/4 H
+    opt.maxCharDestination = 32;
+    opt.maxCharMore = 29;
     opt.maxOffers = 4;
     opt.maxPictures = 4;
     opt.maxOriginalPictures = 4;
@@ -294,6 +296,7 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
     opt.maxPictures = 2;
     opt.maxOriginalPicture = 2;
   } else if(pFormat == '230x152') { // 1/16 H
+    opt.maxCharDestination = 16;
     opt.picture = false;
     opt.maxOffers = 1;
     opt.maxPictures = 0;
@@ -320,6 +323,7 @@ app.prototype.setAdPreview_ = function(pData) {
       })
       var idoc = self.dom.render[0].contentDocument;
       idoc.open();
+      //console.log(data);
       idoc.write(data);
       idoc.close();
     }, error: function(data) {
@@ -364,14 +368,14 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
       self.dom.offersList.append(Mustache.render($(template).filter('#formOfferTpl').html(), pObj));
 
       // Destination
-      $("input[name='"+ pObj.id +"_destination']").rules('add', {
+      $("textarea[name='"+ pObj.id +"_destination']").rules('add', {
         required: true,
         messages: {
           required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
         }
       });
       // Précision
-      $("input[name='"+ pObj.id +"_moreDestination']").rules('add', {
+      $("textarea[name='"+ pObj.id +"_moreDestination']").rules('add', {
         required: true,
         messages: {
           required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')'
