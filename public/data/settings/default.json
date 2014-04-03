@@ -1,5 +1,6 @@
 {
     "price": true,
+    "mention2": true,
     "date": false,
     "maxOffers": 2,
     "picture": true,

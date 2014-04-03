@@ -4,6 +4,7 @@
         "more": 16,
         "mention": 14
     },
+    "mention2": false,
 	"picture": false,
 	"maxOffers": 1,
 	"maxPictures": 0,
