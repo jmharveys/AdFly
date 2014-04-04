@@ -65,7 +65,12 @@
 }
 .lp-front .lp-pager.lp-pictures {
 	width: 328px;
+	left: 0;
+	text-align: center;
+	bottom: 8px;
+	width: 328px;
 }
+
 {{/exist.picturesGallery}}
 {{#exist.price}}
 {{#exist.mentions}}
@@ -84,16 +89,18 @@
 	padding: 0px 10px 6px 40px;
 }
 
+.lp-back .lp-summary > div {
+	vertical-align: bottom;
+}
+
 .lp-back .lp-summary > div:nth-child(1) {
 	display: table;
-	padding: 16px 0 0 0;
+	padding: 27px 0 0 0;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {
 	display: table-cell;
-	vertical-align: bottom;
 	text-align: right;
-	padding: 0 0 3px 0;
 }
 
 .lp-back .lp-card {
@@ -139,7 +146,7 @@
 	font: normal normal 17px/19px AmericanTypewriter;
 }
 
-.lp-back .lp-strapline br {
+.lp-back .lp-strapline br, .lp-back .lp-title br {
 	display: none;
 }
 
@@ -157,6 +164,7 @@
 {{/exist.mentions}}
 .lp-back .lp-price {
 	font: normal normal 28px/17px AmericanTypewriter-Bold;
+	padding: 0 0 3px 0;
 }
 {{/exist.price}}
 .lp-back .lp-description {

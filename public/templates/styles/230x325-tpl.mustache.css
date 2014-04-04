@@ -8,7 +8,7 @@
 }
 
 .lp-title {
-	height: 38px;
+	max-height: 38px;
 	overflow: hidden;
 }
 
