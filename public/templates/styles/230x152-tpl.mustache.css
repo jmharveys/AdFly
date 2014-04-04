@@ -96,14 +96,10 @@
 {{/exist.rating}}
 
 .lp-back .lp-logo {
-	bottom: 5px;
-	left: 72px;
+	bottom: 4px;
+	left: 73px;
 	width: 100px;
 	height: 30px;
-}
-
-.lp-back .lp-plus-web {
-	bottom: 4px;
 }
 
 .lp-back .lp-title {
