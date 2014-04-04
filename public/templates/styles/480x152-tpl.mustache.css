@@ -1,6 +1,6 @@
 .lp-offer {
 	background-position: 0 50%;
-	background-size: auto 100%;
+	background-size: 328px auto;
 }
 {{#exist.date}}
 .lp-date,
