@@ -26,11 +26,11 @@
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>demos/images/bergeron.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 328px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/barcelo1.jpg'); width:328px; height:152px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/barcelo1.jpg'); width:328px; height:152px;"></div>
 								</div>
 							</div>
 							<div class="table-cell-wrapper">
@@ -76,7 +76,7 @@
 								</div>
 							</div>
 							<div class="close"></div>
-							<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
+							<div class="logo" style="background-image: url('<?= URL ?>demos/images/bergeron-small.jpg');"></div>
 							<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 							<div class='lp-legal-bg noFlip'></div>
 							<div class='lp-legal noFlip' style="height:80px; -webkit-transform: translate3d(0, 80px, 0);">

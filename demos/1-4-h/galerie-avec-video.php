@@ -22,9 +22,6 @@
 </head>
 <body>
 	<div class='lp-ad lp-480x325'>
-		<!-- <div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/video.jpg');"></div> -->
-
-
 		<!-- VIDEO 1 html | debut --> 
 		<div class='lp-video-bg 1395680443693_video'></div> 
 		<div class='lp-video 1395680443693_video' style="width:480px; height:247px;"> 
@@ -57,14 +54,14 @@
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 1920px;">
 								<div>
 									<!-- VIDEO 1 PLAY html | debut -->
 									<div class='lp-video-play 1395680443693_video noFlip'></div> 
 									<!-- VIDEO 1 PLAY html | fin -->					
-									<div style="background: url('<?= URL ?>public/images/demo/romana.jpg'); width:480px; height:230px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/romana.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Dreams La Romana Resort & Spa</p>
@@ -77,7 +74,7 @@
 									</div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/holguin.jpg'); width:480px; height:230px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/holguin.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Blau Costa Verde</p>
@@ -93,7 +90,7 @@
 									<!-- VIDEO 2 PLAY html | debut -->
 									<div class='lp-video-play 1395680443692_video noFlip'></div> 
 									<!-- VIDEO 2 PLAY html | fin -->		
-									<div style="background: url('<?= URL ?>public/images/demo/acapulco.jpg'); width:480px; height:230px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/acapulco.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Las Brisas Acapulco</p>
@@ -106,7 +103,7 @@
 									</div>	
 								</div>		
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/playa.jpg'); width:480px; height:230px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/playa.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Playa Blanca</p>
@@ -159,7 +156,7 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 								</div>
@@ -187,7 +184,7 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>
@@ -220,7 +217,7 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>
@@ -253,7 +250,7 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>

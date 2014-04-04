@@ -26,11 +26,11 @@
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>demos/images/bergeron.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 960px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/varadero.jpg'); width:328px; height:152px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/varadero.jpg'); width:328px; height:152px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Dreams La Romana</p>
@@ -43,7 +43,7 @@
 									</div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/mexique.jpg'); width:328px; height:152px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/mexique.jpg'); width:328px; height:152px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Azul Fives Hotel</p>
@@ -92,7 +92,7 @@
 										</div>
 									</div>
 									<div class="close"></div>
-									<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
+									<div class="logo" style="background-image: url('<?= URL ?>demos/images/bergeron-small.jpg');"></div>
 									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 								</div>
 								<div>
@@ -117,7 +117,7 @@
 										</div>
 									</div>
 									<div class="close"></div>
-									<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/bergeron-small.jpg');"></div>
+									<div class="logo" style="background-image: url('<?= URL ?>demos/images/bergeron-small.jpg');"></div>
 									<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>									
 									<div class='lp-legal-bg noFlip'></div>
 									<div class='lp-legal noFlip' style="height:100px; -webkit-transform: translate3d(0, 100px, 0);">

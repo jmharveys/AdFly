@@ -9,7 +9,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>1/4 Statique | AdFly </title>
-	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
+	<meta name="description" property="og:description" content="Outils de création demositaire pes annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/ad.css">
@@ -26,11 +26,11 @@
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 480px;">
 								<div>				
-									<div style="background: url('<?= URL ?>public/images/demo/mexique1.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/mexique1.jpg'); width:480px; height:247px;"></div>
 								</div>
 							</div>
 							<div class="table-cell-wrapper">
@@ -81,7 +81,7 @@
 										<div class='lp-legal-text noFlip' style="height:204px;">58481100 | Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée.  Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. ** Offre d’une durée limitée. Offres en vigueur du lundi 3 mars au mercredi 26 mars 2014. Quantité limitée sur certains articles. Valable pour les produits en inventaire seulement. Ces offres ne peuvent être jumelées à aucune autre promotion. Détails en magasin. **</div>
 									</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 								</div>				
@@ -92,7 +92,7 @@
 			</div>
 		<!--=== RETOURNER html | fin ==============-->
 	</div>
-	<script src="<?= URL ?>public/scripts/min/iscroll5.min.js"></script>
+	<script src="<?= URL ?>demos/scriptsiscroll5.min.js"></script>
 	<script>
 		var ad = document.getElementsByClassName('lp-ad')[0];
 

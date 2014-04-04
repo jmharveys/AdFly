@@ -22,19 +22,19 @@
 </head>
 <body>
 	<div class='lp-ad lp-230x325 uniqueOffer'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/reference-2.jpg');"></div>
+		<div id="overlay" style="background-image: url('<?= URL ?>demos/images/reference-2.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 460px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/1-8v-1.jpg'); width:230px; height:197px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/1-8v-1.jpg'); width:230px; height:197px;"></div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/1-8v-2.jpg'); width:230px; height:197px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/1-8v-2.jpg'); width:230px; height:197px;"></div>
 								</div>	
 							</div>
 							<div class="table-cell-wrapper">
@@ -87,7 +87,7 @@
 											<p class="price">99 999</p>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 										<div class='lp-legal-bg noFlip'></div>
 										<div class='lp-legal noFlip' style="height:210px; -webkit-transform: translate3d(0, 210px, 0);">

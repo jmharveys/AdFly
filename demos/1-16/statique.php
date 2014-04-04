@@ -22,12 +22,12 @@
 </head>
 <body>
 	<div class='lp-ad lp-230x152'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/allegro-back.jpg');"></div>
+		<div id="overlay" style="background-image: url('<?= URL ?>demos/images/allegro-back.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="wrapper-logo"><div class="logo" style="background-image: url('<?= URL ?>public/images/demo/beltour.jpg');"></div></div>
+						<div class="wrapper-logo"><div class="logo" style="background-image: url('<?= URL ?>demos/images/beltour.jpg');"></div></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 230px;">
 								<div>
@@ -70,7 +70,7 @@
 								</div>											
 							</div>
 							<div class="close"></div>
-							<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/beltour.jpg');"></div>
+							<div class="logo" style="background-image: url('<?= URL ?>demos/images/beltour.jpg');"></div>
 							<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>			
 						</div>
 					</div>

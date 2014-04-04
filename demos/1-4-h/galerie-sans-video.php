@@ -26,11 +26,11 @@
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 1920px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/romana.jpg'); width:480px; height:230px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/romana.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Dreams La Romana Resort & Spa</p>
@@ -43,7 +43,7 @@
 									</div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/holguin.jpg'); width:480px; height:230px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/holguin.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Blau Costa Verde</p>
@@ -56,7 +56,7 @@
 									</div>	
 								</div>	
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/acapulco.jpg'); width:480px; height:230px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/acapulco.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Las Brisas Acapulco</p>
@@ -69,7 +69,7 @@
 									</div>	
 								</div>		
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/playa.jpg'); width:480px; height:230px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/playa.jpg'); width:480px; height:230px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Playa Blanca</p>
@@ -122,7 +122,7 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 								</div>
@@ -150,7 +150,7 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>
@@ -183,7 +183,7 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>
@@ -216,7 +216,7 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 									<div class='lp-legal-bg noFlip'></div>

@@ -106,7 +106,7 @@ for(var x=0; x<videos.player.length; x++) {
 {{/exist.video}}
 
 {{#exist.legal}}
-/*=== Legal ========================================*/
+/*=== LEGAL ========================================*/
 var legalBg = document.getElementsByClassName('lp-legal-bg');
 var legalList = document.getElementsByClassName('lp-legal');
 
@@ -132,6 +132,8 @@ function legal(container, bg) {
 for(var i=0; i<legalList.length; i++) {
 	new legal(legalList[i], legalBg[i]);
 }
+
+/*=== LEGAL script | fin ===========================*/
 {{/exist.legal}}	
 
 {{#exist.gallery}}

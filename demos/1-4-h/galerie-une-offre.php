@@ -44,23 +44,23 @@
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 1920px;">
 								<div>				
-									<div style="background: url('<?= URL ?>public/images/demo/mexique1.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/mexique1.jpg'); width:480px; height:247px;"></div>
 								</div>
 								<div>
 									<!-- VIDEO 1 PLAY html | debut -->
 									<div class='lp-video-play 1395680443693_video noFlip'></div> 
 									<!-- VIDEO 1 PLAY html | fin -->
-									<div style="background: url('<?= URL ?>public/images/demo/mexique2.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/mexique2.jpg'); width:480px; height:247px;"></div>
 								</div>	
 								<div>	
-									<div style="background: url('<?= URL ?>public/images/demo/mexique3.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/mexique3.jpg'); width:480px; height:247px;"></div>
 								</div>		
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/mexique4.jpg'); width:480px; height:247px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/mexique4.jpg'); width:480px; height:247px;"></div>
 								</div>	
 							</div>
 							<div class="table-cell-wrapper">
@@ -114,7 +114,7 @@
 											</div>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 								</div>				

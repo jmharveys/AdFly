@@ -22,16 +22,16 @@
 </head>
 <body>
 	<div class='lp-ad lp-230x325'>
-		<div id="overlay" style="background-image: url('<?= URL ?>public/images/demo/reference-2.jpg');"></div>
+		<div id="overlay" style="background-image: url('<?= URL ?>demos/images/reference-2.jpg');"></div>
 		<!--=== RETOURNER html | debut ==============-->
 			<div class='flip'> 
 				<div class='front'>
 					<div class="wrapper">
-						<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr.jpg');"></div>
+						<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr.jpg');"></div>
 						<div class='gallery'>
 							<div class='scroller' style="width: 460px;">
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/1e_a.jpg'); width:230px; height:197px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/1e_a.jpg'); width:230px; height:197px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Dreams La Romana</p>
@@ -44,7 +44,7 @@
 									</div>
 								</div>
 								<div>
-									<div style="background: url('<?= URL ?>public/images/demo/1e_b.jpg'); width:230px; height:197px;"></div>
+									<div style="background: url('<?= URL ?>demos/images/1e_b.jpg'); width:230px; height:197px;"></div>
 									<div class="description">
 										<div>
 											<p class="title">Oasis Palm</p>
@@ -95,7 +95,7 @@
 											<p class="price">99 999</p>
 										</div>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/tmr-small.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/tmr-small.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 									</div>
 								</div>
@@ -123,7 +123,7 @@
 										<p class="mention">à partir de<br/>par pers.</p>
 										<p class="price">839</p>
 										<div class="close"></div>
-										<div class="logo" style="background-image: url('<?= URL ?>public/images/demo/sunwing-back.jpg');"></div>
+										<div class="logo" style="background-image: url('<?= URL ?>demos/images/sunwing-back.jpg');"></div>
 										<a class="btn-plusWeb noFlip" href="http://www.lapresse.ca"></a>
 										<div class='lp-legal-bg noFlip'></div>
 										<div class='lp-legal noFlip' style="height:210px; -webkit-transform: translate3d(0, 210px, 0);">
