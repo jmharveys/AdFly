@@ -134,7 +134,7 @@
 		{{/opt.picture}}
 
 		{{#opt.video}}
-		<div class="row">
+		<div class="row video">
 			<div class="half field">
 				<label>
 					<span class="lbl">{{t.video}}</span><br>
@@ -144,6 +144,12 @@
 					</div>
 				</label>
 			</div>
+			<ol class="files-list hide">
+				<li>
+					<span class="preview"></span>
+					<a href="#" class="js-erease-video">X</a>
+				</li>
+			</ol>
 		</div>
 		{{/opt.video}}
 

@@ -125,7 +125,7 @@ class AdModel {
                 $obj->time = new stdClass();
                 $obj->time->raw = $_POST[$obj->id . "_time"];
                 $timeArr = explode(":", $obj->time->raw);
-                $obj->time->text = intval($timeArr[0]) ."h ". $timeArr[1];
+                $obj->time->text = intval($timeArr[0]) ."&thinsp;h&thinsp;". $timeArr[1];
             }
             /* Mentions */
             $obj->mentions = [];

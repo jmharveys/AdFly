@@ -617,6 +617,12 @@ body.no3 .steps {
   margin: 4px 0;
 }
 
+.form .step .zipable {
+  position: absolute;
+  top: -9999px;
+  left: 0;
+}
+
 .form .step .content {
   position: relative;
   width: 500px;
@@ -667,7 +673,7 @@ body.no3 .steps {
   width: 100%;
 }
 
-.form .step .content iframe {
+.form .step .content .render {
   display: block;
   position: relative;
   background: #fff;
@@ -968,7 +974,7 @@ body.no3 .steps {
   width: 100%;
 }
 
-.form .multi-files .files-list {
+.form .files-list {
   position: relative;
   float: left;
   list-style: none;
@@ -976,13 +982,17 @@ body.no3 .steps {
   padding: 0;
 }
 
-.form .multi-files .files-list li {
+.form .files-list.hide {
+  display: none;
+}
+
+.form .files-list li {
   position: relative;
   float: left;
   height: 24px;
 }
 
-.form .multi-files .files-list li a {
+.form .files-list li a {
   display: inline-block;
   color: #000;
   text-decoration: none;
@@ -1071,4 +1081,12 @@ body.no3 .steps {
   -webkit-transform: translateY(-125px);
   -ms-transform: translateY(-125px);
   transform: translateY(-125px);
+}
+
+.video .preview {
+  background-image: url("../images/video@2x.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  -webkit-background-size: 24px 65px;
+  background-size: 24px 65px;
 }

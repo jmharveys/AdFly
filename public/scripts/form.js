@@ -42,6 +42,7 @@ app.prototype.map_ = function() {
     addOfferMsg: $('.addOfferMsg'),
     offersList: $('.offersList'),
     render: $('iframe.render'),
+    zipable: $('iframe.zipable'),
     downloadBtn: $('.js-download'),
     popupConfirmation: $('.popup.confirmation'),
     cancel: $('.js-cancel'),
@@ -183,6 +184,14 @@ app.prototype.bindEvents_ = function() {
     self.deleteMultiFiles_($(this).closest('li').data('key'));
   });
 
+  self.dom.steps.on('change', '.video input', function() {
+    self.updateVideo_($(this));
+  });
+
+  self.dom.steps.on('click', '.js-erease-video', function() {
+    self.deleteVideo_($(this).closest('.row').find('input'));
+  });
+
   self.dom.steps.on('click', '.delete-offer a', function(e) {
     e.preventDefault();
     var offer = $(this).closest('fieldset');
@@ -209,9 +218,9 @@ app.prototype.bindEvents_ = function() {
   });
 };
 
-app.prototype.downloadAd_ = function(pValue) {
+app.prototype.downloadAd_ = function() {
   var self = this;
-  var html = self.dom.render.contents().find("html")[0].outerHTML;
+  var html = self.dom.zipable.contents().find("html")[0].outerHTML;
   $.ajax({
     type: "POST",
     url: self.root + 'app/libraries/createFiles.php',
@@ -241,6 +250,28 @@ app.prototype.downloadAd_ = function(pValue) {
   });
 };
 
+app.prototype.updateVideo_ = function(pInput) {
+  var self = this;
+  var row = pInput.closest('.row');
+  var files = row.find('.files-list');
+  pInput.blur();
+  if(pInput.val() == '') {
+    files.addClass('hide');
+  } else {
+    files.removeClass('hide');
+  }
+};
+
+app.prototype.deleteVideo_ = function(pInput) {
+  var self = this;
+  var row = pInput.closest('.row');
+  var files = row.find('.files-list');
+  resetFormElement(pInput);
+  files.addClass('hide');
+  row.find('.field').removeClass('valid');
+  pInput.blur();
+};
+
 /*=== Change Step ===========================================*/
 app.prototype.changeStep_ = function(pValue) {
   var self = this;
@@ -248,7 +279,7 @@ app.prototype.changeStep_ = function(pValue) {
   var valid = true;
 
   if(pValue === 1) {
-    $('.js-validate', currentStep).each(function(i, v){
+    $('.js-validate', currentStep).each(function(i, v) {
       valid = self.validator.element(v) && valid;
     });
   }
@@ -321,9 +352,13 @@ app.prototype.setAdPreview_ = function(pData) {
         'height': self.format.split('x')[1] + 'px'
       })
       var idoc = self.dom.render[0].contentDocument;
+      var zipable = self.dom.zipable[0].contentDocument;
       idoc.open();
       idoc.write(data);
       idoc.close();
+      zipable.open();
+      zipable.write(data);
+      zipable.close();
     }, error: function(data) {
       console.log("error");
       console.log(data);

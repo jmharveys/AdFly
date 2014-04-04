@@ -9,6 +9,11 @@ function throttle(func, interval) {
     };
 }
 
+function resetFormElement(e) {
+  e.wrap('<form>').closest('form').get(0).reset();
+  e.unwrap();
+}​
+
 $.fn.serializeObject = function() {
     var o = {};
     var a = this.serializeArray();

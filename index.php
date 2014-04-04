@@ -127,6 +127,7 @@
 
 			<!-- === Step 3 ================================================= -->
 			<section class="step no3">
+				<iframe class="zipable"></iframe>
 				<div class="content">
 					<div class="iframe">
 						<iframe class="render"></iframe>
