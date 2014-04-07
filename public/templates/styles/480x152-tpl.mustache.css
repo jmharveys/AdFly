@@ -86,7 +86,7 @@
 .lp-back .lp-summary {
 	display: table;
 	width: 100%;
-	padding: 0px 10px 6px 40px;
+	padding: 10px 10px 6px 40px;
 }
 
 .lp-back .lp-summary > div {
@@ -95,7 +95,6 @@
 
 .lp-back .lp-summary > div:nth-child(1) {
 	display: table;
-	padding: 27px 0 0 0;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {

@@ -5,8 +5,8 @@
         "mention": 14,
         "description": 140
     },
-    "maxOffers": 4,
-    "maxPictures": 4,
-    "maxOriginalPictures": 4,
+    "maxOffers": 3,
+    "maxPictures": 3,
+    "maxOriginalPictures": 3,
     "video": true
 }

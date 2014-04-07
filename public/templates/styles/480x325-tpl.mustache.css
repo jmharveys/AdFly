@@ -18,7 +18,7 @@
 .lp-title {
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
 	overflow: hidden;
-	height: 47px;
+	max-height: 47px;
 }
 
 {{#exist.price}}
@@ -94,6 +94,9 @@
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
 }
 
+.lp-front .lp-pager {
+	bottom: 8px;
+}
 {{#exist.picturesGallery}}
 .lp-gallery.lp-pictures {
 	width: 100%;
@@ -103,10 +106,12 @@
 	width: 480px;
 	height: 245px;
 }
-{{/exist.picturesGallery}}
+
 .lp-front .lp-pager {
-	bottom: 8px;
+	bottom: 102px;
 }
+{{/exist.picturesGallery}}
+
 
 /*--- Back -------------------------*/
 .lp-back .lp-card {
