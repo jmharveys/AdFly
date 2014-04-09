@@ -43,11 +43,12 @@
 }
 
 .lp-front .lp-strapline {
-	font: normal normal 17px/18px AmericanTypewriter;
+	font: normal normal 16px/16px AmericanTypewriter;
+	white-space: nowrap;
 }
 
 .lp-front .lp-title {
-	font: normal normal 18px/19px AmericanTypewriter-Bold;
+	font: normal normal 18px/18px AmericanTypewriter-Bold;
 }
 
 {{#exist.picturesGallery}}
@@ -70,7 +71,7 @@
 {{#exist.mentions}}
 .lp-front .lp-mentions {
 	display: inline-block;
-	font: normal normal 12px/12px AmericanTypewriter;
+	font: normal normal 12px/14px AmericanTypewriter;
 }
 {{/exist.mentions}}
 .lp-front .lp-price {
@@ -81,7 +82,6 @@
 /*--- Back -------------------------*/
 .lp-back .lp-summary {
 	width: 100%;
-	padding: 25px 10px 0px 40px;
 }
 
 .lp-back .lp-summary > div {
@@ -95,6 +95,7 @@
 
 .lp-back .lp-card {
 	height: 257px;
+	padding: 15px 10px 0px 15px;
 }
 
 {{#exist.rating}}
@@ -134,22 +135,20 @@
 
 .lp-back .lp-strapline {
 	display: inline-block;
-	font: normal normal 17px/18px AmericanTypewriter;
+	font: normal normal 16px/16px AmericanTypewriter;
 }
 
 .lp-back .lp-title {
-	font: normal normal 18px/19px AmericanTypewriter-Bold;
+	font: normal normal 18px/18px AmericanTypewriter-Bold;
 }
 {{#exist.price}}
 {{#exist.mentions}}
 .lp-back .lp-mentions {
 	font: normal normal 12px/14px AmericanTypewriter;
-	padding: 0 0 0 40px;
 }
 {{/exist.mentions}}
 .lp-back .lp-price {
 	font: normal normal 28px/20px AmericanTypewriter-Bold;
-	padding: 0 0 0 40px;
 }
 {{/exist.price}}
 .lp-back .lp-description {
@@ -160,6 +159,6 @@
 	margin: 0;
 }
 .lp-back .lp-description span {
-	padding: 0 15px 0 40px;
-	-webkit-line-clamp: 4;
+	padding: 0 10px 0  0;
+	-webkit-line-clamp: 5;
 }

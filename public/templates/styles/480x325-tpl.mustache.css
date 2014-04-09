@@ -8,7 +8,8 @@
 }
 
 .lp-strapline {
-	font: normal normal 17px/18px AmericanTypewriter;
+	white-space: nowrap;
+	font: normal normal 16px/18px AmericanTypewriter;
 }
 
 .lp-strapline br {
@@ -18,13 +19,13 @@
 .lp-title {
 	font: normal normal 23px/23px AmericanTypewriter-Bold;
 	overflow: hidden;
-	max-height: 47px;
+	max-height: 46px;
 }
 
 {{#exist.price}}
 {{#exist.mentions}}
 .lp-mentions {
-	font: normal normal 12px/12px AmericanTypewriter;
+	font: normal normal 12px/14px AmericanTypewriter;
 }
 {{/exist.mentions}}
 .lp-price {
@@ -35,7 +36,7 @@
 {{#exist.date}}
 .lp-date,
 .lp-time {
-	font: normal normal 23px/23px AmericanTypewriter-Bold;
+	font: normal normal 16px/18px AmericanTypewriter-Bold;
 }
 {{/exist.date}}
 {{#exist.video}}
@@ -86,14 +87,6 @@
 	max-height: 75px;
 }
 
-.lp-front .lp-strapline {
-	font-size: 16px;
-}
-
-.lp-front .lp-title {
-	font: normal normal 23px/23px AmericanTypewriter-Bold;
-}
-
 .lp-front .lp-pager {
 	bottom: 8px;
 }
@@ -115,33 +108,31 @@
 
 /*--- Back -------------------------*/
 .lp-back .lp-card {
-	height: 265px;
+	width: 100%;
+	height: 270px;
+	padding: 15px 10px 0 15px;
 }
 
-.lp-back .lp-summary {
-	padding: 26px 10px 6px 40px;
-}
 
 .lp-back .lp-summary > div:nth-child(1) {
 	width: 310px;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {
-	width: 143px;
+	width: 170px;
 }
 
 .lp-back .lp-description span {
 	font: normal normal 15px/20px AmericanTypewriter;
 	-webkit-line-clamp: 5;
 	width: 440px;
-	padding: 0 0 0 40px;
 }
 
 {{#exist.rating}}
 .lp-back .lp-rating {
 	height: 18px;
 	background-image: url("public/images/starBig@2x.png");
-	margin: 10px 3px 0 0;
+	margin: 7px 3px 0 0;
 }
 
 .lp-back .lp-rating.lp-1-stars {
@@ -162,7 +153,7 @@
 {{/exist.rating}}
 {{#exist.mentions}}
 .lp-back .lp-mentions {
-	font: normal normal 12px/14px AmericanTypewriter;
+	font: normal normal 12px/12px AmericanTypewriter;
 }
 {{/exist.mentions}}
 .lp-back .lp-logo {

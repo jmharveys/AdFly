@@ -23,6 +23,7 @@ class AdModel {
         $settings->f230x152->logo->w = 75;
         $settings->f230x152->logo->h = 30;
         $settings->months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+        $settings->monthsShorten = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juill.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];        
 
         $this->ad->meta = new stdClass();
         $this->ad->meta->id = $_POST["id"];
@@ -116,7 +117,8 @@ class AdModel {
                 $obj->date->raw = $_POST[$obj->id . "_date"];
                 $dateArr = explode("-", $obj->date->raw);
                 $obj->date->year = intval($dateArr[0]);
-                $obj->date->month = $settings->months[intval($dateArr[1]) -1];
+                $monthArray = ($this->ad->meta->format === "480x152") ? $settings->monthsShorten[intval($dateArr[1]) -1] : $settings->months[intval($dateArr[1]) -1]; 
+                $obj->date->month = $monthArray;
                 $obj->date->day = intval($dateArr[2]);
                 $obj->date->text = $obj->date->day ." ". $obj->date->month ." ". $obj->date->year;
             }
@@ -125,7 +127,7 @@ class AdModel {
                 $obj->time = new stdClass();
                 $obj->time->raw = $_POST[$obj->id . "_time"];
                 $timeArr = explode(":", $obj->time->raw);
-                $obj->time->text = intval($timeArr[0]) ."&thinsp;h&thinsp;". $timeArr[1];
+                $obj->time->text = intval($timeArr[0]) .html_entity_decode("&thinsp;h&thinsp;"). $timeArr[1];
             }
             /* Mentions */
             $obj->mentions = [];

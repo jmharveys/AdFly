@@ -221,6 +221,16 @@ app.prototype.bindEvents_ = function() {
 app.prototype.downloadAd_ = function() {
   var self = this;
   var html = self.dom.zipable.contents().find("html")[0].outerHTML;
+
+  // var test = self.dom.zipable[0].contentDocument;
+  // console.log(self.dom.zipable[0].contentDocument);
+  // var serializer = new XMLSerializer();
+  // var content = serializer.serializeToString(test);
+  // console.log(test);
+  // var html = self.dom.zipable.contents().find("head")[0].html();
+ // var json_text = JSON.stringify(self.dom.zipable, null, 2);
+ // console.log(json_text);
+  // console.log("****sex**",content,test);
   $.ajax({
     type: "POST",
     url: self.root + 'app/libraries/createFiles.php',
@@ -336,7 +346,7 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
   });
 };
 
-/*=== Set Ad Preview ===========================================*/
+/*=== Set Ad Preview ==========================================*/
 app.prototype.setAdPreview_ = function(pData) {
   var self = this;
   $.ajax({
@@ -359,6 +369,8 @@ app.prototype.setAdPreview_ = function(pData) {
       zipable.open();
       zipable.write(data);
       zipable.close();
+      console.log("idoc",idoc);
+      console.log("zipable",zipable);
     }, error: function(data) {
       console.log("error");
       console.log(data);
