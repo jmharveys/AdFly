@@ -1,5 +1,6 @@
 {
 	"fr": {
+		"additionalChargesForVideos": "Frais supplémentaire pour l'ajout de vidéos",
 		"adNo": "# Annonce",
 		"addOffer": "Ajouter une offre",
 		"adventures": "Aventures",
@@ -67,6 +68,7 @@
 		"webLink": "Lien web"
 	},
 	"en": {
+		"additionalChargesForVideos": "Additional charges for adding videos",
 		"adNo": "Ad #",
 		"addOffer": "Add an offer",
 		"adventures": "Adventures",

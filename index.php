@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="<?= $culture ?>"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title><?= $t[$culture]['form']; ?> | AdFly </title>
+	<title><?= $t[$culture]['form']; ?> | Incontournables du voyage </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
