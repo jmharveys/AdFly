@@ -331,6 +331,20 @@ html, body {
 	background-position: 50% 50%;
 }
 
+.lp-front .lp-plus {
+	position: absolute;
+	display: block;
+	top: 5px;
+	right: 5px;
+	width: 30px;
+	height: 30px;
+	background-image: url('public/images/basic@2x.png');
+	background-position: -34px -36px;
+	background-repeat: no-repeat;
+	background-size: 65px;
+	z-index: 1;
+}
+
 .lp-front .lp-summary {
 	display: table;
 	background: #fff;
