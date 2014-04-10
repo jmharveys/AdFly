@@ -5,7 +5,7 @@
 {{#exist.date}}
 .lp-date,
 .lp-time {
-	font: normal normal 19px/19px AmericanTypewriter-Bold;
+	font: normal normal 18px/18px AmericanTypewriter-Bold;
 }
 {{/exist.date}}
 {{#exist.gallery}}
@@ -40,14 +40,15 @@
 }
 
 .lp-front .lp-strapline {
-	font: normal normal 17px/18px AmericanTypewriter;
-	max-height: 37px;
+	font: normal normal 16px/16px AmericanTypewriter;
+	max-height: 32px;
 	overflow: hidden;
+	margin: 0 0 4px 0;
 }
 
 .lp-front .lp-title {
-	font: normal normal 18px/19px AmericanTypewriter-Bold;
-	max-height: 37px;
+	font: normal normal 18px/18px AmericanTypewriter-Bold;
+	max-height: 36px;
 	overflow: hidden;
 }
 
@@ -75,18 +76,16 @@
 {{#exist.price}}
 {{#exist.mentions}}
 .lp-front .lp-mentions {
-	font: normal normal 12px/12px AmericanTypewriter;
+	font: normal normal 12px/14px AmericanTypewriter;
 }
 {{/exist.mentions}}
 .lp-front .lp-price {
-	font: normal normal 28px/26px AmericanTypewriter-Bold;
+	font: normal normal 28px/20px AmericanTypewriter-Bold;
 }
 {{/exist.price}}
 /*--- Back -------------------------*/
 .lp-back .lp-summary {
 	display: table;
-	width: 100%;
-	padding: 0px 10px 6px 40px;
 }
 
 .lp-back .lp-summary > div {
@@ -95,7 +94,7 @@
 
 .lp-back .lp-summary > div:nth-child(1) {
 	display: table;
-	padding: 27px 0 0 0;
+	width: 310px;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {
@@ -106,6 +105,7 @@
 .lp-back .lp-card {
 	width: 100%;
 	height: 104px;
+	padding: 15px 10px 0px 15px;
 }
 
 {{#exist.rating}}
@@ -144,6 +144,7 @@
 .lp-back .lp-strapline {
 	display: inline-block;
 	font: normal normal 17px/19px AmericanTypewriter;
+	white-space: nowrap;
 }
 
 .lp-back .lp-strapline br, .lp-back .lp-title br {
@@ -152,14 +153,13 @@
 
 .lp-back .lp-title {
 	font: normal normal 18px/18px AmericanTypewriter-Bold;
-	max-height: 37px;
 	overflow: hidden;
+	white-space: nowrap;
 }
 {{#exist.price}}
 {{#exist.mentions}}
 .lp-back .lp-mentions {
-	font: normal normal 12px/12px AmericanTypewriter;
-	padding: 0 0 5px 0;
+	font: normal normal 12px/14px AmericanTypewriter;
 }
 {{/exist.mentions}}
 .lp-back .lp-price {
@@ -172,7 +172,6 @@
 }
 .lp-back .lp-description span {
 	-webkit-line-clamp: 2;
-	padding: 0 0 0 40px;
 	width: 370px;
 }
 {{#exist.gallery}}

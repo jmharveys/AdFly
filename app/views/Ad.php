@@ -26,7 +26,6 @@ class AdView {
         </style>
         <?php
         $styles = ob_get_clean();
-        ob_end_clean();
         return $styles;
     }
      
@@ -35,7 +34,6 @@ class AdView {
         $template = file_get_contents("public/templates/offer-tpl.mustache.html");
         echo $this->m->render($template, $this->ad);
     	$html = ob_get_clean();
-        ob_end_clean();
         return $html;
     }
 
@@ -53,7 +51,6 @@ class AdView {
         </script>
         <?php
             $scripts = ob_get_clean();
-            ob_end_clean();
         $scripts.= '';
         return $scripts;
     }

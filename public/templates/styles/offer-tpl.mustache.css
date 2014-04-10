@@ -1,5 +1,7 @@
 *, *:before, *:after {box-sizing: border-box;}
-
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 html, body {
 	width: 100%;
 	height: 100%;
@@ -329,6 +331,20 @@ html, body {
 	background-position: 50% 50%;
 }
 
+.lp-front .lp-plus {
+	position: absolute;
+	display: block;
+	top: 5px;
+	right: 5px;
+	width: 30px;
+	height: 30px;
+	background-image: url('public/images/basic@2x.png');
+	background-position: -34px -36px;
+	background-repeat: no-repeat;
+	background-size: 65px;
+	z-index: 1;
+}
+
 .lp-front .lp-summary {
 	display: table;
 	background: #fff;
@@ -371,31 +387,11 @@ html, body {
 	float: left;
 	position: relative;
 	width: 100%;
-	padding: 26px 10px 6px 39px;
 }
 
 .lp-back .lp-summary > div {
 	vertical-align: top;
 }
-
-.lp-back .lp-close {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 40px;
-	height: 40px;
-	background-image: url("public/images/basic@2x.png");
-	background-position: 100% 0;
-	background-repeat: no-repeat;
-	background-size: 80px 80px;
-	z-index: 1;
-}
-
-.lp-back .lp-close:active {
-	background-position: 100% -40px;
-}
-
 
 {{#exist.rating}}
 .lp-back .lp-rating {
@@ -444,22 +440,24 @@ html, body {
 	background-image: url("public/images/basic@2x.png");
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	background-size: 80px 80px;
+	background-size: 80px;
 	z-index: 1;
 }
 
+/*a corriger */
 .lp-back .lp-plus-web:active {
-	background-position: 0 -40px;
+	background-position: -80px -40px;
 }
 
 .lp-back .lp-plus-web:after {
   position: absolute;
   content: "";
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   top: -9px;
   left: -9px;
 }
+
 {{#exist.legal}}
 .lp-legal-bg {
 	position: absolute;

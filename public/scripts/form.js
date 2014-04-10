@@ -336,7 +336,7 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
   });
 };
 
-/*=== Set Ad Preview ===========================================*/
+/*=== Set Ad Preview ==========================================*/
 app.prototype.setAdPreview_ = function(pData) {
   var self = this;
   $.ajax({

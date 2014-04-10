@@ -5,6 +5,7 @@
 	include 'app/models/Ad.php'; 
 	include 'app/views/Ad.php'; 
 
+
 	require 'app/libraries/Mustache/Autoloader.php';
 	Mustache_Autoloader::register();
 
@@ -19,7 +20,7 @@
 	<title><?= $model->ad->meta->format ?></title>
 	<meta name='format-detection' content='telephone=no'>
 	<meta name='author' content='La Presse'>
-	<meta name='dcterms.date' content='<?= date("Y-m-d"); ?>'>
+	<meta name='dcterms.date' content='<?= date("Y-m-d"); ?>'>	
 	<?= $view->outputStyles(); ?>
 </head>
 <body>

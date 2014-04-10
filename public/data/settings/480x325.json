@@ -1,12 +1,12 @@
 {
-	"maxlength": {
-		"strapline": 29,
-        "title": 32,
+    "maxlength": {
+        "strapline": 29,
+        "title": 34,
         "mention": 14,
-        "description": 140
+        "description": 275
     },
-    "maxOffers": 4,
-    "maxPictures": 4,
-    "maxOriginalPictures": 4,
+    "maxOffers": 3,
+    "maxPictures": 3,
+    "maxOriginalPictures": 3,
     "video": true
 }
