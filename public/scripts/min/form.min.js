@@ -346,6 +346,7 @@ app.prototype.setAdPreview_ = function(pData) {
     cache: false,
     contentType: false,
     processData: false,
+    dataType: "json",
     success: function(data) {
       self.dom.render.css({
         'width': self.format.split('x')[0] + 'px', 
