@@ -968,6 +968,15 @@ body.no3 .steps {
   color: rgba(0, 0, 0, 0.7);
 }
 
+.form .note {
+  position: relative;
+  float: left;
+  width: 100%;
+  font-size: .8rem;
+  color: rgba(0, 0, 0, 0.7);
+  margin: .5rem 0;
+}
+
 .form .multi-files {
   position: relative;
   float: left;
