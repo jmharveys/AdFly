@@ -35,8 +35,8 @@
 }
 
 .lp-front .lp-logo {
-	max-width: 100px;
-	max-height: 50px;
+	max-width: 150px;
+	max-height: 45px;
 }
 
 .lp-front .lp-strapline {
@@ -135,10 +135,10 @@
 {{/exist.rating}}
 
 .lp-back .lp-logo {
-	bottom: 14px;
-	left: 335px;
-	width: 85px;
-	height: 30px;
+	bottom: 9px;
+	right: 58px;
+	width: 105px;
+	height: 32px;
 }
 
 .lp-back .lp-strapline {

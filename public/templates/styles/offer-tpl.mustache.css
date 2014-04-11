@@ -429,7 +429,7 @@ html, body {
 }
 
 .lp-back .lp-logo {
-	background-position: 100% 50%;
+	background-position: 100% 100%;
 }
 
 .lp-back .lp-plus-web {
@@ -447,7 +447,7 @@ html, body {
 
 /*a corriger */
 .lp-back .lp-plus-web:active {
-	background-position: -80px -40px;
+	background-position: 0 -40px;
 }
 
 .lp-back .lp-plus-web:after {

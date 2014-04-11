@@ -46,7 +46,7 @@ app.prototype.map_ = function() {
     downloadBtn: $('.js-download'),
     popupConfirmation: $('.popup.confirmation'),
     cancel: $('.popup.confirmation .js-cancel'),
-    confirmBtn: $('popup.confirmation .js-confirm'),
+    confirmBtn: $('.popup.confirmation .js-confirm'),
     popupDelete: $('.popup.delete'),
     cancelErease: $('.popup.delete .js-cancel'),
     confirmErease: $('.popup.delete .js-confirm'),
@@ -162,24 +162,17 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.step1.on('click', '.radio', function() {
-    // self.updateRadioFormat_($(this));
     self.radioChoice = $(this);
     self.checkOffers_();
   });
 
   self.dom.field.category.on('change', function() {
-    // self.resetOffers_();
-    // self.checkOffers_();
     self.category = $(this).val();
-    // self.dom.popupDelete.addClass('active');
   });
 
   self.dom.field.category.on('focus', function() {
-    // self.resetOffers_();
     self.checkOffers_($(this));
     elem = $(this);
-    // self.category = $(this).val();
-    // self.dom.popupDelete.addClass('active');
   });
 
   self.dom.steps.on('focus', '[name$="_freetext"]', function() {
@@ -249,6 +242,7 @@ app.prototype.bindEvents_ = function() {
 };
 
 app.prototype.downloadAd_ = function() {
+  console.log("allo");
   var self = this;
   var html = self.dom.zipable.contents().find("html")[0].outerHTML;
   $.ajax({
@@ -388,7 +382,6 @@ app.prototype.setAdPreview_ = function(pData) {
     cache: false,
     contentType: false,
     processData: false,
-    dataType: "json",
     success: function(data) {
       self.dom.render.css({
         'width': self.format.split('x')[0] + 'px', 
