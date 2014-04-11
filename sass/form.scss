@@ -189,7 +189,7 @@ body.no3 {
 		width: 33.33%;
 		height: 100%;
 		overflow-x: hidden;
-		overflow-y: scroll;
+		overflow-y: auto;
 
 		&.no3 {
 			.content {
@@ -228,7 +228,6 @@ body.no3 {
 		.content {
 			position: relative;
 			width: 500px;
-			height: 100%;
 			box-sizing: border-box;
 			margin: 0 auto;
 			transition: width $speed ease;
@@ -406,7 +405,7 @@ body.no3 {
 
 	.input {
 		width: 430px;
-		height: 44px;
+		height: 49px;
 		background: rgba(255,255,255,1);
 		color: rgb(64, 64, 64);
 		box-sizing: border-box;

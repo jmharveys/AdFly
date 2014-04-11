@@ -15,6 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="shortcut icon" href="<?= URL ?>public/images/favicon.ico"/>
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/form.css">
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/rateit.css">
 	<!--[if lt IE 9]>
@@ -50,7 +51,7 @@
 							<div class="half field">
 								<label>
 									<span class="lbl"><?= $t[$culture]['clientNo']; ?></span><br>
-									<input type="text" name="noClient" class="input short js-validate" placeholder="123456" value="123456" required />
+									<input type="text" name="noClient" class="input short js-validate" placeholder="123456" required />
 								</label>
 							</div>
 

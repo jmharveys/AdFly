@@ -589,7 +589,7 @@ body.no3 .steps {
   width: 33.33%;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .form .step.no3 .content {
@@ -626,7 +626,6 @@ body.no3 .steps {
 .form .step .content {
   position: relative;
   width: 500px;
-  height: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -834,7 +833,7 @@ body.no3 .steps {
 .form .textarea,
 .form .select {
   width: 430px;
-  height: 44px;
+  height: 49px;
   background: white;
   color: #404040;
   -webkit-box-sizing: border-box;
