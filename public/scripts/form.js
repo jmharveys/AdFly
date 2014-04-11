@@ -239,16 +239,16 @@ app.prototype.bindEvents_ = function() {
 
    self.dom.confirmErease.on('click', function(e) {
     e.preventDefault();
-    self.dom.field.category.show();
-    self.updateRadioFormat_(self.radioChoice);
-    self.resetOffers_();
-    self.dom.popupDelete.removeClass('active');
+    window.location.reload();
+    // self.dom.field.category.show();
+    // self.updateRadioFormat_(self.radioChoice);
+    // self.resetOffers_();
+    // self.dom.popupDelete.removeClass('active');
   }); 
 
 };
 
 app.prototype.downloadAd_ = function() {
-  console.log("allo");
   var self = this;
   var html = self.dom.zipable.contents().find("html")[0].outerHTML;
   $.ajax({
@@ -344,8 +344,11 @@ app.prototype.checkOffers_ = function() {
 app.prototype.resetOffers_ = function() {
   var self = this;
   var fieldsets = self.dom.offersList.children('fieldset');
+  console.log(fieldsets.length);
   for(var x=0; x<fieldsets.length; x++) {
+    console.log(fieldsets.eq(x));
     key = fieldsets.eq(x);
+
     self.deleteOffer_(key);
   }
   self.offersNbr = 0;

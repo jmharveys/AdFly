@@ -17,6 +17,11 @@
 }
 {{/exist.gallery}}
 /*--- Front ------------------------*/
+
+.lp-front .lp-plus {
+	right: 157px;
+}
+
 .lp-front .lp-summary {
 	width: 152px;
 	height: 100%;
