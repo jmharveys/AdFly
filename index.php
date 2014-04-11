@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="<?= $culture ?>"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title><?= $t[$culture]['form']; ?> | AdFly </title>
+	<title><?= $t[$culture]['form']; ?> | Les Incontournables du voyage </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -76,6 +76,7 @@
 										<option value="packages"><?= $t[$culture]['packages']; ?></option>
 										<option value="destinationWorld"><?= $t[$culture]['destinationWorld']; ?></option>
 									</select>
+									<input type="hidden" name="previousChoice" value="deals"/>
 								</label>
 							</div>
 
@@ -156,6 +157,19 @@
 						</label>
 					</div>
 				</div>
+
+				<div class="popup delete">
+					<div class="window">
+						<span class="close js-cancel"></span>
+						<h2><?= $t[$culture]['confirmation2']; ?></h2>
+						<div class="text"><?= $t[$culture]['confirmationText2']; ?></div>
+						<label>
+							<div class="btn lft js-cancel"><?= $t[$culture]['cancel']; ?></div>
+							<div class="btn blue rgt js-confirm"><?= $t[$culture]['ok']; ?></div>
+						</label>
+					</div>
+				</div>
+
 			</section>
 		</div>
 	</form>

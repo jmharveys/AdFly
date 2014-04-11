@@ -8,7 +8,7 @@ class AdModel {
         $settings = new stdClass();
         $settings->f480x325 = new stdClass();
         $settings->f480x325->logo = new stdClass();
-        $settings->f480x325->logo->w = 165;
+        $settings->f480x325->logo->w = 300;
         $settings->f480x325->logo->h = 75;
         $settings->f480x152 = new stdClass();
         $settings->f480x152->logo = new stdClass();
@@ -57,12 +57,12 @@ class AdModel {
         $this->ad->logo->path = $this->ad->url->assets . $this->ad->logo->name;
         list($this->ad->logo->w, $this->ad->logo->h) = getimagesize($this->ad->logo->tmp);
         $this->ad->logo->ratio = $this->ad->logo->w / $this->ad->logo->h;
-        if($this->ad->logo->ratio > 1) {
-            $this->ad->logo->w = $settings->{'f' . $this->ad->meta->format}->logo->w;
-            $this->ad->logo->h = $settings->{'f' . $this->ad->meta->format}->logo->w / $this->ad->logo->ratio;
-        } else {
-            $this->ad->logo->w = $settings->{'f' . $this->ad->meta->format}->logo->h * $this->ad->logo->ratio;
+        $this->ad->logo->r = $settings->{'f' . $this->ad->meta->format}->logo->w / $this->ad->logo->w;
+        $this->ad->logo->h = $this->ad->logo->r * $this->ad->logo->h;
+        if($this->ad->logo->h > $settings->{'f' . $this->ad->meta->format}->logo->h) {
             $this->ad->logo->h = $settings->{'f' . $this->ad->meta->format}->logo->h;
+            $this->ad->logo->r2 = $settings->{'f' . $this->ad->meta->format}->logo->h / $this->ad->logo->h;
+            $this->ad->logo->w = $this->ad->logo->w / $this->ad->logo->r2;
         }
         array_push($this->ad->assets, $this->ad->logo);
 

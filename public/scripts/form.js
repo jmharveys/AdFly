@@ -45,8 +45,11 @@ app.prototype.map_ = function() {
     zipable: $('iframe.zipable'),
     downloadBtn: $('.js-download'),
     popupConfirmation: $('.popup.confirmation'),
-    cancel: $('.js-cancel'),
-    confirmBtn: $('.js-confirm'),
+    cancel: $('.popup.confirmation .js-cancel'),
+    confirmBtn: $('popup.confirmation .js-confirm'),
+    popupDelete: $('.popup.delete'),
+    cancelErease: $('.popup.delete .js-cancel'),
+    confirmErease: $('.popup.delete .js-confirm'),
     field: {
       id: $('[name="id"]'),
       offersId: $('[name="offersId"]'),
@@ -159,12 +162,24 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.step1.on('click', '.radio', function() {
-    self.updateRadioFormat_($(this));
+    // self.updateRadioFormat_($(this));
+    self.radioChoice = $(this);
+    self.checkOffers_();
   });
 
   self.dom.field.category.on('change', function() {
+    // self.resetOffers_();
+    // self.checkOffers_();
     self.category = $(this).val();
-    self.resetOffers_();
+    // self.dom.popupDelete.addClass('active');
+  });
+
+  self.dom.field.category.on('focus', function() {
+    // self.resetOffers_();
+    self.checkOffers_($(this));
+    elem = $(this);
+    // self.category = $(this).val();
+    // self.dom.popupDelete.addClass('active');
   });
 
   self.dom.steps.on('focus', '[name$="_freetext"]', function() {
@@ -216,6 +231,21 @@ app.prototype.bindEvents_ = function() {
     e.preventDefault();
     self.downloadAd_();
   });
+
+  self.dom.cancelErease.on('click', function(e) {
+    e.preventDefault();
+    self.dom.field.category.show();
+    self.dom.popupDelete.removeClass('active');
+  });
+
+   self.dom.confirmErease.on('click', function(e) {
+    e.preventDefault();
+    self.dom.field.category.show();
+    self.updateRadioFormat_(self.radioChoice);
+    self.resetOffers_();
+    self.dom.popupDelete.removeClass('active');
+  }); 
+
 };
 
 app.prototype.downloadAd_ = function() {
@@ -296,6 +326,18 @@ app.prototype.changeStep_ = function(pValue) {
     }
     self.step += parseInt(pValue);
     self.dom.b.removeClass('no1 no2 no3').addClass('no' + self.step);
+  }
+};
+
+app.prototype.checkOffers_ = function() {
+  var self = this;
+  var fieldsets = self.dom.offersList.children('fieldset');
+  if (fieldsets.length != 0){
+      self.dom.field.category.hide();
+      self.dom.popupDelete.addClass('active');
+  } else {
+    self.updateRadioFormat_(self.radioChoice);
+    self.dom.field.category.show();
   }
 };
 
@@ -464,11 +506,10 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
 
 /*=== Delete Offer ===========================================*/
 app.prototype.deleteOffer_ = function(pOffer) {
+  console.log('delete OUI');
   var self = this;
   var id = pOffer.data('id');
-
   pOffer.remove();
-
   self.updateOffer_(id);
   self.updateAddOfferBtn_();
 };
@@ -658,16 +699,15 @@ app.prototype.getUploadedImageObj_ = function(pInput, callback) {
 /*=== Update Radio Format ============================================*/
 app.prototype.updateRadioFormat_ = function(pRadio) {
   var self = this;
-  self.resetOffers_();
-  pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
-  pRadio.addClass('valid').prev().attr('checked', 'true');
+      pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
+      pRadio.addClass('valid').prev().attr('checked', 'true');
 
-  self.format = pRadio.prev().val();
+      self.format = pRadio.prev().val();
 
-  self.dom.offersList.find('fieldset').remove();
-  self.dom.step2.find('.content').removeClass('extend');
-  self.offersNbr = 0;
-  self.dom.offersNbr.val(self.offersNbr);
+      self.dom.offersList.find('fieldset').remove();
+      self.dom.step2.find('.content').removeClass('extend');
+      self.offersNbr = 0;
+      self.dom.offersNbr.val(self.offersNbr);
 };
 
 /*=== Vertical Align ============================================*/

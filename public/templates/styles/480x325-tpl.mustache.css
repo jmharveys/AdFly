@@ -83,7 +83,7 @@
 {{/offers.list}}
 
 .lp-front .lp-logo {
-	max-width: 165px;
+	max-width: 300px;
 	max-height: 75px;
 }
 
@@ -112,7 +112,6 @@
 	height: 270px;
 	padding: 15px 10px 0 15px;
 }
-
 
 .lp-back .lp-summary > div:nth-child(1) {
 	width: 310px;
@@ -157,10 +156,10 @@
 }
 {{/exist.mentions}}
 .lp-back .lp-logo {
-	top: 270px;
-	left: 316px;
-	width: 105px;
-	height: 50px;
+	bottom: 9px;
+	right: 54px;
+	width: 150px;
+	height: 37px;
 }
 
 .lp-back .lp-pager {
