@@ -181,7 +181,13 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.steps.on('change', '.file-input', function() {
-    self.updateInputFilePreview_($(this));
+     self.updateInputFilePreview_($(this));
+  });
+
+  self.dom.steps.on('click', '.file-input', function() {
+      $(this).wrap( "<form id='hiddenForm' style='display:none'></div>" );
+      $('#hiddenForm')[0].reset();
+      $(this).unwrap( "<form id='hiddenForm'></div>" );
   });
 
   self.dom.steps.on('change', '.multi-files input', function() {
