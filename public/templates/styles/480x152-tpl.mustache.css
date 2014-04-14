@@ -18,9 +18,7 @@
 {{/exist.gallery}}
 /*--- Front ------------------------*/
 
-.lp-front .lp-plus {
-	right: 157px;
-}
+
 
 .lp-front .lp-summary {
 	width: 152px;
@@ -76,6 +74,18 @@
 	bottom: 8px;
 	width: 328px;
 }
+
+.lp-front .lp-plus {
+	right: 5px;
+}
+
+
+{{/exist.picturesGallery}}
+{{^exist.picturesGallery}}
+
+	.lp-front .lp-plus {
+		right: 157px;
+	}
 
 {{/exist.picturesGallery}}
 {{#exist.price}}

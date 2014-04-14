@@ -24,7 +24,6 @@
 
     <div class='lp-flip'>
         <div class='lp-front'>
-            <span class="lp-plus"></span>
             <span class="lp-logo"></span>
             {{#exist.offersGallery}}
             <div class='lp-gallery lp-offers'>
@@ -32,6 +31,14 @@
             {{/exist.offersGallery}}
                     {{#offers.list}}
                     <section class="lp-offer">
+                       
+                            {{#gallery.exist}}
+                            {{/gallery.exist}}
+                            {{^gallery.exist}}
+                                <span class="lp-plus"></span>
+                            {{/gallery.exist}}                      
+                 
+                    
                         {{#video.exist}}
                         <div class="lp-video-play {{index}}_video"></div>
                         {{/video.exist}}
@@ -40,7 +47,9 @@
                         <div class='lp-gallery lp-pictures'>
                             <div class='lp-scroller'>
                                 {{#gallery.pictures}}
-                                <div class="lp-picture"></div>
+                                <div class="lp-picture">
+                                    <span class="lp-plus"></span>
+                                </div>
                                 {{/gallery.pictures}}
                             </div>
                         </div>

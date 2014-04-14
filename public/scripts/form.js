@@ -156,6 +156,10 @@ app.prototype.bindEvents_ = function() {
 
   self.dom.previousStep.on('click', function() {
     self.changeStep_(-1);
+    if (self.dom.field.iConfirm.is(':checked') ) {
+        self.dom.downloadBtn.toggleClass('disabled');
+        self.dom.field.iConfirm.attr('checked', false);  
+    } 
   });
 
   self.dom.submit.on('click', function(e) {
@@ -176,7 +180,6 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.steps.on('focus', '[name$="_freetext"]', function() {
-    console.log('oui');
     $(this).prev('label').children('input').prop('checked', true);
   });
 
@@ -239,11 +242,12 @@ app.prototype.bindEvents_ = function() {
 
    self.dom.confirmErease.on('click', function(e) {
     e.preventDefault();
-    window.location.reload();
-    // self.dom.field.category.show();
-    // self.updateRadioFormat_(self.radioChoice);
-    // self.resetOffers_();
-    // self.dom.popupDelete.removeClass('active');
+    // window.location.reload();
+    self.resetOffers_();
+    self.dom.field.category.show();
+    self.updateRadioFormat_(self.radioChoice);
+
+    self.dom.popupDelete.removeClass('active');
   }); 
 
 };
@@ -345,10 +349,8 @@ app.prototype.resetOffers_ = function() {
   var self = this;
   var fieldsets = self.dom.offersList.children('fieldset');
   console.log(fieldsets.length);
-  for(var x=0; x<fieldsets.length; x++) {
-    console.log(fieldsets.eq(x));
+  for(var x=0; x<=fieldsets.length; x++) {
     key = fieldsets.eq(x);
-
     self.deleteOffer_(key);
   }
   self.offersNbr = 0;
@@ -509,7 +511,6 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
 
 /*=== Delete Offer ===========================================*/
 app.prototype.deleteOffer_ = function(pOffer) {
-  console.log('delete OUI');
   var self = this;
   var id = pOffer.data('id');
   pOffer.remove();
@@ -523,14 +524,16 @@ app.prototype.updateOffer_ = function(pId) {
   var currVal = self.dom.field.offersId.val();
   var arrIds = currVal === '' ? [] : currVal.split(',');
   var strIds = "";
-  var index = arrIds.indexOf(pId.toString());
-  var multifiles = $('.multi-files .btn');
-  if(index === -1) {
-    arrIds.push(pId);
-    self.offersNbr++;
-  } else {
-    arrIds.splice(index, 1);
-    self.offersNbr--;
+  if (pId != null) {
+    var index = arrIds.indexOf(pId.toString());
+    var multifiles = $('.multi-files .btn');
+    if(index === -1) {
+      arrIds.push(pId);
+      self.offersNbr++;
+    } else {
+      arrIds.splice(index, 1);
+      self.offersNbr--;
+    }
   }
   strIds = arrIds.toString();
 
