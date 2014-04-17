@@ -8,7 +8,7 @@
 		"cantAddOfferIfMoreThan1picture": "Impossible d'ajouter une offre si vous avez plusieurs photos",
 		"category": "Catégorie",
 		"circuits": "Circuits",
-		"clientNo": "# Client",
+		"clientNo": "Nom du client",
 		"conferences": "Conférences",
 		"confirmation": "Confirmation",
 		"confirmationText": "Votre annonce va être enregistrée sur votre poste. <br><br>Vous devez ensuite transmettre le fichier zip enregistré à l'assistant du représentant, soit via votre accès FTP La Presse, soit par courriel.",
@@ -39,8 +39,11 @@
 		"maximumPicturesNumberReached": "Nombre maximum d'images atteint",
 		"maxlength": "{0} caractères maximum",
 		"mention": "Mention",
+		"mustContain6characters": "Doit contenir 6 caractères",
+		"mustContain25characters": "Doit contenir 25 caractères max",
 		"mustContain6digits": "Doit contenir 6 chiffres",
 		"mustContain7digits": "Doit contenir 7 chiffres",
+		"mustContainNoSpecialcharacters": "Lettres, chiffres, et underscore.",
 		"next": "Suivant",
 		"none": "Aucune",
 		"numberOfStars": "Nombre d'étoiles",
@@ -68,7 +71,8 @@
 		"uploadOtherImages": "Importer d'autres images",
 		"uploadVideo": "Importer une vidéo",
 		"video": "Vidéo",
-		"webLink": "Lien web"
+		"webLink": "Lien web",
+		"zipMac": "**  Il se peut que votre fichier .zip soit dé-zippé automatiquement par safari en fonction de vos options (Préférences / Onglet Général / dernière option)."
 	},
 	"en": {
 		"additionalChargesForVideos": "Additional charges for adding videos",
@@ -79,7 +83,7 @@
 		"cantAddOfferIfMoreThan1picture": "Can not add an offer if you have more than one picture",
 		"category": "Category",
 		"circuits": "Circuits",
-		"clientNo": "Client #",
+		"clientNo": "Nom du client",
 		"conferences": "Conferences",
 		"confirmation": "Confirmation",
 		"confirmationText": "Your ad will be saved on your computer. <br><br>You must then transmit the zip file to the representative assistant by your La Presse FTP access or by e-mail.",
@@ -110,7 +114,10 @@
 		"maximumPicturesNumberReached": "Maximum pictures number reached",
 		"maxlength": "Maximum {0} characters",
 		"mention": "Mention",
+		"mustContain6characters": "Must contain 6 characters",
+		"mustContain25characters": "Must contain 25 characters max",
 		"mustContain6digits": "Must contain 6 digits",
+		"mustContainNoSpecialcharacters": "Letters, numbers, and underscores only please",
 		"mustContain7digits": "Must contain 7 digits",
 		"next": "Next",
 		"none": "None",
@@ -139,6 +146,7 @@
 		"uploadOtherImages": "Upload other images",
 		"uploadVideo": "Upload video",
 		"video": "Video",
-		"webLink": "Web link"
+		"webLink": "Web link",
+		"zipMac": "Your zip file could be automatically unzipped by Safari depending your settings (General tab, last option)."
 	}
 }

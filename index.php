@@ -37,6 +37,9 @@
 		<?php } else { ?>
 			<a href="<?= URL ?>fr" class="action lang"></a>
 		<?php } ?>
+		<? if (strpos($_SERVER['HTTP_USER_AGENT'], 'Safari') && !strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome')) { 
+    		$safari = 'Safari'; 
+}   ?>
 	</header>
 
 	<form method="post" action="ad.php" enctype="multipart/form-data" autocomplete="off" class="js-form form">
@@ -51,7 +54,7 @@
 							<div class="half field">
 								<label>
 									<span class="lbl"><?= $t[$culture]['clientNo']; ?></span><br>
-									<input type="text" name="noClient" class="input short js-validate" placeholder="123456" required />
+									<input type="text" name="noClient" class="input short" placeholder="Nom du client" />
 								</label>
 							</div>
 
@@ -151,7 +154,13 @@
 					<div class="window">
 						<span class="close js-cancel"></span>
 						<h2><?= $t[$culture]['confirmation']; ?></h2>
-						<div class="text"><?= $t[$culture]['confirmationText']; ?></div>
+						<div class="text">
+							<? if ($safari) { 
+									 echo "<span style='color:rgba(255, 0, 0, 1)'>".$t[$culture]['zipMac']."</span>"; 
+									 echo "<br><br>";
+								} ?>
+								<?= $t[$culture]['confirmationText']; ?>
+						</div>
 						<label>
 							<div class="btn lft js-cancel"><?= $t[$culture]['cancel']; ?></div>
 							<div class="btn blue rgt js-confirm"><?= $t[$culture]['download']; ?></div>
