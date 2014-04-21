@@ -170,16 +170,19 @@ app.prototype.bindEvents_ = function() {
 
   self.dom.step1.on('click', '.radio', function() {
     self.radioChoice = $(this);
-    self.checkOffers_();
+    self.updateRadioFormat_(self.radioChoice) 
   });
 
   self.dom.field.category.on('change', function() {
     self.category = $(this).val();
+    $(this).blur();
+     if ( (self.lastCategory != "conferences" && self.category === "conferences") || (self.lastCategory === "conferences" && self.category  != "conferences") ) {
+          self.checkOffers_();
+      } 
   });
 
   self.dom.field.category.on('focus', function() {
-    self.checkOffers_($(this));
-    elem = $(this);
+    self.lastCategory = self.dom.field.category.val();
   });
 
   self.dom.steps.on('focus', '[name$="_freetext"]', function() {
@@ -249,7 +252,6 @@ app.prototype.bindEvents_ = function() {
     self.resetOffers_();
     self.dom.field.category.show();
     self.updateRadioFormat_(self.radioChoice);
-
     self.dom.popupDelete.removeClass('active');
   }); 
 
@@ -380,7 +382,6 @@ app.prototype.downloadAd_ = function() {
           customerName;
           adZipName = adZipName+"_"+customerName;
       }
-      console.log(adZipName);
       var customerName = 
       $.ajax({
         type: "POST",
@@ -459,7 +460,6 @@ app.prototype.checkOffers_ = function() {
       self.dom.field.category.hide();
       self.dom.popupDelete.addClass('active');
   } else {
-    self.updateRadioFormat_(self.radioChoice);
     self.dom.field.category.show();
   }
 };
@@ -467,7 +467,6 @@ app.prototype.checkOffers_ = function() {
 app.prototype.resetOffers_ = function() {
   var self = this;
   var fieldsets = self.dom.offersList.children('fieldset');
-  console.log(fieldsets.length);
   for(var x=0; x<=fieldsets.length; x++) {
     key = fieldsets.eq(x);
     self.deleteOffer_(key);

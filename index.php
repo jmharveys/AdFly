@@ -71,7 +71,7 @@
 								<label>
 									<span class="lbl"><?= $t[$culture]['category']; ?></span><br>
 									<select name="category" class="select short js-validate" required>
-										<option value="deals" selected><?= $t[$culture]['deals']; ?></option>
+										<option value="deals"><?= $t[$culture]['deals']; ?></option>
 										<option value="conferences"><?= $t[$culture]['conferences']; ?></option>
 										<option value="cruise"><?= $t[$culture]['cruise']; ?></option>
 										<option value="adventures"><?= $t[$culture]['adventures']; ?></option>
