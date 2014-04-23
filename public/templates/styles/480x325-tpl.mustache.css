@@ -9,6 +9,7 @@
 
 .lp-strapline {
 	white-space: nowrap;
+	overflow: hidden;
 	font: normal normal 16px/18px AmericanTypewriter;
 }
 
@@ -66,10 +67,12 @@
 
 .lp-front .lp-summary > div:nth-child(1) {
 	width: 310px;
+	max-width: 310px;
 }
 
 .lp-front .lp-summary > div:nth-child(2) {
 	width: 170px;
+	max-width: 170px;
 }
 
 {{#offers.list}}
@@ -115,10 +118,12 @@
 
 .lp-back .lp-summary > div:nth-child(1) {
 	width: 310px;
+	max-width: 310px;
 }
 
 .lp-back .lp-summary > div:nth-child(2) {
-	width: 170px;
+	width: 170px;	
+	max-width: 170px;
 }
 
 .lp-back .lp-description span {

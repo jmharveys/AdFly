@@ -1,7 +1,7 @@
 
 // JavaScript Document
 var _g = globals = {};
-var app = app || {};  //Évite d'overwritter des plugins si il y en a. 
+var app = app || {};  //Évite d'overwritter des plugins s'il y en a. 
 
 app = function(pCulture, pRoot) {
   var self = this;
@@ -125,7 +125,6 @@ app.prototype.init_ = function(pObj) {
 
 
   /* jQuery Mask */
-  // self.dom.field.noClient.mask('000000'); // 6 char
   self.dom.field.noAd.mask('0000000'); // 7 char
 
   // replace the checkboxes with the images
@@ -170,7 +169,7 @@ app.prototype.bindEvents_ = function() {
 
   self.dom.step1.on('click', '.radio', function() {
     self.radioChoice = $(this);
-    self.updateRadioFormat_(self.radioChoice) 
+    self.updateRadioFormat_(self.radioChoice);
   });
 
   self.dom.field.category.on('change', function() {
@@ -652,6 +651,8 @@ app.prototype.updateOffer_ = function(pId) {
       arrIds.splice(index, 1);
       self.offersNbr--;
     }
+  }else{
+    arrIds = [];
   }
   strIds = arrIds.toString();
 
@@ -827,11 +828,12 @@ app.prototype.updateRadioFormat_ = function(pRadio) {
       pRadio.addClass('valid').prev().attr('checked', 'true');
 
       self.format = pRadio.prev().val();
-
+      self.dom.field.offersId.val("");
       self.dom.offersList.find('fieldset').remove();
       self.dom.step2.find('.content').removeClass('extend');
       self.offersNbr = 0;
       self.dom.offersNbr.val(self.offersNbr);
+
 };
 
 /*=== Vertical Align ============================================*/
