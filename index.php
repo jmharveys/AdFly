@@ -1,5 +1,7 @@
 <?php 
 	include 'configs/global.php'; 
+    // include 'app/libraries/ChromePhp.php';
+    // ChromePhp::log('Hello console!');
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8]> <html class="lt-ie10 lt-ie9 lt-ie8" lang="<?= $culture ?>"> <![endif]-->
@@ -32,8 +34,9 @@
 			<h2><?= $t[$culture]['offers']; ?></h2>
 			<h2><?= $t[$culture]['preview']; ?></h2>
 		</div>
-		<?php if($culture == 'fr') { ?>
+		<?php if($culture == 'fr') { ?>        console.log('Hello console!');
 			<a href="<?= URL ?>en" class="action lang"></a>
+			
 		<?php } else { ?>
 			<a href="<?= URL ?>fr" class="action lang"></a>
 		<?php } ?>

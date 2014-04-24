@@ -1,4 +1,7 @@
 <?php
+
+
+
 class AdView {
     private $model;
     private $controller;

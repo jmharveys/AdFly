@@ -141,11 +141,14 @@ app.prototype.init_ = function(pObj) {
   });
 
   self.verticalAlign_($('.step.no1 .content'));
+
 };
 
 //=== BIND START =====================================================
 app.prototype.bindEvents_ = function() {
   var self = this;
+
+
 
   self.dom.addOfferBtn.on('click', function(e) {
     e.preventDefault();
@@ -247,10 +250,8 @@ app.prototype.bindEvents_ = function() {
 
    self.dom.confirmErease.on('click', function(e) {
     e.preventDefault();
-    // window.location.reload();
     self.resetOffers_();
     self.dom.field.category.show();
-    self.updateRadioFormat_(self.radioChoice);
     self.dom.popupDelete.removeClass('active');
   }); 
 
@@ -430,7 +431,6 @@ app.prototype.changeStep_ = function(pValue) {
   var self = this;
   var currentStep = $('.step.no' + self.step);
   var valid = true;
-
   if(pValue === 1) {
     $('.js-validate', currentStep).each(function(i, v) {
       valid = self.validator.element(v) && valid;
@@ -451,6 +451,9 @@ app.prototype.changeStep_ = function(pValue) {
     self.dom.b.removeClass('no1 no2 no3').addClass('no' + self.step);
   }
 };
+
+
+
 
 app.prototype.checkOffers_ = function() {
   var self = this;
@@ -492,9 +495,7 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
               data.price = false;
               data.date = true;
             }
-            self.opts = data;
-            console.log(self.opts);
-          }
+            self.opts = data;          }
         });
       }
   });
@@ -529,6 +530,7 @@ app.prototype.setAdPreview_ = function(pData) {
     }
   });
 };
+
 
 /*=== Set Offer ===============================================*/
 app.prototype.setOffer_ = function(pDelay) {
@@ -651,7 +653,7 @@ app.prototype.updateOffer_ = function(pId) {
       arrIds.splice(index, 1);
       self.offersNbr--;
     }
-  }else{
+  }else {
     arrIds = [];
   }
   strIds = arrIds.toString();
@@ -823,10 +825,9 @@ app.prototype.getUploadedImageObj_ = function(pInput, callback) {
 
 /*=== Update Radio Format ============================================*/
 app.prototype.updateRadioFormat_ = function(pRadio) {
-  var self = this;
+      var self = this;
       pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
-      pRadio.addClass('valid').prev().attr('checked', 'true');
-
+      pRadio.addClass('valid').prev().prop('checked', 'true');
       self.format = pRadio.prev().val();
       self.dom.field.offersId.val("");
       self.dom.offersList.find('fieldset').remove();

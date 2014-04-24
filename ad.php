@@ -4,7 +4,7 @@
 	include 'app/controllers/Ad.php';
 	include 'app/models/Ad.php'; 
 	include 'app/views/Ad.php'; 
-
+	include 'app/libraries/ChromePhp.php';
 
 	require 'app/libraries/Mustache/Autoloader.php';
 	Mustache_Autoloader::register();
