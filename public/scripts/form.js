@@ -452,9 +452,6 @@ app.prototype.changeStep_ = function(pValue) {
   }
 };
 
-
-
-
 app.prototype.checkOffers_ = function() {
   var self = this;
   var fieldsets = self.dom.offersList.children('fieldset');
@@ -535,7 +532,7 @@ app.prototype.setAdPreview_ = function(pData) {
 /*=== Set Offer ===============================================*/
 app.prototype.setOffer_ = function(pDelay) {
   var self = this;
-
+    console.log("setOffer 1",self.offersNbr,self.opts.maxOffers,self.gallery);
   if(self.offersNbr < self.opts.maxOffers && !self.gallery) {
     var id = new Date().getTime();
     var opts = self.opts;
@@ -544,6 +541,7 @@ app.prototype.setOffer_ = function(pDelay) {
     if(self.offersNbr > 1) {
       opts.maxPictures = 1;
     }
+    console.log("setOffer 2");
     self.addOffer_({
       id: id,
       t: self.t[self.culture],
@@ -555,13 +553,14 @@ app.prototype.setOffer_ = function(pDelay) {
 /*=== Add Offer ============================================*/
 app.prototype.addOffer_ = function(pObj, pSpeed) {
   var self = this;
-
+console.log("addOffer");
+console.log(self);
   if(pSpeed) {
     pSpeed = parseInt(pSpeed);
   } else {
     pSpeed = 0;
   }
-
+console.log("addOffer "+self.path.templates);
   $.get(self.path.templates + 'form-offer-tpl.mustache.html', function(template, textStatus, jqXhr) {
     setTimeout(function() {
       self.dom.offersList.append(Mustache.render($(template).filter('#formOfferTpl').html(), pObj));
@@ -833,8 +832,8 @@ app.prototype.updateRadioFormat_ = function(pRadio) {
       self.dom.offersList.find('fieldset').remove();
       self.dom.step2.find('.content').removeClass('extend');
       self.offersNbr = 0;
+      self.gallery = 0;
       self.dom.offersNbr.val(self.offersNbr);
-
 };
 
 /*=== Vertical Align ============================================*/

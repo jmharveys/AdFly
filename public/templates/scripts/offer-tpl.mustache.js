@@ -25,7 +25,7 @@ function linkTap(e) {
 var offlineBanner = document.getElementById('lp-offline-banner');
 var offlineWarning = document.getElementsByClassName('lp-offline-warning')[0];
 if(!window.navigator.onLine) {
-	offlineBanner.classList.add('lp-active');
+	offlineBanner.classList.add('lerep-active');
 }
 offlineWarning.onclick = function() {
 	offlineBanner.classList.remove('lp-active');
