@@ -97,12 +97,10 @@ app.prototype.init_ = function(pObj) {
     },
     rules: {
       noClient: {
-        required: false,
-        minlength: 6,
-        maxlength: 25
+        required: true
       },
       noAd: {
-        required: true,
+        required: false,
         minlength: 7,
         maxlength: 7
       },
@@ -111,11 +109,6 @@ app.prototype.init_ = function(pObj) {
       }
     },
     messages: {
-      noClient: {
-      alphanumeric: ' <span class="msg">(' + self.t[self.culture]['mustContainNoSpecialcharacters'] + ')</span>',        
-        minlength: ' <span class="msg">(' + self.t[self.culture]['mustContain6characters'] + ')</span>',
-        maxlength: ' <span class="msg">(' + self.t[self.culture]['mustContain25characters'] + ')</span>'
-      },
       noAd: {
         minlength: ' <span class="msg">(' + self.t[self.culture]['mustContain7digits'] + ')</span>',
         maxlength: ' <span class="msg">(' + self.t[self.culture]['mustContain7digits'] + ')</span>'

@@ -10,7 +10,7 @@
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.strapline}}</span><br>
-				<textarea name="{{id}}_strapline" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{opt.maxlength.strapline}}" required></textarea>
+				<textarea name="{{id}}_strapline" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{#opt.date}}{{opt.maxlength.straplineConvention}}{{/opt.date}}{{^opt.date}}{{opt.maxlength.strapline}}{{/opt.date}}" required></textarea>
 			</label>
 		</div>
 

@@ -1,6 +1,7 @@
 {
     "maxlength": {
         "strapline": 29,
+        "straplineConvention": 20,
         "title": 34,
         "mention": 14,
         "description": 275

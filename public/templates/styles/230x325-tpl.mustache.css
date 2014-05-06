@@ -98,6 +98,14 @@
 	padding: 15px 10px 0px 15px;
 }
 
+{{#exist.date}}
+.lp-back .lp-date{
+	display: block;
+	padding: 25px 0 0 0;
+}
+{{/exist.date}}
+
+
 {{#exist.rating}}
 .lp-back .lp-rating {
 	height: 13px;

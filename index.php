@@ -34,9 +34,8 @@
 			<h2><?= $t[$culture]['offers']; ?></h2>
 			<h2><?= $t[$culture]['preview']; ?></h2>
 		</div>
-		<?php if($culture == 'fr') { ?>        console.log('Hello console!');
+		<?php if($culture == 'fr') { ?>        
 			<a href="<?= URL ?>en" class="action lang"></a>
-			
 		<?php } else { ?>
 			<a href="<?= URL ?>fr" class="action lang"></a>
 		<?php } ?>
@@ -57,7 +56,7 @@
 							<div class="half field">
 								<label>
 									<span class="lbl"><?= $t[$culture]['clientNo']; ?></span><br>
-									<input type="text" name="noClient" class="input short" placeholder="Nom du client" />
+									<input type="text" name="noClient" class="input short js-validate" placeholder="Nom du client" required/>
 								</label>
 							</div>
 
