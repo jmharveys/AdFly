@@ -71,6 +71,9 @@ html, body {
 .lp-time {
 	display: block;
 }
+.lp-strapline {
+	text-transform: uppercase;
+}
 {{/exist.date}}
 
 {{#exist.gallery}}
@@ -151,6 +154,7 @@ html, body {
 .lp-summary {
 	pointer-events: none;
 	 -webkit-user-select: none;
+	 table-layout: fixed;
 }
 
 .lp-summary > div:nth-child(1) {
@@ -381,8 +385,6 @@ html, body {
 /*--- Back -------------------------*/
 .lp-back .lp-card {
 	display: table;
-/*	position: absolute;
-	z-index: 0;*/
 }
 
 .lp-back .lp-summary {

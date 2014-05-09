@@ -63,6 +63,7 @@
 	height: 103px;
 }
 
+{{^exist.date}}
 .lp-back .lp-summary > div:nth-child(1) {
 	display: table-row;
 	vertical-align: top;
@@ -74,6 +75,27 @@
 	vertical-align: bottom;
 	text-align: left;
 }
+{{/exist.date}}
+{{#exist.date}}
+.lp-back .lp-summary > div:nth-child(1) {
+	display: none;
+}
+.lp-back .lp-summary > div:nth-child(2) {
+	display: table-cell;
+	vertical-align: top;
+	width: 320px;
+	text-align: right;
+}
+.lp-back .lp-summary > div:nth-child(2) span:nth-child(3) {
+	padding: 12px 0 0 0;
+}
+.lp-back .lp-summary > div:nth-child(2) span:nth-child(3),
+.lp-back .lp-summary > div:nth-child(2) span:nth-child(4){
+	text-align: left;
+}
+{{/exist.date}}
+
+
 
 {{#exist.rating}}
 .lp-back .lp-rating {

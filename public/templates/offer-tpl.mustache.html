@@ -108,21 +108,37 @@
                         <div class="lp-card">
                             <div class="lp-summary">
                                 <div>
-                                    <span class="lp-strapline">{{{strapline}}}</span>
-                                    {{#meta.f480x152}}
-                                    {{#rating}}
-                                    <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
-                                    {{/rating}}
-                                    <span class="lp-title">{{{title}}}</span>
-                                    {{/meta.f480x152}}
-                                    {{^meta.f480x152}}
-                                    <span class="lp-title">{{{title}}}</span>
-                                    {{#rating}}
-                                    <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
-                                    {{/rating}}
-                                    {{/meta.f480x152}}
+                                    {{^exist.date}}
+                                  
+                                        <span class="lp-strapline">{{{strapline}}}</span>
+                                        {{#meta.f480x152}}
+                                        {{#rating}}
+                                        <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
+                                        {{/rating}}
+                                        <span class="lp-title">{{{title}}}</span>
+                                        {{/meta.f480x152}}
+                                        {{^meta.f480x152}}
+                                        <span class="lp-title">{{{title}}}</span>
+                                        {{#rating}}
+                                        <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
+                                        {{/rating}}
+                                        {{/meta.f480x152}}
+
+                                    {{/exist.date}}
+                                  
+                                    {{#exist.date}}
+                                    {{^meta.f230x152}} 
+                                     <span class="lp-strapline">{{{strapline}}}</span>
+                                     <span class="lp-title">{{{title}}}</span>
+                                     {{/meta.f230x152}} 
+                                     {{#meta.f230x325}} 
+                                     <span class="lp-date">{{date.text}}</span>
+                                     <span class="lp-time">{{time.text}}</span>
+                                     {{/meta.f230x325}} 
+                                    {{/exist.date}}
                                 </div>
-                                {{^meta.f230x325}}
+               
+                                {{^meta.f230x325}} 
                                 <div>
                                     {{#exist.price}}
                                     <span class="lp-mentions">
@@ -131,12 +147,17 @@
                                     <span class="lp-price">{{price}}</span>
                                     {{/exist.price}}
                                     {{#exist.date}}
-                                    <span class="lp-date">{{date.text}}</span>
-                                    <span class="lp-time">{{time.text}}</span>
+                                        <span class="lp-date">{{date.text}}</span>
+                                        <span class="lp-time">{{time.text}}</span>
+                                        {{#meta.f230x152}} 
+                                        <span class="lp-strapline">{{{strapline}}}</span>
+                                        <span class="lp-title">{{{title}}}</span>
+                                         {{/meta.f230x152}} 
                                     {{/exist.date}}
-                                    </div>
-                                    {{/meta.f230x325}}
+                                </div>
+                                {{/meta.f230x325}} 
                             </div>
+
                             <div class="lp-description">
                                 <p>
                                     <span>{{{description}}}</span>
@@ -150,10 +171,10 @@
                                 </span>
                                 <span class="lp-price">{{price}}</span>
                                 {{/exist.price}}
-                                {{#exist.date}}
+<!--                                 {{#exist.date}}
                                 <span class="lp-date">{{date.text}}</span>
                                 <span class="lp-time">{{time.text}}</span>
-                                {{/exist.date}}
+                                {{/exist.date}} -->
                             </div>
                             {{/meta.f230x325}}
                         </div>

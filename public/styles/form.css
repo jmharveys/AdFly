@@ -925,7 +925,7 @@ body.no3 .steps {
 .form .logo .preview {
   position: absolute;
   top: 30px;
-  right: 9px;
+  right: -29px;
   background-color: #eaeaea;
 }
 
@@ -954,6 +954,33 @@ body.no3 .steps {
 .form .radio.valid {
   border-color: #0f7801;
   background-color: #0f7801;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .countMaxCharacter {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  bottom: -7px;
+  right: -10px;
+  z-index: 1;
+  display: block;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  font-family: "Verlag_Book", Helvetica, Sans-Serif;
+  text-align: center;
+}
+
+.form label .countMaxCharacter.special {
+  bottom: -30px;
+  right: -14px;
+}
+
+.form label .countMaxCharacter.special2 {
+  right: -5px;
 }
 
 .form input.dollar {

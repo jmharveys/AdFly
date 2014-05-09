@@ -403,6 +403,8 @@ body.no3 {
 		}
 	}
 
+
+
 	.input {
 		width: 430px;
 		height: 49px;
@@ -488,7 +490,7 @@ body.no3 {
 		.preview {
 			position: absolute;
 			top: 30px;
-			right: 9px;
+			right: -29px;
 			background-color: $bg-grey;
 		}
 	}
@@ -516,6 +518,33 @@ body.no3 {
 			border-color: $valid-green;
 			background-color: $valid-green;
 		}
+	}
+
+	label {
+		position: relative;
+
+		.countMaxCharacter {
+			position: absolute;
+			width: 50px;
+			height: 30px;
+			bottom: -7px;
+			right: -10px;
+			z-index:1;
+			display: block;
+			color: rgba(0,0,0,0.3);
+			font-size: 15px;
+			font-family: "Verlag_Book", Helvetica, Sans-Serif;
+			text-align: center;
+		}
+
+		.countMaxCharacter.special {
+			bottom: -30px;
+			right: -14px;
+		}
+
+		.countMaxCharacter.special2 {
+			right: -5px;
+		}		
 	}
 
 	input.dollar {
