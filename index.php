@@ -203,6 +203,17 @@
     <script src="<?= URL ?>public/scripts/min/utilities.min.js"></script>
 	<script src="<?= URL ?>public/scripts/min/form.min.js"></script>
 	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-38205796-4']);
+		_gaq.push(['_trackPageview']);
+	    (function(){ 
+	      var ga = document.createElement('script'); 
+	      ga.type = 'text/javascript'; 
+	      ga.async = true; 
+	      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
+	      var s = document.getElementsByTagName('script')[0]; 
+	      s.parentNode.insertBefore(ga, s); }
+	    )();
 		$(document).ready(function() {
           _g = new app("<?= $culture ?>", "<?= URL ?>");
         });

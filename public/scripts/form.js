@@ -431,6 +431,9 @@ app.prototype.changeStep_ = function(pValue) {
   var self = this;
   var currentStep = $('.step.no' + self.step);
   var valid = true;
+
+  _gaq.push(['_trackEvent', 'Incontournables du voyage', 'étape ' + pValue]);
+
   if(pValue === 1) {
     $('.js-validate', currentStep).each(function(i, v) {
       valid = self.validator.element(v) && valid;
