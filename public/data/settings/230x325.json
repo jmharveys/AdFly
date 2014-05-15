@@ -1,10 +1,11 @@
 {
 	"maxlength": {
 		"strapline": 16,
-        "straplineConvention": 14,		
+        "straplineConvention": 16,		
 		"title": 22,
         "mention": 12,
-        "description": 110
+        "description": 110,
+        "place": 25
     },
 	"maxOffers": 2,
     "maxPictures": 2,

@@ -134,6 +134,9 @@
                                      {{#meta.f230x325}} 
                                      <span class="lp-date">{{date.text}}</span>
                                      <span class="lp-time">{{time.text}}</span>
+                                     {{#place}}
+                                        <span class="lp-place">{{place}}</span>
+                                      {{/place}}
                                      {{/meta.f230x325}} 
                                     {{/exist.date}}
                                 </div>
@@ -147,8 +150,11 @@
                                     <span class="lp-price">{{price}}</span>
                                     {{/exist.price}}
                                     {{#exist.date}}
-                                        <span class="lp-date">{{date.text}}</span>
+                                        <span class="lp-date">{{date.text}}{{#meta.f480x152}},{{/meta.f480x152}}</span>
                                         <span class="lp-time">{{time.text}}</span>
+                                        {{#place}}
+                                        <span class="lp-place">{{place}}</span>
+                                        {{/place}}
                                         {{#meta.f230x152}} 
                                         <span class="lp-strapline">{{{strapline}}}</span>
                                         <span class="lp-title">{{{title}}}</span>

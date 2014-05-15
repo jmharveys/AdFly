@@ -23,7 +23,15 @@
 				<span class="countMaxCharacter" id='inputValue2' name="inputValue2">{{opt.maxlength.title}}</span>
 			</label>
 		</div>
-
+		{{#opt.date}}	
+		<div class="row field">
+			<label>
+				<span class="lbl">{{t.place}}</span><br>
+				<textarea name="{{id}}_place" placeholder="Boucherville"  class="input" maxlength="{{opt.maxlength.place}}" onKeyDown="textCounter(this,{{opt.maxlength.place}});"onKeyUp="textCounter(this,'inputValue6',{{opt.maxlength.place}})"></textarea>
+				<span class="countMaxCharacter" id='inputValue6' name="inputValue2">{{opt.maxlength.place}}</span>
+			</label>
+		</div>	
+		{{/opt.date}}
 		<div class="row">
 			{{#opt.price}}
 			<div class="half field">
@@ -33,7 +41,7 @@
 				</label>
 			</div>
 			{{/opt.price}}
-			{{#opt.date}}
+			{{#opt.date}}		
 			<div class="half field">
 				<label>
 					<span class="lbl">{{t.date}}</span><br>
@@ -119,7 +127,7 @@
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.webLink}}</span><br>
-				<input type="text" name="{{id}}_link" placeholder="http://..." class="input js-validate" required>
+				<input type="text" name="{{id}}_link" value="http://" class="input js-validate" required>
 			</label>
 		</div>
 

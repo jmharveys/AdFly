@@ -930,8 +930,8 @@ body.no3 .steps {
 }
 
 .form .radio {
-  position: relative;
   float: left;
+  position: relative;
   border: solid 1px #cccccc;
   margin: 0 6px;
   cursor: pointer;

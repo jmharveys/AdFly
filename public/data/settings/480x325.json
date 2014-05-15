@@ -4,7 +4,8 @@
         "straplineConvention": 20,
         "title": 34,
         "mention": 14,
-        "description": 275
+        "description": 275,
+        "place": 25
     },
     "maxOffers": 3,
     "maxPictures": 3,

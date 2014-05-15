@@ -503,6 +503,7 @@ app.prototype.setStep2_ = function(pCategory, pFormat) {
 /*=== Set Ad Preview ==========================================*/
 app.prototype.setAdPreview_ = function(pData) {
   var self = this;
+  console.log(self);
   $.ajax({
     type: "POST",
     url: self.root + 'ad.php',

@@ -123,6 +123,7 @@ class AdModel {
                 $obj->date->month = $monthArray;
                 $obj->date->day = intval($dateArr[2]);
                 $obj->date->text = $obj->date->day ." ". $obj->date->month ." ". $obj->date->year;
+                // $obj->date->text = ($this->ad->meta->format === "480x152") ? $obj->date->text."," : $obj->date->text;
             }
             /* Heure */
             if(isset($_POST[$obj->id . "_date"])) {
@@ -130,6 +131,11 @@ class AdModel {
                 $obj->time->raw = $_POST[$obj->id . "_time"];
                 $timeArr = explode(":", $obj->time->raw);
                 $obj->time->text = intval($timeArr[0]) .html_entity_decode("&thinsp;h&thinsp;"). $timeArr[1];
+            }
+            /* Mention Lieu */
+            if(isset($_POST[$obj->id . "_place"])) {
+                $obj->place = new stdClass();
+                $obj->place = trim($_POST[$obj->id . "_place"]);
             }
             /* Mentions */
             $obj->mentions = [];

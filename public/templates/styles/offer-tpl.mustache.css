@@ -74,6 +74,11 @@ html, body {
 .lp-strapline {
 	text-transform: uppercase;
 }
+.lp-place {
+	font: normal normal 12px/16px AmericanTypewriter;
+	text-transform: uppercase;
+	display: block;
+}
 {{/exist.date}}
 
 {{#exist.gallery}}

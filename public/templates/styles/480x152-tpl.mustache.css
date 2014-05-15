@@ -6,6 +6,7 @@
 .lp-date,
 .lp-time {
 	font: normal normal 18px/18px AmericanTypewriter-Bold;
+	display: inline;
 }
 {{/exist.date}}
 {{#exist.gallery}}
