@@ -141,8 +141,6 @@ app.prototype.init_ = function(pObj) {
 app.prototype.bindEvents_ = function() {
   var self = this;
 
-
-
   self.dom.addOfferBtn.on('click', function(e) {
     e.preventDefault();
     self.setOffer_(500);
@@ -247,6 +245,19 @@ app.prototype.bindEvents_ = function() {
     self.dom.field.category.show();
     self.dom.popupDelete.removeClass('active');
   }); 
+
+  self.dom.steps.on('keyup', '[maxlength]', function(e) {
+    var field = $(this);
+    var counter = null;
+    if(field.next().hasClass('countMaxCharacter')) {
+      counter = $(this).next();
+    }
+    if(counter) {
+      var nbr = field.attr('maxlength') - field.val().length;
+      console.log(nbr);
+      counter.text(nbr);
+    }
+  });
 
 };
 
@@ -355,13 +366,6 @@ function removeDiacritics(str) {
      return diacriticsMap[a] || a; 
    });
 }
-
-function textCounter(field,cnt, maxlimit) {         
-  var cntfield = document.getElementById(cnt) 
-     if (!(field.value.length > maxlimit)) 
-    cntfield.innerHTML = maxlimit - field.value.length;
-}
-
 
 app.prototype.downloadAd_ = function() {
   var self = this;

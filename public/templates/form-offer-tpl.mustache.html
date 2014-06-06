@@ -10,7 +10,7 @@
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.strapline}}</span><br>
-				<textarea name="{{id}}_strapline" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{#opt.date}}{{opt.maxlength.straplineConvention}}{{/opt.date}}{{^opt.date}}{{opt.maxlength.strapline}}{{/opt.date}}" required onKeyDown="textCounter(this,{{#opt.date}}{{opt.maxlength.straplineConvention}}{{/opt.date}}{{^opt.date}}{{opt.maxlength.strapline}}{{/opt.date}});"onKeyUp="textCounter(this,'inputValue1' ,{{#opt.date}}{{opt.maxlength.straplineConvention}}{{/opt.date}}{{^opt.date}}{{opt.maxlength.strapline}}{{/opt.date}})"></textarea>
+				<textarea name="{{id}}_strapline" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{#opt.date}}{{opt.maxlength.straplineConvention}}{{/opt.date}}{{^opt.date}}{{opt.maxlength.strapline}}{{/opt.date}}" required></textarea>
 				<span class="countMaxCharacter" id='inputValue1' name="inputValue1">{{#opt.date}}{{opt.maxlength.straplineConvention}}{{/opt.date}}{{^opt.date}}{{opt.maxlength.strapline}}{{/opt.date}}</span>
 			</label>
 			
@@ -19,7 +19,7 @@
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.title}}</span><br>
-				<textarea name="{{id}}_title" placeholder="Cancun, Mexique"  class="input js-validate" maxlength="{{opt.maxlength.title}}" required onKeyDown="textCounter(this,{{#opt.date}}{{opt.maxlength.straplineConvention}}{{/opt.date}}{{^opt.date}}{{opt.maxlength.strapline}}{{/opt.date}});"onKeyUp="textCounter(this,'inputValue2',{{opt.maxlength.title}})"></textarea>
+				<textarea name="{{id}}_title" placeholder="Cancun, Mexique" class="input js-validate" maxlength="{{opt.maxlength.title}}" required></textarea>
 				<span class="countMaxCharacter" id='inputValue2' name="inputValue2">{{opt.maxlength.title}}</span>
 			</label>
 		</div>
@@ -27,7 +27,7 @@
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.place}}</span><br>
-				<textarea name="{{id}}_place" placeholder="Boucherville"  class="input" maxlength="{{opt.maxlength.place}}" onKeyDown="textCounter(this,{{opt.maxlength.place}});"onKeyUp="textCounter(this,'inputValue6',{{opt.maxlength.place}})"></textarea>
+				<textarea name="{{id}}_place" placeholder="Boucherville" class="input" maxlength="{{opt.maxlength.place}}"></textarea>
 				<span class="countMaxCharacter" id='inputValue6' name="inputValue2">{{opt.maxlength.place}}</span>
 			</label>
 		</div>	
@@ -83,7 +83,7 @@
 				<label>
 					<input type="radio" name="{{id}}_mention_1" value="freetext" /> 
 				</label>
-				<label><input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short" onKeyDown="textCounter(this,{{opt.maxlength.mention}})" onKeyUp="textCounter(this,'inputValue3',{{opt.maxlength.mention}})"/><span class="countMaxCharacter special" id='inputValue3' name="inputValue3">{{opt.maxlength.mention}}</span></label>
+				<label><input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short"/><span class="countMaxCharacter special" id='inputValue3' name="inputValue3">{{opt.maxlength.mention}}</span></label>
 				
 			</div>
 
@@ -113,7 +113,7 @@
 				<label>
 					<input type="radio" name="{{id}}_mention_2" value="freetext" /> 
 				</label>
-				<label><input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short" onKeyDown="textCounter(this,{{opt.maxlength.mention}})" onKeyUp="textCounter(this,'inputValue4',{{opt.maxlength.mention}})"/><span class="countMaxCharacter special" id='inputValue4' name="inputValue4" >{{opt.maxlength.mention}}</span></label>
+				<label><input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short"/><span class="countMaxCharacter special" id='inputValue4' name="inputValue4" >{{opt.maxlength.mention}}</span></label>
 			</div>
 			{{/opt.mention2}}
 		</div>
@@ -170,7 +170,7 @@
 		<div class="row field">
 			<label>
 				<span class="lbl">{{t.description}}</span><br>
-				<textarea name="{{id}}_description" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra." maxlength="{{opt.maxlength.description}}" required onKeyDown="textCounter(this,{{opt.maxlength.description}})" onKeyUp="textCounter(this,'inputValue5',{{opt.maxlength.description}})"></textarea><span class="countMaxCharacter special2" id='inputValue5' name="inputValue5" >{{opt.maxlength.description}}</span>
+				<textarea name="{{id}}_description" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra." maxlength="{{opt.maxlength.description}}" required></textarea><span class="countMaxCharacter special2" id='inputValue5' name="inputValue5" >{{opt.maxlength.description}}</span>
 			</label>
 		</div>
 		{{/opt.description}}

@@ -11,7 +11,7 @@
 
 	$model = new AdModel();
 	$controller = new AdController($model);
-	$view = new AdView($view, $model);
+	$view = new AdView($controller, $model);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
