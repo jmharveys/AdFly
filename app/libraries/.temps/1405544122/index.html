@@ -1,0 +1,768 @@
+<html lang="fr"><head>
+	<meta charset="utf-8">
+	<title>480x152</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="author" content="La Presse">
+	<meta name="dcterms.date" content="2014-07-15">	
+	        <link rel="stylesheet" href="assets/fonts.css" type="text/css">
+        <style>
+        *, *:before, *:after {box-sizing: border-box;}
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.lp-ad {
+	position: relative;
+    width: 480px;
+    height: 152px;
+    color: #333;
+}
+
+.lp-flip {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: translate3d(0,0,0) rotateY(0deg);
+	-webkit-transition: -webkit-transform 1s ease;
+}
+
+.lp-flip * {
+	-webkit-backface-visibility: hidden;
+}
+
+.lp-front {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	-webkit-transform: translate3d(0,0,0) rotateY(0deg);
+}
+
+.lp-back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	-webkit-transform: translate3d(0,0,-2px) rotateY(180deg);
+}
+
+.lp-flip.lp-active {
+  -webkit-transform: translate3d(0,0,0) rotateY(180deg);
+}
+
+.lp-logo {
+	display: block;
+	position: absolute;
+	background-image: url('assets/logo.JPG');
+	background-repeat: no-repeat;
+	background-size: contain;
+	z-index: 1;
+	pointer-events: none;
+	-webkit-user-select: none;
+}
+
+
+.lp-gallery {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.lp-scroller {
+	position: relative;
+	float: left;
+	height: 100%;
+}
+
+.lp-pager {
+	height: 14px;
+}
+
+.lp-legalOpen .lp-pager {
+	opacity: 0;
+	-webkit-transition: opacity 0s ease; 
+}
+
+.lp-gallery.lp-offers {
+	width: 100%;
+	height: 100%;
+}
+
+.lp-gallery.lp-offers .lp-scroller {
+	width: 960px;
+	height: 100%;
+}
+.lp-offer {
+	position: relative;
+	float: left;
+	width: 480px;
+	height: 100%;
+	background-color: #fff;
+	background-repeat: no-repeat;
+}
+
+
+.lp-front .lp-offer:nth-of-type(1) {
+	background-image: url('assets/Panorama de Suisse.jpg');
+}
+.lp-front .lp-offer:nth-of-type(2) {
+	background-image: url('assets/ecosse20.jpg');
+}
+
+.lp-summary {
+	pointer-events: none;
+	 -webkit-user-select: none;
+	 table-layout: fixed;
+}
+
+.lp-summary > div:nth-child(1) {
+	text-align: left;
+}
+
+.lp-summary > div:nth-child(2) {
+	text-align: right;
+}
+
+
+.lp-strapline {
+	display: block;
+}
+
+.lp-title {
+	display: block;
+}
+.lp-mentions {
+	display: block;
+	text-transform: uppercase;
+}
+.lp-price {
+	display: block;
+}
+
+.lp-price:after {
+	font-size: 60%;
+	vertical-align: super;
+	content: "$";
+}
+.lp-pager .lp-wrapper {
+	display: inline-block;
+	position: relative;
+	background: black;
+	padding: 4px;
+	border-radius: 7.5px;
+}
+
+.lp-pager {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 1;
+	opacity: 1;
+	pointer-events: none;
+	-webkit-transition: opacity 1s ease; 
+}
+
+.lp-pager .lp-bullet {
+	position: relative;
+	float: left;
+	width: 5px;
+	height: 5px;
+	font-size: 0;
+	background: #6e6e6e;
+	border-radius: 50%;
+	margin: 0 5px;
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-transition: background .3s ease;
+}
+
+.lp-pager .lp-bullet.lp-selected {
+	background: #fff;
+}
+/*--- Front ------------------------*/
+.lp-front .lp-logo {
+	top: 0;
+	left: 0;
+	width: 115.5px;
+	height: 45px;
+	background-color: #fff;
+	background-position: 0 50%;
+	border: 4px solid #fff;
+	box-sizing: initial;
+}
+
+.lp-front .lp-plus {
+	position: absolute;
+	display: block;
+	top: 5px;
+	right: 5px;
+	width: 30px;
+	height: 30px;
+	background-image: url('assets/basic@2x.png');
+	background-position: -34px -36px;
+	background-repeat: no-repeat;
+	background-size: 65px;
+	z-index: 1;
+}
+
+.lp-front .lp-summary {
+	display: table;
+	background: #fff;
+	box-sizing: border-box;
+}
+
+/*--- Back -------------------------*/
+.lp-back .lp-card {
+	display: table;
+}
+
+.lp-back .lp-summary {
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+.lp-back .lp-summary > div {
+	vertical-align: top;
+}
+
+
+.lp-back .lp-description {
+	display: table-row;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	pointer-events: none;
+	-webkit-user-select: none;
+}
+
+.lp-back .lp-description p {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.lp-back .lp-description span {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.lp-back .lp-logo {
+	background-position: 100% 100%;
+}
+
+.lp-back .lp-plus-web {
+	position: absolute;
+	bottom: 9px;
+	right: 9px;
+	width: 40px;
+	height: 40px;
+	background-image: url("assets/basic@2x.png");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: 80px;
+	z-index: 1;
+}
+
+/*a corriger */
+.lp-back .lp-plus-web:active {
+	background-position: 0 -40px;
+}
+
+.lp-back .lp-plus-web:after {
+  position: absolute;
+  content: "";
+  width: 60px;
+  height: 60px;
+  top: -9px;
+  left: -9px;
+}
+
+.lp-legal-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .5);
+	opacity: 0;
+	z-index: 4;
+	cursor: pointer;
+	-webkit-transform: translate3d(0, -9999px, 0);
+	-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s linear;
+}
+
+.lp-legal {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 50%;
+	font-family: helvetica, arial, sans-serif;
+	color: #868889;
+	z-index: 5;
+	-webkit-transition: top .5s ease;
+}
+
+.lp-legal.lp-active {
+	top: 50%;
+}
+
+.lp-legal.lp-active + .lp-legal-bg {
+	opacity: 1;
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-transition: opacity .5s ease, -webkit-transform 0 0 linear;
+}
+
+.lp-legal-btn {
+	position: absolute;
+	top: -20px;
+	left: 0;
+	width: 50px;
+	height: 21px;
+	background: #f1f1f1;
+	font-size: 12px;
+	text-align: center;
+	text-transform: uppercase;
+	line-height: 175%;
+	cursor: pointer;
+}
+
+.lp-legal-text {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 100%;
+	background: #f1f1f1;
+	font-size: 11px;
+	text-align: justify;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 5px;
+	overflow-scrolling: touch;
+	overflow: auto;
+}
+.lp-offer {
+	background-position: 0 50%;
+	background-size: 328px auto;
+}
+.lp-pager {
+	text-align: left;
+	bottom: 8px;
+	left: 309px;
+	width: 480px;
+}
+/*--- Front ------------------------*/
+
+
+
+.lp-front .lp-summary {
+	width: 152px;
+	height: 100%;
+	padding: 9px 10px 6px 15px;
+	-webkit-transform: translate3d(328px,0,0);
+}
+
+.lp-front .lp-summary > div:nth-child(1) {
+	display: table-row;
+	vertical-align: top;
+}
+
+.lp-front .lp-summary > div:nth-child(2) {
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+.lp-front .lp-logo {
+	max-width: 150px;
+	max-height: 45px;
+}
+
+.lp-front .lp-strapline {
+	font: normal normal 16px/16px AmericanTypewriter;
+	max-height: 32px;
+	overflow: hidden;
+	margin: 0 0 4px 0;
+}
+
+.lp-front .lp-title {
+	font: normal normal 18px/18px AmericanTypewriter-Bold;
+	max-height: 36px;
+	overflow: hidden;
+}
+
+
+	.lp-front .lp-plus {
+		right: 157px;
+	}
+
+.lp-front .lp-mentions {
+	font: normal normal 12px/14px AmericanTypewriter;
+}
+.lp-front .lp-price {
+	font: normal normal 28px/20px AmericanTypewriter-Bold;
+}
+/*--- Back -------------------------*/
+.lp-back .lp-summary {
+	display: table;
+}
+
+.lp-back .lp-summary > div {
+	vertical-align: bottom;
+}
+
+.lp-back .lp-summary > div:nth-child(1) {
+	display: table;
+	width: 310px;
+}
+
+.lp-back .lp-summary > div:nth-child(2) {
+	display: table-cell;
+	text-align: right;
+}
+
+.lp-back .lp-card {
+	width: 100%;
+	height: 104px;
+	padding: 15px 10px 0px 15px;
+}
+
+
+.lp-back .lp-logo {
+	bottom: 9px;
+	right: 58px;
+	width: 105px;
+	height: 32px;
+}
+
+.lp-back .lp-strapline {
+	display: inline-block;
+	font: normal normal 17px/19px AmericanTypewriter;
+	white-space: nowrap;
+}
+
+.lp-back .lp-strapline br, .lp-back .lp-title br {
+	display: none;
+}
+
+.lp-back .lp-title {
+	font: normal normal 18px/18px AmericanTypewriter-Bold;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.lp-back .lp-mentions {
+	font: normal normal 12px/14px AmericanTypewriter;
+}
+.lp-back .lp-price {
+	font: normal normal 28px/17px AmericanTypewriter-Bold;
+	padding: 0 0 3px 0;
+}
+.lp-back .lp-description {
+	font: normal normal 13px/16px AmericanTypewriter;
+}
+.lp-back .lp-description span {
+	-webkit-line-clamp: 2;
+	width: 370px;
+}
+.lp-back .lp-pager {
+	text-align: center;
+	left: 0;
+}
+        </style>
+        </head>
+<body>
+	<div class="lp-ad">
+
+
+    <div class="lp-flip">
+        <div class="lp-front">
+            <span class="lp-logo"></span>
+            <div class="lp-gallery lp-offers">
+                <div class="lp-scroller" style="-webkit-transition: 0ms cubic-bezier(0.1, 0.57, 0.1, 1); transition: 0ms cubic-bezier(0.1, 0.57, 0.1, 1); -webkit-transform: translate(0px, 0px) translateZ(0px);">
+                    <section class="lp-offer">
+                       
+                                <span class="lp-plus"></span>
+                 
+                    
+
+
+                        <div class="lp-summary">
+                            <div>
+                                <span class="lp-strapline">Panorama</span>
+                                <span class="lp-title">Suisse 11 jours</span>
+                            </div>
+                            <div>
+                                <span class="lp-mentions">
+                                    À partir de<br>Par personne
+                                </span>
+                                <span class="lp-price">4 490</span>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="lp-offer">
+                       
+                                <span class="lp-plus"></span>
+                 
+                    
+
+
+                        <div class="lp-summary">
+                            <div>
+                                <span class="lp-strapline">Merveilles</span>
+                                <span class="lp-title">d’Écosse 12 jours</span>
+                            </div>
+                            <div>
+                                <span class="lp-mentions">
+                                    À partir de<br>Par personne
+                                </span>
+                                <span class="lp-price">4 590</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <span class="lp-pager lp-offers">
+                <span class="lp-wrapper">
+                        <span class="lp-bullet lp-selected"></span>
+                        <span class="lp-bullet"></span>
+
+                </span>
+            </span>
+        </div>
+        <div class="lp-back">
+            <div class="lp-gallery lp-offers">
+                <div class="lp-scroller" style="-webkit-transition: 0ms cubic-bezier(0.1, 0.57, 0.1, 1); transition: 0ms cubic-bezier(0.1, 0.57, 0.1, 1); -webkit-transform: translate(0px, 0px) translateZ(0px);">
+                    <div class="lp-offer">
+                        <div class="lp-card">
+                            <div class="lp-summary">
+                                <div>
+                                  
+                                        <span class="lp-strapline">Panorama</span>
+                                        <span class="lp-title">Suisse 11 jours</span>
+
+                                  
+                                </div>
+               
+                                <div>
+                                    <span class="lp-mentions">
+                                        À partir de<br>Par personne
+                                    </span>
+                                    <span class="lp-price">4 490</span>
+                                </div>
+                            </div>
+
+                            <div class="lp-description">
+                                <p>
+                                    <span>Par la beauté et à la diversité de ses paysages, la Suisse, sans contredit, vous éblouira et vous charmera!</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="lp-logo"></div>
+                        <a class="lp-plus-web" href="http://www.thematours.ca/fr/Suisse.html"></a>
+                        <div class="lp-legal">
+                            <div class="lp-legal-btn">Légal</div>
+                            <div class="lp-legal-text">Départ garanti du 17 au 27 septembre. 11 jours / 9 nuits / 14 repas. Transport aérien au départ de Montréal avec Swiss International Air Lines. Hébergement en hôtels 3 et 4 étoiles. Plusieurs visites incluses.*La contribution au fonds d’indemnisation des clients des agents de voyages de 1.00$ par tranche de 1000$ en sus. *Prix à partir de, par personne en occupation double. Détenteur du Permis du Québec. Toutes taxes et réductions appliquées, valide pour les nouvelles réservations jusqu’au 23 juillet 2014.</div>
+                        </div>
+                        <span class="lp-legal-bg"></span>
+                    </div>
+                    <div class="lp-offer">
+                        <div class="lp-card">
+                            <div class="lp-summary">
+                                <div>
+                                  
+                                        <span class="lp-strapline">Merveilles</span>
+                                        <span class="lp-title">d’Écosse 12 jours</span>
+
+                                  
+                                </div>
+               
+                                <div>
+                                    <span class="lp-mentions">
+                                        À partir de<br>Par personne
+                                    </span>
+                                    <span class="lp-price">4 590</span>
+                                </div>
+                            </div>
+
+                            <div class="lp-description">
+                                <p>
+                                    <span>Découvrez l’Écosse, pays de légendes, enveloppé de magie et de mystère.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="lp-logo"></div>
+                        <a class="lp-plus-web" href="http://www.thematours.ca/fr/angleterre.html"></a>
+                        <div class="lp-legal">
+                            <div class="lp-legal-btn">Légal</div>
+                            <div class="lp-legal-text">Départ garanti du 20 septembre au 1er octobre. 12 jours / 10 nuits / 16 repas. Transport aérien au départ de Montréal avec KLM. Hébergement en hôtels 3 et 4 étoiles. Plusieurs visites incluses. *La contribution au fonds d’indemnisation des clients des agents de voyages de 1.00$ par tranche de 1000$ en sus. *Prix à partir de, par personne en occupation double. Détenteur du Permis du Québec. Toutes taxes et réductions appliquées, valide pour les nouvelles réservations jusqu’au 23 juillet 2014.</div>
+                        </div>
+                        <span class="lp-legal-bg"></span>
+                    </div>
+                </div>
+            </div>
+            <span class="lp-pager lp-offers">
+                <span class="lp-wrapper">
+                    <span class="lp-bullet lp-selected"></span>
+                    <span class="lp-bullet"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>	        <script src="assets/iscroll5.min.js"></script>
+                <script>
+        var ad = document.getElementsByClassName('lp-ad')[0];
+var flipper = document.getElementsByClassName('lp-flip')[0];
+var link = document.getElementsByClassName('lp-plus-web');
+var defaultEvent = "click";
+var isMobile = {
+	Android: function() {
+		return navigator.userAgent.match(/Android/i);
+	},
+	iOS: function() {
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+	},
+ 	any: function() {
+        return (isMobile.Android() || isMobile.iOS());
+    }	
+}
+for(var x=0; x<link.length; x++) {
+	link[x].addEventListener(defaultEvent, linkTap, false); 
+}
+function linkTap(e) {
+	e.stopImmediatePropagation();
+}	
+
+
+/*=== LEGAL ========================================*/
+var legalBg = document.getElementsByClassName('lp-legal-bg');
+var legalList = document.getElementsByClassName('lp-legal');
+
+
+function legal(container, bg) {
+	function animate() {
+		if(container.classList.contains('lp-active')) {
+			container.classList.remove('lp-active');
+			ad.classList.remove('lp-legalOpen');
+		} else {
+			container.classList.add('lp-active');
+			ad.classList.add('lp-legalOpen');
+		}
+	}
+	container.addEventListener(defaultEvent, legalTap, false); 
+	bg.addEventListener(defaultEvent, legalTap, false); 
+	function legalTap(e) {
+		e.stopImmediatePropagation();
+		animate();
+	}	
+}
+
+for(var i=0; i<legalList.length; i++) {
+	new legal(legalList[i], legalBg[i]);
+}
+
+/*=== LEGAL script | fin ===========================*/
+
+/*=== Gallerie offres ==============================*/
+var gallery; 
+var wrapper = document.getElementsByClassName('lp-gallery');
+var galleries = new Array();
+
+function forEachQuery( elem, callback ) {
+  Array.prototype.forEach.call( document.querySelectorAll('.' + elem), callback );
+}
+
+Array.prototype.forEach.call(wrapper, function(el) {
+    initGallery(el);
+});
+
+function initGallery(elem) {
+    gallery = new IScroll(elem, { 
+		snap: true, 
+		scrollX: true,
+		scrollY: false,
+		momentum: false, 
+		hScrollbar: false,
+		snapThreshold: 10,
+		tap: true,
+		click: true 
+	});
+	gallery.on('scrollEnd', endScroll);
+	gallery.on('scrollStart', startScroll);
+	galleries.push(gallery);
+}
+
+function startScroll() {
+	ad.classList.add('lp-scrolling');
+}
+
+function endScroll() {
+	var currentPage = this.currentPage.pageX;
+	var legals = flipper.querySelectorAll('.lp-legal.lp-active');
+	ad.classList.remove('lp-scrolling');
+	forEachQuery('lp-selected', function(el2, index1, array1) {
+		el2.classList.remove('lp-selected');
+	});
+	forEachQuery('lp-wrapper', function(el2, index1, array1) {
+		var bullet = el2.querySelectorAll('.lp-bullet')[currentPage];
+		bullet.classList.add('lp-selected');
+	});	
+	Array.prototype.forEach.call(galleries, function(el) {
+    	el.goToPage(currentPage, 0, 0);
+	});	
+    for(var x=0; x<legals.length; x++) {
+    	legals[x].classList.remove('lp-active');
+    }	
+}
+
+/*=== Flip =========================================*/
+
+flipper.addEventListener(defaultEvent, flipMe, false); 
+
+function flipDone() {
+	if (!ad.classList.contains('lp-flipped')) {
+		ad.classList.add('lp-flipped');
+		flipper.removeEventListener("transitionend", flipDone, false);
+	} 
+}	
+
+function flipMe() { 
+	if(!(flipper.classList.contains('lp-active')) && !(ad.classList.contains('lp-scrolling')) ) { 
+			flipper.classList.add('lp-active');
+			flipper.addEventListener("transitionend", flipDone, false);
+	}
+	if ( flipper.classList.contains('lp-active') && ad.classList.contains('lp-flipped') && !(ad.classList.contains('lp-scrolling')) ) { 
+			flipper.classList.remove('lp-active'); 
+			ad.classList.remove('lp-flipped'); 
+	} 
+}
+
+window.onload = function() {	
+	var pagers = document.querySelectorAll('.lp-wrapper');
+	for(var x=0; x<pagers.length; x++) {
+		pagers[x].querySelector('.lp-bullet').classList.add('lp-selected');
+	}
+	if( isMobile.any() ){
+	 	location.href = 'lpri://webContentFinishedLoading';
+	 }
+}        </script>
+        
+</body></html>

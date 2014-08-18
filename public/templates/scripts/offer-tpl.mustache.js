@@ -13,6 +13,7 @@ var isMobile = {
         return (isMobile.Android() || isMobile.iOS());
     }	
 }
+var is_touch_device = 'ontouchstart' in document.documentElement;
 for(var x=0; x<link.length; x++) {
 	link[x].addEventListener(defaultEvent, linkTap, false); 
 }
@@ -105,7 +106,6 @@ for(var x=0; x<videos.player.length; x++) {
 var legalBg = document.getElementsByClassName('lp-legal-bg');
 var legalList = document.getElementsByClassName('lp-legal');
 
-
 function legal(container, bg) {
 	function animate() {
 		if(container.classList.contains('lp-active')) {
@@ -146,16 +146,29 @@ Array.prototype.forEach.call(wrapper, function(el) {
 });
 
 function initGallery(elem) {
-    gallery = new IScroll(elem, { 
-		snap: true, 
-		scrollX: true,
-		scrollY: false,
-		momentum: false, 
-		hScrollbar: false,
-		snapThreshold: 10,
-		tap: true,
-		click: true 
-	});
+    if(is_touch_device) {
+		gallery = new IScroll(elem, { 
+			snap: true,
+			scrollX: true,
+			scrollY: false,
+			momentum: false, 
+			hScrollbar: false,
+			snapThreshold: 10,
+			eventPassthrough: true,
+			tap: true
+		});
+	} else {
+		gallery = new IScroll(elem, { 
+			snap: true,
+			scrollX: true,
+			scrollY: false,
+			momentum: false, 
+			hScrollbar: false,
+			snapThreshold: 10,
+			eventPassthrough: true,
+			click: true 
+		});
+	}
 	gallery.on('scrollEnd', endScroll);
 	gallery.on('scrollStart', startScroll);
 	galleries.push(gallery);

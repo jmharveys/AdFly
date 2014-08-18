@@ -1,7 +1,5 @@
 <?php
 
-
-
 class AdView {
     private $model;
     private $controller;
@@ -23,6 +21,7 @@ class AdView {
         <style>
         <?php
         echo $this->m->render($template, $this->ad);
+        $t = file_get_contents("public/templates/styles/480x325-tpl.mustache.css");
         $t = file_get_contents("public/templates/styles/". $this->model->ad->meta->format ."-tpl.mustache.css");
         echo $this->m->render($t, $this->ad);
         ?>

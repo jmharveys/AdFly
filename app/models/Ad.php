@@ -25,6 +25,11 @@ class AdModel {
         $settings->months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
         $settings->monthsShorten = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juill.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];        
 
+        $this->ad->new = true;
+        if(isset($_POST["pre-logo"])) {
+            $this->ad->new = false;
+        }
+
         $this->ad->meta = new stdClass();
         $this->ad->meta->id = $_POST["id"];
         $this->ad->meta->noClient = $_POST["noClient"];
@@ -50,12 +55,18 @@ class AdModel {
         $this->ad->assets = ['images/basic@2x.png', 'fonts/americantype/ameritypbol-webfont.eot', 'fonts/americantype/ameritypbol-webfont.svg', 'fonts/americantype/ameritypbol-webfont.ttf', 'fonts/americantype/ameritypbol-webfont.woff', 'fonts/americantype/ameritypmed-webfont.eot', 'fonts/americantype/ameritypmed-webfont.svg', 'fonts/americantype/ameritypmed-webfont.ttf', 'fonts/americantype/ameritypmed-webfont.woff', 'styles/fonts.css'];
 
         $this->ad->logo = new stdClass();
-        $this->ad->logo->tmp = $_FILES['logo']['tmp_name'];
-        $this->ad->logo->dflt = $_FILES['logo']['name'];
+        if(isset($_POST["pre-logo"]) && $_POST["pre-logo"] !== "") {
+            $this->ad->logo->tmp = $_POST["pre-logo"];
+            $this->ad->logo->dflt = $_POST["pre-logo"];
+            list($this->ad->logo->w, $this->ad->logo->h) = getimagesize($this->ad->url->assets . $_POST["pre-logo"]);
+        } else {
+            $this->ad->logo->tmp = $_FILES['logo']['tmp_name'];
+            $this->ad->logo->dflt = $_FILES['logo']['name'];
+            list($this->ad->logo->w, $this->ad->logo->h) = getimagesize($this->ad->logo->tmp);
+        }
         $this->ad->logo->ext = end(explode(".", $this->ad->logo->dflt));
         $this->ad->logo->name = 'logo.' . $this->ad->logo->ext;
         $this->ad->logo->path = $this->ad->url->assets . $this->ad->logo->name;
-        list($this->ad->logo->w, $this->ad->logo->h) = getimagesize($this->ad->logo->tmp);
         if($this->ad->logo->w > $settings->{'f' . $this->ad->meta->format}->logo->w) { 
             $r = $this->ad->logo->w / $settings->{'f' . $this->ad->meta->format}->logo->w;
             $this->ad->logo->w = $settings->{'f' . $this->ad->meta->format}->logo->w;
@@ -66,8 +77,12 @@ class AdModel {
             $this->ad->logo->h = $settings->{'f' . $this->ad->meta->format}->logo->h;
             $this->ad->logo->w = $this->ad->logo->w / $r;
         }
-        array_push($this->ad->assets, $this->ad->logo);
-
+        if(isset($_POST["pre-logo"]) && $_POST["pre-logo"] !== "") {
+            
+        } else {
+            array_push($this->ad->assets, $this->ad->logo);
+        }
+        
         $id = explode(",", $_POST["offersId"]);
         $this->ad->offers = new stdClass();
         $this->ad->offers->nbr = count($id);
@@ -161,19 +176,42 @@ class AdModel {
             /* Image(s) */
             $obj->gallery = new stdClass();
             $obj->gallery->pictures = array();
+
+            $images = $_POST['pre-' . $obj->id . '_picture'];
+            if(isset($images)) {
+                $images = $_POST['pre-' . $obj->id . '_picture'];
+                $images = explode(",", $images);
+                foreach($images as $key => $n) {
+                    $img = new stdClass();
+                    $img->name = $n;
+                    $img->index = $key + 1;
+                    $img->path = $this->ad->url->assets . $n;
+
+                    if($img->name !== "") {
+                        array_push($obj->gallery->pictures, $img);
+                    }
+                }
+            } else {
+                $images = null;
+            }
+            
             foreach($_FILES[$obj->id . '_picture']['tmp_name'] as $key => $tmp_name) {
                 $name = $_FILES[$obj->id . '_picture']['name'][$key];
                 if($name != '') {
                     $img = new stdClass();
                     $img->name = $name;
                     $img->tmp = $_FILES[$obj->id . '_picture']['tmp_name'][$key];
-                    $img->index = $key + 1;
                     $img->path = $this->ad->url->assets . $name;
 
                     array_push($obj->gallery->pictures, $img);
                     array_push($this->ad->assets, $img);
                 }
             }
+
+            for($i=0; $i<count($obj->gallery->pictures); $i++) {
+                $obj->gallery->pictures[$i]->index = $i + 1;
+            }
+
             $obj->gallery->nbr = count($obj->gallery->pictures);
             $obj->gallery->w = $obj->gallery->nbr * $this->ad->w;
             $obj->gallery->exist = $obj->gallery->nbr > 1 ? true : false;
@@ -181,13 +219,26 @@ class AdModel {
                 $this->ad->exist->picturesGallery = true;
             }
             /* Video */
-            $obj->video = new stdClass();
-            $videoName = $_FILES[$obj->id . '_video']['name'];
-            $obj->video->exist = $videoName == '' ? false : true;
+            $preVideo = $_POST["pre-" . $obj->id . "_video"];
+            $videoName = '';
+            if(isset($preVideo) && $preVideo !== "") {
+                $obj->video = new stdClass();
+                $videoName = $_POST["pre-" . $obj->id . "_video"];
+            } else if(isset($_FILES[$obj->id . '_video'])) {
+                $obj->video = new stdClass();
+                $videoName = $_FILES[$obj->id . '_video']['name'];
+            }
+            
+            $obj->video->exist = $videoName === '' ? false : true;
             if($obj->video->exist) {
                 $this->ad->exist->video = true;
                 $obj->video->path = $this->ad->url->assets . $videoName;
                 $obj->video->name = $videoName;
+                if(isset($_POST["pre-" . $obj->id . "_video"])) {
+                    $obj->video->tmp = $videoName;
+                } else {
+                    $obj->video->tmp = $_FILES[$obj->id . '_video']['tmp_name'];
+                }
                 $obj->video->tmp = $_FILES[$obj->id . '_video']['tmp_name'];
                 $obj->video->ext = end(explode(".", $obj->video->name));
                 array_push($this->ad->assets, $obj->video);
@@ -223,20 +274,18 @@ class AdModel {
             $this->ad->exist->gallery = true;
             array_push($this->ad->assets, 'scripts/min/iscroll5.min.js');
         }
-
+        //print_r($this->ad);
         $this->createFolder();
+        if($this->ad->new) {
+            $this->adAssets($this->ad->assets);
+        }
         $this->adAssets($this->ad->assets);
         $this->createJsonObj();
-
-        // print_r($this->ad);
     }
 
     private function createFolder() {
         rrmdir($this->ad->url->folder);
         umask(0);
-        if(!mkdir($this->ad->url->folder, 0777, true)) {
-            die('Echec lors de la création du répertoire');
-        }
         mkdir($this->ad->url->folder, 0777, true);
         mkdir($this->ad->url->assets, 0777, true);
     }

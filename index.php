@@ -34,14 +34,19 @@
 			<h2><?= $t[$culture]['offers']; ?></h2>
 			<h2><?= $t[$culture]['preview']; ?></h2>
 		</div>
-		<?php if($culture == 'fr') { ?>        
-			<a href="<?= URL ?>en" class="action lang"></a>
+		<?php if($culture == 'fr') { ?>
+			<a href="<?= URL ?>en" title="<?= $t[$culture]['changeLanguage']; ?>" class="action lang"></a>
 		<?php } else { ?>
-			<a href="<?= URL ?>fr" class="action lang"></a>
+			<a href="<?= URL ?>fr" title="<?= $t[$culture]['changeLanguage']; ?>" class="action lang"></a>
 		<?php } ?>
+		<form method="post" action="app/libraries/uploadZip.php" class="action import" title="<?= $t[$culture]['importAd']; ?>" enctype="multipart/form-data" autocomplete="off">
+			<span class="icon"></span>
+			<input type="file" name="adzip" class="js-import-ad" />
+		</form>
+
 		<? if (strpos($_SERVER['HTTP_USER_AGENT'], 'Safari') && !strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome')) { 
     		$safari = 'Safari'; 
-}   ?>
+		} ?>
 	</header>
 
 	<form method="post" action="ad.php" enctype="multipart/form-data" autocomplete="off" class="js-form form">
@@ -87,6 +92,7 @@
 							</div>
 
 							<div class="half field logo">
+								<input type="hidden" name="pre-logo">
 								<label>
 									<span class="lbl">Logo</span><br>
 									<div class="btn blue file">
@@ -193,8 +199,7 @@
 		<a href="<?= $t[$culture]['creationKitLink']; ?>" class="return"><?= $t[$culture]['returnToTheCreationKit']; ?></a>
 	</footer>
 
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script>window.jQuery || document.write('<script src="<?= URL ?>public/scripts/min/jquery-1.11.0.min.js"> \x3C/script>')</script>
+    <script src="<?= URL ?>public/scripts/min/jquery-1.11.0.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/jquery.validate.min.js"></script>
     <script src="<?= URL ?>public/scripts/min/jquery.mask.min.js"></script>

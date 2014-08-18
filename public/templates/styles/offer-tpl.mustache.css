@@ -103,8 +103,8 @@ html, body {
 	opacity: 0;
 	-webkit-transition: opacity 0s ease; 
 }
-
 {{/exist.gallery}}
+
 {{#exist.offersGallery}}
 .lp-gallery.lp-offers {
 	width: 100%;

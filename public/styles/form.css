@@ -290,6 +290,33 @@ img {
   background-image: url("../images/lang-en.png");
 }
 
+.main-header .action .icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: inherit;
+  background-size: inherit;
+  background-repeat: inherit;
+  background-position: inherit;
+}
+
+.main-header .action.import .icon {
+  background-image: url("../images/import.png");
+}
+
+.main-header .action.import input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
 .no1 .main-header .logo {
   height: 75px;
   border: solid 10px #232323;

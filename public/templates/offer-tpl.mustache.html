@@ -32,13 +32,10 @@
                     {{#offers.list}}
                     <section class="lp-offer">
                        
-                            {{#gallery.exist}}
-                            {{/gallery.exist}}
-                            {{^gallery.exist}}
-                                <span class="lp-plus"></span>
-                            {{/gallery.exist}}                      
+                        {{^gallery.exist}}
+                        <span class="lp-plus"></span>
+                        {{/gallery.exist}}                      
                  
-                    
                         {{#video.exist}}
                         <div class="lp-video-play {{index}}_video"></div>
                         {{/video.exist}}
@@ -110,34 +107,36 @@
                                 <div>
                                     {{^exist.date}}
                                   
-                                        <span class="lp-strapline">{{{strapline}}}</span>
-                                        {{#meta.f480x152}}
-                                        {{#rating}}
-                                        <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
-                                        {{/rating}}
-                                        <span class="lp-title">{{{title}}}</span>
-                                        {{/meta.f480x152}}
-                                        {{^meta.f480x152}}
-                                        <span class="lp-title">{{{title}}}</span>
-                                        {{#rating}}
-                                        <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
-                                        {{/rating}}
-                                        {{/meta.f480x152}}
+                                    <span class="lp-strapline">{{{strapline}}}</span>
+                                    {{#meta.f480x152}}
+                                    {{#rating}}
+                                    <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
+                                    {{/rating}}
+                                    <span class="lp-title">{{{title}}}</span>
+                                    {{/meta.f480x152}}
+                                    {{^meta.f480x152}}
+                                    <span class="lp-title">{{{title}}}</span>
+                                    {{#rating}}
+                                    <span class="lp-rating lp-{{rating}}-stars">{{rating}} étoiles</span>
+                                    {{/rating}}
+                                    {{/meta.f480x152}}
 
                                     {{/exist.date}}
                                   
                                     {{#exist.date}}
+
                                     {{^meta.f230x152}} 
-                                     <span class="lp-strapline">{{{strapline}}}</span>
-                                     <span class="lp-title">{{{title}}}</span>
-                                     {{/meta.f230x152}} 
-                                     {{#meta.f230x325}} 
-                                     <span class="lp-date">{{date.text}}</span>
-                                     <span class="lp-time">{{time.text}}</span>
-                                     {{#place}}
-                                        <span class="lp-place">{{place}}</span>
-                                      {{/place}}
-                                     {{/meta.f230x325}} 
+                                    <span class="lp-strapline">{{{strapline}}}</span>
+                                    <span class="lp-title">{{{title}}}</span>
+                                    {{/meta.f230x152}} 
+                                    {{#meta.f230x325}} 
+                                    <span class="lp-date">{{date.text}}</span>
+                                    <span class="lp-time">{{time.text}}</span>
+                                    {{#place}}
+                                    <span class="lp-place">{{place}}</span>
+                                    {{/place}}
+                                    {{/meta.f230x325}}
+
                                     {{/exist.date}}
                                 </div>
                
@@ -158,7 +157,7 @@
                                         {{#meta.f230x152}} 
                                         <span class="lp-strapline">{{{strapline}}}</span>
                                         <span class="lp-title">{{{title}}}</span>
-                                         {{/meta.f230x152}} 
+                                        {{/meta.f230x152}} 
                                     {{/exist.date}}
                                 </div>
                                 {{/meta.f230x325}} 

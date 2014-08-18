@@ -57,6 +57,33 @@
 		&.lang {
 			background-image: url('../images/lang-en.png');
 		}
+
+		.icon {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-size: inherit;
+			background-repeat: inherit;
+			background-position: inherit;
+		}
+
+		&.import {
+			.icon {
+				background-image: url('../images/import.png');
+			}
+			input {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+			}
+		}
 	}
 }
 
