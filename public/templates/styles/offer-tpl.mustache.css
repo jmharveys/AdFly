@@ -132,7 +132,7 @@ html, body {
 	background-color: #fff;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
-	background-size: 100% auto;
+	background-size: cover;
 }
 {{/exist.picturesGallery}}
 

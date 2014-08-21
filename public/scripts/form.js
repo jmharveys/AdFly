@@ -322,6 +322,7 @@ app.prototype.prepopulateForm_ = function(pData) {
   self.updateRadioFormat_(self.radioChoice);
   var filled = [];
   /*--- Offres ---*/
+  console.log(pData.offers.nbr);
   for(var x=0; x<pData.offers.nbr; x++) {
     var offer = pData.offers.list[x];
     var obj = {
@@ -375,7 +376,6 @@ app.prototype.prepopulateForm_ = function(pData) {
       }
     }
     filled.push(obj);
-    console.log(obj);
   }
 
   setTimeout(function() {
@@ -602,7 +602,9 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
   }
   $.get(self.path.templates + 'form-offer-tpl.mustache.html', function(template, textStatus, jqXhr) {
     setTimeout(function() {
+
       self.dom.offersList.append(Mustache.render($(template).filter('#formOfferTpl').html(), pObj));
+      console.log(pObj.id);
 
       // Titre
       $("textarea[name='"+ pObj.id +"_title']").rules('add', {
@@ -657,7 +659,7 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
       self.initMultiFiles_($('input[name="'+ pObj.id +'_picture[]"]'));
 
       setTimeout(function() {
-        self.dom.offersList.find('fieldset:last').addClass('created');
+        self.dom.offersList.find('fieldset[data-id="'+ pObj.id +'"]').addClass('created');
       }, 50)
 
       self.updateMultifiles_();
