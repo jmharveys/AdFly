@@ -1,12 +1,10 @@
 // JavaScript Document
 var _g = globals = {};
-var app = app || {};  //Évite d'overwritter des plugins s'il y en a. 
+var app = app || {};  //Évite d'overwritter des plugins s'il y en a
 
 app = function(pCulture, pRoot) {
   var self = this;
-  self.ad = {};
-  self.culture = pCulture;
-  self.path = {
+  self.path = { // Path permettant d'accèder aux divers fichiers externes utilisés.
     root:       pRoot,
     data:       pRoot + "public/data/",
     settings:   pRoot + "public/data/settings/",
@@ -15,28 +13,38 @@ app = function(pCulture, pRoot) {
     templates:  pRoot + 'public/templates/',
     temps:      pRoot + 'temps/'
   }
-  self.settings = {};
-  self.category = "deals";
-  self.format = "480x325";
-  self.step = 1;
-  self.offersNbr = 0;
-  self.gallery = false;
 
-  self.offer = {
-    id: 0
+  self.form = {
+    step: 1,
+    culture: pCulture,
+    settings: {}, // Contiens tous les settings possibles (default, 480x325, etc)
+    current: {
+      id: 0,
+      offersNbr: 0
+    }
   }
 
-  self.tt;
+  self.defaultAd = { // Annonce par défaut
+    category: "deals",
+    format: {
+      text: "480x325",
+      w: 480,
+      h: 325
+    },
+    offers: [],
+    gallery: false
+  }
+  $.extend(self.ad = {}, self.defaultAd);
 
-  $.when( 
-    $.get( self.path.templates + 'form-offer-tpl.mustache.html', function(r) { self.tt = r; } ),
-    $.getJSON( self.path.data + "translations.json", function(r) { self.t = r; } ),
-    $.getJSON( self.path.settings + "default.json", function(r) { self.settings.default = r; } ),
-    $.getJSON( self.path.settings + "230x152.json", function(r) { self.settings['230x152'] = r; } ),
-    $.getJSON( self.path.settings + "230x325.json", function(r) { self.settings['230x325'] = r; } ),
-    $.getJSON( self.path.settings + "480x152.json", function(r) { self.settings['480x152'] = r; } ),
-    $.getJSON( self.path.settings + "480x325.json", function(r) { self.settings['480x325'] = r; } )
-  ).then(function() {
+  $.when( //Télécharge tous les settings externes nécessaires
+    $.get( self.path.templates + 'form-offer-tpl.mustache.html', function(r) { self.ad.template = r; } ),
+    $.getJSON( self.path.data + "translations.json", function(r) { self.form.text = r[self.form.culture]; } ),
+    $.getJSON( self.path.settings + "default.json", function(r) { self.form.settings.default = r; } ),
+    $.getJSON( self.path.settings + "230x152.json", function(r) { self.form.settings['230x152'] = r; } ),
+    $.getJSON( self.path.settings + "230x325.json", function(r) { self.form.settings['230x325'] = r; } ),
+    $.getJSON( self.path.settings + "480x152.json", function(r) { self.form.settings['480x152'] = r; } ),
+    $.getJSON( self.path.settings + "480x325.json", function(r) { self.form.settings['480x325'] = r; } )
+  ).then(function() { // Ensuite initialise la page
     //--- functions -----------------
     self.map_(); 
     self.init_();
@@ -56,12 +64,9 @@ app.prototype.map_ = function() {
     step1: $('.step.no1'),
     step2: $('.step.no2'),
     step3: $('.step.no3'),
-    previousStep: $('.js-previousStep'),
-    nextStep: $('.js-nextStep'),
     goStep1: $('.js-goStep1'),
     goStep2: $('.js-goStep2'),
     goStep3: $('.js-goStep3'),
-    submit: $('.js-submit'),
     offersNbr: $('[name="offersNbr"]'),
     addOfferBtn: $('.addOffer'),
     addOfferMsg: $('.addOfferMsg'),
@@ -81,6 +86,10 @@ app.prototype.map_ = function() {
       noClient: $('[name="noClient"]'),
       noAd: $('[name="noAd"]'),
       category: $('[name="category"]'),
+      preLogo: $('[name="pre-logo"]'),
+      logo: $('.file-input[name=logo]'),
+      logoPreview: $('.field.logo .preview'),
+      offersNbr: $('[name=offersNbr]'),
       date: $('[name="date"]'),
       formatRadio: $(".row.format input"),
       format: $('[name="format"]'),
@@ -92,13 +101,13 @@ app.prototype.map_ = function() {
 //=== INIT START =====================================================
 app.prototype.init_ = function(pObj) {
   var self = this;
-  self.id = new Date().getTime() + Math.floor(Math.random() * 10);
-  self.dom.field.id.val(self.id);
+  self.ad.id = new Date().getTime() + Math.floor(Math.random() * 10);
+  self.dom.field.id.val(self.ad.id);
 
   /* jQuery Validate */
   jQuery.extend(jQuery.validator.messages, {
-    required: ' <span class="msg">(' + self.t[self.culture]['requiredField'] + ')</span>',
-    maxlength: jQuery.validator.format(' <span class="msg">(' + self.t[self.culture]['maxlength'] + ')</span>')
+    required: ' <span class="msg">(' + self.form.text['requiredField'] + ')</span>',
+    maxlength: jQuery.validator.format(' <span class="msg">(' + self.form.text['maxlength'] + ')</span>')
   });
 
   $.validator.addMethod("time", function(value, element) {  
@@ -131,8 +140,8 @@ app.prototype.init_ = function(pObj) {
     },
     messages: {
       noAd: {
-        minlength: ' <span class="msg">(' + self.t[self.culture]['mustContain7digits'] + ')</span>',
-        maxlength: ' <span class="msg">(' + self.t[self.culture]['mustContain7digits'] + ')</span>'
+        minlength: ' <span class="msg">(' + self.form.text['mustContain7digits'] + ')</span>',
+        maxlength: ' <span class="msg">(' + self.form.text['mustContain7digits'] + ')</span>'
       }
     }  
   });
@@ -172,15 +181,15 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.goStep2.on('click', function() {
-      if(self.step === 1) { // Si on est au Step 1
+      if(self.form.step === 1) { // Si on est au Step 1
         if(self.validate_()) {  // Si le Step 1 est valid
-          if(self.offersNbr === 0) { // Si il n'y a encore aucune offre au Step 2
-            self.ad = self.getStep1_(); 
+          if(self.ad.offers.length === 0) { // Si il n'y a encore aucune offre au Step 2
+            $.extend( self.ad, self.getStep1_() );
             self.addOffer_(); // Créer une offre vide
           }
           self.goToStep_( 2 ); // Aller au Step 2
         }
-      } else if(self.step === 3) { // Si on est au Step 3
+      } else if(self.form.step === 3) { // Si on est au Step 3
         self.dom.field.iConfirm.attr('checked', false);  // Décoche la boite de confirmation
         self.dom.downloadBtn.addClass('disabled'); // Désactive le bouton de téléchargement 
         self.goToStep_( 2 ); // Aller au Step 2
@@ -201,11 +210,11 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.field.category.on('change', function() {
-    self.category = $(this).val();
+    self.ad.category = $(this).val();
     $(this).blur();
-      if ((self.lastCategory != "conferences" && self.category === "conferences") || (self.lastCategory === "conferences" && self.category != "conferences") ) {
+      if ((self.lastCategory != "conferences" && self.ad.category === "conferences") || (self.lastCategory === "conferences" && self.ad.category != "conferences") ) {
           self.checkOffers_();
-      } 
+      }
   });
 
   self.dom.field.category.on('focus', function() {
@@ -304,18 +313,19 @@ app.prototype.getUploaded_ = function(pInput) {
     var formData = new FormData($('.import')[0]);
 
     $.ajax({
-        url: self.path.librairies + "uploadZip.php",  //Server script to process data
+        url: self.path.librairies + "uploadZip.php",
         type: 'POST',
         data: formData,
         success: function(folderId) {
-          self.id = folderId;
-          var folder = self.path.temps + self.id;
-          $.getJSON(folder + "/assets/_source.json", function(data) {
+          self.ad.id = folderId;
+          var folder = self.path.temps + self.ad.id;
+          $.getJSON(folder + "/assets/_source.json", function(data) { // Télécharge la source de la pub à éditer
             data.folder = folder;
-            data.meta.id = self.id;
+            data.meta.id = self.ad.id;
 
             self.setStep1_( data ); // Remplis le formulaire du Step 1
-            self.ad = self.getStep1_(); // Récupère les valeurs du formulaire du Step 1
+            $.extend( self.ad, self.getStep1_() ); // Récupère les valeurs du formulaire du Step 1
+            console.log(self.ad);
             self.ad.offers = self.convertOffers_( data.offers.list ); // Converti les offres dans _source.json en format traitable
             self.setStep2_( self.ad ); // Remplis le formulaires du Step 2 (Offres)
             self.goToStep_( 2 ); // Passe au step 2
@@ -342,14 +352,13 @@ app.prototype.getUploaded_ = function(pInput) {
 app.prototype.getStep1_ = function() {
   var self = this;
   var format = self.dom.field.format.filter(":checked").val();
-
   var ad = {
     id: self.dom.field.id.val(),
     client: self.dom.field.noClient.val(),
     noAd: self.dom.field.noAd.val(),
     category: self.dom.field.category.val(),
     format: self.convertFormat_( format ),
-    settings: self.convertSettings_( self.settings.default, self.settings[format] )
+    settings: self.convertSettings_( self.form.settings.default, self.form.settings[format] )
   };
 
   return ad;
@@ -358,23 +367,19 @@ app.prototype.getStep1_ = function() {
 /*=== Set Step 1 ==========================================*/
 app.prototype.setStep1_ = function(pData) {
   var self = this;
+  console.log(pData);
 
-  self.dom.field.id.val(pData.meta.id);
-  self.dom.field.noClient.val(pData.meta.noClient);
-  self.dom.field.noAd.val(pData.meta.noAd);
-  self.dom.field.category.val(pData.meta.category);
+  self.dom.field.id.val( pData.meta.id );
+  self.dom.field.noClient.val( pData.meta.noClient );
+  self.dom.field.noAd.val( pData.meta.noAd );
+  self.dom.field.category.val( pData.meta.category );
   /*--- Logo ---*/
-  $('[name="pre-logo"]').val(pData.logo.name);
-  $('.file-input[name=logo]').closest('.half').addClass('valid');
-  $('.file-input[name=logo]').removeClass('js-validate');
+  self.dom.field.preLogo.val( pData.logo.name );
+  self.dom.field.logo.closest( '.half' ).addClass( 'valid' ).removeClass( 'js-validate' );
   $('.field.logo').addClass('valid');
-  $('.field.logo .preview').addClass('active');
-  $('.field.logo .preview').css('background-image', 'url("' + pData.folder + '/assets/' + pData.logo.name + '")');
-
-  $('[name=offersNbr]').val(pData.offers.nbr);
-
-  self.radioChoice = $('img[src="public/images/formats/'+ pData.meta.format +'.png"]');
-  self.updateRadioFormat_(self.radioChoice);
+  self.dom.field.logoPreview.addClass( 'active' ).css( 'background-image', 'url("' + pData.folder + '/assets/' + pData.logo.name + '")' );
+  self.dom.field.offersNbr.val( pData.offers.nbr );
+  self.radioChoice = $('img[src="' + self.path.images + 'formats/'+ pData.meta.format +'.png"]');
 };
 
 /*=== Set Step 2 ==========================================*/
@@ -386,7 +391,62 @@ app.prototype.setStep2_ = function(pAd) {
     jQuery.extend( obj, pAd );
     obj.filled = pAd.offers[x];
     self.addOffer_( obj );
-    self.setOfferValidation_( pAd, pAd.offers[x] );
+  }
+};
+
+/*=== Step 2 validation ============================================*/
+app.prototype.setOfferValidation_ = function(pAd, pOffer) {
+  var self = this;
+
+  // Titre
+  $("textarea[name='"+ pOffer.id +"_title']").rules('add', {
+    required: true
+  });
+  // Prix
+  if(pAd.settings.price == true) {
+    self.dom.f.find("input[name='"+ pOffer.id +"_price']").rules('add', {
+      required: true
+    });
+    console.log( pOffer.id, $("input[name='"+ pOffer.id +"_price']"));
+    $("input[name='"+ pOffer.id +"_price']").mask('99999');
+  }
+  // Date
+  if(pAd.settings.date == true) {
+    self.dom.f.find("input[name='"+ pOffer.id +"_date']").rules('add', {
+      required: true,
+      date: true,
+      messages: {
+        date: ' <span class="msg">(' + self.form.text['enterValidDate'] + ')'
+      }
+    });
+    $("input[name='"+ pOffer.id +"_date']").mask('0000-09-09');
+    // Heure
+    self.dom.f.find("input[name='"+ pOffer.id +"_time']").rules('add', {
+      required: true,
+      time: true,
+      messages: {
+        time: ' <span class="msg">(' + self.form.text['enterValidHour'] + ')'
+      }
+    });
+    $("input[name='"+ pOffer.id +"_time']").mask('09:00');
+  }
+
+  $('.' + pOffer.id + '_rateit').rateit({ max: 5, step: 1, backingfld: '#' + pOffer.id + '_rateit_val' });
+
+  // Lien web
+  $("input[name='"+ pOffer.id +"_link']").rules('add', {
+    required: true,
+    url: true,
+    messages: {
+      url: ' <span class="msg">(' + self.form.text['enterValidURL'] + ')'
+    }
+  });
+
+  // Description
+  if(pAd.settings.description == true) {
+    $("textarea[name='"+ pOffer.id +"_description']").rules('add', {
+      required: true
+    });
   }
 };
 
@@ -441,7 +501,7 @@ app.prototype.convertFormat_ = function(pFormat) {
     h: parseInt(pFormat.split('x')[1])
   }
   return format;
-}
+};
 
 /*=== Convert Offers ==========================================*/
 app.prototype.convertOffers_ = function(pOffers) {
@@ -517,11 +577,11 @@ app.prototype.downloadAd_ = function() {
   $.ajax({
     type: "POST",
     url: self.path.librairies + "createFiles.php",
-    data: {"id": self.id, "h": html},
+    data: {"id": self.ad.id, "h": html},
     success: function(data) {
       console.log("success: create folder");
       self.dom.popupConfirmation.removeClass('active');
-      var folder = '../../temps/' + self.id;
+      var folder = '../../temps/' + self.ad.id;
       var adNumber = self.dom.field.noAd.val();
       var adZipName = adNumber;
       if (self.dom.field.noClient.val() != "") {
@@ -538,7 +598,7 @@ app.prototype.downloadAd_ = function() {
         url: self.path.librairies + "zipFolder.php",
         data: {"folder": folder, "name": adZipName},
         success: function(data) {
-          var url = self.path.root + 'temps/' + self.id + '/' + adZipName + '.zip';
+          var url = self.path.root + 'temps/' + self.ad.id + '/' + adZipName + '.zip';
           $("<iframe />").css("display", "none").bind("load", function(e) {
             this.src == url && $(this).remove();
           }).attr("src", url).appendTo($(document.body));
@@ -581,63 +641,31 @@ app.prototype.deleteVideo_ = function(pInput) {
 /*=== Go to Step ===========================================*/
 app.prototype.goToStep_ = function(pStep) {
   var self = this;
-  self.step = pStep;
-  self.dom.b.removeClass('no1 no2 no3').addClass('no' + self.step);
-};
-
-/*=== Validate ===========================================*/
-app.prototype.validate_ = function() {
-  var self = this;
-  var currentStep = $('.step.no' + self.step);
-  var valid = true;
-
-  $('.js-validate', currentStep).each(function(i, v) {
-    valid = self.validator.element(v) && valid;
-  });
-
-  return valid;
-};
-
-/*=== Check Offers ===========================================*/
-app.prototype.checkOffers_ = function() {
-  var self = this;
-  var fieldsets = self.dom.offersList.children('fieldset');
-  if(fieldsets.length != 0){
-      self.dom.field.category.hide();
-      self.dom.popupDelete.addClass('active');
-  } else {
-    self.dom.field.category.show();
-  }
-};
-
-/*=== Reset Offers ===========================================*/
-app.prototype.resetOffers_ = function() {
-  var self = this;
-  var fieldsets = self.dom.offersList.children('fieldset');
-  for(var x=0; x<=fieldsets.length; x++) {
-    key = fieldsets.eq(x);
-    self.deleteOffer_(key);
-  }
-  self.offersNbr = 0;
-  self.gallery = false;
+  self.form.step = pStep;
+  self.dom.b.removeClass('no1 no2 no3').addClass('no' + self.form.step);
 };
 
 /*=== Add Offer ============================================*/
 app.prototype.addOffer_ = function(pObj, pSpeed) {
   var self = this;
 
-  if(self.offersNbr < self.ad.settings.maxOffers && !self.gallery) { // Si nous avons le droit d'ajouter une offre
+  if(self.form.current.offersNbr < self.ad.settings.maxOffers && !self.ad.gallery) { // Si nous avons le droit d'ajouter une offre
     pObj = pObj ? pObj : {}; // Si aucun objet n'est passé, en créer un vide
     pSpeed = pSpeed ? parseInt(pSpeed) : 0; // Si aucune vitesse n'est passé, donner 0 comme valeur
     pObj.settings = self.ad.settings; // Définir les settings des champs de l'offre
-    pObj.t = self.t[self.culture]; // Définir les textes selon la langue (ex: Surtitre / Strapline)
+    pObj.t = self.form.text; // Définir les textes selon la langue (ex: Surtitre / Strapline)
 
-    pObj.id = self.offer.id // Attribution d'un id
-    self.offer.id++; // S'assure que le id ne pourra pas etre repeter en l'incrémentant
+    pObj.id = self.form.current.id // Attribution d'un id
+    self.form.current.id++; // S'assure que le id ne pourra pas etre repeter en l'incrémentant
 
-    var html = Mustache.render(self.tt, pObj); // Rend le html de l'offre (champs à afficher ou à populer)
+    var html = Mustache.render(self.ad.template, pObj); // Rend le html de l'offre (champs à afficher ou à populer)
     self.dom.offersList.append(html); // Ajoute l'offre dans l'annonce
     self.initMultiFiles_($('input[name="'+ pObj.id +'_picture[]"]'));
+    self.form.current.offersNbr++;
+    self.updateMultifiles_();
+    self.updateAddOfferBtn_();
+    self.updateOffersList_();
+    self.setOfferValidation_(self.ad, pObj);
     self.updateOffer_(pObj.id);
 
     setTimeout(function() { // Délais pour animation
@@ -646,66 +674,13 @@ app.prototype.addOffer_ = function(pObj, pSpeed) {
   }
 };
 
-/*=== Step 2 validation ============================================*/
-app.prototype.setOfferValidation_ = function(pAd, pOffer) {
-  var self = this;
-
-  // Titre
-  $("textarea[name='"+ pOffer.id +"_title']").rules('add', {
-    required: true
-  });
-  // Prix
-  if(pAd.settings.price == true) {
-    self.dom.f.find("input[name='"+ pOffer.id +"_price']").rules('add', {
-      required: true
-    });
-    $("input[name='"+ pOffer.id +"_price']").mask('99999');
-  }
-  // Date
-  if(pAd.settings.date == true) {
-    self.dom.f.find("input[name='"+ pOffer.id +"_date']").rules('add', {
-      required: true,
-      date: true,
-      messages: {
-        date: ' <span class="msg">(' + self.t[self.culture]['enterValidDate'] + ')'
-      }
-    });
-    $("input[name='"+ pOffer.id +"_date']").mask('0000-09-09');
-    // Heure
-    self.dom.f.find("input[name='"+ pOffer.id +"_time']").rules('add', {
-      required: true,
-      time: true,
-      messages: {
-        time: ' <span class="msg">(' + self.t[self.culture]['enterValidHour'] + ')'
-      }
-    });
-    $("input[name='"+ pOffer.id +"_time']").mask('09:00');
-  }
-
-  $('.' + pOffer.id + '_rateit').rateit({ max: 5, step: 1, backingfld: '#' + pOffer.id + '_rateit_val' });
-
-  // Lien web
-  $("input[name='"+ pOffer.id +"_link']").rules('add', {
-    required: true,
-    url: true,
-    messages: {
-      url: ' <span class="msg">(' + self.t[self.culture]['enterValidURL'] + ')'
-    }
-  });
-
-  // Description
-  if(pAd.settings.description == true) {
-    $("textarea[name='"+ pOffer.id +"_description']").rules('add', {
-      required: true
-    });
-  }
-};
-
 /*=== Delete Offer ===========================================*/
 app.prototype.deleteOffer_ = function(pOffer) {
   var self = this;
   var id = pOffer.data('id');
   pOffer.remove();
+  self.form.current.offersNbr--;
+  self.updateAddOfferBtn_();
   self.updateOffersList_();
   self.updateOffer_(id);
 };
@@ -721,20 +696,14 @@ app.prototype.updateOffer_ = function(pId) {
     var multifiles = $('.multi-files .btn');
     if(index === -1) {
       arrIds.push(pId);
-      self.offersNbr++;
+      
     } else {
       arrIds.splice(index, 1);
-      self.offersNbr--;
     }
   } else {
     arrIds = [];
   }
   strIds = arrIds.toString();
-
-  self.updateMultifiles_();
-  self.updateAddOfferBtn_();
-  self.updateOffersList_();
-  self.dom.offersNbr.val(self.offersNbr);
   self.dom.field.offersId.val(strIds);
 };
 
@@ -742,26 +711,64 @@ app.prototype.updateOffer_ = function(pId) {
 app.prototype.updateOffersList_ = function() {
   var self = this;
   var content = self.dom.step2.find('.content');
-
-  if(self.dom.b.width() > 1020) {
-    if(self.offersNbr > 1) {
+  console.log(self.form.current.offersNbr, self.dom.b.width());
+  if(self.form.current.offersNbr > 1) {
+    if(self.dom.b.width() > 1020) {
       content.addClass('extend');
-    } else {
-      content.removeClass('extend');
     }
+  } else {
+    content.removeClass('extend');
   }
+  
+};
+
+/*=== Validate ===========================================*/
+app.prototype.validate_ = function() {
+  var self = this;
+  var currentStep = $('.step.no' + self.form.step);
+  var valid = true;
+
+  $('.js-validate', currentStep).each(function(i, v) {
+    valid = self.validator.element(v) && valid;
+  });
+
+  return valid;
+};
+
+/*=== Check Offers ===========================================*/
+app.prototype.checkOffers_ = function() {
+  var self = this;
+  var fieldsets = self.dom.offersList.children( 'fieldset' );
+  if(fieldsets.length !== 0) {
+      self.dom.field.category.hide();
+      self.dom.popupDelete.addClass( 'active' );
+  } else {
+    self.dom.field.category.show();
+  }
+};
+
+/*=== Reset Offers ===========================================*/
+app.prototype.resetOffers_ = function() {
+  var self = this;
+  var fieldsets = self.dom.offersList.children('fieldset');
+  for(var x=0; x<=fieldsets.length; x++) {
+    key = fieldsets.eq(x);
+    self.deleteOffer_(key);
+  }
+  self.ad = self.defaultAd;
+  self.ad.gallery = false;
 };
 
 /*=== Update Add Offer Btn ============================================*/
 app.prototype.updateAddOfferBtn_ = function() {
   var self = this;
 
-  if(self.offersNbr === self.ad.settings.maxOffers) {
+  if(self.form.current.offersNbr === self.ad.settings.maxOffers) {
     self.dom.addOfferBtn.addClass('disabled');
-    self.dom.addOfferMsg.html('(' + self.t[self.culture]['offersMaxReached'] + ')');
-  } else if(self.gallery) {
+    self.dom.addOfferMsg.html('(' + self.form.text['offersMaxReached'] + ')');
+  } else if(self.ad.gallery) {
     self.dom.addOfferBtn.addClass('disabled');
-    self.dom.addOfferMsg.html('(' + self.t[self.culture]['cantAddOfferIfMoreThan1picture'] + ')');
+    self.dom.addOfferMsg.html('(' + self.form.text['cantAddOfferIfMoreThan1picture'] + ')');
   } else {
     self.dom.addOfferBtn.removeClass('disabled');
     self.dom.addOfferMsg.html('');
@@ -771,7 +778,6 @@ app.prototype.updateAddOfferBtn_ = function() {
 /*=== Init Multi Files ===============================================*/
 app.prototype.initMultiFiles_ = function(pInput) {
   var self = this;
-  console.log(pInput);
   var field = pInput.closest('.field');
   pInput.closest('.field').wrap('<div class="multi-files"></div>');
   var ol = $('<ol class="files-list"></ol>');
@@ -783,12 +789,12 @@ app.prototype.initMultiFiles_ = function(pInput) {
     var btn = pInput.closest('.btn');
     var txt = btn.children('.text');
     for(var x=0; x<preImgs.length; x++) {
-      ol.append('<li><span class="preview" style="background-image: url(\'' + self.path.root + 'temps/' + self.id +'/assets/'+ preImgs[x] +'\')"></span><a href="#" class="js-erease" data-id="'+ preImgs[x] +'">X</a></li>');
+      ol.append('<li><span class="preview" style="background-image: url(\'' + self.path.root + 'temps/' + self.ad.id +'/assets/'+ preImgs[x] +'\')"></span><a href="#" class="js-erease" data-id="'+ preImgs[x] +'">X</a></li>');
     }
     var max = parseInt(btn.data('max'));
     if(ol.children().length < max) {
-        txt.html(self.t[self.culture]['uploadOtherImages']);
-        self.gallery = ol.children().length > 1 ? true : false;
+        txt.html(self.form.text['uploadOtherImages']);
+        self.ad.gallery = ol.children().length > 1 ? true : false;
         self.updateAddOfferBtn_();
         self.updateMultifiles_();
     }
@@ -833,12 +839,12 @@ app.prototype.deleteMultiFiles_ = function(pKey, pId) {
   
   if(ol.children().length === 0) {
     field.removeClass('valid').addClass('error');
-    msg.html('(' + self.t[self.culture]['requiredField'] + ')');
-    txt.html(self.t[self.culture]['uploadImage']);
+    msg.html('(' + self.form.text['requiredField'] + ')');
+    txt.html(self.form.text['uploadImage']);
   } else {
-    self.gallery = ol.children().length === 1 ? false : true;
+    self.ad.gallery = ol.children().length === 1 ? false : true;
     msg.html('');
-    txt.html(self.t[self.culture]['uploadOtherImages']);
+    txt.html(self.form.text['uploadOtherImages']);
   }
   self.updateAddOfferBtn_();
 };
@@ -865,10 +871,10 @@ app.prototype.addMultiFiles_ = function(pInput) {
         var newKey = new Date().getTime();
 
         list.append(Mustache.render($(template).filter('#filePreviewTpl').html(), obj));
-        txt.html(self.t[self.culture]['uploadOtherImages']);
+        txt.html(self.form.text['uploadOtherImages']);
         btn.append('<input type="file" accept="image/*" capture="camera" name="'+ name +'" data-key="'+ newKey +'" />');
 
-        self.gallery = list.children().length > 1 ? true : false;
+        self.ad.gallery = list.children().length > 1 ? true : false;
         self.updateAddOfferBtn_();
         self.updateMultifiles_();
       });
@@ -894,16 +900,16 @@ app.prototype.updateMultifiles_ = function() {
     if(list.children().length == 0) {
       btn.removeClass('disabled');
       msg.html('');
-      txt.html(self.t[self.culture]['uploadImage']);
+      txt.html(self.form.text['uploadImage']);
     } else {
       if(list.children().length < btn.data('max')) {
         btn.removeClass('disabled');
         msg.html('');
-        txt.html(self.t[self.culture]['uploadOtherImages']);
+        txt.html(self.form.text['uploadOtherImages']);
       } else {
         btn.addClass('disabled');
-        msg.html(' <span class="msg">(' + self.t[self.culture]['maximumPicturesNumberReached'] + ')</span>');
-        txt.html(self.t[self.culture]['uploadImage']);
+        msg.html(' <span class="msg">(' + self.form.text['maximumPicturesNumberReached'] + ')</span>');
+        txt.html(self.form.text['uploadImage']);
       }
     }
   }
@@ -935,20 +941,20 @@ app.prototype.getUploadedImageObj_ = function(pInput, callback) {
     });
   }
   reader.readAsDataURL(file); 
-}
+};
 
 /*=== Update Radio Format ============================================*/
 app.prototype.updateRadioFormat_ = function(pRadio) {
   var self = this;
   pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
   pRadio.addClass('valid').prev().prop('checked', 'true');
-  self.format = pRadio.prev().val();
+  self.ad.format = self.convertFormat_( pRadio.prev().val() );
   self.dom.field.offersId.val("");
   self.dom.offersList.find('fieldset').remove();
   self.dom.step2.find('.content').removeClass('extend');
-  self.offersNbr = 0;
-  self.gallery = 0;
-  self.dom.offersNbr.val(self.offersNbr);
+  self.form.current.offers = 0;
+  self.ad.gallery = 0;
+  self.dom.offersNbr.val(self.form.current.offers );
 };
 
 /*=== Vertical Align ============================================*/
