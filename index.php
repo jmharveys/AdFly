@@ -114,7 +114,7 @@
 					</fieldset>
 
 					<footer class="footer">
-						<div class="btn blue rgt js-nextStep"><?= $t[$culture]['next']; ?></div>
+						<div class="btn blue rgt js-nextStep js-goStep2"><?= $t[$culture]['next']; ?></div>
 					</footer>
 				</div>
 			</section>
@@ -132,8 +132,8 @@
 					</div>
 
 					<footer class="footer">
-						<div class="btn lft js-previousStep"><?= $t[$culture]['previous']; ?></div>
-						<div class="btn blue rgt js-nextStep"><?= $t[$culture]['next']; ?></div>
+						<div class="btn lft js-previousStep js-goStep1"><?= $t[$culture]['previous']; ?></div>
+						<div class="btn blue rgt js-nextStep js-goStep3"><?= $t[$culture]['next']; ?></div>
 					</footer>
 				</div>
 			</section>
@@ -147,7 +147,7 @@
 					</div>
 
 					<footer class="footer">
-						<div class="btn lft js-previousStep"><?= $t[$culture]['previous']; ?></div>
+						<div class="btn lft js-previousStep js-goStep2"><?= $t[$culture]['previous']; ?></div>
 						<div class="btn blue rgt js-download disabled"><?= $t[$culture]['download']; ?></div>
 						<label>
 							<input type="checkbox" name="iConfirm">

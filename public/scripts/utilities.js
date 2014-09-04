@@ -7,12 +7,22 @@ function throttle(func, interval) {
             return func.apply(this, arguments);
         }
     };
-}
+};
 
 function resetFormElement(e) {
   e.wrap('<form>').closest('form').get(0).reset();
   e.unwrap();
-}​
+}​;
+
+function inputContainImg(input) {
+    var file = input[0].files[0];
+    var type = file.type;
+    if(type === "image/gif" || type === "image/jpeg" || type === "image/jpg" || type === "image/png") {
+        return true;
+    } else {
+        return false;
+    }
+};
 
 $.fn.serializeObject = function() {
     var o = {};

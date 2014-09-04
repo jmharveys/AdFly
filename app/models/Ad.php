@@ -24,7 +24,6 @@ class AdModel {
         $settings->f230x152->logo->h = 40;
         $settings->months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
         $settings->monthsShorten = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juill.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];        
-
         $this->ad->new = true;
         if(isset($_POST["pre-logo"])) {
             $this->ad->new = false;
@@ -281,6 +280,8 @@ class AdModel {
         }
         $this->adAssets($this->ad->assets);
         $this->createJsonObj();
+
+        //print_r($this->ad);
     }
 
     private function createFolder() {

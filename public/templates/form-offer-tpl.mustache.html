@@ -1,320 +1,317 @@
-<section id="formOfferTpl">
-	<fieldset data-id="{{id}}">
-		<legend>
-			{{t.offer}}
-			<span class="delete-offer">
-				(<a href="#">{{t.deleteThisOffer}}</a>)
-			</span>
-		</legend>
+<fieldset data-id="{{id}}">
+	<legend>
+		{{t.offer}}
+		<span class="delete-offer">
+			(<a href="#">{{t.deleteThisOffer}}</a>)
+		</span>
+	</legend>
 
-		<div class="row field">
-			<label>
-				<span class="lbl">{{t.strapline}}</span><br>
-				<textarea name="{{id}}_strapline" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{#opt.date}}{{opt.maxlength.straplineConvention}}{{/opt.date}}{{^opt.date}}{{opt.maxlength.strapline}}{{/opt.date}}" required>{{opt.filled.strapline}}</textarea>
-				<span class="countMaxCharacter" id='inputValue1' name="inputValue1">{{#opt.date}}{{opt.maxlength.straplineConvention}}{{/opt.date}}{{^opt.date}}{{opt.maxlength.strapline}}{{/opt.date}}</span>
-			</label>
-			
-		</div>
+	<div class="row field">
+		<label>
+			<span class="lbl">{{t.strapline}}</span><br>
+			<textarea name="{{id}}_strapline" placeholder="Barcelo Costa Cancun" class="input js-validate" maxlength="{{#settings.date}}{{settings.maxlength.straplineConvention}}{{/settings.date}}{{^settings.date}}{{settings.maxlength.strapline}}{{/settings.date}}" required>{{filled.strapline}}</textarea>
+			<span class="countMaxCharacter" id='inputValue1' name="inputValue1">{{#settings.date}}{{settings.maxlength.straplineConvention}}{{/settings.date}}{{^settings.date}}{{settings.maxlength.strapline}}{{/settings.date}}</span>
+		</label>
+		
+	</div>
 
-		<div class="row field">
+	<div class="row field">
+		<label>
+			<span class="lbl">{{t.title}}</span><br>
+			<textarea name="{{id}}_title" placeholder="Cancun, Mexique" class="input js-validate" maxlength="{{settings.maxlength.title}}" required>{{filled.title}}</textarea>
+			<span class="countMaxCharacter" id='inputValue2' name="inputValue2">{{settings.maxlength.title}}</span>
+		</label>
+	</div>
+	{{#settings.date}}	
+	<div class="row field">
+		<label>
+			<span class="lbl">{{t.place}}</span><br>
+			<textarea name="{{id}}_place" placeholder="Boucherville" class="input" maxlength="{{settings.maxlength.place}}">{{filled.place}}</textarea>
+			<span class="countMaxCharacter" id='inputValue6' name="inputValue2">{{settings.maxlength.place}}</span>
+		</label>
+	</div>	
+	{{/settings.date}}
+	<div class="row">
+		{{#settings.price}}
+		<div class="half field">
 			<label>
-				<span class="lbl">{{t.title}}</span><br>
-				<textarea name="{{id}}_title" placeholder="Cancun, Mexique" class="input js-validate" maxlength="{{opt.maxlength.title}}" required>{{opt.filled.title}}</textarea>
-				<span class="countMaxCharacter" id='inputValue2' name="inputValue2">{{opt.maxlength.title}}</span>
-			</label>
-		</div>
-		{{#opt.date}}	
-		<div class="row field">
-			<label>
-				<span class="lbl">{{t.place}}</span><br>
-				<textarea name="{{id}}_place" placeholder="Boucherville" class="input" maxlength="{{opt.maxlength.place}}">{{opt.filled.place}}</textarea>
-				<span class="countMaxCharacter" id='inputValue6' name="inputValue2">{{opt.maxlength.place}}</span>
-			</label>
-		</div>	
-		{{/opt.date}}
-		<div class="row">
-			{{#opt.price}}
-			<div class="half field">
-				<label>
-					<span class="lbl">{{t.price}}</span><br>
-					<input type="text" name="{{id}}_price" placeholder="1358" class="input short dollar js-validate" value="{{opt.filled.price}}" />
-				</label>
-			</div>
-			{{/opt.price}}
-			{{#opt.date}}		
-			<div class="half field">
-				<label>
-					<span class="lbl">{{t.date}}</span><br>
-					<input type="date" name="{{id}}_date" placeholder="2014-12-31" class="input short js-validate" value="{{opt.filled.date.raw}}" />
-				</label>
-			</div>
-			<div class="half field">
-				<label>
-					<span class="lbl">{{t.time}}</span><br>
-					<input type="time" name="{{id}}_time" value="{{#opt.filled.time}}{{opt.filled.time.raw}}{{/opt.filled.time}}{{^opt.filled.time}}12:00{{/opt.filled.time}}" class="input short js-validate" />
-				</label>
-			</div>
-			{{/opt.date}}
-		</div>
-		{{#opt.price}}
-		<div class="row opt">
-			{{#opt.filled.mention1}}
-			<div class="half field">
-				<span class="lbl">{{t.mention}} 1</span><br>
-				<label>
-					{{#opt.filled.mention1.no0}}
-					<input type="radio" name="{{id}}_mention_1" value="" checked />
-					{{/opt.filled.mention1.no0}}
-					{{^opt.filled.mention1.no0}}
-					<input type="radio" name="{{id}}_mention_1" value="" />
-					{{/opt.filled.mention1.no0}}
-					<span class="radio-lbl">{{t.none}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention1.no1}}
-					<input type="radio" name="{{id}}_mention_1" value="À partir de" checked />
-					{{/opt.filled.mention1.no1}}
-					{{^opt.filled.mention1.no1}}
-					<input type="radio" name="{{id}}_mention_1" value="À partir de" />
-					{{/opt.filled.mention1.no1}}
-					<span class="radio-lbl">{{t.from}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention1.no2}}
-					<input type="radio" name="{{id}}_mention_1" value="Par personne" checked /> 
-					{{/opt.filled.mention1.no2}}
-					{{^opt.filled.mention1.no2}}
-					<input type="radio" name="{{id}}_mention_1" value="Par personne" />
-					{{/opt.filled.mention1.no2}}
-					<span class="radio-lbl">{{t.perCapita}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention1.no3}}
-					<input type="radio" name="{{id}}_mention_1" value="Vol inclus" checked />
-					{{/opt.filled.mention1.no3}}
-					{{^opt.filled.mention1.no3}}
-					<input type="radio" name="{{id}}_mention_1" value="Vol inclus" />
-					{{/opt.filled.mention1.no3}}
-					<span class="radio-lbl">{{t.flightIncluded}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention1.no4}}
-					<input type="radio" name="{{id}}_mention_1" value="Taxes incluses" checked /> 
-					{{/opt.filled.mention1.no4}}
-					{{^opt.filled.mention1.no4}}
-					<input type="radio" name="{{id}}_mention_1" value="Taxes incluses" />
-					{{/opt.filled.mention1.no4}}
-					<span class="radio-lbl">{{t.taxesIncluded}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention1.no5}}
-					<input type="radio" name="{{id}}_mention_1" value="freetext" checked />
-					{{/opt.filled.mention1.no5}}
-					{{^opt.filled.mention1.no5}}
-					<input type="radio" name="{{id}}_mention_1" value="freetext" />
-					{{/opt.filled.mention1.no5}}
-				</label>
-				<label>
-					<input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short" value="{{opt.filled.mention1.freetext}}" />
-					<span class="countMaxCharacter special" id='inputValue3' name="inputValue3">{{opt.maxlength.mention}}</span>
-				</label>
-			</div>
-			{{/opt.filled.mention1}}
-			{{^opt.filled.mention1}}
-			<div class="half field">
-				<span class="lbl">{{t.mention}} 1</span><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_1" value="" checked /> 
-					<span class="radio-lbl">{{t.none}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_1" value="À partir de" /> 
-					<span class="radio-lbl">{{t.from}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_1" value="Par personne" /> 
-					<span class="radio-lbl">{{t.perCapita}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_1" value="Vol inclus" /> 
-					<span class="radio-lbl">{{t.flightIncluded}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_1" value="Taxes incluses" /> 
-					<span class="radio-lbl">{{t.taxesIncluded}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_1" value="freetext" /> 
-				</label>
-				<label>
-					<input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short" />
-					<span class="countMaxCharacter special" id='inputValue3' name="inputValue3">{{opt.maxlength.mention}}</span>
-				</label>
-			</div>
-			{{/opt.filled.mention1}}
-
-			{{#opt.filled.mention2}}
-			<div class="half field">
-				<span class="lbl">{{t.mention}} 2</span><br>
-				<label>
-					{{#opt.filled.mention2.no0}}
-					<input type="radio" name="{{id}}_mention_2" value="" checked />
-					{{/opt.filled.mention2.no0}}
-					{{^opt.filled.mention2.no0}}
-					<input type="radio" name="{{id}}_mention_2" value="" />
-					{{/opt.filled.mention2.no0}}
-					<span class="radio-lbl">{{t.none}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention2.no1}}
-					<input type="radio" name="{{id}}_mention_2" value="À partir de" checked /> 
-					{{/opt.filled.mention2.no1}}
-					{{^opt.filled.mention2.no1}}
-					<input type="radio" name="{{id}}_mention_2" value="À partir de" /> 
-					{{/opt.filled.mention2.no1}}
-					<span class="radio-lbl">{{t.from}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention2.no2}}
-					<input type="radio" name="{{id}}_mention_2" value="Par personne" checked /> 
-					{{/opt.filled.mention2.no2}}
-					{{^opt.filled.mention2.no2}}
-					<input type="radio" name="{{id}}_mention_2" value="Par personne" />
-					{{/opt.filled.mention2.no2}}
-					<span class="radio-lbl">{{t.perCapita}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention2.no3}}
-					<input type="radio" name="{{id}}_mention_2" value="Vol inclus" checked /> 
-					{{/opt.filled.mention2.no3}}
-					{{^opt.filled.mention2.no3}}
-					<input type="radio" name="{{id}}_mention_2" value="Vol inclus" />
-					{{/opt.filled.mention2.no3}}
-					<span class="radio-lbl">{{t.flightIncluded}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention2.no4}}
-					<input type="radio" name="{{id}}_mention_2" value="Taxes incluses" checked /> 
-					{{/opt.filled.mention2.no4}}
-					{{^opt.filled.mention2.no4}}
-					<input type="radio" name="{{id}}_mention_2" value="Taxes incluses" />
-					{{/opt.filled.mention2.no4}}
-					<span class="radio-lbl">{{t.taxesIncluded}}</span>
-				</label><br>
-				<label>
-					{{#opt.filled.mention2.no5}}
-					<input type="radio" name="{{id}}_mention_2" value="freetext" checked /> 
-					{{/opt.filled.mention2.no5}}
-					{{^opt.filled.mention2.no5}}
-					<input type="radio" name="{{id}}_mention_2" value="freetext" />
-					{{/opt.filled.mention2.no5}}
-				</label>
-				<label>
-					<input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short" value="{{opt.filled.mention2.freetext}}" />
-					<span class="countMaxCharacter special" id='inputValue4' name="inputValue4">{{opt.maxlength.mention}}</span>
-				</label>
-			</div>
-			{{/opt.filled.mention2}}
-			{{^opt.filled.mention2}}
-			<div class="half field">
-				<span class="lbl">{{t.mention}} 2</span><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_2" value="" checked />
-					<span class="radio-lbl">{{t.none}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_2" value="À partir de" /> 
-					<span class="radio-lbl">{{t.from}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_2" value="Par personne" /> 
-					<span class="radio-lbl">{{t.perCapita}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_2" value="Vol inclus" /> 
-					<span class="radio-lbl">{{t.flightIncluded}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_2" value="Taxes incluses" /> 
-					<span class="radio-lbl">{{t.taxesIncluded}}</span>
-				</label><br>
-				<label>
-					<input type="radio" name="{{id}}_mention_2" value="freetext" /> 
-				</label>
-				<label>
-					<input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="{{opt.maxlength.mention}}" class="input short"/>
-					<span class="countMaxCharacter special" id='inputValue4' name="inputValue4">{{opt.maxlength.mention}}</span>
-				</label>
-			</div>
-			{{/opt.filled.mention2}}
-		</div>
-
-		<div class="row opt">
-			<span class="lbl">{{t.numberOfStars}}</span><br>
-			<input type="hidden" id="{{id}}_rateit_val" name="{{id}}_rating" value="{{opt.filled.rating}}">
-			<div class="{{id}}_rateit"></div>
-		</div>
-		{{/opt.price}}
-		<div class="row field">
-			<label>
-				<span class="lbl">{{t.webLink}}</span><br>
-				<input type="text" name="{{id}}_link" value="{{#opt.filled.link}}{{opt.filled.link}}{{/opt.filled.link}}{{^opt.filled.link}}http://{{/opt.filled.link}}" class="input js-validate" value="" required>
+				<span class="lbl">{{t.price}}</span><br>
+				<input type="text" name="{{id}}_price" placeholder="1358" class="input short dollar js-validate" value="{{filled.price}}" />
 			</label>
 		</div>
-
-		{{#opt.picture}}
-		<div class="row">
-			<div class="half field">
-				<label>
-					<span class="lbl">{{t.picture}}(s) <span class="msg"></span></span><br>
-					{{#opt.filled.pictures.length}}
-					<input type="hidden" name="pre-{{id}}_picture" value="{{opt.filled.pictures}}">
-					{{/opt.filled.pictures.length}}
-					<div class="btn blue file" data-max="{{opt.maxPictures}}" data-max-original="{{opt.maxOriginalPictures}}">
-						<span class="text">{{t.uploadImage}}</span>
-						<input type="file" accept="image/*" capture="camera" name="{{id}}_picture[]" data-key="{{id}}" class="js-multi-files {{^opt.filled.pictures.length}}js-validate{{/opt.filled.pictures.length}}" required />
-					</div>
-				</label>
-			</div>
-		</div>
-		{{/opt.picture}}
-
-		{{#opt.video}}
-		<div class="row video">
-			<div class="half field">
-				<label>
-					<span class="lbl">{{t.video}}</span><br>
-					<div class="btn file">
-						<span class="text">{{t.uploadVideo}}</span>
-						<input type="hidden" name="pre-{{id}}_video">
-						<input type="file" accept="video/*" capture="camera" name="{{id}}_video" />
-					</div>
-				</label>
-			</div>
-			<ol class="files-list hide">
-				<li>
-					<span class="preview"></span>
-					<a href="#" class="js-erease-video">X</a>
-				</li>
-			</ol>
-			<p class="note">{{t.additionalChargesForVideos}}</p>
-		</div>
-		{{/opt.video}}
-
-		{{#opt.description}}
-		<div class="row field">
+		{{/settings.price}}
+		{{#settings.date}}		
+		<div class="half field">
 			<label>
-				<span class="lbl">{{t.description}}</span><br>
-				<textarea name="{{id}}_description" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra." maxlength="{{opt.maxlength.description}}" required>{{opt.filled.description}}</textarea><span class="countMaxCharacter special2" id='inputValue5' name="inputValue5" >{{opt.maxlength.description}}</span>
+				<span class="lbl">{{t.date}}</span><br>
+				<input type="date" name="{{id}}_date" placeholder="2014-12-31" class="input short js-validate" value="{{filled.date.raw}}" />
 			</label>
 		</div>
-		{{/opt.description}}
-
-		<div class="row field opt">
+		<div class="half field">
 			<label>
-				<span class="lbl">{{t.legal}}</span><br>
-				<textarea name="{{id}}_legal" class="textarea" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra.">{{opt.filled.legal}}</textarea><span class="countMaxCharacter special2">{{opt.maxlength.legal}}</span>
+				<span class="lbl">{{t.time}}</span><br>
+				<input type="time" name="{{id}}_time" value="{{#filled.time}}{{filled.time.raw}}{{/filled.time}}{{^filled.time}}12:00{{/filled.time}}" class="input short js-validate" />
 			</label>
 		</div>
-	</fieldset>
-</section>
+		{{/settings.date}}
+	</div>
+	{{#settings.price}}
+	<div class="row opt">
+		{{#filled.mention1}}
+		<div class="half field">
+			<span class="lbl">{{t.mention}} 1</span><br>
+			<label>
+				{{#filled.mention1.no0}}
+				<input type="radio" name="{{id}}_mention_1" value="" checked />
+				{{/filled.mention1.no0}}
+				{{^filled.mention1.no0}}
+				<input type="radio" name="{{id}}_mention_1" value="" />
+				{{/filled.mention1.no0}}
+				<span class="radio-lbl">{{t.none}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention1.no1}}
+				<input type="radio" name="{{id}}_mention_1" value="À partir de" checked />
+				{{/filled.mention1.no1}}
+				{{^filled.mention1.no1}}
+				<input type="radio" name="{{id}}_mention_1" value="À partir de" />
+				{{/filled.mention1.no1}}
+				<span class="radio-lbl">{{t.from}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention1.no2}}
+				<input type="radio" name="{{id}}_mention_1" value="Par personne" checked /> 
+				{{/filled.mention1.no2}}
+				{{^filled.mention1.no2}}
+				<input type="radio" name="{{id}}_mention_1" value="Par personne" />
+				{{/filled.mention1.no2}}
+				<span class="radio-lbl">{{t.perCapita}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention1.no3}}
+				<input type="radio" name="{{id}}_mention_1" value="Vol inclus" checked />
+				{{/filled.mention1.no3}}
+				{{^filled.mention1.no3}}
+				<input type="radio" name="{{id}}_mention_1" value="Vol inclus" />
+				{{/filled.mention1.no3}}
+				<span class="radio-lbl">{{t.flightIncluded}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention1.no4}}
+				<input type="radio" name="{{id}}_mention_1" value="Taxes incluses" checked /> 
+				{{/filled.mention1.no4}}
+				{{^filled.mention1.no4}}
+				<input type="radio" name="{{id}}_mention_1" value="Taxes incluses" />
+				{{/filled.mention1.no4}}
+				<span class="radio-lbl">{{t.taxesIncluded}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention1.no5}}
+				<input type="radio" name="{{id}}_mention_1" value="freetext" checked />
+				{{/filled.mention1.no5}}
+				{{^filled.mention1.no5}}
+				<input type="radio" name="{{id}}_mention_1" value="freetext" />
+				{{/filled.mention1.no5}}
+			</label>
+			<label>
+				<input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="{{settings.maxlength.mention}}" class="input short" value="{{filled.mention1.freetext}}" />
+				<span class="countMaxCharacter special" id='inputValue3' name="inputValue3">{{settings.maxlength.mention}}</span>
+			</label>
+		</div>
+		{{/filled.mention1}}
+		{{^filled.mention1}}
+		<div class="half field">
+			<span class="lbl">{{t.mention}} 1</span><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_1" value="" checked /> 
+				<span class="radio-lbl">{{t.none}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_1" value="À partir de" /> 
+				<span class="radio-lbl">{{t.from}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_1" value="Par personne" /> 
+				<span class="radio-lbl">{{t.perCapita}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_1" value="Vol inclus" /> 
+				<span class="radio-lbl">{{t.flightIncluded}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_1" value="Taxes incluses" /> 
+				<span class="radio-lbl">{{t.taxesIncluded}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_1" value="freetext" /> 
+			</label>
+			<label>
+				<input type="text" name="{{id}}_mention_1_freetext" placeholder="{{t.perWeek}}" maxlength="{{settings.maxlength.mention}}" class="input short" />
+				<span class="countMaxCharacter special" id='inputValue3' name="inputValue3">{{settings.maxlength.mention}}</span>
+			</label>
+		</div>
+		{{/filled.mention1}}
+
+		{{#filled.mention2}}
+		<div class="half field">
+			<span class="lbl">{{t.mention}} 2</span><br>
+			<label>
+				{{#filled.mention2.no0}}
+				<input type="radio" name="{{id}}_mention_2" value="" checked />
+				{{/filled.mention2.no0}}
+				{{^filled.mention2.no0}}
+				<input type="radio" name="{{id}}_mention_2" value="" />
+				{{/filled.mention2.no0}}
+				<span class="radio-lbl">{{t.none}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention2.no1}}
+				<input type="radio" name="{{id}}_mention_2" value="À partir de" checked /> 
+				{{/filled.mention2.no1}}
+				{{^filled.mention2.no1}}
+				<input type="radio" name="{{id}}_mention_2" value="À partir de" /> 
+				{{/filled.mention2.no1}}
+				<span class="radio-lbl">{{t.from}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention2.no2}}
+				<input type="radio" name="{{id}}_mention_2" value="Par personne" checked /> 
+				{{/filled.mention2.no2}}
+				{{^filled.mention2.no2}}
+				<input type="radio" name="{{id}}_mention_2" value="Par personne" />
+				{{/filled.mention2.no2}}
+				<span class="radio-lbl">{{t.perCapita}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention2.no3}}
+				<input type="radio" name="{{id}}_mention_2" value="Vol inclus" checked /> 
+				{{/filled.mention2.no3}}
+				{{^filled.mention2.no3}}
+				<input type="radio" name="{{id}}_mention_2" value="Vol inclus" />
+				{{/filled.mention2.no3}}
+				<span class="radio-lbl">{{t.flightIncluded}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention2.no4}}
+				<input type="radio" name="{{id}}_mention_2" value="Taxes incluses" checked /> 
+				{{/filled.mention2.no4}}
+				{{^filled.mention2.no4}}
+				<input type="radio" name="{{id}}_mention_2" value="Taxes incluses" />
+				{{/filled.mention2.no4}}
+				<span class="radio-lbl">{{t.taxesIncluded}}</span>
+			</label><br>
+			<label>
+				{{#filled.mention2.no5}}
+				<input type="radio" name="{{id}}_mention_2" value="freetext" checked /> 
+				{{/filled.mention2.no5}}
+				{{^filled.mention2.no5}}
+				<input type="radio" name="{{id}}_mention_2" value="freetext" />
+				{{/filled.mention2.no5}}
+			</label>
+			<label>
+				<input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="{{settings.maxlength.mention}}" class="input short" value="{{filled.mention2.freetext}}" />
+				<span class="countMaxCharacter special" id='inputValue4' name="inputValue4">{{settings.maxlength.mention}}</span>
+			</label>
+		</div>
+		{{/filled.mention2}}
+		{{^filled.mention2}}
+		<div class="half field">
+			<span class="lbl">{{t.mention}} 2</span><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_2" value="" checked />
+				<span class="radio-lbl">{{t.none}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_2" value="À partir de" /> 
+				<span class="radio-lbl">{{t.from}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_2" value="Par personne" /> 
+				<span class="radio-lbl">{{t.perCapita}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_2" value="Vol inclus" /> 
+				<span class="radio-lbl">{{t.flightIncluded}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_2" value="Taxes incluses" /> 
+				<span class="radio-lbl">{{t.taxesIncluded}}</span>
+			</label><br>
+			<label>
+				<input type="radio" name="{{id}}_mention_2" value="freetext" /> 
+			</label>
+			<label>
+				<input type="text" name="{{id}}_mention_2_freetext" placeholder="{{t.perWeek}}" maxlength="{{settings.maxlength.mention}}" class="input short"/>
+				<span class="countMaxCharacter special" id='inputValue4' name="inputValue4">{{settings.maxlength.mention}}</span>
+			</label>
+		</div>
+		{{/filled.mention2}}
+	</div>
+
+	<div class="row opt">
+		<span class="lbl">{{t.numberOfStars}}</span><br>
+		<input type="hidden" id="{{id}}_rateit_val" name="{{id}}_rating" value="{{filled.rating}}">
+		<div class="{{id}}_rateit"></div>
+	</div>
+	{{/settings.price}}
+	<div class="row field">
+		<label>
+			<span class="lbl">{{t.webLink}}</span><br>
+			<input type="text" name="{{id}}_link" value="{{#filled.link}}{{filled.link}}{{/filled.link}}{{^filled.link}}http://{{/filled.link}}" class="input js-validate" value="" required>
+		</label>
+	</div>
+
+	{{#settings.picture}}
+	<div class="row">
+		<div class="half field">
+			<label>
+				<span class="lbl">{{t.picture}}(s) <span class="msg"></span></span><br>
+				{{#filled.pictures.length}}
+				<input type="hidden" name="pre-{{id}}_picture" value="{{filled.pictures}}">
+				{{/filled.pictures.length}}
+				<div class="btn blue file" data-max="{{settings.maxPictures}}" data-max-original="{{settings.maxOriginalPictures}}">
+					<span class="text">{{t.uploadImage}}</span>
+					<input type="file" accept="image/*" capture="camera" name="{{id}}_picture[]" data-key="{{id}}" class="js-multi-files {{^filled.pictures.length}}js-validate{{/filled.pictures.length}}" required />
+				</div>
+			</label>
+		</div>
+	</div>
+	{{/settings.picture}}
+
+	{{#settings.video}}
+	<div class="row video opt">
+		<div class="half field">
+			<label>
+				<span class="lbl">{{t.video}} <span class="msg">({{t.additionalChargesForVideos}})</span></span><br>
+				<div class="btn file">
+					<span class="text">{{t.uploadVideo}}</span>
+					<input type="hidden" name="pre-{{id}}_video">
+					<input type="file" accept="video/*" capture="camera" name="{{id}}_video" />
+				</div>
+			</label>
+		</div>
+		<ol class="files-list hide">
+			<li>
+				<span class="preview"></span>
+				<a href="#" class="js-erease-video">X</a>
+			</li>
+		</ol>
+	</div>
+	{{/settings.video}}
+
+	{{#settings.description}}
+	<div class="row field">
+		<label>
+			<span class="lbl">{{t.description}}</span><br>
+			<textarea name="{{id}}_description" class="textarea js-validate" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra." maxlength="{{settings.maxlength.description}}" required>{{filled.description}}</textarea><span class="countMaxCharacter special2" id='inputValue5' name="inputValue5" >{{settings.maxlength.description}}</span>
+		</label>
+	</div>
+	{{/settings.description}}
+
+	<div class="row field opt">
+		<label>
+			<span class="lbl">{{t.legal}}</span><br>
+			<textarea name="{{id}}_legal" class="textarea" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt risus ultricies diam tristique bibendum. Vestibulum lacinia vehicula auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consectetur felis nec massa pretium pharetra.">{{filled.legal}}</textarea><span class="countMaxCharacter special2">{{settings.maxlength.legal}}</span>
+		</label>
+	</div>
+</fieldset>
