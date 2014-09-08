@@ -32,6 +32,7 @@ app = function(pCulture, pRoot) {
       h: 325
     },
     offers: [],
+    settings: {},
     gallery: false
   }
   $.extend(self.ad = {}, self.defaultAd);
@@ -78,8 +79,11 @@ app.prototype.map_ = function() {
     cancel: $('.popup.confirmation .js-cancel'),
     confirmBtn: $('.popup.confirmation .js-confirm'),
     popupDelete: $('.popup.delete'),
-    cancelErease: $('.popup.delete .js-cancel'),
-    confirmErease: $('.popup.delete .js-confirm'),
+    popupDeleteText: $('.popup.delete .text'),
+    btn: {
+      changeCancel: $('.popup.delete .js-cancel'),
+      changeConfirm: $('.popup.delete .js-confirm')
+    },
     field: {
       id: $('[name="id"]'),
       offersId: $('[name="offersId"]'),
@@ -101,70 +105,14 @@ app.prototype.map_ = function() {
 //=== INIT START =====================================================
 app.prototype.init_ = function(pObj) {
   var self = this;
+
   self.ad.id = new Date().getTime() + Math.floor(Math.random() * 10);
-  self.dom.field.id.val(self.ad.id);
+  self.dom.field.id.val( self.ad.id );
+  $.extend( self.ad.settings, self.form.settings[self.ad.format.text] );
 
-  /* jQuery Validate */
-  jQuery.extend(jQuery.validator.messages, {
-    required: ' <span class="msg">(' + self.form.text['requiredField'] + ')</span>',
-    maxlength: jQuery.validator.format(' <span class="msg">(' + self.form.text['maxlength'] + ')</span>')
-  });
-
-  $.validator.addMethod("time", function(value, element) {  
-    return this.optional(element) || /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value);  
-  }, "Please enter a valid time.");
-
-  self.validator = self.dom.f.validate({
-    debug: true,
-    errorPlacement: function(error, element) {
-      error.appendTo(element.closest('.field').find('.lbl'));
-    },
-    highlight: function(element, errorClass, validClass) {
-      $(element).closest('.field').addClass('error').removeClass('valid');
-    },
-    unhighlight: function(element, errorClass, validClass) {
-      $(element).closest('.field').addClass('valid').removeClass('error');
-    },
-    rules: {
-      noClient: {
-        required: true
-      },
-      noAd: {
-        required: false,
-        minlength: 7,
-        maxlength: 7
-      },
-      logo: {
-        required: true
-      }
-    },
-    messages: {
-      noAd: {
-        minlength: ' <span class="msg">(' + self.form.text['mustContain7digits'] + ')</span>',
-        maxlength: ' <span class="msg">(' + self.form.text['mustContain7digits'] + ')</span>'
-      }
-    }  
-  });
-
-
-  /* jQuery Mask */
-  self.dom.field.noAd.mask('0000000'); // 7 char
-
-  // replace the checkboxes with the images
-  self.dom.field.formatRadio.each(function() {
-      var radio = $(this);
-      var value = radio.val();
-      if(radio.attr('checked')) { // radio button is checked onload
-          radio.hide();
-          radio.after($("<img src='" + self.path.images + "formats/" + value + ".png' class='radio valid' />"));
-      } else { // radio button is not checked
-          radio.hide();
-          radio.after($("<img src='" + self.path.images + "formats/" + value + ".png' class='radio'  />"));
-      }
-  });
-
+  self.initValidator_();
+  self.initCustomRadios_();
   self.verticalAlign_($('.step.no1 .content'));
-
 };
 
 //=== BIND START =====================================================
@@ -205,20 +153,11 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.step1.on('click', '.radio', function() {
-    self.radioChoice = $(this);
-    self.updateRadioFormat_(self.radioChoice);
+    self.updateFormat_($(this).prev().val());
   });
 
   self.dom.field.category.on('change', function() {
-    self.ad.category = $(this).val();
-    $(this).blur();
-      if ((self.lastCategory != "conferences" && self.ad.category === "conferences") || (self.lastCategory === "conferences" && self.ad.category != "conferences") ) {
-          self.checkOffers_();
-      }
-  });
-
-  self.dom.field.category.on('focus', function() {
-    self.lastCategory = self.dom.field.category.val();
+    self.updateCategory_($(this).val());
   });
 
   self.dom.steps.on('focus', '[name$="_freetext"]', function() {
@@ -230,9 +169,9 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.steps.on('click', '.file-input', function() {
-      $(this).wrap( "<form id='hiddenForm' style='display:none'></div>" );
-      $('#hiddenForm')[0].reset();
-      $(this).unwrap( "<form id='hiddenForm'></div>" );
+    $(this).wrap( "<form id='hiddenForm' style='display:none'></div>" );
+    $('#hiddenForm')[0].reset();
+    $(this).unwrap( "<form id='hiddenForm'></div>" );
   });
 
   self.dom.steps.on('change', '.multi-files input', function() {
@@ -275,38 +214,95 @@ app.prototype.bindEvents_ = function() {
     self.downloadAd_();
   });
 
-  self.dom.cancelErease.on('click', function(e) {
+  self.dom.btn.changeCancel.on('click', function(e) {
     e.preventDefault();
-    self.dom.field.category.show();
-    self.dom.popupDelete.removeClass('active');
+    self.cancelChange_();
   });
 
-   self.dom.confirmErease.on('click', function(e) {
+   self.dom.btn.changeConfirm.on('click', function(e) {
     e.preventDefault();
-    self.resetOffers_();
-    self.dom.field.category.show();
-    self.dom.popupDelete.removeClass('active');
+    self.confirmChange_();
   }); 
 
   self.dom.steps.on('keyup', '[maxlength]', function(e) {
-    var field = $(this);
-    var counter = null;
-    if(field.next().hasClass('countMaxCharacter')) {
-      counter = $(this).next();
-    }
-    if(counter) {
-      var nbr = field.attr('maxlength') - field.val().length;
-      counter.text(nbr);
-    }
+    self.updateFieldLength_($(this));
   });
 
   self.dom.import.on('change', function() {
-    self.getUploaded_($(this));
+    self.getUploadedAd_($(this));
   });
 };
 
+/*=== Init Custom Radio ==========================================*/
+app.prototype.initCustomRadios_ = function() {
+  var self = this;
+
+  // replace the checkboxes with the images
+  self.dom.field.formatRadio.each(function() {
+      var radio = $(this);
+      var value = radio.val();
+      if(radio.attr('checked')) { // radio button is checked onload
+          radio.hide();
+          radio.after($("<img src='" + self.path.images + "formats/" + value + ".png' class='radio valid' />"));
+      } else { // radio button is not checked
+          radio.hide();
+          radio.after($("<img src='" + self.path.images + "formats/" + value + ".png' class='radio'  />"));
+      }
+  });
+};
+
+/*=== Init Validator ==========================================*/
+app.prototype.initValidator_ = function() {
+  var self = this;
+
+  /* jQuery Validate */
+  jQuery.extend(jQuery.validator.messages, {
+    required: ' <span class="msg">(' + self.form.text['requiredField'] + ')</span>',
+    maxlength: jQuery.validator.format(' <span class="msg">(' + self.form.text['maxlength'] + ')</span>')
+  });
+
+  $.validator.addMethod("time", function(value, element) {  
+    return this.optional(element) || /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value);  
+  }, "Please enter a valid time.");
+
+  self.form.validator = self.dom.f.validate({
+    debug: true,
+    errorPlacement: function(error, element) {
+      error.appendTo(element.closest('.field').find('.lbl'));
+    },
+    highlight: function(element, errorClass, validClass) {
+      $(element).closest('.field').addClass('error').removeClass('valid');
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      $(element).closest('.field').addClass('valid').removeClass('error');
+    },
+    rules: {
+      noClient: {
+        required: true
+      },
+      noAd: {
+        required: false,
+        minlength: 7,
+        maxlength: 7
+      },
+      logo: {
+        required: true
+      }
+    },
+    messages: {
+      noAd: {
+        minlength: ' <span class="msg">(' + self.form.text['mustContain7digits'] + ')</span>',
+        maxlength: ' <span class="msg">(' + self.form.text['mustContain7digits'] + ')</span>'
+      }
+    }  
+  });
+
+  /* jQuery Mask */
+  self.dom.field.noAd.mask('0000000'); // 7 char
+};
+
 /*=== Get Ad Uploaded ==========================================*/
-app.prototype.getUploaded_ = function(pInput) {
+app.prototype.getUploadedAd_ = function(pInput) {
   var self = this;
 
   if(!inputContainImg(pInput)) { // Si un zip est uploadé et non une image
@@ -360,6 +356,7 @@ app.prototype.getStep1_ = function() {
     format: self.convertFormat_( format ),
     settings: self.convertSettings_( self.form.settings.default, self.form.settings[format] )
   };
+  console.log(ad);
 
   return ad;
 };
@@ -367,7 +364,6 @@ app.prototype.getStep1_ = function() {
 /*=== Set Step 1 ==========================================*/
 app.prototype.setStep1_ = function(pData) {
   var self = this;
-  console.log(pData);
 
   self.dom.field.id.val( pData.meta.id );
   self.dom.field.noClient.val( pData.meta.noClient );
@@ -379,7 +375,6 @@ app.prototype.setStep1_ = function(pData) {
   $('.field.logo').addClass('valid');
   self.dom.field.logoPreview.addClass( 'active' ).css( 'background-image', 'url("' + pData.folder + '/assets/' + pData.logo.name + '")' );
   self.dom.field.offersNbr.val( pData.offers.nbr );
-  self.radioChoice = $('img[src="' + self.path.images + 'formats/'+ pData.meta.format +'.png"]');
 };
 
 /*=== Set Step 2 ==========================================*/
@@ -481,11 +476,100 @@ app.prototype.setStep3_ = function(pData) {
   });
 };
 
+app.prototype.updateSettings_ = function() {
+  var self = this;
+  $.extend( self.ad.settings, self.form.settings[self.ad.format.text] );
+  if(self.ad.category === "conferences") {
+    $.extend( self.ad.settings, {date: true, price: false,} );
+  }
+};
+
+/*=== Add Offer ============================================*/
+app.prototype.addOffer_ = function(pObj, pSpeed) {
+  var self = this;
+  console.log(pObj, self.ad.settings);
+  if(self.form.current.offersNbr < self.ad.settings.maxOffers && !self.ad.gallery) { // Si nous avons le droit d'ajouter une offre
+    pObj = pObj ? pObj : {}; // Si aucun objet n'est passé, en créer un vide
+    pSpeed = pSpeed ? parseInt(pSpeed) : 0; // Si aucune vitesse n'est passé, donner 0 comme valeur
+    pObj.settings = self.ad.settings; // Définir les settings des champs de l'offre
+    pObj.t = self.form.text; // Définir les textes selon la langue (ex: Surtitre / Strapline)
+
+    pObj.id = self.form.current.id // Attribution d'un id
+    self.form.current.id++; // S'assure que le id ne pourra pas etre repeter en l'incrémentant
+
+    var html = Mustache.render(self.ad.template, pObj); // Rend le html de l'offre (champs à afficher ou à populer)
+    self.dom.offersList.append(html); // Ajoute l'offre dans l'annonce
+    self.initMultiFiles_($('input[name="'+ pObj.id +'_picture[]"]'));
+    self.form.current.offersNbr++;
+    self.ad.offers.push({id: pObj.id});
+    self.updateMultifiles_();
+    self.updateAddOfferBtn_();
+    self.updateOffersList_();
+    self.setOfferValidation_(self.ad, pObj);
+    self.updateOffer_(pObj.id);
+
+    setTimeout(function() { // Délais pour animation
+      self.dom.offersList.find('fieldset[data-id="'+ pObj.id +'"]').addClass('created'); // Ajoute l'animation
+    }, pSpeed)
+  }
+};
+
+/*=== Delete Offer ===========================================*/
+app.prototype.deleteOffer_ = function(pId) {
+  var self = this;
+  $('fieldset[data-id="' + pId + '"]').remove();
+  self.ad.offers = self.ad.offers.filter(function( index ) {
+    return index.id !== pId;
+  })
+
+  self.form.current.offersNbr--;
+  self.updateAddOfferBtn_();
+  self.updateOffersList_();
+  self.updateOffer_(pId);
+};
+
+/*=== Update Offer ===========================================*/
+app.prototype.updateOffer_ = function(pId) {
+  var self = this;
+  var currVal = self.dom.field.offersId.val();
+  var arrIds = currVal === '' ? [] : currVal.split(',');
+  var strIds = "";
+  if (pId != null) {
+    var index = arrIds.indexOf(pId.toString());
+    var multifiles = $('.multi-files .btn');
+    if(index === -1) {
+      arrIds.push(pId);
+    } else {
+      arrIds.splice(index, 1);
+    }
+  } else {
+    arrIds = [];
+  }
+  strIds = arrIds.toString();
+  self.dom.field.offersId.val(strIds);
+};
+
+/*=== Update Offers List ===================================*/
+app.prototype.updateOffersList_ = function() {
+  var self = this;
+  var content = self.dom.step2.find('.content');
+  console.log(self.form.current.offersNbr, self.dom.b.width());
+  if(self.form.current.offersNbr > 1) {
+    if(self.dom.b.width() > 1020) {
+      content.addClass('extend');
+    }
+  } else {
+    content.removeClass('extend');
+  }
+  
+};
+
+
 /*=== Convert Settings ==========================================*/
 app.prototype.convertSettings_ = function(pDefault, pFormat) {
   var self = this;
   var settings = $.extend({}, pDefault, pFormat);
-  if(settings.category === "conferences") {
+  if(self.ad.category === "conferences") {
     settings.price = false;
     settings.date = true;
   }
@@ -570,50 +654,6 @@ app.prototype.convertOffers_ = function(pOffers) {
   return offers;
 };
 
-/*=== Download Ad ==========================================*/
-app.prototype.downloadAd_ = function() {
-  var self = this;
-  var html = self.dom.zipable.contents().find("html")[0].outerHTML;
-  $.ajax({
-    type: "POST",
-    url: self.path.librairies + "createFiles.php",
-    data: {"id": self.ad.id, "h": html},
-    success: function(data) {
-      console.log("success: create folder");
-      self.dom.popupConfirmation.removeClass('active');
-      var folder = '../../temps/' + self.ad.id;
-      var adNumber = self.dom.field.noAd.val();
-      var adZipName = adNumber;
-      if (self.dom.field.noClient.val() != "") {
-          var customerName = "publicite";
-          try {
-            customerName = removeDiacritics(self.dom.field.noClient.val().toLowerCase().replace(/[`~!@#$%^&*()¨^_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''));
-          } catch(err) {
-            customerName = "publicite";
-          }
-          adZipName = adZipName + "_" + customerName;
-      }
-      $.ajax({
-        type: "POST",
-        url: self.path.librairies + "zipFolder.php",
-        data: {"folder": folder, "name": adZipName},
-        success: function(data) {
-          var url = self.path.root + 'temps/' + self.ad.id + '/' + adZipName + '.zip';
-          $("<iframe />").css("display", "none").bind("load", function(e) {
-            this.src == url && $(this).remove();
-          }).attr("src", url).appendTo($(document.body));
-          console.log("success: zip");
-        }, error: function(data) {
-          console.log("error: zip");
-        }
-      });
-    }, error: function(data) {
-      console.log("error: create folder");
-      self.dom.popupConfirmation.removeClass('active');
-    }
-  });
-};
-
 /*=== Update Video ==========================================*/
 app.prototype.updateVideo_ = function(pInput) {
   var self = this;
@@ -638,88 +678,94 @@ app.prototype.deleteVideo_ = function(pInput) {
   pInput.blur();
 };
 
+/*=== Update Category ===========================================*/
+app.prototype.updateCategory_ = function(pCategory, pConfirm) {
+  var self = this;
+  var askConfirmation = false;
+
+  if( self.ad.category === "conferences" || pCategory === "conferences" ) {
+    if( self.ad.offers.length > 0 ) {
+      askConfirmation = true;
+    } 
+  }
+  if( pConfirm ) {
+    askConfirmation = false;
+  }
+  if( askConfirmation ) {
+    var msg = self.form.text['warningChange'] + '<strong>' + self.form.text['category'] + '</strong>' + self.form.text['lossOffersInfos'];
+    self.askConfirmation_( self.form.text['category'], pCategory, self.ad.category, msg );
+  } else {
+    self.ad.category = pCategory;
+    self.dom.field.category.val( pCategory );
+    self.updateSettings_();
+  }
+};
+
+/*=== Update Format ============================================*/
+app.prototype.updateFormat_ = function(pFormat, pConfirm) {
+  var self = this;
+  var msg = self.form.text['warningChange'] + '<strong>' + self.form.text['format'] + '</strong>' + self.form.text['lossOffersInfos'];
+
+  if( pConfirm || self.ad.offers.length < 1) {
+    var radioSelected = self.dom.field.format.filter(':checked');
+    var radioNew = self.dom.field.format.filter('[value="' + pFormat + '"]');
+    console.log(radioSelected.val(), radioNew.val());
+    radioSelected.prop('checked', 'false').next().removeClass('valid');
+    radioNew.prop('checked', 'true').next().addClass('valid');
+
+    self.ad.format = self.convertFormat_( pFormat );
+  } else {
+    self.askConfirmation_(self.form.text['format'], pFormat, self.ad.format.text, msg);
+  }
+};
+
+/*=== Ask Confirmation ===========================================*/
+app.prototype.askConfirmation_ = function(pType, pValue, pCurrentValue, msg) {
+  var self = this;
+  self.dom.popupDeleteText.html(msg);
+  self.dom.popupDelete.addClass( 'active' );
+  self.dom.btn.changeConfirm.data({
+    'type': pType, 
+    'value': pValue 
+  });
+  self.dom.btn.changeCancel.data({
+    'type': pType, 
+    'value': pCurrentValue
+  });
+};
+
+/*=== Confirm Change ===========================================*/
+app.prototype.confirmChange_ = function() {
+  var self = this;
+  var type = self.dom.btn.changeConfirm.data( 'type' );
+  var value = self.dom.btn.changeConfirm.data( 'value' );
+  self.dom.popupDelete.removeClass( 'active' );
+  if(type === self.form.text['category']) {
+    self.updateCategory_( value, true );
+  } else if(type === self.form.text['format']) {
+    self.updateFormat_( value, true );
+  }
+  self.resetOffers_();
+};
+
+/*=== Cancel Change ===========================================*/
+app.prototype.cancelChange_ = function() {
+  var self = this;
+  var type = self.dom.btn.changeCancel.data( 'type' );
+  var value = self.dom.btn.changeCancel.data( 'value' );
+  self.dom.popupDelete.removeClass( 'active' );
+  if(type === self.form.text['category']) {
+    self.updateCategory_( value, true );
+  } else if(type === self.form.text['format']) {
+    self.updateFormat_( value, true );
+  }
+};
+
 /*=== Go to Step ===========================================*/
 app.prototype.goToStep_ = function(pStep) {
   var self = this;
   self.form.step = pStep;
   self.dom.b.removeClass('no1 no2 no3').addClass('no' + self.form.step);
-};
-
-/*=== Add Offer ============================================*/
-app.prototype.addOffer_ = function(pObj, pSpeed) {
-  var self = this;
-
-  if(self.form.current.offersNbr < self.ad.settings.maxOffers && !self.ad.gallery) { // Si nous avons le droit d'ajouter une offre
-    pObj = pObj ? pObj : {}; // Si aucun objet n'est passé, en créer un vide
-    pSpeed = pSpeed ? parseInt(pSpeed) : 0; // Si aucune vitesse n'est passé, donner 0 comme valeur
-    pObj.settings = self.ad.settings; // Définir les settings des champs de l'offre
-    pObj.t = self.form.text; // Définir les textes selon la langue (ex: Surtitre / Strapline)
-
-    pObj.id = self.form.current.id // Attribution d'un id
-    self.form.current.id++; // S'assure que le id ne pourra pas etre repeter en l'incrémentant
-
-    var html = Mustache.render(self.ad.template, pObj); // Rend le html de l'offre (champs à afficher ou à populer)
-    self.dom.offersList.append(html); // Ajoute l'offre dans l'annonce
-    self.initMultiFiles_($('input[name="'+ pObj.id +'_picture[]"]'));
-    self.form.current.offersNbr++;
-    self.updateMultifiles_();
-    self.updateAddOfferBtn_();
-    self.updateOffersList_();
-    self.setOfferValidation_(self.ad, pObj);
-    self.updateOffer_(pObj.id);
-
-    setTimeout(function() { // Délais pour animation
-      self.dom.offersList.find('fieldset[data-id="'+ pObj.id +'"]').addClass('created'); // Ajoute l'animation
-    }, pSpeed)
-  }
-};
-
-/*=== Delete Offer ===========================================*/
-app.prototype.deleteOffer_ = function(pOffer) {
-  var self = this;
-  var id = pOffer.data('id');
-  pOffer.remove();
-  self.form.current.offersNbr--;
-  self.updateAddOfferBtn_();
-  self.updateOffersList_();
-  self.updateOffer_(id);
-};
-
-/*=== Update Offer ===========================================*/
-app.prototype.updateOffer_ = function(pId) {
-  var self = this;
-  var currVal = self.dom.field.offersId.val();
-  var arrIds = currVal === '' ? [] : currVal.split(',');
-  var strIds = "";
-  if (pId != null) {
-    var index = arrIds.indexOf(pId.toString());
-    var multifiles = $('.multi-files .btn');
-    if(index === -1) {
-      arrIds.push(pId);
-      
-    } else {
-      arrIds.splice(index, 1);
-    }
-  } else {
-    arrIds = [];
-  }
-  strIds = arrIds.toString();
-  self.dom.field.offersId.val(strIds);
-};
-
-/*=== Update Offers List ===================================*/
-app.prototype.updateOffersList_ = function() {
-  var self = this;
-  var content = self.dom.step2.find('.content');
-  console.log(self.form.current.offersNbr, self.dom.b.width());
-  if(self.form.current.offersNbr > 1) {
-    if(self.dom.b.width() > 1020) {
-      content.addClass('extend');
-    }
-  } else {
-    content.removeClass('extend');
-  }
-  
 };
 
 /*=== Validate ===========================================*/
@@ -729,33 +775,18 @@ app.prototype.validate_ = function() {
   var valid = true;
 
   $('.js-validate', currentStep).each(function(i, v) {
-    valid = self.validator.element(v) && valid;
+    valid = self.form.validator.element(v) && valid;
   });
 
   return valid;
 };
 
-/*=== Check Offers ===========================================*/
-app.prototype.checkOffers_ = function() {
-  var self = this;
-  var fieldsets = self.dom.offersList.children( 'fieldset' );
-  if(fieldsets.length !== 0) {
-      self.dom.field.category.hide();
-      self.dom.popupDelete.addClass( 'active' );
-  } else {
-    self.dom.field.category.show();
-  }
-};
-
 /*=== Reset Offers ===========================================*/
 app.prototype.resetOffers_ = function() {
   var self = this;
-  var fieldsets = self.dom.offersList.children('fieldset');
-  for(var x=0; x<=fieldsets.length; x++) {
-    key = fieldsets.eq(x);
-    self.deleteOffer_(key);
+  for(var x=0; x<self.ad.offers.length; x++) {
+    self.deleteOffer_( self.ad.offers[x].id );
   }
-  self.ad = self.defaultAd;
   self.ad.gallery = false;
 };
 
@@ -772,6 +803,15 @@ app.prototype.updateAddOfferBtn_ = function() {
   } else {
     self.dom.addOfferBtn.removeClass('disabled');
     self.dom.addOfferMsg.html('');
+  }
+};
+
+/*=== Update Field Length ==========================================*/
+app.prototype.updateFieldLength_ = function(pField) {
+  var self = this;
+  if( pField.next().hasClass('countMaxCharacter') ) { // Si il y a un compteur à la suite d'un champs
+    var nbr = pField.attr('maxlength') - pField.val().length; // Char restant
+    pField.next().text(nbr); // Mettre à jours le compteur
   }
 };
 
@@ -832,7 +872,6 @@ app.prototype.deleteMultiFiles_ = function(pKey, pId) {
   if(!pId) {
     input.remove();
   }
-  console.log(field, btn);
 
   btn.removeClass('disabled');
   li.remove();
@@ -915,6 +954,50 @@ app.prototype.updateMultifiles_ = function() {
   }
 };
 
+/*=== Download Ad ==========================================*/
+app.prototype.downloadAd_ = function() {
+  var self = this;
+  var html = self.dom.zipable.contents().find("html")[0].outerHTML;
+  $.ajax({
+    type: "POST",
+    url: self.path.librairies + "createFiles.php",
+    data: {"id": self.ad.id, "h": html},
+    success: function(data) {
+      console.log("success: create folder");
+      self.dom.popupConfirmation.removeClass('active');
+      var folder = '../../temps/' + self.ad.id;
+      var adNumber = self.dom.field.noAd.val();
+      var adZipName = adNumber;
+      if (self.dom.field.noClient.val() != "") {
+          var customerName = "publicite";
+          try {
+            customerName = removeDiacritics(self.dom.field.noClient.val().toLowerCase().replace(/[`~!@#$%^&*()¨^_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''));
+          } catch(err) {
+            customerName = "publicite";
+          }
+          adZipName = adZipName + "_" + customerName;
+      }
+      $.ajax({
+        type: "POST",
+        url: self.path.librairies + "zipFolder.php",
+        data: {"folder": folder, "name": adZipName},
+        success: function(data) {
+          var url = self.path.root + 'temps/' + self.ad.id + '/' + adZipName + '.zip';
+          $("<iframe />").css("display", "none").bind("load", function(e) {
+            this.src == url && $(this).remove();
+          }).attr("src", url).appendTo($(document.body));
+          console.log("success: zip");
+        }, error: function(data) {
+          console.log("error: zip");
+        }
+      });
+    }, error: function(data) {
+      console.log("error: create folder");
+      self.dom.popupConfirmation.removeClass('active');
+    }
+  });
+};
+
 /*=== Update File Preview ============================================*/
 app.prototype.updateInputFilePreview_ = function(pInput) {
   var self = this;
@@ -941,20 +1024,6 @@ app.prototype.getUploadedImageObj_ = function(pInput, callback) {
     });
   }
   reader.readAsDataURL(file); 
-};
-
-/*=== Update Radio Format ============================================*/
-app.prototype.updateRadioFormat_ = function(pRadio) {
-  var self = this;
-  pRadio.parent().find('.valid').removeClass('valid').prev().removeAttr('checked');
-  pRadio.addClass('valid').prev().prop('checked', 'true');
-  self.ad.format = self.convertFormat_( pRadio.prev().val() );
-  self.dom.field.offersId.val("");
-  self.dom.offersList.find('fieldset').remove();
-  self.dom.step2.find('.content').removeClass('extend');
-  self.form.current.offers = 0;
-  self.ad.gallery = 0;
-  self.dom.offersNbr.val(self.form.current.offers );
 };
 
 /*=== Vertical Align ============================================*/

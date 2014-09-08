@@ -1,0 +1,114 @@
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	        border-radius: $radius;
+}
+
+@mixin box-shadow($box-shadow) {
+	-webkit-box-shadow: $box-shadow;
+            box-shadow: $box-shadow;
+}
+
+@mixin box-sizing($box-sizing) {
+	-webkit-box-sizing: $box-sizing;
+	   -moz-box-sizing: $box-sizing;
+	        box-sizing: $box-sizing;
+}
+
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	   -moz-transform: $transform;
+	    -ms-transform: $transform;
+	     -o-transform: $transform;
+	        transform: $transform;
+}
+
+@mixin transform-origin($origin) {
+	-webkit-transform-origin: $origin;
+	   -moz-transform-origin: $origin;
+	    -ms-transform-origin: $origin;
+	     -o-transform-origin: $origin;
+	        transform-origin: $origin;
+}
+
+@mixin perspective($perspective) {
+	-webkit-perspective: $perspective;
+	   -moz-perspective: $perspective;
+	    -ms-perspective: $perspective;
+	        perspective: $perspective;
+}
+
+@mixin backface-visibility($visibility) {
+	-webkit-backface-visibility: $visibility; 
+	   -moz-backface-visibility: $visibility; 
+	        backface-visibility: $visibility; 
+}
+
+@mixin user-select($element) {
+	-webkit-user-select: $element;
+	   -moz-user-select: $element;
+	    -ms-user-select: $element;
+	        user-select: $element;
+}
+
+@function prefix($property, $prefixes: (webkit moz o ms)) {
+    $vendor-prefixed-properties: transform background-clip background-size;
+    $result: ();
+    @each $prefix in $prefixes {
+       @if index($vendor-prefixed-properties, $property) {
+         $property: -#{$prefix}-#{$property}
+       }
+       $result: append($result, $property);
+    }
+    @return $result;
+}
+ 
+@function trans-prefix($transition, $prefix: moz) {
+    $prefixed: ();
+    @each $trans in $transition {
+        $prop-name: nth($trans, 1);
+        $vendor-prop-name: prefix($prop-name, $prefix);
+        $prop-vals: nth($trans, 2);
+        $prefixed: append($prefixed, ($vendor-prop-name $prop-vals), comma);
+    }
+    
+    @return $prefixed;
+}
+ 
+ 
+@mixin transition($values...) { 
+    $transitions: ();
+    @each $declaration in $values {
+        $prop: nth($declaration, 1);
+        $prop-opts: ();
+        $length: length($declaration);
+        @for $i from 2 through $length {
+            $prop-opts: append($prop-opts, nth($declaration, $i));   
+        }
+        $trans: ($prop, $prop-opts);
+        $transitions: append($transitions, $trans, comma);
+    }
+      
+    -webkit-transition: trans-prefix($transitions, webkit);
+    -moz-transition: trans-prefix($transitions, moz);
+    -o-transition: trans-prefix($transitions, o);
+    transition: $values;
+}
+
+@mixin animation($animation) {
+	-webkit-animation: $animation;
+	   -moz-animation: $animation;
+	     -o-animation: $animation;
+	        animation: $animation;
+}
+
+@mixin column-count($column-count) {
+	-webkit-column-count: $column-count;
+	   -moz-column-count: $column-count;
+	        column-count: $column-count;
+}
+
+@mixin column-width($column-width) {
+	-webkit-column-width: $column-width;
+	   -moz-column-width: $column-width;
+	        column-width: $column-width;
+}

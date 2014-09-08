@@ -271,7 +271,7 @@ class AdModel {
         }
         if($this->ad->exist->offersGallery || $this->ad->exist->picturesGallery) {
             $this->ad->exist->gallery = true;
-            array_push($this->ad->assets, 'scripts/min/iscroll5.min.js');
+            array_push($this->ad->assets, 'scripts/iscroll5.min.js');
         }
         //print_r($this->ad);
         $this->createFolder();

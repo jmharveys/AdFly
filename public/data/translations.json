@@ -37,6 +37,7 @@
 		"importAd": "Importer une annonce",
 		"isRequired": "est requis",
 		"legal": "Légal",
+		"lossOffersInfos": " entrainera la perte des informations entrés dans les offres subséquentes. <br><br>Voulez-vous toujours aller de l'avant avec cette modification ?",
 		"maximum11characters": "11 caractères maximum",
 		"maximumPicturesNumberReached": "Nombre maximum d'images atteint",
 		"maxlength": "{0} caractères maximum",
@@ -74,6 +75,7 @@
 		"uploadOtherImages": "Importer d'autres images",
 		"uploadVideo": "Importer une vidéo",
 		"video": "Vidéo",
+		"warningChange": "Veuillez prendre note que le changement de ",
 		"webLink": "Lien web",
 		"zipMac": "**  Il se peut que votre fichier .zip soit dé-zippé automatiquement par safari en fonction de vos options (Préférences / Onglet Général / dernière option)."
 	},
@@ -115,6 +117,7 @@
 		"importAd": "Import ad",
 		"isRequired": "is required",
 		"legal": "Legal",
+		"lossOffersInfos": " will result in the loss of the information entered in subsequent offers. <br><br>Do you still want to proceed?",
 		"maximum11characters": "Maximum 11 characters",
 		"maximumPicturesNumberReached": "Maximum pictures number reached",
 		"maxlength": "Maximum {0} characters",
@@ -152,6 +155,7 @@
 		"uploadOtherImages": "Upload other images",
 		"uploadVideo": "Upload video",
 		"video": "Video",
+		"warningChange": "Please note that the change of ",
 		"webLink": "Web link",
 		"zipMac": "Your zip file could be automatically unzipped by Safari depending your settings (General tab, last option)."
 	}

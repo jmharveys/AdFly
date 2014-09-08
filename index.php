@@ -19,7 +19,6 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="shortcut icon" href="<?= URL ?>public/images/favicon.ico"/>
 	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/form.css">
-	<link rel="stylesheet" media="all" href="<?= URL ?>public/styles/rateit.css">
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -199,13 +198,8 @@
 		<a href="<?= $t[$culture]['creationKitLink']; ?>" class="return"><?= $t[$culture]['returnToTheCreationKit']; ?></a>
 	</footer>
 
-    <script src="<?= URL ?>public/scripts/min/jquery-1.11.0.min.js"></script>
-    <script src="<?= URL ?>public/scripts/min/mustache.min.js"></script>
-    <script src="<?= URL ?>public/scripts/min/jquery.validate.min.js"></script>
-    <script src="<?= URL ?>public/scripts/min/jquery.mask.min.js"></script>
-    <script src="<?= URL ?>public/scripts/min/jquery.rateit.min.js"></script>
-    <script src="<?= URL ?>public/scripts/min/utilities.min.js"></script>
-	<script src="<?= URL ?>public/scripts/min/form.min.js"></script>
+	<script src="<?= URL ?>public/scripts/plugins.min.js"></script>
+	<script src="<?= URL ?>public/scripts/form.min.js"></script>
 	<script>
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-38205796-4']);

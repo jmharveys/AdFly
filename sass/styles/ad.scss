@@ -1,19 +1,18 @@
-@import '_reset';
+@import '_mixins';
+@import '_normalize';
 @import '_style-guide';
 @import '_fonts';
 
-*, *:before, *:after {box-sizing: border-box; }
+*, *:before, *:after { @include box-sizing(border-box); }
 
 body {
 	opacity: 0; 
-	transition: opacity .3s ease;
+	@include transition(opacity .3s ease);
 	background: rgba(0, 0, 0, 0.2);
 	overflow-x: hidden;
 }
 
-body.lp-loaded {
-	opacity: 1;
-} 
+body.lp-loaded { opacity: 1; } 
 
 .lp-ad {
 	position: relative;
@@ -35,27 +34,23 @@ body.lp-loaded {
 
 
 .flip { 
-	transition: transform 1s; 
+	@include transition(transform 1s);
 	transform-style: preserve-3d; 
 
 	.front, .back { 
 		position: absolute; 
-		top: 0;
+		top:  0;
 		left: 0; 
 	} 
 
-	* { 
-		backface-visibility: hidden; 
-	} 
+	* { @include backface-visibility(hidden); } 
 } 
 
-.flip.active, .back { 
-	transform: rotateY(180deg); 
-}
+.flip.active, .back { @include transform(rotateY(180deg)); }
 
 .flipped .back {
-	transition: transform 0s;
-	transform: translateZ(-2px) rotateY(-180deg); 
+	@include transition(transform 0s);
+	@include transform(translateZ(-2px) rotateY(-180deg));
 }
 
 /*=========================================================*/
@@ -69,16 +64,16 @@ body.lp-loaded {
 
 		.logo {
 			position: absolute;
-			z-index: 1;
-			pointer-events: none;
-			background-size: contain;
+			background-size:   contain;
 			background-repeat: no-repeat;
+			pointer-events: none;
+			z-index: 1;
 		}
 
 		.wrapper {	
-			z-index: 0;
+			position: absolute;
 			overflow: hidden;
-			position: absolute;	
+			z-index: 0;
 		}
 
 		/*=== GALERIE ======*/
@@ -89,10 +84,10 @@ body.lp-loaded {
 					position: relative; 
 					display: inline-block;
 					height: 100%; 
-					z-index: 0; 
-					transform: translateZ(0);
-					user-select: none;
-					text-size-adjust: none;			
+					@include transform(translateZ(0));
+					@include user-select(none);
+					text-size-adjust: none;	
+					z-index: 0; 		
 				} 
 				.scroller > div { 
 				 	float: left;
@@ -104,18 +99,18 @@ body.lp-loaded {
 		 
 		.pager-wrapper { 
 			position: absolute; 
-			left: 0px; 
-			text-align: center; 
-			z-index: 1; 
-			opacity: 1;
-			transition: opacity 1s ease; 
-			pointer-events: none;
+			left: 0; 
 			height: 13px;
+			text-align: center; 
+			@include transition(opacity 1s ease);
+			opacity: 1;
+			pointer-events: none;
+			z-index: 1; 
 
 				.pager { 
 					position: relative; 
 					display: inline-block; 
-					background: rgba(0, 0, 0, 1); 
+					background: rgba(0,0,0,1); 
 					list-style: none; 
 					padding: 4px;
 					border-radius: 7.5px;
@@ -123,36 +118,28 @@ body.lp-loaded {
 						li { 
 							float: left; 
 							position: relative; 
-							width: 5px; 
+							width:  5px; 
 							height: 5px; 
 							font-size: 0; 
-							background: rgba(110, 110, 110, 1); 
+							background: rgba(110,110,110,1); 
 							border-radius: 50%; 
 							margin: 0 5px; 
-							transform: translate3d(0,0,0); 
-							transition: background .3s ease; 
+							@include transform(translate3d(0,0,0));
+							@include transition(background .3s ease);
 						} 
 
-						.selected { 
-							background: rgba(255,255,255,1); 
-						}
+						.selected { background: rgba(255,255,255,1); }
 				}
 		} 
 
 		.description {
 		
-			.title, .subtitle, .price, .infos, .mention {
-				color: $gal-grey;
-			}
+			.title, .subtitle, .price, .infos, .mention { color: $gal-grey; }
 
-			.mention {
-				text-transform: uppercase;
-			}
+			.mention { text-transform: uppercase; }
 		}
 
-		.price {
-			letter-spacing: -1px;
-		}
+		.price { letter-spacing: -1px; }
 
 		.price:after {
 			font-size: 60%;
@@ -169,7 +156,7 @@ body.lp-loaded {
 			.rating > li {
 				float: left;
 				list-style: none;
-				width: 12.5px;
+				width:  12.5px;
 				height: 12.5px;
 				margin: 0 3px 0 0;	
 			}	
@@ -178,9 +165,9 @@ body.lp-loaded {
 		/* Bouton Fermer */
 		.close {
 		  position: absolute;
-		  top: 0px;
-		  left: 0px;
-		  width: 40px;
+		  top:  0;
+		  left: 0;
+		  width:  40px;
 		  height: 40px;
 		  z-index: 1;
 		}
@@ -189,8 +176,8 @@ body.lp-loaded {
 		a.btn-plusWeb {
 			position: absolute;
 			bottom: 9px;
-			right: 9px;
-			width: 40px;
+			right:  9px;
+			width:  40px;
 			height: 40px;
 			z-index: 1;	
 		}
@@ -199,9 +186,9 @@ body.lp-loaded {
 		a.btn-plusWeb:after {
 			position: absolute;
 			content: "";
-			width: 80px;
+			width:  80px;
 			height: 80px;
-			top: -9px;
+			top:  -9px;
 			left: -9px;	
 		}	
 		
@@ -215,40 +202,29 @@ body.lp-loaded {
 
 .lp-480x325 {
 
-		width: 480px;
+		width:  480px;
 		height: 325px;
 
 		.front {	
 
 			.logo {
-				width: 165px;
+				width:  165px;
 				height: 75px;	
 			}
 
 			.description {
-				 padding: 7px 10px 6px 15px;
-				 height: 95px;
+				height: 95px;
+				padding: 7px 10px 6px 15px;
 
 				> div {
 					width: 310px;	
 					vertical-align: top;
 				}
 
-				.title {
-					font: $front-title-1-4H;
-				}
-
-				.subtitle {
-					font: $front-subtitle-1-4H;
-				}	
-
-				.mention {
-					font: $front-mention-1-4H;
-				}
-
-				.price {
-					font: $front-price-1-4H;
-				}	
+				.title { font: $front-title-1-4H; }
+				.subtitle { font: $front-subtitle-1-4H; }	
+				.mention { font: $front-mention-1-4H; }
+				.price { font: $front-price-1-4H; }	
 
 			}
 
@@ -264,37 +240,25 @@ body.lp-loaded {
 
 			.description {
 				padding: 26px 10px 6px 40px;
-	 			display:table-cell;
+	 			display: table-cell;
 
-				div:nth-child(1){
-					width: 310px;
-				}
+				div:nth-child(1) { width: 310px; }
 
-				> div {
-					vertical-align: top;
-				}	 			
+				> div { vertical-align: top; }	 			
 
 				.title {
 					font: $back-title-1-4H;
 					white-space: nowrap;
 				}
 
-				.subtitle {
-					font: $back-subtitle-1-4H;
-				}	
-
-				.mention {
-					font: $back-mention-1-4H;
-				}
-
-				.price {
-					font: $back-price-1-4H;
-				}	
+				.subtitle { font: $back-subtitle-1-4H; }	
+				.mention { font: $back-mention-1-4H; }
+				.price { font: $back-price-1-4H; }	
 
 				.rating {
 					display: table-row;
 						> li {
-							width: 18px;
+							width:  18px;
 							height: 18px;
 							margin: 10px 3px 0 0;
 						}
@@ -304,8 +268,8 @@ body.lp-loaded {
 
 			.wrapper-all {
 
-					height:265px;
-					display:table;
+					height: 265px;
+					display: table;
 				}
 
 				.wrapper-height {
@@ -336,32 +300,27 @@ body.lp-loaded {
 
 
 			.logo {
-				top: 265px;
+				top:  265px;
 				left: 305px;
-				width: 115px;
+				width:  115px;
 				height: 55px;
 			}
 				
 			.lp-legal-bg {
-				width: 480px;
+				width:  480px;
 				height: 325px;
 			}
 
-			.lp-legal-text {
-				width: 480px;
-			}
-
+			.lp-legal-text { width: 480px; }
 
 		}
 
 		.front, .back  {
 
 				.description {
-					display:table;
+					display: table;
 
-					div:nth-child(1), div:nth-child(2), .mention {
-						display:table-cell;
-					}
+					div:nth-child(1), div:nth-child(2), .mention { display: table-cell; }
 
 					div:nth-child(2), .mention {
 						width: 170px;
@@ -372,7 +331,7 @@ body.lp-loaded {
 		}
 
 		.front, .back, .gallery, .scroller > div, .wrapper { 
-			width: 480px; 
+			width:  480px; 
 			height: 325px; 
 		} 
  
@@ -382,83 +341,83 @@ body.lp-loaded {
 			position: absolute;
 			opacity: 1;
 			z-index: 2;
-			transform: translate3d(0,0,0);
-			transition: opacity .5s ease, transform 0 ease;
+			@include transform(translate3d(0,0,0));
+			@include transition(opacity .5s ease, transform 0 ease);
 		}
 
 		.lp-video-play.lp-video-active {
 			opacity: 0;
-			transform: translate3d(-9999px,0,0);
-			transition: opacity .5s ease, transform 0 .5s ease;
+			@include transform(translate3d(-9999px,0,0));
+			@include transition(opacity .5s ease, transform 0 .5s ease);
 		}
 
 
 		.lp-video-play {
 			position: absolute;
-			top: 118px;
+			top:  118px;
 			left: 206px; 
-			z-index: 1; 
-			width: 70px;
+			width:  70px;
 			height: 70px;
+			z-index: 1; 
 		}
 
 		.lp-video-close {
-			top: -40px;
-			left: 20px;
 			position: absolute;
+			top:  -40px;
+			left: 20px;
 			opacity: 0;
 			z-index: 11;
-			transform: translate3d(-9999px,0,0);
-			transition: opacity .5s ease, transform 0 .5s ease;
+			@include transform(translate3d(-9999px,0,0));
+			@include transition(opacity .5s ease, transform 0 .5s ease);
 		}
 
 		.lp-video-active .lp-video-close {
 			opacity: 1;
-			transform: translate3d(0,0,0);
-			transition: opacity .5s ease, transform 0 ease;
+			@include transform(translate3d(0,0,0));
+			@include transition(opacity .5s ease, transform 0 ease);
 		}
 
 		.lp-video-bg {
 			position: absolute;
-			top: 0;
+			top:  0;
 			left: 0;
-			width: 100%;
+			width:  100%;
 			height: 100%;
 			background: rgba(0,0,0,.8);
 			opacity: 0;
 			z-index: 9;
-			transform: translate3d(-9999px,0,0);
-			transition: opacity .5s ease, transform 0 .5s ease;
+			@include transform(translate3d(-9999px,0,0));
+			@include transition(opacity .5s ease, transform 0 .5s ease);
 		}
 		.lp-video-bg.lp-video-active {
 			opacity: 1;
-			transform: translate3d(0,0,0);
-			transition: opacity .5s ease, transform 0 ease;
+			@include transform(translate3d(0,0,0));
+			@include transition(opacity .5s ease, transform 0 ease);
 		}
 		.lp-video {
-			left: 0;
-			bottom: 20px;
 			position: absolute;
+			left:   0;
+			bottom: 20px;
 			opacity: 0;
 			z-index: 10;
-			transform: translate3d(-9999px,0,0);
-			transition: opacity .5s ease, transform 0 .5s ease;
+			@include transform(translate3d(-9999px,0,0));
+			@include transition(opacity .5s ease, transform 0 .5s ease);
 		}
 		.lp-video.lp-video-active {
 			opacity: 1;
-			transform: translate3d(0,0,0);
-			transition: opacity .5s ease, transform 0 ease;
+			@include transform(translate3d(0,0,0));
+			@include transition(opacity .5s ease, transform 0 ease);
 		}
 		.lp-video video {
 			position: absolute;
-			top: 0;
+			top:  0;
 			left: 0;
-			width: 100%;
+			width:  100%;
 			height: 100%;
 			background: #000;
-			margin: 0;
+			margin:  0;
 			padding: 0;
-			transform: translate3d(0,0,0);
+			@include transform(translate3d(0,0,0));
 			z-index: 1;
 		}
 		/*=== VIDEO  ===*/	
@@ -472,30 +431,27 @@ body.lp-loaded {
 			position: relative;
 			display: inline-block;
 			width: auto;
-			max-width: 680px;
+			max-width:  680px;
 			min-height: 30px;
-			background-color: rgba(0,0,0,.8);
+			background-color:    rgba(0,0,0,.8);
 			background-position: 2% 50%, 98% 50%;
-			background-repeat: no-repeat, no-repeat;
-			background-size: 20px 20px, 15px 15px;
-			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkZFREU3NjA5QURFMTFFMkFFQUM5REE2OTlDQ0JGM0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkZFREU3NjE5QURFMTFFMkFFQUM5REE2OTlDQ0JGM0MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2RkVERTc1RTlBREUxMUUyQUVBQzlEQTY5OUNDQkYzQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2RkVERTc1RjlBREUxMUUyQUVBQzlEQTY5OUNDQkYzQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoyaQP8AAAF2SURBVHja7JjRbcIwEIZDxQDpBhmBTACdgLIB2SCdgDJBYYKkE9C+5JVkArIBjMAG5Sz9lpBlOyFxwkn1SSdFOGd/+HyXP5kURfEXMLaXgLl5QA/oARts2iEmJ//F9Zw8bRFzRVxFHiJuPQRggoWk/ZB/kx+xsAnujbxW/qSAzVymOFfgpImF95a4vQJ3P1/pErCyjJUdxyoORXIdq4rnlrGlZWzRcc6HAUXVvWt+nzVU5Ab36OZbuK7ig9Jmli3aRYgql3HRI21m4uWWB/SAHnBcwJj8AyqFJaBQHTvyFfkr5FXNNcVSZMbQcyXnM1gCMumrTvoCfhkEwb3IjMdMuwqYQhCcyT8NMv4CyPyZKY4gk86Wl6JkDMimMxgi7SeDphscsm2RzKDp1gbI+tmAcjczA+RqqOru8qjTQYrC2XJ6FmeaM7kbItV9xMJB04a2nABlKwqUTyEXTnIrBaj6qcOZTR3McVR2LeQGGGl28f8o6psAAwDkA0q/OZ6/AgAAAABJRU5ErkJggg==),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjA4MjE3MkI5QjA2MTFFMkFFQUM5REE2OTlDQ0JGM0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjA4MjE3MkM5QjA2MTFFMkFFQUM5REE2OTlDQ0JGM0MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2RkVERTc2MjlBREUxMUUyQUVBQzlEQTY5OUNDQkYzQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMDgyMTcyQTlCMDYxMUUyQUVBQzlEQTY5OUNDQkYzQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmuSIKsAAAFeSURBVHjarNbLbcMwDAZg50cHyArdwN0gPXqLeIOO0E7QEewRerKPWSEjdASNUDqgBMXVgxRNgAgSK/yQSJR0Wpal28WV8pvynfLeVWIYhuLzdV1DPRob6iGBTpRnyhtl3xmC0VCP3vcp2A/y4fGLEX2q53Fk0D1+NaL/cBTQOCYpXkCfcPDES6KKC9CAg1evs+KEfgjRLe7gljHhhE6Kf+7hnaI+7nkhnYUFRspZM/8epX522H34Jtk0ol9+a0FTG8ivdMfiuLSgKbjjudbgajQHH4kn0RJ8BP6TQ7d4qXzZ49oDYyZwLA2AoIg7cL5VsKZPw0nHm0oz3IKKcBROEAtaxXHUGazFkUGlK9i14jCg2wHxyq9qHAZ061PH/arGYUDjK64ahxVtxaHYlb5yaAuO6CZRu218SgoK8RG7a0zpiiOOCj7S8xkVQI1W8Aea2kDiwc1oBg/oFn8CDACNIqqZNBCYDQAAAABJRU5ErkJggg==);
-		    font-size: 12px;
+			background-repeat:   no-repeat, no-repeat;
+			background-size:     20px 20px, 15px 15px;
+			background-image:    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkZFREU3NjA5QURFMTFFMkFFQUM5REE2OTlDQ0JGM0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkZFREU3NjE5QURFMTFFMkFFQUM5REE2OTlDQ0JGM0MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2RkVERTc1RTlBREUxMUUyQUVBQzlEQTY5OUNDQkYzQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2RkVERTc1RjlBREUxMUUyQUVBQzlEQTY5OUNDQkYzQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoyaQP8AAAF2SURBVHja7JjRbcIwEIZDxQDpBhmBTACdgLIB2SCdgDJBYYKkE9C+5JVkArIBjMAG5Sz9lpBlOyFxwkn1SSdFOGd/+HyXP5kURfEXMLaXgLl5QA/oARts2iEmJ//F9Zw8bRFzRVxFHiJuPQRggoWk/ZB/kx+xsAnujbxW/qSAzVymOFfgpImF95a4vQJ3P1/pErCyjJUdxyoORXIdq4rnlrGlZWzRcc6HAUXVvWt+nzVU5Ab36OZbuK7ig9Jmli3aRYgql3HRI21m4uWWB/SAHnBcwJj8AyqFJaBQHTvyFfkr5FXNNcVSZMbQcyXnM1gCMumrTvoCfhkEwb3IjMdMuwqYQhCcyT8NMv4CyPyZKY4gk86Wl6JkDMimMxgi7SeDphscsm2RzKDp1gbI+tmAcjczA+RqqOru8qjTQYrC2XJ6FmeaM7kbItV9xMJB04a2nABlKwqUTyEXTnIrBaj6qcOZTR3McVR2LeQGGGl28f8o6psAAwDkA0q/OZ6/AgAAAABJRU5ErkJggg==),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjA4MjE3MkI5QjA2MTFFMkFFQUM5REE2OTlDQ0JGM0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjA4MjE3MkM5QjA2MTFFMkFFQUM5REE2OTlDQ0JGM0MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2RkVERTc2MjlBREUxMUUyQUVBQzlEQTY5OUNDQkYzQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMDgyMTcyQTlCMDYxMUUyQUVBQzlEQTY5OUNDQkYzQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmuSIKsAAAFeSURBVHjarNbLbcMwDAZg50cHyArdwN0gPXqLeIOO0E7QEewRerKPWSEjdASNUDqgBMXVgxRNgAgSK/yQSJR0Wpal28WV8pvynfLeVWIYhuLzdV1DPRob6iGBTpRnyhtl3xmC0VCP3vcp2A/y4fGLEX2q53Fk0D1+NaL/cBTQOCYpXkCfcPDES6KKC9CAg1evs+KEfgjRLe7gljHhhE6Kf+7hnaI+7nkhnYUFRspZM/8epX522H34Jtk0ol9+a0FTG8ivdMfiuLSgKbjjudbgajQHH4kn0RJ8BP6TQ7d4qXzZ49oDYyZwLA2AoIg7cL5VsKZPw0nHm0oz3IKKcBROEAtaxXHUGazFkUGlK9i14jCg2wHxyq9qHAZ061PH/arGYUDjK64ahxVtxaHYlb5yaAuO6CZRu218SgoK8RG7a0zpiiOOCj7S8xkVQI1W8Aea2kDiwc1oBg/oFn8CDACNIqqZNBCYDQAAAABJRU5ErkJggg==);
+		    font-size:   12px;
 		    font-family: helvetica, arial, sans-serif;
 		    text-align: left;
 		    color: #fff;
 		    line-height: 100%;
-		    box-sizing: border-box;
-		    box-sizing: border-box;
+		    @include box-sizing(border-box);
 		    padding: 10px 40px;
-		    margin: 0 auto;
-		    transform-origin: 0 0;
-		    transform: translateY(-90px);
-		    transition: transform .5s ease;
+		    margin:  0 auto;
+		    @include transform-origin(0 0);
+		    @include transform(translateY(-90px));
+			@include transition(transform .5s ease);
 		    z-index: 1;
 		}
-		#lp-offline-banner.lp-offline .lp-offline-warning {
-		    transform: translateY(0);
-		}
+		#lp-offline-banner.lp-offline .lp-offline-warning { @include transform(translateY(0)); }
 		/*=== HORS-LIGNE | fin ======*/
 
 	}
@@ -508,19 +464,15 @@ body.lp-loaded {
 			.table-cell-wrapper {
 				position: absolute;
 				bottom: 0;
-				right: 0;
+				right:  0;
 				background: rgba(255, 255, 255, 1);
 			}
 
-			.pager-wrapper {
-				bottom: 102px;
-			}
+			.pager-wrapper { bottom: 102px; }
 
 		}
 	
-		.back {
-			background-color: rgba(255,255,255,1);
-		}
+		.back { background-color: rgba(255,255,255,1); }
 	} 
 
 
@@ -538,28 +490,28 @@ body.lp-loaded {
 
 .lp-480x152 {
 
-		width: 480px;
+		width:  480px;
 		height: 152px;
 
 		.front {	
 
 			.logo {
-				width: 100px;
+				width:  100px;
 				height: 50px;	
 			}
 
 			.description {
-			 	padding: 9px 10px 6px 15px;
-				width: 152px;
+				width:  152px;
 		 		height: 152px;
+		 		padding: 9px 10px 6px 15px;
 
 				> div:nth-child(1) {
-					display:table-row;
+					display: table-row;
 					vertical-align: top;
 				}
 
 				> div:nth-child(2) {
-					display:table-cell;
+					display: table-cell;
 					vertical-align: bottom;
 					text-align: right;
 				}
@@ -576,30 +528,23 @@ body.lp-loaded {
 					-webkit-line-clamp: 2;
 				}	
 
-				.mention {
-					font: $front-mention-1-8H;
-				}
+				.mention { font: $front-mention-1-8H; }
 
-				.price {
-					font: $front-price-1-8H;
-				}	
+				.price { font: $front-price-1-8H; }	
 
 			}
 
 			.scroller > div {
 				display: table;
 
-				> div:nth-child(1){
-					display: table-cell;
-				}
+				> div:nth-child(1){ display: table-cell; }
 			}
 
 
 			.pager-wrapper {
 				text-align: left;
 				bottom: 8px;
-				left: 309px;
-				bottom: 8px;
+				left:   309px;
 				width: 480px;
 			}
 		}
@@ -642,16 +587,14 @@ body.lp-loaded {
 					padding: 0 0 5px 0;
 				}
 
-				.price {
-					font: $back-price-1-8H;
-				}	
+				.price { font: $back-price-1-8H; }	
 
 
 			}
 
 			.wrapper-all {
 					height: 104px;
-					display:table;
+					display: table;
 				}
 
 				.wrapper-height {
@@ -682,14 +625,14 @@ body.lp-loaded {
 
 				.logo {
 					bottom: 5px;
-					left: 335px;			
-					width: 85px;
+					left:   335px;			
+					width:  85px;
 					height: 30px;
 					
 				}
 					
 				.lp-legal-bg {
-					width: 480px;
+					width:  480px;
 					height: 152px;
 				}
 
@@ -702,11 +645,7 @@ body.lp-loaded {
 
 		.front, .back  {
 
-				.description {
-
-					display:table;
-
-				}
+				.description { display: table; }
 		}
 
 		.front, .back, .gallery, .scroller > div,  .wrapper { 
@@ -725,7 +664,7 @@ body.lp-loaded {
 
 		.gallery,
 		.scroller > div {
-			width: 328px; 
+			width:  328px; 
 			height: 152px; 
 		}
 
@@ -734,15 +673,15 @@ body.lp-loaded {
 				.table-cell-wrapper {
 					position: absolute;
 					bottom: 0;
-					right: 0;
+					right:  0;
 					background: rgba(255, 255, 255, 1);
 				}
 
 				.pager-wrapper {
-					left: 0;
-					text-align: center;
 					bottom: 8px;
+					left:   0;
 					width: 328px;
+					text-align: center;
 				}
 		}
 
@@ -764,24 +703,24 @@ body.lp-loaded {
 
 .lp-230x325 {
 
-		width: 230px;
+		width:  230px;
 		height: 325px;
 
 		.front {	
 
 			.logo {
-				width: 100px;
+				width:  100px;
 				height: 50px;	
 			}
 
 			.description {
-				 padding: 10px 10px 0 10px;
-				 height: 128px;
+				height: 128px;
+				padding: 10px 10px 0 10px;
 
 
 				div:nth-child(1) {
+					display: table-row;
 					vertical-align: top;
-					display:table-row;
 					height: 56px;
 				}
 				
@@ -791,13 +730,9 @@ body.lp-loaded {
 					text-align: right
 				}				
 
-				.title {
-					font: $front-title-1-8V;
-				}
+				.title { font: $front-title-1-8V; }
 
-				.subtitle {
-					font: $front-subtitle-1-8V;
-				}	
+				.subtitle { font: $front-subtitle-1-8V; }	
 
 				.mention {
 					display: inline-block;
@@ -825,50 +760,35 @@ body.lp-loaded {
 			.description {
 				padding: 25px 10px 0 40px;
 
-				> div {
-					vertical-align: top;
-				}	 			
+				> div { vertical-align: top; }	 			
 
-				.title {
-					font: $back-title-1-8V;
-				}
+				.title { font: $back-title-1-8V; }
 
-				.subtitle {
-					font: $back-subtitle-1-8V;
-				}	
+				.subtitle { font: $back-subtitle-1-8V; }	
 
 				.rating {
 					display: table-row;
-					> li {
-						margin: 5px 3px 5px 0;
-					}
+					> li { margin: 5px 3px 5px 0; }
 				}
 
 			}
 
 			.wrapper-all {
+					
+					display: table;
+					height: 257px;
 
-					height:257px;
-					display:table;
-
-					a.btn-plusWeb {
-						bottom: 25px;
-					}
+					a.btn-plusWeb { bottom: 25px; }
 				
 					.mention {
 						text-transform: uppercase;
 						font: $back-mention-1-8V;
 					}
 
-					.price {
-						font: $back-price-1-8V;
-					}	
+					.price { font: $back-price-1-8V; }	
 
-					.mention, .price {
-						padding: 0 0 0 40px;
-					}
+					.mention, .price { padding: 0 0 0 40px; }
 
-				
 					.wrapper-height {
 
 						height: 100%;
@@ -879,18 +799,16 @@ body.lp-loaded {
 							display: table-cell;
 							vertical-align: middle;
 
-								.infos {
-									@extend .ellipsis;
-									padding: 0 0 0 40px;
-									font: $back-infos-1-8V;
-									-webkit-line-clamp: 4;
-									 width: 215px;
-								}
+							.infos {
+								@extend .ellipsis;
+								padding: 0 0 0 40px;
+								font: $back-infos-1-8V;
+								-webkit-line-clamp: 4;
+								width: 215px;
+							}
 						}
 						
 					}
-
-
 
 				}
 
@@ -903,14 +821,14 @@ body.lp-loaded {
 
 
 			.logo {
-				top: 266px;
+				top:  266px;
 				left: 72px;
-				width: 100px;
+				width:  100px;
 				height: 30px;
 			}
 				
 			.lp-legal-bg {
-				width: 230px;
+				width:  230px;
 				height: 325px;
 			}
 
@@ -930,7 +848,7 @@ body.lp-loaded {
 		}
 
 		.front, .back, .gallery, .scroller > div, .wrapper { 
-			width: 230px; 
+			width:  230px; 
 			height: 325px; 
 		} 
 }
@@ -940,7 +858,7 @@ body.lp-loaded {
 	.lp-230x325.uniqueOffer {
 
 		.gallery{
-			width: 230px; 
+			width:  230px; 
 			height: 197px; 
 		}
 
@@ -949,7 +867,7 @@ body.lp-loaded {
 				.table-cell-wrapper {
 					position: absolute;
 					bottom: 0;
-					right: 0;
+					right:  0;
 					background: rgba(255, 255, 255, 1);
 				}
 
@@ -974,25 +892,25 @@ body.lp-loaded {
 
 .lp-230x152 {
 
-		width: 230px;
+		width:  230px;
 		height: 152px;
 
 		.front {	
 
 			.wrapper-logo {
-				position:absolute;
-				top: 0;
+				position: absolute;
+				top:  0;
 				left: 0;
-				width: 80px;
+				width:  80px;
 				height: 35px;	
 				background-color: rgba(255,255,255,1);
 				z-index: 1;
 			}
 
 			.logo {
-				width: 75px;
+				width:  75px;
 				height: 30px;	
-				top: 2px;
+				top:  2px;
 				left: 2px;
 			}
 
@@ -1012,13 +930,9 @@ body.lp-loaded {
 					text-align: right
 				}				
 
-				.title {
-					font: $front-title-1-16;
-				}
+				.title { font: $front-title-1-16; }
 
-				.subtitle {
-					font: $front-subtitle-1-16;
-				}	
+				.subtitle { font: $front-subtitle-1-16; }	
 
 				.mention {
 					display: inline-block;
@@ -1064,21 +978,10 @@ body.lp-loaded {
 				}	 					
 
 
-				.title {
-					font: $back-title-1-16;
-				}
-
-				.subtitle {
-					font: $back-subtitle-1-16;
-				}	
-
-				.mention {
-					font: $back-mention-1-16;
-				}
-
-				.price {
-					font: $back-price-1-16;
-				}	
+				.title { font: $back-title-1-16; }
+				.subtitle { font: $back-subtitle-1-16; }	
+				.mention { font: $back-mention-1-16; }
+				.price { font: $back-price-1-16; }	
 
 				.rating {
 					display: table-row;
@@ -1099,14 +1002,14 @@ body.lp-loaded {
 			}
 
 			.logo {
-				top: 117px;
+				top:  117px;
 				left: 72px;
-				width: 100px;
+				width:  100px;
 				height: 30px;
 			}
 				
 			.lp-legal-bg {
-				width: 230px;
+				width:  230px;
 				height: 152px;
 			}
 
@@ -1119,16 +1022,15 @@ body.lp-loaded {
 
 		.front, .back  {
 
-				.description {
-					display:table;
-					width: 100%;
-				}
-
+			.description {
+				display:table;
+				width: 100%;
+			}
 
 		}
 
 		.front, .back, .gallery, .scroller > div, .wrapper { 
-			width: 230px; 
+			width:  230px; 
 			height: 152px; 
 		} 
 }
@@ -1143,41 +1045,41 @@ body.lp-loaded {
 	.lp-legal-bg {
 		position: absolute;
 		bottom: 0;
-		left: 0;
+		left:   0;
 		background: rgba(0,0,0,.5);
 		opacity: 0;
 		cursor: pointer;
 		z-index: 9998;
-		transform: translate3d(0,325px,0);
-		transition: opacity .5s ease, transform 0 .5s linear;
+		@include transform(translate3d(0,325px,0));
+		@include transition(opacity .5s ease, transform 0 .5s linear);
 	}
 
 	.lp-legal-bg.lp-legal-active {
 		opacity: 1;
-		transform: translate3d(0,0,0);
-		transition: opacity .5s ease, transform 0 0 linear;
+		@include transform(translate3d(0,0,0));
+		@include transition(opacity .5s ease, transform 0 0 linear);
 	}
 
 	.lp-legal {
 		position: absolute;
 		bottom: 0;
-		left: 0;
+		left:   0;
 		width: 100%;
 		font-family: helvetica, arial, sans-serif;
 		color: $gal-legal;
 		z-index: 9999;
-		transition: transform .5s ease;
+		@include transition(transform .5s ease);
 	}
 
 	.lp-legal.lp-legal-active {
-		transform: translate3d(0,0,0) !important;
+		@include transform(translate3d(0,0,0) !important);
 	}
 
 	.lp-legal-btn {
 		position: absolute;
-		top: -20px;
+		top:  -20px;
 		left: 0;
-		width: 50px;
+		width:  50px;
 		height: 21px;
 		background: #f1f1f1;
 		font-size: 12px;
@@ -1194,9 +1096,7 @@ body.lp-loaded {
 		background: #f1f1f1;
 		font-size: 11px;
 		text-align: justify;
-		box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
+		@include box-sizing(border-box);
 		padding: 5px;
 		overflow-scrolling: touch;
 		overflow: auto;
