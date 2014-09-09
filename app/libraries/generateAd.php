@@ -1,6 +1,6 @@
 <?php
 	$id = $_POST["id"];
-	$html = $_POST["h"];
+	$html = $_POST["html"];
 	try {
 		$html = str_replace("temps/". $id ."/", "", $html);
 		$html = str_replace("public/images", "assets", $html);

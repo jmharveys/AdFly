@@ -61,6 +61,7 @@ app.prototype.map_ = function() {
     header: $('.main-header'),
     import: $('.js-import-ad'),
     adDropZone: $('.ad-drop-zone'),
+    adDropZoneClose: $('.ad-drop-zone__close'),
     f: $('.js-form'),
     steps: $('.steps'),
     step1: $('.step.no1'),
@@ -81,6 +82,9 @@ app.prototype.map_ = function() {
     confirmBtn: $('.popup.confirmation .js-confirm'),
     popupDelete: $('.popup.delete'),
     popupDeleteText: $('.popup.delete .text'),
+    popupError: $('.popup.error'),
+    popupErrorText: $('.popup.error .text'),
+    popupErrorClose: $('.popup.error .js-cancel'),
     btn: {
       changeCancel: $('.popup.delete .js-cancel'),
       changeConfirm: $('.popup.delete .js-confirm')
@@ -130,26 +134,24 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.goStep2.on('click', function() {
-      if(self.form.step === 1) { // Si on est au Step 1
-        if(self.validate_()) {  // Si le Step 1 est valid
-          if(self.ad.offers.length === 0) { // Si il n'y a encore aucune offre au Step 2
-            $.extend( self.ad, self.getStep1_() );
-            self.addOffer_(); // Créer une offre vide
-          }
-          self.goToStep_( 2 ); // Aller au Step 2
+    if(self.form.step === 1) { // Si on est au Step 1
+      if(self.validate_()) {  // Si le Step 1 est valid
+        if(self.ad.offers.length === 0) { // Si il n'y a encore aucune offre au Step 2
+          $.extend( self.ad, self.getStep1_() );
+          self.addOffer_(); // Créer une offre vide
         }
-      } else if(self.form.step === 3) { // Si on est au Step 3
-        self.dom.field.iConfirm.attr('checked', false);  // Décoche la boite de confirmation
-        self.dom.downloadBtn.addClass('disabled'); // Désactive le bouton de téléchargement 
         self.goToStep_( 2 ); // Aller au Step 2
       }
+    } else if(self.form.step === 3) { // Si on est au Step 3
+      self.dom.field.iConfirm.attr('checked', false);  // Décoche la boite de confirmation
+      self.dom.downloadBtn.addClass('disabled'); // Désactive le bouton de téléchargement 
+      self.goToStep_( 2 ); // Aller au Step 2
+    }
   });
 
   self.dom.goStep3.on('click', function() {
     if(self.validate_()) {
-      var dd = new FormData($('.js-form')[0]);
-      self.setStep3_( dd );
-      self.goToStep_( 3 );
+      self.setStep3_();
     };
   });
 
@@ -212,7 +214,7 @@ app.prototype.bindEvents_ = function() {
 
   self.dom.confirmBtn.on('click', function(e) {
     e.preventDefault();
-    self.downloadAd_();
+    self.generateAd();
   });
 
   self.dom.btn.changeCancel.on('click', function(e) {
@@ -229,6 +231,10 @@ app.prototype.bindEvents_ = function() {
     self.updateFieldLength_($(this));
   });
 
+  self.dom.popupErrorClose.on('click', function() {
+    self.dom.popupError.removeClass('active');
+  });
+
   self.dom.import.on('change', function() {
     self.getUploadedAd_($(this));
     self.dom.adDropZone.removeClass('active');
@@ -242,9 +248,19 @@ app.prototype.bindEvents_ = function() {
   });
 
   $(document).on('dragleave', function(e) {
-    self.dom.adDropZone.removeClass('active');
+    self.closeAdDropZone_();
+  });
+
+  self.dom.adDropZoneClose.on('click', function() {
+    self.closeAdDropZone_();
   });
 };
+
+/*=== Fermer la zone de drop publicitaire =========================*/
+app.prototype.closeAdDropZone_ = function() {
+  var self = this;
+  self.dom.adDropZone.removeClass('active');
+}
 
 /*=== Init Custom Radio ==========================================*/
 app.prototype.initCustomRadios_ = function() {
@@ -319,42 +335,46 @@ app.prototype.getUploadedAd_ = function(pInput) {
   var self = this;
   var form = pInput.closest('.import');
 
-  if(!inputContainImg(pInput)) { // Si un zip est uploadé et non une image
+  if(!inputContainImg( pInput )) { // Si un zip est uploadé et non une image
     var formData = new FormData(form[0]);
 
     $.ajax({
         url: self.path.librairies + "uploadZip.php",
         type: 'POST',
         data: formData,
-        success: function(folderId) {
-          self.ad.id = folderId;
-          var folder = self.path.temps + self.ad.id;
-          $.getJSON(folder + "/assets/_source.json", function(data) { // Télécharge la source de la pub à éditer
-            data.folder = folder;
-            data.meta.id = self.ad.id;
-
-            self.setStep1_( data ); // Remplis le formulaire du Step 1
-            $.extend( self.ad, self.getStep1_() ); // Récupère les valeurs du formulaire du Step 1
-            self.ad.offers = self.convertOffers_( data.offers.list ); // Converti les offres dans _source.json en format traitable
-            self.setStep2_( self.ad ); // Remplis le formulaires du Step 2 (Offres)
-            self.goToStep_( 2 ); // Passe au step 2
-            var dd = new FormData($('.js-form')[0]);
-            self.setStep3_( dd );
-
-          });
-        },
-        error: function(r) {
-          console.log('Zip envoyé, mais erreur', r);
-        },
         cache: false,
         contentType: false,
         processData: false
+    }).done(function( folderId ) {
+      self.initFormWithUploadAdSource_( folderId );
+    }).fail(function( error ) {
+      var msg = self.form.text.errors.treatmentPhp + '<br><br>' + error;
+      self.setErrorPopup_( msg );
     });
 
   } else { // Un fichier de type image à été téléchargé plutôt qu'un .zip
-    console.log("Le fichier de l'annonce doit-être un .zip");
+    self.setErrorPopup_(self.form.text.errors.zipOnly);
   }
 
+};
+
+/*=== Init Form with uploaded ad's _source.json file =======*/
+app.prototype.initFormWithUploadAdSource_ = function(pFolder) {
+  var self = this;
+
+  $.getJSON(self.path.temps + pFolder + "/assets/_source.json", function(data) { // Télécharge la source de la pub à éditer
+    self.ad.id = pFolder;
+    data.folder = self.path.temps + self.ad.id;
+    data.meta.id = self.ad.id;
+    self.setStep1_( data ); // Remplis le formulaire du Step 1
+    $.extend( self.ad, self.getStep1_() ); // Récupère les valeurs du formulaire du Step 1
+    self.ad.offers = self.convertOffers_( data.offers.list ); // Converti les offres dans _source.json en format traitable
+    self.setStep2_( self.ad ); // Remplis le formulaires du Step 2 (Offres)
+    self.goToStep_( 2 ); // Passe au step 2
+    self.setStep3_();
+  }).error(function() { 
+    self.setErrorPopup_( self.form.text.errors.sourceMissing );
+  })
 };
 
 /*=== Get Step 1 ==========================================*/
@@ -456,36 +476,38 @@ app.prototype.setOfferValidation_ = function(pAd, pOffer) {
 };
 
 /*=== Set Step 3 ==========================================*/
-app.prototype.setStep3_ = function(pData) {
+app.prototype.setStep3_ = function() {
   var self = this;
+  var data = new FormData(self.dom.f[0]);
+
   $.ajax({
     type: "POST",
     url: self.path.root + 'ad.php',
-    data: pData,
+    data: data,
     cache: false,
     contentType: false,
-    processData: false,
-    success: function(data) {
-      self.dom.render.css({
-        'width': self.ad.format.w + 'px', 
-        'height': self.ad.format.h + 'px'
-      })
-      var idoc = self.dom.render[0].contentDocument;
-      var zipable = self.dom.zipable[0].contentDocument;
-      idoc.open();
-      idoc.write(data);
-      idoc.close();
-      zipable.open();
-      zipable.write(data);
-      zipable.close();
-      self.goToStep_( 3 );
-    }, error: function(data) {
-      console.log("error");
-      console.log(data);
-    }
-  });
+    processData: false
+  }).done(function( data ) {
+    self.dom.render.css({
+      'width':  self.ad.format.w + 'px', 
+      'height': self.ad.format.h + 'px'
+    })
+    var idoc = self.dom.render[0].contentDocument;
+    var zipable = self.dom.zipable[0].contentDocument;
+    idoc.open();
+    idoc.write(data);
+    idoc.close();
+    zipable.open();
+    zipable.write(data);
+    zipable.close();
+    self.goToStep_( 3 );
+  }).fail(function( data ) {
+    var msg = self.form.text.errors.renderAd + "<br>" + data;
+    self.setErrorPopup_( msg );
+  })
 };
 
+/*=== Update Settings ============================================*/
 app.prototype.updateSettings_ = function() {
   var self = this;
   $.extend( self.ad.settings, self.form.settings[self.ad.format.text] );
@@ -507,7 +529,6 @@ app.prototype.addOffer_ = function(pOffer, pSpeed) {
     var html = Mustache.render( self.ad.template, pOffer ); // Rend le html de l'offre (champs à afficher ou à populer)
     self.dom.offersList.append( html ); // Ajoute l'offre dans l'annonce
     var offer = self.dom.offersList.find('fieldset[data-id="'+ pOffer.id +'"]');
-    
     
     self.form.current.offersNbr++;
     self.ad.offers.push( {id: pOffer.id} );
@@ -543,7 +564,6 @@ app.prototype.newOfferId_ = function() {
 /*=== Delete Offer ===========================================*/
 app.prototype.deleteOffer_ = function(pId) {
   var self = this;
-  console.log(pId);
   $('fieldset[data-id="' + pId + '"]').remove();
   self.ad.offers = self.ad.offers.filter(function( index ) {
     return index.id !== pId;
@@ -580,7 +600,7 @@ app.prototype.updateOffer_ = function(pId) {
 app.prototype.updateOffersList_ = function() {
   var self = this;
   var content = self.dom.step2.find('.content');
-  console.log(self.form.current.offersNbr, self.dom.b.width());
+
   if(self.form.current.offersNbr > 1) {
     if(self.dom.b.width() > 1020) {
       content.addClass('extend');
@@ -735,7 +755,7 @@ app.prototype.updateFormat_ = function(pFormat, pConfirm) {
   if( pConfirm || self.ad.offers.length < 1) {
     var radioSelected = self.dom.field.format.filter(':checked');
     var radioNew = self.dom.field.format.filter('[value="' + pFormat + '"]');
-    console.log(radioSelected.val(), radioNew.val());
+
     radioSelected.prop('checked', 'false').next().removeClass('valid');
     radioNew.prop('checked', 'true').next().addClass('valid');
 
@@ -835,7 +855,7 @@ app.prototype.updateAddOfferBtn_ = function() {
 /*=== Update Field Length ==========================================*/
 app.prototype.updateFieldLength_ = function(pField) {
   var self = this;
-  console.log(pField);
+
   if( pField.next().hasClass( 'countMaxCharacter' ) ) { // Si il y a un compteur à la suite d'un champs
     var nbr = parseInt( pField.attr( 'maxlength' ) ) - pField.val().length; // Char restant
     pField.next().text( nbr ); // Mettre à jours le compteur
@@ -991,53 +1011,66 @@ app.prototype.updateMultifiles_ = function() {
   }
 };
 
-/*=== Download Ad ==========================================*/
-app.prototype.downloadAd_ = function() {
+/*=== Generate Ad ==========================================*/
+app.prototype.generateAd = function() {
   var self = this;
   var html = self.dom.zipable.contents().find("html")[0].outerHTML;
+
   $.ajax({
     type: "POST",
-    url: self.path.librairies + "createFiles.php",
-    data: {"id": self.ad.id, "h": html},
-    success: function(data) {
-      console.log("success: create folder");
-      self.dom.popupConfirmation.removeClass('active');
-      var folder = '../../temps/' + self.ad.id;
-      var adNumber = self.dom.field.noAd.val();
-      var adZipName = adNumber;
-      if (self.dom.field.noClient.val() != "") {
-          var customerName = "publicite";
-          try {
-            customerName = removeDiacritics(self.dom.field.noClient.val().toLowerCase().replace(/[`~!@#$%^&*()¨^_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''));
-          } catch(err) {
-            customerName = "publicite";
-          }
-          adZipName = adZipName + "_" + customerName;
-      }
-      $.ajax({
-        type: "POST",
-        url: self.path.librairies + "zipFolder.php",
-        data: {"folder": folder, "name": adZipName},
-        success: function(data) {
-          var url = self.path.root + 'temps/' + self.ad.id + '/' + adZipName + '.zip';
-          $("<iframe />").css("display", "none").bind("load", function(e) {
-            this.src == url && $(this).remove();
-          }).attr("src", url).appendTo($(document.body));
-          console.log("success: zip");
-        }, error: function(data) {
-          console.log("error: zip");
-        }
-      });
-    }, error: function(data) {
-      console.log("error: create folder");
-      self.dom.popupConfirmation.removeClass('active');
-    }
+    url: self.path.librairies + "generateAd.php",
+    data: {"id": self.ad.id, "html": html}
+  }).done(function() {
+    var zipName = self.createZipName_();
+    self.zipGeneratedAd_( zipName );
+  }).fail(function() {
+    self.setErrorPopup_( self.form.text.errors.createFolders );
+    console.log("error: create folder");
+  }).always(function() {
+    self.dom.popupConfirmation.removeClass('active');
   });
+};
+
+/*=== Create Zip Name ============================================*/
+app.prototype.createZipName_ = function() {
+  var self = this;
+  var name = self.dom.field.noClient.val();
+  name = name === "" ? "publicite" : name.toLowerCase(); // Si le nom est vide le mettre à "publicite", sinon prendre la valeur et la mettre en minuscule
+  name = name.replace(/[`~!@#$%^&*()¨^_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+  name = removeDiacritics(name);
+  return name;
+};
+
+/*=== Zip Generated Ad ============================================*/
+app.prototype.zipGeneratedAd_ = function(zipName) {
+  var self = this;
+  var folder = '../../temps/' + self.ad.id;
+
+  $.ajax({
+    type: "POST",
+    url: self.path.librairies + "zipFolder.php",
+    data: {"folder": folder, "name": zipName}
+  }).done(function() {
+    self.makeBrowserDownloadGeneratedAd_( zipName );
+  }).fail(function() {
+    self.setErrorPopup_( self.form.text.errors.zipCompression );
+  });
+};
+
+/*=== Make Browser Dowload Ad ============================================*/
+app.prototype.makeBrowserDownloadGeneratedAd_ = function(adZipName) {
+  var self = this;
+  var url = self.path.root + 'temps/' + self.ad.id + '/' + adZipName + '.zip';
+
+  $("<iframe />").css("display", "none").bind("load", function(e) {
+    this.src == url && $(this).remove();
+  }).attr("src", url).appendTo( $(document.body) );
 };
 
 /*=== Update File Preview ============================================*/
 app.prototype.updateInputFilePreview_ = function(pInput) {
   var self = this;
+
   pInput.closest('.field').find('input[type="hidden"]').val("");
   self.getUploadedImageObj_(pInput, function(pImg) {
     var btn = pInput.closest('.btn');
@@ -1054,6 +1087,7 @@ app.prototype.getUploadedImageObj_ = function(pInput, callback) {
   var self = this;
   var file = pInput.prop("files")[0];
   var reader = new FileReader();
+
   reader.onload = function(e) {
     $("<img/>").attr("src", e.target.result).load(function() {
       var img = e.target.result;
@@ -1061,6 +1095,13 @@ app.prototype.getUploadedImageObj_ = function(pInput, callback) {
     });
   }
   reader.readAsDataURL(file); 
+};
+
+/*=== Error Popup ============================================*/
+app.prototype.setErrorPopup_ = function(pMsg) {
+  var self = this;
+  self.dom.popupErrorText.html(pMsg);
+  self.dom.popupError.addClass('active');
 };
 
 /*=== Vertical Align ============================================*/

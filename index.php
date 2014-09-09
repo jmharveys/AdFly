@@ -163,10 +163,10 @@
 						<h2><?= $t[$culture]['confirmation']; ?></h2>
 						<div class="text">
 							<? if ($safari) { 
-									 echo "<span style='color:rgba(255, 0, 0, 1)'>".$t[$culture]['zipMac']."</span>"; 
-									 echo "<br><br>";
-								} ?>
-								<?= $t[$culture]['confirmationText']; ?>
+								 echo "<span style='color:rgba(255, 0, 0, 1)'>".$t[$culture]['zipMac']."</span>"; 
+								 echo "<br><br>";
+							} ?>
+							<?= $t[$culture]['confirmationText']; ?>
 						</div>
 						<label>
 							<div class="btn lft js-cancel"><?= $t[$culture]['cancel']; ?></div>
@@ -178,12 +178,20 @@
 				<div class="popup delete">
 					<div class="window">
 						<span class="close js-cancel"></span>
-						<h2><?= $t[$culture]['confirmation2']; ?></h2>
+						<h2><?= $t[$culture]['confirmation']; ?></h2>
 						<div class="text"></div>
 						<label>
 							<div class="btn lft js-cancel"><?= $t[$culture]['cancel']; ?></div>
 							<div class="btn blue rgt js-confirm"><?= $t[$culture]['ok']; ?></div>
 						</label>
+					</div>
+				</div>
+
+				<div class="popup error">
+					<div class="window">
+						<span class="close js-cancel"></span>
+						<h2><?= $t[$culture]['error']; ?></h2>
+						<div class="text"></div>
 					</div>
 				</div>
 
@@ -202,6 +210,7 @@
 		<form method="post" action="app/libraries/uploadZip.php" class="action import" title="<?= $t[$culture]['importAd']; ?>" enctype="multipart/form-data" autocomplete="off">
 			<input type="file" name="adzip" class="js-import-ad" />
 		</form>
+		<span class="ad-drop-zone__close"><?= $t[$culture]['close']; ?></span>
 	</div>
 
 	<script src="<?= URL ?>public/scripts/plugins.min.js"></script>
