@@ -24,6 +24,10 @@ function inputContainImg(input) {
     }
 };
 
+function uniqueId() {
+    return Math.round( new Date().getTime() + ( Math.random() * 100 ) );
+};
+
 $.fn.serializeObject = function() {
     var o = {};
     var a = this.serializeArray();
