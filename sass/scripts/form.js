@@ -60,6 +60,7 @@ app.prototype.map_ = function() {
     b: $('body'),
     header: $('.main-header'),
     import: $('.js-import-ad'),
+    adDropZone: $('.ad-drop-zone'),
     f: $('.js-form'),
     steps: $('.steps'),
     step1: $('.step.no1'),
@@ -230,6 +231,18 @@ app.prototype.bindEvents_ = function() {
 
   self.dom.import.on('change', function() {
     self.getUploadedAd_($(this));
+    self.dom.adDropZone.removeClass('active');
+  });
+
+  $(document).on('dragover', function(e) {
+    var dt = e.originalEvent.dataTransfer;
+    if(dt.types != null && (dt.types.indexOf ? dt.types.indexOf('Files') != -1 : dt.types.contains('application/x-moz-file'))) {
+      self.dom.adDropZone.addClass('active');
+    }
+  });
+
+  $(document).on('dragleave', function(e) {
+    self.dom.adDropZone.removeClass('active');
   });
 };
 
@@ -304,9 +317,10 @@ app.prototype.initFieldsValidation_ = function() {
 /*=== Get Ad Uploaded ==========================================*/
 app.prototype.getUploadedAd_ = function(pInput) {
   var self = this;
+  var form = pInput.closest('.import');
 
   if(!inputContainImg(pInput)) { // Si un zip est uploadé et non une image
-    var formData = new FormData($('.import')[0]);
+    var formData = new FormData(form[0]);
 
     $.ajax({
         url: self.path.librairies + "uploadZip.php",
@@ -807,14 +821,14 @@ app.prototype.updateAddOfferBtn_ = function() {
   var self = this;
 
   if(self.form.current.offersNbr === self.ad.settings.maxOffers) {
-    self.dom.addOfferBtn.addClass('disabled');
-    self.dom.addOfferMsg.html('(' + self.form.text['offersMaxReached'] + ')');
+    self.dom.addOfferBtn.addClass( 'disabled' );
+    self.dom.addOfferMsg.html( '(' + self.form.text['offersMaxReached'] + ')' );
   } else if(self.ad.gallery) {
     self.dom.addOfferBtn.addClass('disabled');
-    self.dom.addOfferMsg.html('(' + self.form.text['cantAddOfferIfMoreThan1picture'] + ')');
+    self.dom.addOfferMsg.html( '(' + self.form.text['cantAddOfferIfMoreThan1picture'] + ')' );
   } else {
-    self.dom.addOfferBtn.removeClass('disabled');
-    self.dom.addOfferMsg.html('');
+    self.dom.addOfferBtn.removeClass( 'disabled' );
+    self.dom.addOfferMsg.html( '' );
   }
 };
 
@@ -822,12 +836,13 @@ app.prototype.updateAddOfferBtn_ = function() {
 app.prototype.updateFieldLength_ = function(pField) {
   var self = this;
   console.log(pField);
-  if( pField.next().hasClass('countMaxCharacter') ) { // Si il y a un compteur à la suite d'un champs
-    var nbr = parseInt( pField.attr('maxlength') ) - pField.val().length; // Char restant
-    pField.next().text(nbr); // Mettre à jours le compteur
+  if( pField.next().hasClass( 'countMaxCharacter' ) ) { // Si il y a un compteur à la suite d'un champs
+    var nbr = parseInt( pField.attr( 'maxlength' ) ) - pField.val().length; // Char restant
+    pField.next().text( nbr ); // Mettre à jours le compteur
   }
 };
 
+/*=== Update Offers Fields Length ==========================================*/
 app.prototype.updateOfferFieldsLength_ = function(pOffer) {
   var self = this;
   var fields = pOffer.find('.countMaxCharacter').prev();

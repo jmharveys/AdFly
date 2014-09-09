@@ -179,7 +179,7 @@
 					<div class="window">
 						<span class="close js-cancel"></span>
 						<h2><?= $t[$culture]['confirmation2']; ?></h2>
-						<div class="text"><?= $t[$culture]['confirmationText2']; ?></div>
+						<div class="text"></div>
 						<label>
 							<div class="btn lft js-cancel"><?= $t[$culture]['cancel']; ?></div>
 							<div class="btn blue rgt js-confirm"><?= $t[$culture]['ok']; ?></div>
@@ -197,6 +197,12 @@
 		</div>
 		<a href="<?= $t[$culture]['creationKitLink']; ?>" class="return"><?= $t[$culture]['returnToTheCreationKit']; ?></a>
 	</footer>
+
+	<div class="ad-drop-zone">
+		<form method="post" action="app/libraries/uploadZip.php" class="action import" title="<?= $t[$culture]['importAd']; ?>" enctype="multipart/form-data" autocomplete="off">
+			<input type="file" name="adzip" class="js-import-ad" />
+		</form>
+	</div>
 
 	<script src="<?= URL ?>public/scripts/plugins.min.js"></script>
 	<script src="<?= URL ?>public/scripts/form.min.js"></script>

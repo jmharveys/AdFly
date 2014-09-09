@@ -7,6 +7,7 @@
 @import '_form-header';
 @import '_form-footer';
 @import '_popup';
+@import '_ad-drop-zone';
 
 html,
 body {
@@ -394,32 +395,30 @@ body.no3 {
 		position: relative;
 
 		.countMaxCharacter {
-			position: absolute;
-			width: 50px;
-			height: 30px;
-			bottom: -7px;
-			right: -10px;
-			z-index:1;
 			display: block;
+			position: absolute;
+			bottom: 5px;
+			right:  10px;
+			background-color: #fff;
 			color: rgba(0,0,0,0.3);
-			font-size: 15px;
+			font-size:   15px;
 			font-family: "Verlag_Book", Helvetica, Sans-Serif;
 			text-align: center;
+			z-index: 1;
 		}
 
 		.countMaxCharacter.special {
-			bottom: -30px;
-			right: -14px;
+			bottom: -15px;
 		}
 
 		.countMaxCharacter.special2 {
-			right: -5px;
+			right: 20px;
 		}		
 	}
 
 	input.dollar {
-		background-image: url('../images/dollar-sign.png');
-		background-repeat: no-repeat;
+		background-image:    url('../images/dollar-sign.png');
+		background-repeat:   no-repeat;
 		background-position: 98% 50%;
 	}
 
