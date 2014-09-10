@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 8]> <html class="lt-ie10 lt-ie9 lt-ie8" lang="<?= $culture ?>"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie10 lt-ie9" lang="<?= $culture ?>"> <![endif]-->
+<!--[if IE 9]>    <html class="lt-ie10" lang="<?= $culture ?>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="{{app.culture}}"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>{{text.form}} | Les Incontournables du voyage </title>
+	<meta name="description" property="og:description" content="{{text.description}}" />
+	<meta name="author" content="Simon Arnold, Jonathan Harvey" />
+	<meta property="og:type" content="website"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="shortcut icon" href="{{path.images}}favicon.ico"/>
+	<link rel="stylesheet" media="all" href="{{path.styles}}form.css">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body class="no1">
+	{{>header}}
+
+	<form method="post" action="ad.php" enctype="multipart/form-data" autocomplete="off" class="js-form form">
+		<input type="hidden" name="id" />
+		<input type="hidden" name="offersId" />
+		<div class="steps">
+			{{>step1}}
+			{{>step2}}
+			{{>step3}}
+		</div>
+	</form>
+
+	<footer class="main-footer">
+		<div class="legend">
+			<span class="color opt"></span> {{text.optionalFields}}
+		</div>
+		<a href="{{text.creationKitLink}}" class="return">{{text.returnToTheCreationKit}}</a>
+	</footer>
+
+	<div class="ad-drop-zone">
+		<form method="post" action="{{path.libraries}}uploadZip.php" class="action import" title="{{text.importAd}}" enctype="multipart/form-data" autocomplete="off">
+			<input type="file" name="adzip" class="js-import-ad" />
+		</form>
+		<span class="ad-drop-zone__close">{{text.close}}</span>
+	</div>
+
+	<script src="{{path.scripts}}plugins.min.js"></script>
+	<script src="{{path.scripts}}form.min.js"></script>
+	<script>
+		{{>google-analytics.mustache}}
+		
+		$(document).ready(function() {
+          _g = new app("{{app.culture}}", "{{path.root}}");
+        });
+	</script>
+</body>
+</html>

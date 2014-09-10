@@ -49,6 +49,9 @@
 	"maximumPicturesNumberReached": "Maximum pictures number reached",
 	"maxlength": "Maximum {0} characters",
 	"mention": "Mention",
+	"meta": {
+		"description": "Les Incontournables du voyage is a creative advertising tools available to advertisers wishing to post an ad in the travel section of La Presse+."
+	},
 	"mustContain6characters": "Must contain 6 characters",
 	"mustContain25characters": "Must contain 25 characters max",
 	"mustContain6digits": "Must contain 6 digits",

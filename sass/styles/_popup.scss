@@ -59,6 +59,10 @@
 			overflow-x: hidden;
 			overflow-y: auto;
 		}
+
+		label {
+			width: 100%;
+		}
 	}
 
 	&.active {

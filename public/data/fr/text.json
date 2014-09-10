@@ -48,6 +48,9 @@
 	"maximum11characters": "11 caractères maximum",
 	"maximumPicturesNumberReached": "Nombre maximum d'images atteint",
 	"maxlength": "{0} caractères maximum",
+	"meta": {
+		"description": "Les Incontournables du voyage est un outils de création publicitaire mis à la disposition des annonceurs désirant afficher une offre dans la section Voyage de La Presse+."
+	},
 	"mention": "Mention",
 	"mustContain6characters": "Doit contenir 6 caractères",
 	"mustContain25characters": "Doit contenir 25 caractères max",

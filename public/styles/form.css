@@ -630,6 +630,9 @@ nav ul {
   overflow-x: hidden;
   overflow-y: auto;
 }
+.popup .window label {
+  width: 100%;
+}
 .popup.active {
   opacity: 1;
   -webkit-transform: translateX(0);

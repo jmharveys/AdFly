@@ -1,0 +1,15 @@
+<header class="main-header">
+	<a href="{{text.creationKitLink}}">
+		<img src="{{path.images}}LaPressePlus.svg" class="logo">
+	</a>
+	<div class="title">
+		<h2>{{text.generalData}}</h2>
+		<h2>{{text.offers}}</h2>
+		<h2>{{text.preview}}</h2>
+	</div>
+	<a href="{{path.root}}?lang={{app.cultureOff}}" title="{{text.changeLanguage}}" class="action lang"></a>
+	<form method="post" action="{{path.libraries}}uploadZip.php" class="action import" title="{{text.importAd}}" enctype="multipart/form-data" autocomplete="off">
+		<span class="icon"></span>
+		<input type="file" name="adzip" class="js-import-ad" />
+	</form>
+</header>

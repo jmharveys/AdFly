@@ -7,7 +7,5 @@
 	if(isset($_GET['lang'])) {
 		$culture = $_GET['lang'];
 	}
-
-	$translations = file_get_contents(URL . "public/data/". $culture ."/text.json");
-	$t = json_decode($translations, true);
+	define('CULTURE', $culture);
 ?>
