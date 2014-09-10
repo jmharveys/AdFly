@@ -1,7 +1,5 @@
 <?php 
-	include 'configs/global.php'; 
-    // include 'app/libraries/ChromePhp.php';
-    // ChromePhp::log('Hello console!');
+	include 'configs/global.php';
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8]> <html class="lt-ie10 lt-ie9 lt-ie8" lang="<?= $culture ?>"> <![endif]-->
@@ -10,7 +8,7 @@
 <!--[if gt IE 9]><!--><html lang="<?= $culture ?>"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title><?= $t[$culture]['form']; ?> | Les Incontournables du voyage </title>
+	<title><?= $t['form']; ?> | Les Incontournables du voyage </title>
 	<meta name="description" property="og:description" content="Outils de création publicitaire pour les annonceurs de La Presse+." />
 	<meta name="author" content="Jonathan Harvey, Simon Arnold" />
 	<meta property="og:type" content="website"/>
@@ -25,20 +23,20 @@
 </head>
 <body class="no1">
 	<header class="main-header">
-		<a href="<?= $t[$culture]['creationKitLink']; ?>">
+		<a href="<?= $t['creationKitLink']; ?>">
 			<img src="http://plus.lapresse.ca/cdn/img/LaPressePlus.svg" class="logo">
 		</a>
 		<div class="title">
-			<h2><?= $t[$culture]['generalData']; ?></h2>
-			<h2><?= $t[$culture]['offers']; ?></h2>
-			<h2><?= $t[$culture]['preview']; ?></h2>
+			<h2><?= $t['generalData']; ?></h2>
+			<h2><?= $t['offers']; ?></h2>
+			<h2><?= $t['preview']; ?></h2>
 		</div>
 		<?php if($culture == 'fr') { ?>
-			<a href="<?= URL ?>en" title="<?= $t[$culture]['changeLanguage']; ?>" class="action lang"></a>
+			<a href="<?= URL ?>en" title="<?= $t['changeLanguage']; ?>" class="action lang"></a>
 		<?php } else { ?>
-			<a href="<?= URL ?>fr" title="<?= $t[$culture]['changeLanguage']; ?>" class="action lang"></a>
+			<a href="<?= URL ?>fr" title="<?= $t['changeLanguage']; ?>" class="action lang"></a>
 		<?php } ?>
-		<form method="post" action="app/libraries/uploadZip.php" class="action import" title="<?= $t[$culture]['importAd']; ?>" enctype="multipart/form-data" autocomplete="off">
+		<form method="post" action="app/libraries/uploadZip.php" class="action import" title="<?= $t['importAd']; ?>" enctype="multipart/form-data" autocomplete="off">
 			<span class="icon"></span>
 			<input type="file" name="adzip" class="js-import-ad" />
 		</form>
@@ -59,14 +57,14 @@
 						<div class="row">
 							<div class="half field">
 								<label>
-									<span class="lbl"><?= $t[$culture]['clientNo']; ?></span><br>
+									<span class="lbl"><?= $t['clientNo']; ?></span><br>
 									<input type="text" name="noClient" class="input short js-validate" placeholder="Nom du client" required/>
 								</label>
 							</div>
 
 							<div class="half field">
 								<label>
-									<span class="lbl"><?= $t[$culture]['adNo']; ?></span><br>
+									<span class="lbl"><?= $t['adNo']; ?></span><br>
 									<input type="text" name="noAd" class="input short opt js-validate" placeholder="1234567" />
 								</label>
 							</div>
@@ -75,16 +73,16 @@
 						<div class="row">
 							<div class="half field">
 								<label>
-									<span class="lbl"><?= $t[$culture]['category']; ?></span><br>
+									<span class="lbl"><?= $t['category']; ?></span><br>
 									<select name="category" class="select short js-validate" required>
-										<option value="deals"><?= $t[$culture]['deals']; ?></option>
-										<option value="conferences"><?= $t[$culture]['conferences']; ?></option>
-										<option value="cruise"><?= $t[$culture]['cruise']; ?></option>
-										<option value="adventures"><?= $t[$culture]['adventures']; ?></option>
-										<option value="escapades"><?= $t[$culture]['escapades']; ?></option>
-										<option value="circuits"><?= $t[$culture]['circuits']; ?></option>
-										<option value="packages"><?= $t[$culture]['packages']; ?></option>
-										<option value="destinationWorld"><?= $t[$culture]['destinationWorld']; ?></option>
+										<option value="deals"><?= $t['deals']; ?></option>
+										<option value="conferences"><?= $t['conferences']; ?></option>
+										<option value="cruise"><?= $t['cruise']; ?></option>
+										<option value="adventures"><?= $t['adventures']; ?></option>
+										<option value="escapades"><?= $t['escapades']; ?></option>
+										<option value="circuits"><?= $t['circuits']; ?></option>
+										<option value="packages"><?= $t['packages']; ?></option>
+										<option value="destinationWorld"><?= $t['destinationWorld']; ?></option>
 									</select>
 									<input type="hidden" name="previousChoice" value="deals"/>
 								</label>
@@ -95,7 +93,7 @@
 								<label>
 									<span class="lbl">Logo</span><br>
 									<div class="btn blue file">
-										<span class="text"><?= $t[$culture]['uploadImage']; ?></span>
+										<span class="text"><?= $t['uploadImage']; ?></span>
 										<input type="file" accept="image/*" capture="camera" name="logo" class="file-input js-validate" required>
 									</div>
 									<span class="preview"></span>
@@ -104,7 +102,7 @@
 						</div>
 
 						<div class="row field format">
-							<label class="lbl"><?= $t[$culture]['format']; ?></label><br>
+							<label class="lbl"><?= $t['format']; ?></label><br>
 							<input type="radio" name="format" value="480x325" checked />
 							<input type="radio" name="format" value="480x152" />
 							<input type="radio" name="format" value="230x325" />
@@ -113,7 +111,7 @@
 					</fieldset>
 
 					<footer class="footer">
-						<div class="btn blue rgt js-nextStep js-goStep2"><?= $t[$culture]['next']; ?></div>
+						<div class="btn blue rgt js-nextStep js-goStep2"><?= $t['next']; ?></div>
 					</footer>
 				</div>
 			</section>
@@ -123,7 +121,7 @@
 				<div class="content">
 					<header class="header">
 						<input name="offersNbr" type="hidden" value="0" />
-						<a href="#" class="btn rgt addOffer"><?= $t[$culture]['addOffer']; ?></a>
+						<a href="#" class="btn rgt addOffer"><?= $t['addOffer']; ?></a>
 						<span class="addOfferMsg"></span>
 					</header>
 					<div class="offersList">
@@ -131,8 +129,8 @@
 					</div>
 
 					<footer class="footer">
-						<div class="btn lft js-previousStep js-goStep1"><?= $t[$culture]['previous']; ?></div>
-						<div class="btn blue rgt js-nextStep js-goStep3"><?= $t[$culture]['next']; ?></div>
+						<div class="btn lft js-previousStep js-goStep1"><?= $t['previous']; ?></div>
+						<div class="btn blue rgt js-nextStep js-goStep3"><?= $t['next']; ?></div>
 					</footer>
 				</div>
 			</section>
@@ -146,12 +144,12 @@
 					</div>
 
 					<footer class="footer">
-						<div class="btn lft js-previousStep js-goStep2"><?= $t[$culture]['previous']; ?></div>
-						<div class="btn blue rgt js-download disabled"><?= $t[$culture]['download']; ?></div>
+						<div class="btn lft js-previousStep js-goStep2"><?= $t['previous']; ?></div>
+						<div class="btn blue rgt js-download disabled"><?= $t['download']; ?></div>
 						<label>
 							<input type="checkbox" name="iConfirm">
 							<span>
-								<?= $t[$culture]['iConfirm']; ?>
+								<?= $t['iConfirm']; ?>
 							</span>
 						</label>
 					</footer>
@@ -160,17 +158,17 @@
 				<div class="popup confirmation">
 					<div class="window">
 						<span class="close js-cancel"></span>
-						<h2><?= $t[$culture]['confirmation']; ?></h2>
+						<h2><?= $t['confirmation']; ?></h2>
 						<div class="text">
 							<? if ($safari) { 
 								 echo "<span style='color:rgba(255, 0, 0, 1)'>".$t[$culture]['zipMac']."</span>"; 
 								 echo "<br><br>";
 							} ?>
-							<?= $t[$culture]['confirmationText']; ?>
+							<?= $t['confirmationText']; ?>
 						</div>
 						<label>
-							<div class="btn lft js-cancel"><?= $t[$culture]['cancel']; ?></div>
-							<div class="btn blue rgt js-confirm"><?= $t[$culture]['download']; ?></div>
+							<div class="btn lft js-cancel"><?= $t['cancel']; ?></div>
+							<div class="btn blue rgt js-confirm"><?= $t['download']; ?></div>
 						</label>
 					</div>
 				</div>
@@ -178,11 +176,11 @@
 				<div class="popup delete">
 					<div class="window">
 						<span class="close js-cancel"></span>
-						<h2><?= $t[$culture]['confirmation']; ?></h2>
+						<h2><?= $t['confirmation']; ?></h2>
 						<div class="text"></div>
 						<label>
-							<div class="btn lft js-cancel"><?= $t[$culture]['cancel']; ?></div>
-							<div class="btn blue rgt js-confirm"><?= $t[$culture]['ok']; ?></div>
+							<div class="btn lft js-cancel"><?= $t['cancel']; ?></div>
+							<div class="btn blue rgt js-confirm"><?= $t['ok']; ?></div>
 						</label>
 					</div>
 				</div>
@@ -190,7 +188,7 @@
 				<div class="popup error">
 					<div class="window">
 						<span class="close js-cancel"></span>
-						<h2><?= $t[$culture]['error']; ?></h2>
+						<h2><?= $t['error']; ?></h2>
 						<div class="text"></div>
 					</div>
 				</div>
@@ -201,16 +199,16 @@
 
 	<footer class="main-footer">
 		<div class="legend">
-			<span class="color opt"></span> <?= $t[$culture]['optionalFields']; ?>
+			<span class="color opt"></span> <?= $t['optionalFields']; ?>
 		</div>
-		<a href="<?= $t[$culture]['creationKitLink']; ?>" class="return"><?= $t[$culture]['returnToTheCreationKit']; ?></a>
+		<a href="<?= $t['creationKitLink']; ?>" class="return"><?= $t['returnToTheCreationKit']; ?></a>
 	</footer>
 
 	<div class="ad-drop-zone">
-		<form method="post" action="app/libraries/uploadZip.php" class="action import" title="<?= $t[$culture]['importAd']; ?>" enctype="multipart/form-data" autocomplete="off">
+		<form method="post" action="app/libraries/uploadZip.php" class="action import" title="<?= $t['importAd']; ?>" enctype="multipart/form-data" autocomplete="off">
 			<input type="file" name="adzip" class="js-import-ad" />
 		</form>
-		<span class="ad-drop-zone__close"><?= $t[$culture]['close']; ?></span>
+		<span class="ad-drop-zone__close"><?= $t['close']; ?></span>
 	</div>
 
 	<script src="<?= URL ?>public/scripts/plugins.min.js"></script>

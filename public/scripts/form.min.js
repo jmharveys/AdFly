@@ -39,7 +39,7 @@ app = function(pCulture, pRoot) {
 
   $.when( //Télécharge tous les settings externes nécessaires
     $.get( self.path.templates + 'form-offer-tpl.mustache.html', function(r) { self.ad.template = r; } ),
-    $.getJSON( self.path.data + "translations.json", function(r) { self.form.text = r[self.form.culture]; } ),
+    $.getJSON( self.path.data + self.form.culture + "/text.json", function(r) { self.form.text = r; } ),
     $.getJSON( self.path.settings + "default.json", function(r) { self.form.settings.default = r; } ),
     $.getJSON( self.path.settings + "230x152.json", function(r) { self.form.settings['230x152'] = r; } ),
     $.getJSON( self.path.settings + "230x325.json", function(r) { self.form.settings['230x325'] = r; } ),
