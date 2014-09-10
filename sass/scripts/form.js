@@ -150,9 +150,7 @@ app.prototype.bindEvents_ = function() {
   });
 
   self.dom.goStep3.on('click', function() {
-    if(self.validate_()) {
-      self.setStep3_();
-    };
+    if(self.validate_()) { self.setStep3_(); };
   });
 
   self.dom.step1.on('click', '.radio', function() {
@@ -270,7 +268,7 @@ app.prototype.initCustomRadios_ = function() {
   self.dom.field.formatRadio.each(function() {
       var radio = $(this);
       var value = radio.val();
-      if( radio.attr( 'checked' ) ) { // radio button is checked onload
+      if(radio.attr( 'checked' )) { // radio button is checked onload
           radio.hide();
           radio.after( $("<img src='" + self.path.images + "formats/" + value + ".png' class='radio valid' />") );
       } else { // radio button is not checked
@@ -475,38 +473,6 @@ app.prototype.setOfferValidation_ = function(pAd, pOffer) {
   }
 };
 
-/*=== Set Step 3 ==========================================*/
-app.prototype.setStep3_ = function() {
-  var self = this;
-  var data = new FormData(self.dom.f[0]);
-
-  $.ajax({
-    type: "POST",
-    url: self.path.root + 'ad.php',
-    data: data,
-    cache: false,
-    contentType: false,
-    processData: false
-  }).done(function( data ) {
-    self.dom.render.css({
-      'width':  self.ad.format.w + 'px', 
-      'height': self.ad.format.h + 'px'
-    })
-    var idoc = self.dom.render[0].contentDocument;
-    var zipable = self.dom.zipable[0].contentDocument;
-    idoc.open();
-    idoc.write(data);
-    idoc.close();
-    zipable.open();
-    zipable.write(data);
-    zipable.close();
-    self.goToStep_( 3 );
-  }).fail(function( data ) {
-    var msg = self.form.text.errors.renderAd + "<br>" + data;
-    self.setErrorPopup_( msg );
-  })
-};
-
 /*=== Update Settings ============================================*/
 app.prototype.updateSettings_ = function() {
   var self = this;
@@ -608,6 +574,38 @@ app.prototype.updateOffersList_ = function() {
   } else {
     content.removeClass('extend');
   }
+};
+
+/*=== Set Step 3 ==========================================*/
+app.prototype.setStep3_ = function() {
+  var self = this;
+  var data = new FormData(self.dom.f[0]);
+
+  $.ajax({
+    type: "POST",
+    url: self.path.root + 'ad.php',
+    data: data,
+    cache: false,
+    contentType: false,
+    processData: false
+  }).done(function( data ) {
+    self.dom.render.css({
+      'width':  self.ad.format.w + 'px', 
+      'height': self.ad.format.h + 'px'
+    })
+    var idoc = self.dom.render[0].contentDocument;
+    var zipable = self.dom.zipable[0].contentDocument;
+    idoc.open();
+    idoc.write(data);
+    idoc.close();
+    zipable.open();
+    zipable.write(data);
+    zipable.close();
+    self.goToStep_( 3 );
+  }).fail(function( data ) {
+    var msg = self.form.text.errors.renderAd + "<br>" + data;
+    self.setErrorPopup_( msg );
+  })
 };
 
 
@@ -1063,7 +1061,7 @@ app.prototype.makeBrowserDownloadGeneratedAd_ = function(adZipName) {
   var url = self.path.root + 'temps/' + self.ad.id + '/' + adZipName + '.zip';
 
   $("<iframe />").css("display", "none").bind("load", function(e) {
-    this.src == url && $(this).remove();
+    $(this).remove();
   }).attr("src", url).appendTo( $(document.body) );
 };
 

@@ -3,9 +3,7 @@
 	background-size: 100% auto;
 }
 
-.lp-strapline br {
-	display: none;
-}
+.lp-strapline br { display: none; }
 
 .lp-title {
 	max-height: 38px;
@@ -13,22 +11,20 @@
 }
 
 {{#exist.date}}
-.lp-date,
-.lp-time {
-	font: normal normal 19px/19px AmericanTypewriter-Bold;
-}
+.lp-date, .lp-time { font: normal normal 19px/19px AmericanTypewriter-Bold; }
 {{/exist.date}}
 {{#exist.gallery}}
-.lp-pager {
-	bottom: 8px;
-}
+.lp-pager { bottom: 8px; }
 {{/exist.gallery}}
 /*--- Front ------------------------*/
 .lp-front .lp-summary {
-	width: 100%;
+	width:  100%;
 	height: 128px;
 	padding: 10px 10px 0px 10px;
 	-webkit-transform: translate3d(0,197px,0);
+	-moz-transform: translate3d(0,197px,0);
+	-ms-transform: translate3d(0,197px,0);
+	transform: translate3d(0,197px,0);
 }
 
 .lp-front .lp-summary > div:nth-child(1) {
@@ -38,7 +34,7 @@
 }
 
 .lp-front .lp-logo {
-	max-width: 150px;
+	max-width:  150px;
 	max-height: 45px;
 }
 
@@ -53,19 +49,15 @@
 
 {{#exist.picturesGallery}}
 .lp-gallery.lp-pictures {
-	width: 230px;
+	width:  230px;
 	height: 197px;
 }
-.lp-pictures > .lp-scroller {
-	width: 460px;
-}
+.lp-pictures > .lp-scroller { width: 460px; }
 .lp-front .lp-picture {
-	width: 230px;
+	width:  230px;
 	height: 100%;
 }
-.lp-front .lp-pager.lp-pictures {
-	bottom: 136px;
-}
+.lp-front .lp-pager.lp-pictures { bottom: 136px; }
 {{/exist.picturesGallery}}
 {{#exist.price}}
 {{#exist.mentions}}
@@ -80,18 +72,14 @@
 }
 {{/exist.price}}
 /*--- Back -------------------------*/
-.lp-back .lp-summary {
-	width: 100%;
-}
+.lp-back .lp-summary { width: 100%; }
 
 .lp-back .lp-summary > div {
 	float: left;
 	width: 100%;
 }
 
-.lp-back .lp-summary > div:nth-child(2) {
-	text-align: left;
-}
+.lp-back .lp-summary > div:nth-child(2) { text-align: left; }
 
 .lp-back .lp-card {
 	height: 257px;
@@ -105,7 +93,6 @@
 }
 {{/exist.date}}
 
-
 {{#exist.rating}}
 .lp-back .lp-rating {
 	height: 13px;
@@ -113,59 +100,37 @@
 	margin: 5px 0;
 }
 
-.lp-back .lp-rating.lp-1-stars {
-	width: 16px;
-}
-.lp-back .lp-rating.lp-2-stars {
-	width: 32px;
-}
-.lp-back .lp-rating.lp-3-stars {
-	width: 48px;
-}
-.lp-back .lp-rating.lp-4-stars {
-	width: 64px;
-}
-.lp-back .lp-rating.lp-5-stars {
-	width: 80px;
-}
+.lp-back .lp-rating.lp-1-stars { width: 16px; }
+.lp-back .lp-rating.lp-2-stars { width: 32px; }
+.lp-back .lp-rating.lp-3-stars { width: 48px; }
+.lp-back .lp-rating.lp-4-stars { width: 64px; }
+.lp-back .lp-rating.lp-5-stars { width: 80px; }
 {{/exist.rating}}
 
 .lp-back .lp-logo {
 	bottom: 25px;
-	right: 58px;
-	width: 105px;
+	right:  58px;
+	width:  105px;
 	height: 32px;
 }
 
-.lp-back .lp-plus-web {
-	bottom: 25px;
-}
+.lp-back .lp-plus-web { bottom: 25px; }
 
 .lp-back .lp-strapline {
 	display: inline-block;
 	font: normal normal 16px/16px AmericanTypewriter;
 }
 
-.lp-back .lp-title {
-	font: normal normal 18px/18px AmericanTypewriter-Bold;
-}
+.lp-back .lp-title { font: normal normal 18px/18px AmericanTypewriter-Bold; }
 {{#exist.price}}
 {{#exist.mentions}}
-.lp-back .lp-mentions {
-	font: normal normal 12px/14px AmericanTypewriter;
-}
+.lp-back .lp-mentions { font: normal normal 12px/14px AmericanTypewriter; }
 {{/exist.mentions}}
-.lp-back .lp-price {
-	font: normal normal 28px/20px AmericanTypewriter-Bold;
-}
+.lp-back .lp-price { font: normal normal 28px/20px AmericanTypewriter-Bold; }
 {{/exist.price}}
-.lp-back .lp-description {
-	font: normal normal 14px/16px AmericanTypewriter;
-}
+.lp-back .lp-description { font: normal normal 14px/16px AmericanTypewriter; }
 
-.lp-back .lp-description p {
-	margin: 0;
-}
+.lp-back .lp-description p { margin: 0; }
 .lp-back .lp-description span {
 	padding: 0 10px 0  0;
 	-webkit-line-clamp: 5;

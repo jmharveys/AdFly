@@ -3,68 +3,90 @@
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 html, body {
-	width: 100%;
+	width:  100%;
 	height: 100%;
-	margin: 0;
+	margin:  0;
 	padding: 0;
 	overflow: hidden;
 }
 
 .lp-ad {
 	position: relative;
-    width: {{w}}px;
+    width:  {{w}}px;
     height: {{h}}px;
     color: #333;
 }
 
 .lp-flip {
 	position: absolute;
-	top: 0;
+	top:  0;
 	left: 0;
-	width: 100%;
+	width:  100%;
 	height: 100%;
 	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 	-webkit-transform: translate3d(0,0,0) rotateY(0deg);
+	-moz-transform: translate3d(0,0,0) rotateY(0deg);
+	-ms-transform: translate3d(0,0,0) rotateY(0deg);
+	transform: translate3d(0,0,0) rotateY(0deg);
 	-webkit-transition: -webkit-transform 1s ease;
+	-moz-transition: -moz-transform 1s ease;
+	-ms-transition: -ms-transform 1s ease;
+	transition: transform 1s ease;
 }
 
 .lp-flip * {
 	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 .lp-front {
 	position: absolute;
-	top: 0;
+	top:  0;
 	left: 0;
-	width: 100%;
+	width:  100%;
 	height: 100%;
 	overflow: hidden;
 	-webkit-transform: translate3d(0,0,0) rotateY(0deg);
+	-moz-transform: translate3d(0,0,0) rotateY(0deg);
+	-ms-transform: translate3d(0,0,0) rotateY(0deg);
+	transform: translate3d(0,0,0) rotateY(0deg);
 }
 
 .lp-back {
 	position: absolute;
-	top: 0;
+	top:  0;
 	left: 0;
-	width: 100%;
+	width:  100%;
 	height: 100%;
 	overflow: hidden;
 	-webkit-transform: translate3d(0,0,-2px) rotateY(180deg);
+	-moz-transform: translate3d(0,0,-2px) rotateY(180deg);
+	-ms-transform: translate3d(0,0,-2px) rotateY(180deg);
+	transform: translate3d(0,0,-2px) rotateY(180deg);
 }
 
 .lp-flip.lp-active {
   -webkit-transform: translate3d(0,0,0) rotateY(180deg);
+  -moz-transform: translate3d(0,0,0) rotateY(180deg);
+  -ms-transform: translate3d(0,0,0) rotateY(180deg);
+  transform: translate3d(0,0,0) rotateY(180deg);
 }
 
 .lp-logo {
 	display: block;
 	position: absolute;
-	background-image: url('{{logo.path}}');
+	background-image:  url('{{logo.path}}');
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-size:   contain;
 	z-index: 1;
 	pointer-events: none;
 	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 {{#exist.date}}
@@ -84,7 +106,7 @@ html, body {
 {{#exist.gallery}}
 .lp-gallery {
 	position: absolute;
-	top: 0;
+	top:  0;
 	left: 0;
 	overflow: hidden;
 }
@@ -101,13 +123,16 @@ html, body {
 
 .lp-legalOpen .lp-pager {
 	opacity: 0;
-	-webkit-transition: opacity 0s ease; 
+	-webkit-transition: opacity 0s ease;
+	-moz-transition: opacity 0s ease; 
+	-ms-transition: opacity 0s ease; 
+	transition: opacity 0s ease;  
 }
 {{/exist.gallery}}
 
 {{#exist.offersGallery}}
 .lp-gallery.lp-offers {
-	width: 100%;
+	width:  100%;
 	height: 100%;
 }
 
@@ -119,9 +144,9 @@ html, body {
 .lp-offer {
 	position: relative;
 	float: left;
-	width: {{w}}px;
+	width:  {{w}}px;
 	height: 100%;
-	background-color: #fff;
+	background-color:  #fff;
 	background-repeat: no-repeat;
 }
 
@@ -129,10 +154,10 @@ html, body {
 .lp-front .lp-picture {
 	position: relative;
 	float: left;
-	background-color: #fff;
+	background-color:    #fff;
 	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	background-size: cover;
+	background-repeat:   no-repeat;
+	background-size:     cover;
 }
 {{/exist.picturesGallery}}
 
@@ -158,8 +183,11 @@ html, body {
 
 .lp-summary {
 	pointer-events: none;
-	 -webkit-user-select: none;
-	 table-layout: fixed;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	table-layout: fixed;
 }
 
 .lp-summary > div:nth-child(1) {
@@ -180,14 +208,14 @@ html, body {
 	position: relative;
 	display: inline-block;
 	width: auto;
-	max-width: 680px;
+	max-width:  680px;
 	min-height: 30px;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color:    rgba(0, 0, 0, .8);
 	background-position: 2% 50%, 98% 50%;
-	background-repeat: no-repeat, no-repeat;
+	background-repeat:   no-repeat, no-repeat;
 	-webkit-background-size: 20px 20px, 15px 15px;
-	background-size: 20px 20px, 15px 15px;
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFW…qUTyEXTnIrBaj6qcOZTR3McVR2LeQGGGl28f8o6psAAwDkA0q/OZ6/AgAAAABJRU5ErkJggg==), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFW…G7a0zpiiOOCj7S8xkVQI1W8Aea2kDiwc1oBg/oFn8CDACNIqqZNBCYDQAAAABJRU5ErkJggg==);
+	background-size:     20px 20px, 15px 15px;
+	background-image:    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFW…qUTyEXTnIrBaj6qcOZTR3McVR2LeQGGGl28f8o6psAAwDkA0q/OZ6/AgAAAABJRU5ErkJggg==), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFW…G7a0zpiiOOCj7S8xkVQI1W8Aea2kDiwc1oBg/oFn8CDACNIqqZNBCYDQAAAABJRU5ErkJggg==);
 	font-size: 12px;
 	font-family: helvetica, arial, sans-serif;
 	text-align: left;
@@ -197,28 +225,46 @@ html, body {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 10px 40px;
-	margin: 0 auto;
+	margin:  0 auto;
 	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	transform-origin: 0 0;
 	-webkit-transform: translateY(-90px);
+	-moz-transform: translateY(-90px);
+	-ms-transform: translateY(-90px);
+	transform: translateY(-90px);
 	-webkit-transition: -webkit-transform .5s ease;
+	-moz-transition: -moz-transform .5s ease;
+	-ms-transition: -ms-transform .5s ease;
+	transition: transform .5s ease;
 	z-index: 1;
 }
 
 #lp-offline-banner.lp-active .lp-offline-warning {
   -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
 }
 
 .lp-video-bg {
 	position: absolute;
-	top: 0;
+	top:  0;
 	left: 0;
-	width: 100%;
+	width:  100%;
 	height: 100%;
 	background: rgba(0, 0, 0, .8);
 	opacity: 0;
 	z-index: 9;
 	-webkit-transform: translate3d(-9999px, 0, 0);
+	-moz-transform: translate3d(-9999px, 0, 0);
+	-ms-transform: translate3d(-9999px, 0, 0);
+	transform: translate3d(-9999px, 0, 0);
 	-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s ease;
+	-moz-transition: opacity .5s ease, -moz-transform 0 .5s ease;
+	-ms-transition: opacity .5s ease, -ms-transform 0 .5s ease;
+	transition: opacity .5s ease, transform 0 .5s ease;
 }
 
 .lp-video {
@@ -227,36 +273,51 @@ html, body {
 	opacity: 0;
 	z-index: 10;
 	-webkit-transform: translate3d(-9999px, 0, 0);
+	-moz-transform: translate3d(-9999px, 0, 0);
+	-ms-transform: translate3d(-9999px, 0, 0);
+	transform: translate3d(-9999px, 0, 0);
 	-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s ease;
+	-moz-transition: opacity .5s ease, -moz-transform 0 .5s ease;
+	-ms-transition: opacity .5s ease, -ms-transform 0 .5s ease;
+	transition: opacity .5s ease, transform 0 .5s ease;
 }
 
 .lp-video video {
 	position: absolute;
-	top: 0;
+	top:  0;
 	left: 0;
-	width: 100%;
+	width:  100%;
 	height: 100%;
 	background: #000;
-	margin: 0;
+	margin:  0;
 	padding: 0;
 	z-index: 1;
 	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }
 
 .lp-video .lp-video-close {
 	position: absolute;
-	top: -40px;
+	top:  -40px;
 	left: 20px;
-	width: 30px;
+	width:  30px;
 	height: 30px;
-	background-image: url('public/images/video@2x.png');
+	background-image:    url('public/images/video@2x.png');
 	background-position: 0 100%;
-	background-repeat: no-repeat;
-	background-size: 40px 110px;
+	background-repeat:   no-repeat;
+	background-size:     40px 110px;
 	opacity: 0;
 	z-index: 11;
 	-webkit-transform: translate3d(-9999px, 0, 0);
+	-moz-transform: translate3d(-9999px, 0, 0);
+	-ms-transform: translate3d(-9999px, 0, 0);
+	transform: translate3d(-9999px, 0, 0);
 	-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s ease;
+	-moz-transition: opacity .5s ease, -moz-transform 0 .5s ease;
+	-ms-transition: opacity .5s ease, -ms-transform 0 .5s ease;
+	transition: opacity .5s ease, transform 0 .5s ease;
 }
 
 .lp-video-bg.lp-active,
@@ -264,7 +325,13 @@ html, body {
 .lp-video.lp-active .lp-video-close {
 	opacity: 1;
 	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 	-webkit-transition: opacity .5s ease, -webkit-transform 0 ease;
+	-moz-transition: opacity .5s ease, -moz-transform 0 ease;
+	-ms-transition: opacity .5s ease, -ms-transform 0 ease;
+	transition: opacity .5s ease, transform 0 ease;
 }
 {{/exist.video}}
 
@@ -311,19 +378,28 @@ html, body {
 	opacity: 1;
 	pointer-events: none;
 	-webkit-transition: opacity 1s ease; 
+	-moz-transition: opacity 1s ease; 
+	-ms-transition: opacity 1s ease; 
+	transition: opacity 1s ease; 
 }
 
 .lp-pager .lp-bullet {
 	position: relative;
 	float: left;
-	width: 5px;
+	width:  5px;
 	height: 5px;
 	font-size: 0;
 	background: #6e6e6e;
 	border-radius: 50%;
 	margin: 0 5px;
 	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
 	-webkit-transition: background .3s ease;
+	-moz-transition: background .3s ease;
+	-ms-transition: background .3s ease;
+	transition: background .3s ease;
 }
 
 .lp-pager .lp-bullet.lp-selected {
@@ -332,49 +408,59 @@ html, body {
 {{/exist.gallery}}
 /*--- Front ------------------------*/
 .lp-front .lp-logo {
-	top: 0;
+	top:  0;
 	left: 0;
 	width: {{logo.w}}px;
 	height: {{logo.h}}px;
 	background-color: #fff;
 	background-position: 0 50%;
 	border: 4px solid #fff;
+	-webkit-box-sizing: initial;
+	-moz-box-sizing: initial;
 	box-sizing: initial;
 }
 
 .lp-front .lp-plus {
 	position: absolute;
 	display: block;
-	top: 5px;
+	top:   5px;
 	right: 5px;
-	width: 30px;
+	width:  30px;
 	height: 30px;
-	background-image: url('public/images/basic@2x.png');
+	background-image:    url('public/images/basic@2x.png');
 	background-position: -34px -36px;
-	background-repeat: no-repeat;
-	background-size: 65px;
+	background-repeat:   no-repeat;
+	background-size:     65px;
 	z-index: 1;
 }
 
 .lp-front .lp-summary {
 	display: table;
 	background: #fff;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
 {{#exist.video}}
 .lp-front .lp-video-play {
 	position: absolute;
-	width: 70px;
+	width:  70px;
 	height: 70px;
-	background-image: url("public/images/video@2x.png");
+	background-image:    url("public/images/video@2x.png");
 	background-position: 0 0;
-	background-repeat: no-repeat;
-	background-size: 70px 190px;
+	background-repeat:   no-repeat;
+	background-size:     70px 190px;
 	opacity: 1;
 	z-index: 1;
 	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 	-webkit-transition: opacity .5s ease, -webkit-transform 0 ease;
+	-moz-transition: opacity .5s ease, -moz-transform 0 ease;
+	-ms-transition: opacity .5s ease, -ms-transform 0 ease;
+	transition: opacity .5s ease, transform 0 ease;
 }
 
 .lp-front .lp-video-play:active {
@@ -384,7 +470,13 @@ html, body {
 .lp-front .lp-video-play.lp-active {
 	opacity: 0;
 	-webkit-transform: translate3d(-9999px, 0, 0);
+	-moz-transform: translate3d(-9999px, 0, 0);
+	-ms-transform: translate3d(-9999px, 0, 0);
+	transform: translate3d(-9999px, 0, 0);
 	-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s ease;
+	-moz-transition: opacity .5s ease, -moz-transform 0 .5s ease;
+	-ms-transition: opacity .5s ease, -ms-transform 0 .5s ease;
+	transition: opacity .5s ease, transform 0 .5s ease;
 }
 {{/exist.video}}
 /*--- Back -------------------------*/
@@ -406,22 +498,25 @@ html, body {
 .lp-back .lp-rating {
 	position: relative;
 	float: left;
-	background-repeat: repeat-x;
+	background-repeat:   repeat-x;
 	background-position: 0 0;
-	background-size: auto 100%;
-	text-indent: -999px;
+	background-size:     auto 100%;
+	text-indent:         -999px;
 	overflow: hidden;
 }
 {{/exist.rating}}
 
 .lp-back .lp-description {
 	display: table-row;
-	width: 100%;
+	width:  100%;
 	height: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	pointer-events: none;
 	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .lp-back .lp-description p {
@@ -432,6 +527,7 @@ html, body {
 .lp-back .lp-description span {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -443,13 +539,13 @@ html, body {
 .lp-back .lp-plus-web {
 	position: absolute;
 	bottom: 9px;
-	right: 9px;
-	width: 40px;
+	right:  9px;
+	width:  40px;
 	height: 40px;
-	background-image: url("public/images/basic@2x.png");
+	background-image:    url("public/images/basic@2x.png");
 	background-position: 0 0;
-	background-repeat: no-repeat;
-	background-size: 80px;
+	background-repeat:   no-repeat;
+	background-size:     80px;
 	z-index: 1;
 }
 
@@ -459,56 +555,78 @@ html, body {
 }
 
 .lp-back .lp-plus-web:after {
-  position: absolute;
   content: "";
-  width: 60px;
-  height: 60px;
-  top: -9px;
+  position: absolute;
+  top:  -9px;
   left: -9px;
+  width:  60px;
+  height: 60px;
 }
 
 {{#exist.legal}}
 .lp-legal-bg {
 	position: absolute;
-	top: 0;
+	top:  0;
 	left: 0;
-	width: 100%;
+	width:  100%;
 	height: 100%;
 	background: rgba(0, 0, 0, .5);
 	opacity: 0;
 	z-index: 4;
 	cursor: pointer;
 	-webkit-transform: translate3d(0, -9999px, 0);
+	-moz-transform: translate3d(0, -9999px, 0);
+	-ms-transform: translate3d(0, -9999px, 0);
+	transform: translate3d(0, -9999px, 0);
 	-webkit-transition: opacity .5s ease, -webkit-transform 0 .5s linear;
+	-moz-transition: opacity .5s ease, -moz-transform 0 .5s linear;
+	-ms-transition: opacity .5s ease, -ms-transform 0 .5s linear;
+	transition: opacity .5s ease, transform 0 .5s linear;
 }
 
 .lp-legal {
 	position: absolute;
-	top: 100%;
-	left: 0;
+	bottom: 0;
+	left:   0;
 	width: 100%;
-	height: 50%;
+	max-height: 70%;
 	font-family: helvetica, arial, sans-serif;
 	color: #868889;
 	z-index: 5;
-	-webkit-transition: top .5s ease;
+	-webkit-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+	-webkit-transition: -webkit-transform .5s ease;
+	-moz-transition: -moz-transform .5s ease;
+	-ms-transition: -ms-transform .5s ease;
+	transition: transform .5s ease;
 }
 
 .lp-legal.lp-active {
-	top: 50%;
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-ms-transform: translateY(0);
+	transform: translateY(0);
 }
 
 .lp-legal.lp-active + .lp-legal-bg {
 	opacity: 1;
 	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 	-webkit-transition: opacity .5s ease, -webkit-transform 0 0 linear;
+	-moz-transition: opacity .5s ease, -moz-transform 0 0 linear;
+	-ms-transition: opacity .5s ease, -ms-transform 0 0 linear;
+	transition: opacity .5s ease, transform 0 0 linear;
 }
 
 .lp-legal-btn {
 	position: absolute;
-	top: -20px;
+	top:  -20px;
 	left: 0;
-	width: 50px;
+	width:  50px;
 	height: 21px;
 	background: #f1f1f1;
 	font-size: 12px;
@@ -521,12 +639,13 @@ html, body {
 .lp-legal-text {
 	position: relative;
 	float: left;
-	width: 100%;
+	width:  100%;
 	height: 100%;
 	background: #f1f1f1;
 	font-size: 11px;
 	text-align: justify;
 	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 5px;
 	overflow-scrolling: touch;

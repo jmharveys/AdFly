@@ -392,23 +392,20 @@ body.no3 {
 	}
 
 	label {
+		display: inline-block;
 		position: relative;
 
 		.countMaxCharacter {
 			display: block;
 			position: absolute;
 			bottom: 5px;
-			right:  10px;
+			right:  16px;
 			background-color: #fff;
 			color: rgba(0,0,0,0.3);
 			font-size:   15px;
 			font-family: "Verlag_Book", Helvetica, Sans-Serif;
 			text-align: center;
 			z-index: 1;
-		}
-
-		.countMaxCharacter.special {
-			bottom: -15px;
 		}
 
 		.countMaxCharacter.special2 {
