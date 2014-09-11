@@ -599,8 +599,8 @@ nav ul {
 .popup .window .close {
   display: block;
   position: absolute;
-  top: -45px;
-  right: 0;
+  top: 8px;
+  right: 1rem;
   width: 40px;
   height: 40px;
   background-image: url("../images/btn-close.png");
@@ -723,6 +723,75 @@ nav ul {
   padding: 1rem 1rem 1rem 3rem;
   border: solid 2px #fff;
   border-radius: 6px;
+}
+
+.tip {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  width: auto;
+  max-width: 420px;
+  background-color: #ffefc6;
+  background-image: url("../images/btn-close-black.png");
+  background-position: calc(100% - .5rem) 1rem;
+  background-repeat: no-repeat;
+  background-size: 1.5rem 1.5rem;
+  font-size: .9rem;
+  border: solid 1px #cccccc;
+  border-radius: 6px;
+  padding: 1rem 2.5rem 1rem 1rem;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  -webkit-transform: translateX(-50%) translateY(-20px);
+  -moz-transform: translateX(-50%) translateY(-20px);
+  -ms-transform: translateX(-50%) translateY(-20px);
+  -o-transform: translateX(-50%) translateY(-20px);
+  transform: translateX(-50%) translateY(-20px);
+  -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+  -moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease;
+  -o-transition: -o-transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.tip:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 100%;
+  border: 20px solid;
+  border-color: #cccccc transparent transparent transparent;
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  -ms-transform: translateX(-20px);
+  -o-transform: translateX(-20px);
+  transform: translateX(-20px);
+}
+.tip:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 100%;
+  border: 18px solid;
+  border-color: #ffefc6 transparent transparent transparent;
+  -webkit-transform: translateX(-18px);
+  -moz-transform: translateX(-18px);
+  -ms-transform: translateX(-18px);
+  -o-transform: translateX(-18px);
+  transform: translateX(-18px);
+}
+.tip.active {
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transform: translateX(-50%) translateY(0);
+  -moz-transform: translateX(-50%) translateY(0);
+  -ms-transform: translateX(-50%) translateY(0);
+  -o-transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 html,

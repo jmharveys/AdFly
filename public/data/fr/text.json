@@ -3,6 +3,7 @@
 	"adNo": "# Annonce",
 	"addOffer": "Ajouter une offre",
 	"adventures": "Aventures",
+	"browserPreviewWarning": "Veuillez prendre note que la publicité est générée pour être affichée sur tablette <em>(iOS / Android)</em>. Dès lors, il est possible que sous {{browser}} l'aperçu ne corresponde pas à ce qui sera affiché sur ce média. Pour une plus grande fiabilité, nous vous suggérons de prévisualiser votre annonce dans les navigateurs <a href='https://www.google.fr/chrome/browser/' target='_blank'>Chrome</a> ou <a href='http://support.apple.com/fr_FR/downloads/#safari' target='_blank'>Safari</a>.",
 	"cancel": "Annuler",
 	"cantAddOfferIfMoreThan1picture": "Impossible d'ajouter une offre si vous avez plusieurs photos",
 	"category": "Catégorie",

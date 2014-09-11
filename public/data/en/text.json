@@ -3,6 +3,7 @@
 	"adNo": "Ad #",
 	"addOffer": "Add an offer",
 	"adventures": "Adventures",
+	"browserPreviewWarning": "Please note that the ad generated is for tablet <em>(iOS / Android)</em>. Therefore, it is possible that under {{browser}} the preview does not match what is displayed on this medium. For greater reliability, we suggest you preview your ad in <a href='https://www.google.com/chrome/browser/' target='_blank'>Chrome</a> or <a href='http://support.apple.com/downloads/#safari' target='_blank'>Safari</a>.",
 	"cancel": "Cancel",
 	"cantAddOfferIfMoreThan1picture": "Can not add an offer if you have more than one picture",
 	"category": "Category",

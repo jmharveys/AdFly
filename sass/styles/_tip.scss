@@ -1,0 +1,52 @@
+.tip {
+	position: absolute;
+	top: 0;
+	left: -9999px;
+	width: auto;
+	max-width: 420px;
+	background-color:    $optional;
+	background-image:    url('../images/btn-close-black.png');
+	background-position: calc(100% - .5rem) 1rem;
+	background-repeat:   no-repeat;
+	background-size:     1.5rem 1.5rem;
+	font-size: .9rem;
+	border: solid 1px $medium-grey;
+	border-radius: $radius;
+	padding: 1rem 2.5rem 1rem 1rem;
+	z-index: 5;
+	opacity: 0;
+	pointer-events: none;
+	cursor: pointer;
+	@include transform(translateX(-50%) translateY(-20px));
+	@include transition(transform .5s ease, opacity .5s ease);
+
+	&:before {
+		content: ' ';
+		position: absolute;
+		width: 0;
+		height: 0;
+		left: 50%;
+		top: 100%;
+		border: 20px solid;
+		border-color: $medium-grey transparent transparent transparent;
+		@include transform(translateX(-20px));
+	}
+
+	&:after {
+		content: ' ';
+		position: absolute;
+		width: 0;
+		height: 0;
+		left: 50%;
+		top: 100%;
+		border: 18px solid;
+		border-color: $optional transparent transparent transparent;
+		@include transform(translateX(-18px));
+	}
+
+	&.active {
+		opacity: 1;
+		pointer-events: auto;
+		@include transform(translateX(-50%) translateY(0));
+	}
+}
