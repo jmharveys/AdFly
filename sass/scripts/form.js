@@ -114,6 +114,7 @@ app.prototype.init_ = function(pObj) {
   var self = this;
 
   self.ad.id = uniqueId(); // Id / nom du dossier dans temp
+  self.form.adBlock = window.canRunAds === undefined ? true : false;
   self.dom.field.id.val( self.ad.id );
   $.extend( self.ad.settings, self.form.settings[self.ad.format.text] );
 
